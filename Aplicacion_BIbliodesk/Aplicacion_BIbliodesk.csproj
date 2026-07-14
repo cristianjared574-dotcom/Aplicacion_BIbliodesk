@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Speech" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,14 +47,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="categorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="categorias.Designer.cs">
+      <DependentUpon>categorias.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frmlogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frmlogin.Designer.cs">
+      <DependentUpon>Frmlogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="categorias.resx">
+      <DependentUpon>categorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frmlogin.resx">
+      <DependentUpon>Frmlogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
