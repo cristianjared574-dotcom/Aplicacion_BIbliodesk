@@ -117,6 +117,18 @@
     <Compile Include="Administrador\AutorAdmin\frmCambiarEstadoAutor.Designer.cs">
       <DependentUpon>frmCambiarEstadoAutor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Administrador\cambiar_estado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\cambiar_estado.Designer.cs">
+      <DependentUpon>cambiar_estado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\categorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\categorias.Designer.cs">
+      <DependentUpon>categorias.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administrador\frmCambiarEstadoEjemplaresAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +195,18 @@
     <Compile Include="Bibliotecario\AutorBibliotecario\frmEditarAutor.Designer.cs">
       <DependentUpon>frmEditarAutor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Bibliotecario\categorias_biblo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bibliotecario\categorias_biblo.Designer.cs">
+      <DependentUpon>categorias_biblo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bibliotecario\categoria_biblio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bibliotecario\categoria_biblio.Designer.cs">
+      <DependentUpon>categoria_biblio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Bibliotecario\frmEjemplarBiblio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -246,6 +270,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Administrador\cambiar_estado.resx">
+      <DependentUpon>cambiar_estado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\categorias.resx">
+      <DependentUpon>categorias.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Administrador\frmCambiarEstadoEjemplaresAdmin.resx">
       <DependentUpon>frmCambiarEstadoEjemplaresAdmin.cs</DependentUpon>
     </EmbeddedResource>
@@ -264,6 +294,12 @@
     <EmbeddedResource Include="Administrador\PrestamoAdmin\frmPrestamoHistorial.resx">
       <DependentUpon>frmPrestamoHistorial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Bibliotecario\categorias_biblo.resx">
+      <DependentUpon>categorias_biblo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bibliotecario\categoria_biblio.resx">
+      <DependentUpon>categoria_biblio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Bibliotecario\frmEjemplarBiblio.resx">
       <DependentUpon>frmEjemplarBiblio.cs</DependentUpon>
     </EmbeddedResource>
@@ -281,6 +317,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="login.resx">
+      <DependentUpon>login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
