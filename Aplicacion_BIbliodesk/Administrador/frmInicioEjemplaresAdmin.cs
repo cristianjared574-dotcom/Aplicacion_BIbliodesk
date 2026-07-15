@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Aplicacion_BIbliodesk.Administrador
+namespace Aplicacion_BIbliodesk.Administrador.PrestamoAdmin
 {
     public partial class frmInicioEjemplaresAdmin : Form
     {
