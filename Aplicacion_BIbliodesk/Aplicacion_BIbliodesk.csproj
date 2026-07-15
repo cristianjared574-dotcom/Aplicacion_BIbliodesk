@@ -117,6 +117,18 @@
     <Compile Include="Administrador\frmInicioAdmin.Designer.cs">
       <DependentUpon>frmInicioAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Administrador\frmInicioEjemplaresAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\frmInicioEjemplaresAdmin.Designer.cs">
+      <DependentUpon>frmInicioEjemplaresAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\frmInicioReportesAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\frmInicioReportesAdmin.Designer.cs">
+      <DependentUpon>frmInicioReportesAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administrador\PrestamoAdmin\frmPrestamoAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,11 +141,23 @@
     <Compile Include="Administrador\PrestamoAdmin\frmPrestamoHistorial.Designer.cs">
       <DependentUpon>frmPrestamoHistorial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Bibliotecario\frmEjemplarBiblio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bibliotecario\frmEjemplarBiblio.Designer.cs">
+      <DependentUpon>frmEjemplarBiblio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Bibliotecario\frmInicioBiblio.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Bibliotecario\frmInicioBiblio.Designer.cs">
       <DependentUpon>frmInicioBiblio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bibliotecario\frmInicioEjemplaresBiblio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bibliotecario\frmInicioEjemplaresBiblio.Designer.cs">
+      <DependentUpon>frmInicioEjemplaresBiblio.cs</DependentUpon>
     </Compile>
     <Compile Include="Bibliotecario\Prestamo\frmPrestamoBiblio.cs">
       <SubType>Form</SubType>
@@ -162,14 +186,26 @@
     <EmbeddedResource Include="Administrador\frmInicioAdmin.resx">
       <DependentUpon>frmInicioAdmin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\frmInicioEjemplaresAdmin.resx">
+      <DependentUpon>frmInicioEjemplaresAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\frmInicioReportesAdmin.resx">
+      <DependentUpon>frmInicioReportesAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Administrador\PrestamoAdmin\frmPrestamoAdmin.resx">
       <DependentUpon>frmPrestamoAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administrador\PrestamoAdmin\frmPrestamoHistorial.resx">
       <DependentUpon>frmPrestamoHistorial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Bibliotecario\frmEjemplarBiblio.resx">
+      <DependentUpon>frmEjemplarBiblio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Bibliotecario\frmInicioBiblio.resx">
       <DependentUpon>frmInicioBiblio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bibliotecario\frmInicioEjemplaresBiblio.resx">
+      <DependentUpon>frmInicioEjemplaresBiblio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Bibliotecario\Prestamo\frmPrestamoBiblio.resx">
       <DependentUpon>frmPrestamoBiblio.cs</DependentUpon>

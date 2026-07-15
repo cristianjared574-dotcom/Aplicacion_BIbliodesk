@@ -194,7 +194,6 @@
             this.btnGenerarReporte.TabIndex = 1;
             this.btnGenerarReporte.Text = "Generar Reporte";
             this.btnGenerarReporte.UseVisualStyleBackColor = false;
-            this.btnGenerarReporte.Click += new System.EventHandler(this.btnGenerarReporte_Click);
             // 
             // frmInicioReportesAdmin
             // 

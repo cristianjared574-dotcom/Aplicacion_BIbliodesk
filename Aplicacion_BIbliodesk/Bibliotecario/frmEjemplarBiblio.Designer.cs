@@ -1,6 +1,6 @@
 ﻿namespace Aplicacion_BIbliodesk.Bibliotecario
 {
-    partial class Ejemplares
+    partial class frmEjemplarBiblio
     {
         /// <summary>
         /// Required designer variable.
@@ -31,13 +31,13 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardarEjemplar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtIdEjemplar = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtIdLibro = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtLocalizacion = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtLocalizacion = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtIdLibro = new System.Windows.Forms.TextBox();
+            this.txtIdEjemplar = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -47,7 +47,7 @@
             this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
             this.btnCancelar.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancelar.Location = new System.Drawing.Point(425, 326);
+            this.btnCancelar.Location = new System.Drawing.Point(490, 326);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(190, 48);
             this.btnCancelar.TabIndex = 7;
@@ -80,60 +80,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ejemplar";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(43, 45);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 19);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "ID Ejemplar: ";
-            // 
-            // txtIdEjemplar
-            // 
-            this.txtIdEjemplar.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdEjemplar.Location = new System.Drawing.Point(256, 36);
-            this.txtIdEjemplar.Name = "txtIdEjemplar";
-            this.txtIdEjemplar.Size = new System.Drawing.Size(390, 28);
-            this.txtIdEjemplar.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(43, 119);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 19);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "ID Libro: ";
-            // 
-            // txtIdLibro
-            // 
-            this.txtIdLibro.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdLibro.Location = new System.Drawing.Point(256, 119);
-            this.txtIdLibro.Name = "txtIdLibro";
-            this.txtIdLibro.Size = new System.Drawing.Size(390, 28);
-            this.txtIdLibro.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(43, 202);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(122, 19);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Localización: ";
-            // 
-            // txtLocalizacion
-            // 
-            this.txtLocalizacion.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLocalizacion.Location = new System.Drawing.Point(256, 193);
-            this.txtLocalizacion.Name = "txtLocalizacion";
-            this.txtLocalizacion.Size = new System.Drawing.Size(390, 28);
-            this.txtLocalizacion.TabIndex = 5;
-            // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -148,7 +94,61 @@
             this.panel1.Size = new System.Drawing.Size(694, 267);
             this.panel1.TabIndex = 8;
             // 
-            // Ejemplares
+            // txtLocalizacion
+            // 
+            this.txtLocalizacion.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLocalizacion.Location = new System.Drawing.Point(256, 193);
+            this.txtLocalizacion.Name = "txtLocalizacion";
+            this.txtLocalizacion.Size = new System.Drawing.Size(390, 28);
+            this.txtLocalizacion.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(43, 45);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 19);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "ID Ejemplar: ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(43, 119);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 19);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "ID Libro: ";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(43, 202);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(122, 19);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Localización: ";
+            // 
+            // txtIdLibro
+            // 
+            this.txtIdLibro.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdLibro.Location = new System.Drawing.Point(256, 119);
+            this.txtIdLibro.Name = "txtIdLibro";
+            this.txtIdLibro.Size = new System.Drawing.Size(390, 28);
+            this.txtIdLibro.TabIndex = 3;
+            // 
+            // txtIdEjemplar
+            // 
+            this.txtIdEjemplar.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdEjemplar.Location = new System.Drawing.Point(256, 36);
+            this.txtIdEjemplar.Name = "txtIdEjemplar";
+            this.txtIdEjemplar.Size = new System.Drawing.Size(390, 28);
+            this.txtIdEjemplar.TabIndex = 1;
+            // 
+            // frmEjemplarBiblio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -158,10 +158,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Ejemplares";
+            this.Name = "frmEjemplarBiblio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Ejemplar";
-            this.Load += new System.EventHandler(this.frmEjemplarBiblio_Load);
             this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

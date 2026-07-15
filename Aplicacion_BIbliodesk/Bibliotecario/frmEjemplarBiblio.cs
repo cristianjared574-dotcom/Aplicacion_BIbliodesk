@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Aplicacion_BIbliodesk.Bibliotecario
 {
-    public partial class Ejemplares : Form
+    public partial class frmEjemplarBiblio : Form
     {
-        public Ejemplares()
+        public frmEjemplarBiblio()
         {
             InitializeComponent();
-        }
-
-        private void frmEjemplarBiblio_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
