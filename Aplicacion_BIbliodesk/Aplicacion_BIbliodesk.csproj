@@ -105,6 +105,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrador\AutorAdmin\frmAutorInicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\AutorAdmin\frmAutorInicio.Designer.cs">
+      <DependentUpon>frmAutorInicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\AutorAdmin\frmCambiarEstadoAutor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\AutorAdmin\frmCambiarEstadoAutor.Designer.cs">
+      <DependentUpon>frmCambiarEstadoAutor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administrador\frmCambiarEstadoEjemplaresAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +141,18 @@
     <Compile Include="Administrador\frmInicioReportesAdmin.Designer.cs">
       <DependentUpon>frmInicioReportesAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Administrador\LibroAdmin\frmCambiarEstadoLibro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\LibroAdmin\frmCambiarEstadoLibro.Designer.cs">
+      <DependentUpon>frmCambiarEstadoLibro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\LibroAdmin\frmLibrosBuscar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\LibroAdmin\frmLibrosBuscar.Designer.cs">
+      <DependentUpon>frmLibrosBuscar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administrador\PrestamoAdmin\frmPrestamoAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +164,24 @@
     </Compile>
     <Compile Include="Administrador\PrestamoAdmin\frmPrestamoHistorial.Designer.cs">
       <DependentUpon>frmPrestamoHistorial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bibliotecario\AutorBibliotecario\frmAgregarAutor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bibliotecario\AutorBibliotecario\frmAgregarAutor.Designer.cs">
+      <DependentUpon>frmAgregarAutor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bibliotecario\AutorBibliotecario\frmAutorInicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bibliotecario\AutorBibliotecario\frmAutorInicio.Designer.cs">
+      <DependentUpon>frmAutorInicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bibliotecario\AutorBibliotecario\frmEditarAutor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bibliotecario\AutorBibliotecario\frmEditarAutor.Designer.cs">
+      <DependentUpon>frmEditarAutor.cs</DependentUpon>
     </Compile>
     <Compile Include="Bibliotecario\frmEjemplarBiblio.cs">
       <SubType>Form</SubType>
@@ -158,6 +200,24 @@
     </Compile>
     <Compile Include="Bibliotecario\frmInicioEjemplaresBiblio.Designer.cs">
       <DependentUpon>frmInicioEjemplaresBiblio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bibliotecario\LibroBibliotecario\frmLibrosAgregar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bibliotecario\LibroBibliotecario\frmLibrosAgregar.Designer.cs">
+      <DependentUpon>frmLibrosAgregar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bibliotecario\LibroBibliotecario\frmLibrosBuscar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bibliotecario\LibroBibliotecario\frmLibrosBuscar.Designer.cs">
+      <DependentUpon>frmLibrosBuscar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bibliotecario\LibroBibliotecario\frmLibrosEditar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bibliotecario\LibroBibliotecario\frmLibrosEditar.Designer.cs">
+      <DependentUpon>frmLibrosEditar.cs</DependentUpon>
     </Compile>
     <Compile Include="Bibliotecario\Prestamo\frmPrestamoBiblio.cs">
       <SubType>Form</SubType>
