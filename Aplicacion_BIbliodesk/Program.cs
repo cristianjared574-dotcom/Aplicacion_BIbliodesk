@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Aplicacion_BIbliodesk.Administrador;
 using Aplicacion_BIbliodesk.Bibliotecario;
+using Aplicacion_BIbliodesk.Bibliotecario.Prestamo;
+using Aplicacion_BIbliodesk.Administrador.PrestamoAdmin;
 
 namespace Aplicacion_BIbliodesk
 {
