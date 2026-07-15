@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Aplicacion_BIbliodesk.Bibliotecario.Prestamo;
 
 namespace Aplicacion_BIbliodesk.Bibliotecario
 {
@@ -70,6 +71,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
         private void btnPrestamos_Click(object sender, EventArgs e)
         {
             seleccionarModulo(btnPrestamos);
+            AbrirFormularioEnPanel( new frmPrestamoBiblio());
         }
 
         private void btnCerrarsesion_Click(object sender, EventArgs e)
