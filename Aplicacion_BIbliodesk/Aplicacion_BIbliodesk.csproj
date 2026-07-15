@@ -105,6 +105,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrador\frmCambiarEstadoEjemplaresAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\frmCambiarEstadoEjemplaresAdmin.Designer.cs">
+      <DependentUpon>frmCambiarEstadoEjemplaresAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administrador\frmInicioAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +156,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Administrador\frmCambiarEstadoEjemplaresAdmin.resx">
+      <DependentUpon>frmCambiarEstadoEjemplaresAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Administrador\frmInicioAdmin.resx">
       <DependentUpon>frmInicioAdmin.cs</DependentUpon>
     </EmbeddedResource>
