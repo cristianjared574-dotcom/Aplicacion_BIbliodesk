@@ -1,4 +1,4 @@
-﻿namespace Aplicacion_BIbliodesk.Administrador
+﻿namespace Aplicacion_BIbliodesk.Administrador.PrestamoAdmin
 {
     partial class frmInicioEjemplaresAdmin
     {
