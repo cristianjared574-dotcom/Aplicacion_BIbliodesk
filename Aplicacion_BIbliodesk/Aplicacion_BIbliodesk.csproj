@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.9.0\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
       <HintPath>..\packages\BouncyCastle.Cryptography.2.6.2\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
@@ -54,8 +57,8 @@
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=9.7.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.9.7.0\lib\net48\MySql.Data.dll</HintPath>
+    <Reference Include="MySql.Data, Version=8.0.33.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.33\lib\net48\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -102,11 +105,89 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrador\AutorAdmin\frmAutorInicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\AutorAdmin\frmAutorInicio.Designer.cs">
+      <DependentUpon>frmAutorInicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\AutorAdmin\frmCambiarEstadoAutor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\AutorAdmin\frmCambiarEstadoAutor.Designer.cs">
+      <DependentUpon>frmCambiarEstadoAutor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\frmCambiarEstadoEjemplaresAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\frmCambiarEstadoEjemplaresAdmin.Designer.cs">
+      <DependentUpon>frmCambiarEstadoEjemplaresAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administrador\frmInicioAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Administrador\frmInicioAdmin.Designer.cs">
       <DependentUpon>frmInicioAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\frmInicioEjemplaresAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\frmInicioEjemplaresAdmin.Designer.cs">
+      <DependentUpon>frmInicioEjemplaresAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\frmInicioReportesAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\frmInicioReportesAdmin.Designer.cs">
+      <DependentUpon>frmInicioReportesAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\LibroAdmin\frmCambiarEstadoLibro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\LibroAdmin\frmCambiarEstadoLibro.Designer.cs">
+      <DependentUpon>frmCambiarEstadoLibro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\LibroAdmin\frmLibrosBuscar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\LibroAdmin\frmLibrosBuscar.Designer.cs">
+      <DependentUpon>frmLibrosBuscar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\PrestamoAdmin\frmPrestamoAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\PrestamoAdmin\frmPrestamoAdmin.Designer.cs">
+      <DependentUpon>frmPrestamoAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\PrestamoAdmin\frmPrestamoHistorial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrador\PrestamoAdmin\frmPrestamoHistorial.Designer.cs">
+      <DependentUpon>frmPrestamoHistorial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bibliotecario\AutorBibliotecario\frmAgregarAutor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bibliotecario\AutorBibliotecario\frmAgregarAutor.Designer.cs">
+      <DependentUpon>frmAgregarAutor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bibliotecario\AutorBibliotecario\frmAutorInicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bibliotecario\AutorBibliotecario\frmAutorInicio.Designer.cs">
+      <DependentUpon>frmAutorInicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bibliotecario\AutorBibliotecario\frmEditarAutor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bibliotecario\AutorBibliotecario\frmEditarAutor.Designer.cs">
+      <DependentUpon>frmEditarAutor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bibliotecario\frmEjemplarBiblio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bibliotecario\frmEjemplarBiblio.Designer.cs">
+      <DependentUpon>frmEjemplarBiblio.cs</DependentUpon>
     </Compile>
     <Compile Include="Bibliotecario\frmInicioBiblio.cs">
       <SubType>Form</SubType>
@@ -114,30 +195,43 @@
     <Compile Include="Bibliotecario\frmInicioBiblio.Designer.cs">
       <DependentUpon>frmInicioBiblio.cs</DependentUpon>
     </Compile>
-    <Compile Include="CambiarEstado.cs">
+    <Compile Include="Bibliotecario\frmInicioEjemplaresBiblio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CambiarEstado.Designer.cs">
-      <DependentUpon>CambiarEstado.cs</DependentUpon>
+    <Compile Include="Bibliotecario\frmInicioEjemplaresBiblio.Designer.cs">
+      <DependentUpon>frmInicioEjemplaresBiblio.cs</DependentUpon>
     </Compile>
-    <Compile Include="categorias.cs">
+    <Compile Include="Bibliotecario\LibroBibliotecario\frmLibrosAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="categorias.Designer.cs">
-      <DependentUpon>categorias.cs</DependentUpon>
+    <Compile Include="Bibliotecario\LibroBibliotecario\frmLibrosAgregar.Designer.cs">
+      <DependentUpon>frmLibrosAgregar.cs</DependentUpon>
     </Compile>
-    <Compile Include="categorias_bibliotecario.cs">
+    <Compile Include="Bibliotecario\LibroBibliotecario\frmLibrosBuscar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="categorias_bibliotecario.Designer.cs">
-      <DependentUpon>categorias_bibliotecario.cs</DependentUpon>
+    <Compile Include="Bibliotecario\LibroBibliotecario\frmLibrosBuscar.Designer.cs">
+      <DependentUpon>frmLibrosBuscar.cs</DependentUpon>
     </Compile>
-    <Compile Include="categoria_biblio.cs">
+    <Compile Include="Bibliotecario\LibroBibliotecario\frmLibrosEditar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="categoria_biblio.Designer.cs">
-      <DependentUpon>categoria_biblio.cs</DependentUpon>
+    <Compile Include="Bibliotecario\LibroBibliotecario\frmLibrosEditar.Designer.cs">
+      <DependentUpon>frmLibrosEditar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Bibliotecario\Prestamo\frmPrestamoBiblio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bibliotecario\Prestamo\frmPrestamoBiblio.Designer.cs">
+      <DependentUpon>frmPrestamoBiblio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bibliotecario\Prestamo\frmRegistrarPrestamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bibliotecario\Prestamo\frmRegistrarPrestamo.Designer.cs">
+      <DependentUpon>frmRegistrarPrestamo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Conexion.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,26 +246,41 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Administrador\frmCambiarEstadoEjemplaresAdmin.resx">
+      <DependentUpon>frmCambiarEstadoEjemplaresAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Administrador\frmInicioAdmin.resx">
       <DependentUpon>frmInicioAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\frmInicioEjemplaresAdmin.resx">
+      <DependentUpon>frmInicioEjemplaresAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\frmInicioReportesAdmin.resx">
+      <DependentUpon>frmInicioReportesAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\PrestamoAdmin\frmPrestamoAdmin.resx">
+      <DependentUpon>frmPrestamoAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\PrestamoAdmin\frmPrestamoHistorial.resx">
+      <DependentUpon>frmPrestamoHistorial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bibliotecario\frmEjemplarBiblio.resx">
+      <DependentUpon>frmEjemplarBiblio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Bibliotecario\frmInicioBiblio.resx">
       <DependentUpon>frmInicioBiblio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CambiarEstado.resx">
-      <DependentUpon>CambiarEstado.cs</DependentUpon>
+    <EmbeddedResource Include="Bibliotecario\frmInicioEjemplaresBiblio.resx">
+      <DependentUpon>frmInicioEjemplaresBiblio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="categorias.resx">
-      <DependentUpon>categorias.cs</DependentUpon>
+    <EmbeddedResource Include="Bibliotecario\Prestamo\frmPrestamoBiblio.resx">
+      <DependentUpon>frmPrestamoBiblio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="categorias_bibliotecario.resx">
-      <DependentUpon>categorias_bibliotecario.cs</DependentUpon>
+    <EmbeddedResource Include="Bibliotecario\Prestamo\frmRegistrarPrestamo.resx">
+      <DependentUpon>frmRegistrarPrestamo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="categoria_biblio.resx">
-      <DependentUpon>categoria_biblio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="login.resx">
-      <DependentUpon>login.cs</DependentUpon>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

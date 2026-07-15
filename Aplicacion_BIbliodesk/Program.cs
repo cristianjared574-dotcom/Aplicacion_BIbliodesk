@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Aplicacion_BIbliodesk.Administrador;
 using Aplicacion_BIbliodesk.Bibliotecario;
+using Aplicacion_BIbliodesk.Bibliotecario.Prestamo;
+using Aplicacion_BIbliodesk.Administrador.PrestamoAdmin;
 
 namespace Aplicacion_BIbliodesk
 {
@@ -18,7 +20,7 @@ namespace Aplicacion_BIbliodesk
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new login());
+            Application.Run(new frmInicioEjemplaresAdmin());
         }
     }
 }
