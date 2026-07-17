@@ -60,7 +60,7 @@ namespace Aplicacion_BIbliodesk
             string nuevoEstado = cmbEstado.Text.Trim().ToUpper();
 
             // 4. Conectamos a la base de datos
-            using (MySqlConnection con = Conexion.ConnectionData.getConection())
+            using (MySqlConnection con = Conexion.getConection())
             {
                 if (con == null) return;
 

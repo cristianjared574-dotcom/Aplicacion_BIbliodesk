@@ -11,12 +11,11 @@ namespace Aplicacion_BIbliodesk
 {
     internal class Conexion
     {
-        public static class ConnectionData
-        {
+       
             public static MySqlConnection getConection()
             { 
 
-            string cadena ="Server=localhost; Database=bibliodesk1; UserID=root; Password=; Port=3306; SslMode=None;";
+                string cadena ="Server=localhost; Database=bibliodesk1; UserID=root; Password=; Port=3306; SslMode=None;";
             
             
                 try
@@ -32,7 +31,7 @@ namespace Aplicacion_BIbliodesk
                 }
 
             }
-        }
+        
     }
 }
 
