@@ -1,26 +1,21 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
+using System.Windows.Forms;
 
 namespace Aplicacion_BIbliodesk
 {
     internal class Conexion
     {
-        internal class ConnectionData
-        {
-            private readonly string cadena;
+       
+            public static MySqlConnection getConection()
+            { 
 
-            public ConnectionData()
-            {
-                cadena = "Server=localhost; Database=bibliodesk; UserID=root; Password=; Port=3306; SslMode=None;";
-            }
-            public MySqlConnection getConection()
-            {
+                string cadena ="Server=localhost; Database=bibliodesk1; UserID=root; Password=; Port=3306; SslMode=None;";
+            
+            
                 try
                 {
                     MySqlConnection conexion = new MySqlConnection(cadena);
@@ -33,7 +28,18 @@ namespace Aplicacion_BIbliodesk
                     return null;
                 }
 
+        // ✅ Cifrado también estático
+        public static string CifrarContrasena(string textoPlano)
+        {
+            using (SHA256 sha = SHA256.Create())
+            {
+                byte[] bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(textoPlano));
+                StringBuilder sb = new StringBuilder();
+                foreach (byte b in bytes)
+                    sb.Append(b.ToString("x2"));
+                return sb.ToString();
             }
-        }
+        
     }
 }
+
