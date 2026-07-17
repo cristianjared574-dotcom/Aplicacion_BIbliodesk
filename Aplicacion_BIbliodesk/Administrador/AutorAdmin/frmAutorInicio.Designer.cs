@@ -19,7 +19,7 @@
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Button btnCambiarEstado;
 
-        private System.Windows.Forms.DataGridView dgvLibros;
+        private System.Windows.Forms.DataGridView dgvAutores;
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -37,17 +37,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelBusqueda = new System.Windows.Forms.Panel();
             this.lblBuscar = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.btnCambiarEstado = new System.Windows.Forms.Button();
-            this.dgvLibros = new System.Windows.Forms.DataGridView();
+            this.dgvAutores = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelBusqueda.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLibros)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAutores)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,6 +81,7 @@
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(299, 25);
             this.txtBuscar.TabIndex = 1;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // btnCambiarEstado
             // 
@@ -96,52 +97,52 @@
             this.btnCambiarEstado.Text = "Cambiar Estado";
             this.btnCambiarEstado.UseVisualStyleBackColor = false;
             // 
-            // dgvLibros
+            // dgvAutores
             // 
-            this.dgvLibros.AllowUserToAddRows = false;
-            this.dgvLibros.AllowUserToDeleteRows = false;
-            this.dgvLibros.AllowUserToResizeColumns = false;
-            this.dgvLibros.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
-            this.dgvLibros.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvLibros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvLibros.BackgroundColor = System.Drawing.Color.White;
-            this.dgvLibros.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(161)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLibros.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvLibros.ColumnHeadersHeight = 45;
-            this.dgvLibros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(110)))), ((int)(((byte)(70)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvLibros.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvLibros.EnableHeadersVisualStyles = false;
-            this.dgvLibros.GridColor = System.Drawing.Color.Gainsboro;
-            this.dgvLibros.Location = new System.Drawing.Point(60, 147);
-            this.dgvLibros.MultiSelect = false;
-            this.dgvLibros.Name = "dgvLibros";
-            this.dgvLibros.ReadOnly = true;
-            this.dgvLibros.RowHeadersVisible = false;
-            this.dgvLibros.RowTemplate.Height = 34;
-            this.dgvLibros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLibros.Size = new System.Drawing.Size(1028, 293);
-            this.dgvLibros.TabIndex = 1;
+            this.dgvAutores.AllowUserToAddRows = false;
+            this.dgvAutores.AllowUserToDeleteRows = false;
+            this.dgvAutores.AllowUserToResizeColumns = false;
+            this.dgvAutores.AllowUserToResizeRows = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.dgvAutores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvAutores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvAutores.BackgroundColor = System.Drawing.Color.White;
+            this.dgvAutores.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(161)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAutores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvAutores.ColumnHeadersHeight = 45;
+            this.dgvAutores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(110)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAutores.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvAutores.EnableHeadersVisualStyles = false;
+            this.dgvAutores.GridColor = System.Drawing.Color.Gainsboro;
+            this.dgvAutores.Location = new System.Drawing.Point(60, 147);
+            this.dgvAutores.MultiSelect = false;
+            this.dgvAutores.Name = "dgvAutores";
+            this.dgvAutores.ReadOnly = true;
+            this.dgvAutores.RowHeadersVisible = false;
+            this.dgvAutores.RowTemplate.Height = 34;
+            this.dgvAutores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAutores.Size = new System.Drawing.Size(1028, 293);
+            this.dgvAutores.TabIndex = 1;
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.panelBusqueda);
-            this.panel1.Controls.Add(this.dgvLibros);
+            this.panel1.Controls.Add(this.dgvAutores);
             this.panel1.Controls.Add(this.btnCambiarEstado);
             this.panel1.Location = new System.Drawing.Point(103, 20);
             this.panel1.Name = "panel1";
@@ -160,9 +161,10 @@
             this.Name = "frmAutorInicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Búsqueda Autor";
+            this.Load += new System.EventHandler(this.frmAutorInicio_Load);
             this.panelBusqueda.ResumeLayout(false);
             this.panelBusqueda.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLibros)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAutores)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
