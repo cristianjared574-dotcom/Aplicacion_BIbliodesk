@@ -12,14 +12,16 @@ namespace Aplicacion_BIbliodesk.Administrador
 {
     public partial class frmCambiarEstadoEjemplaresAdmin : Form
     {
-        public frmCambiarEstadoEjemplaresAdmin()
+        private string idEjemplar;
+        private string estadoActual;
+        public frmCambiarEstadoEjemplaresAdmin(string id, string estado)
         {
             InitializeComponent();
+
+            this.idEjemplar = id;
+            this.estadoActual = estado;
         }
 
-        private void frmCambiarEstadoEjemplaresAdmin_Load(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

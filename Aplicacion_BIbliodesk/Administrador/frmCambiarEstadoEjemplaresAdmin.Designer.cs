@@ -147,7 +147,6 @@
             this.Name = "frmCambiarEstadoEjemplaresAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cambiar Estado";
-            this.Load += new System.EventHandler(this.frmCambiarEstadoEjemplaresAdmin_Load);
             this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
