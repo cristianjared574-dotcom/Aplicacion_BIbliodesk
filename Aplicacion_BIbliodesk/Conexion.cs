@@ -1,37 +1,47 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
+using System.Windows.Forms;
 
 namespace Aplicacion_BIbliodesk
 {
     internal class Conexion
     {
-        private readonly string cadena;
-
-        public Conexion()
+        internal class ConnectionData
         {
-            cadena = "Server=localhost; Database=bibliodesk; UserID=root; Password=; Port=3306; SslMode=None;";
-        }
-        public MySqlConnection getConection()
+            private readonly string cadena;
+
+            public ConnectionData()
+            {
+                cadena = "Server=localhost; Database=bibliodesk; UserID=root; Password=; Port=3306; SslMode=None;";
+            }
+            public MySqlConnection getConection()
+            {
+                try
+                {
+                    MySqlConnection conexion = new MySqlConnection(cadena);
+                    conexion.Open();
+                    return conexion;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al conectar a la base de datos: " + ex.Message);
+                    return null;
+        // ✅ Cifrado también estático
+        public static string CifrarContrasena(string textoPlano)
         {
-            try
+            using (SHA256 sha = SHA256.Create())
             {
-                MySqlConnection conexion = new MySqlConnection(cadena);
-                conexion.Open();
-                return conexion;
+                byte[] bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(textoPlano));
+                StringBuilder sb = new StringBuilder();
+                foreach (byte b in bytes)
+                    sb.Append(b.ToString("x2"));
+                return sb.ToString();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al conectar a la base de datos: " + ex.Message);
-                return null;
+        
             }
-
         }
-
-    }
 }
+
