@@ -79,7 +79,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
             string estadoFisicoPorDefecto = "BUENO";
             string disponiblePorDefecto = "ACTIVO";
 
-            using (MySqlConnection con = Conexion.ConnectionData.getConection())
+            using (MySqlConnection con = Conexion.getConection())
             {
                 if (con == null) return;
 

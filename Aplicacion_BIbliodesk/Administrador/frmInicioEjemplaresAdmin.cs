@@ -21,7 +21,7 @@ namespace Aplicacion_BIbliodesk.Administrador
         // Método para cargar y filtrar datos en el DataGridView
         private void CargarEjemplares(string filtro = "")
         {
-            using (MySqlConnection con = Conexion.ConnectionData.getConection())//conecta con la base
+            using (MySqlConnection con = Conexion.getConection())//conecta con la base
             {
                 if (con == null) return;
 

@@ -23,7 +23,7 @@ namespace Aplicacion_BIbliodesk
         //metodo para cargar los ejemplares en el DataGridView
         private void CargarEjemplares(string filtro = "")
         {
-            using (MySqlConnection con = Conexion.ConnectionData.getConection())
+            using (MySqlConnection con = Conexion.getConection())
             {
                 if (con == null) return;
 
