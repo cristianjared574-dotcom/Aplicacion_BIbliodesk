@@ -270,6 +270,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Administrador\AutorAdmin\frmAutorInicio.resx">
+      <DependentUpon>frmAutorInicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\AutorAdmin\frmCambiarEstadoAutor.resx">
+      <DependentUpon>frmCambiarEstadoAutor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Administrador\cambiar_estado.resx">
       <DependentUpon>cambiar_estado.cs</DependentUpon>
     </EmbeddedResource>
