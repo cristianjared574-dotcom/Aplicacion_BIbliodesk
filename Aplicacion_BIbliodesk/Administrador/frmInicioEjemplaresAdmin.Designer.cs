@@ -1,4 +1,4 @@
-﻿namespace Aplicacion_BIbliodesk.Administrador.PrestamoAdmin
+﻿namespace Aplicacion_BIbliodesk.Administrador
 {
     partial class frmInicioEjemplaresAdmin
     {
@@ -48,6 +48,7 @@
             this.txtBuscarEjemplar.Name = "txtBuscarEjemplar";
             this.txtBuscarEjemplar.Size = new System.Drawing.Size(487, 22);
             this.txtBuscarEjemplar.TabIndex = 1;
+            this.txtBuscarEjemplar.TextChanged += new System.EventHandler(this.txtBuscarEjemplar_TextChanged);
             // 
             // label1
             // 
@@ -70,6 +71,7 @@
             this.btnCambiarEstado.TabIndex = 1;
             this.btnCambiarEstado.Text = "Cambiar Estado";
             this.btnCambiarEstado.UseVisualStyleBackColor = false;
+            this.btnCambiarEstado.Click += new System.EventHandler(this.btnCambiarEstado_Click);
             // 
             // panel1
             // 
@@ -84,6 +86,7 @@
             // 
             // dgvEjemplaresAdmin
             // 
+            this.dgvEjemplaresAdmin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvEjemplaresAdmin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEjemplaresAdmin.Location = new System.Drawing.Point(34, 184);
             this.dgvEjemplaresAdmin.Name = "dgvEjemplaresAdmin";
@@ -127,6 +130,8 @@
             this.Controls.Add(this.panel1);
             this.Name = "frmInicioEjemplaresAdmin";
             this.Text = "Inicio Ejemplares";
+            this.Load += new System.EventHandler(this.frmInicioEjemplaresAdmin_Load);
+            this.Click += new System.EventHandler(this.frmInicioEjemplaresAdmin_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEjemplaresAdmin)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -142,8 +147,8 @@
         private System.Windows.Forms.TextBox txtBuscarEjemplar;
         private System.Windows.Forms.Button btnCambiarEstado;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dgvEjemplaresAdmin;
         private System.Windows.Forms.Panel panel2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
+        private System.Windows.Forms.DataGridView dgvEjemplaresAdmin;
     }
 }

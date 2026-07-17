@@ -5,22 +5,20 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
+using System.Windows.Forms;
 
 namespace Aplicacion_BIbliodesk
 {
     internal class Conexion
     {
-        internal class ConnectionData
+        public static class ConnectionData
         {
-            private readonly string cadena;
+            public static MySqlConnection getConection()
+            { 
 
-            public ConnectionData()
-            {
-                cadena = "Server=localhost; Database=bibliodesk; UserID=root; Password=; Port=3306; SslMode=None;";
-            }
-            public MySqlConnection getConection()
-            {
+            string cadena ="Server=localhost; Database=bibliodesk1; UserID=root; Password=; Port=3306; SslMode=None;";
+            
+            
                 try
                 {
                     MySqlConnection conexion = new MySqlConnection(cadena);
@@ -37,3 +35,4 @@ namespace Aplicacion_BIbliodesk
         }
     }
 }
+

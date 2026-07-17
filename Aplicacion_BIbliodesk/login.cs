@@ -56,5 +56,10 @@ namespace Aplicacion_BIbliodesk
         {
 
         }
+
+        private void txtContrasena_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
