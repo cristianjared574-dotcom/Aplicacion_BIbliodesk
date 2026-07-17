@@ -1,23 +1,22 @@
-﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
-namespace Aplicacion_BIbliodesk.Administrador
+namespace Aplicacion_BIbliodesk
 {
     public partial class frmCambiarEstadoEjemplaresAdmin : Form
     {
-        //creacion de variables para almacenar los datos del formulario de inicio ejemplares admin
-        private string idEjemplar;
-        private string estadoActual;
+        // Variables globales para almacenar los datos recibidos del primer formulario
+        private string idEjemplar="";
+        private string estadoActual = "";
 
-        //constructor para que reciba los datos del formulario de inicio ejemplares admin
+        // 1. CONSTRUCTOR VACÍO: Requerido obligatoriamente por el Diseñador de Visual Studio
+        public frmCambiarEstadoEjemplaresAdmin()
+        {
+            InitializeComponent();
+        }
+
+        // 2. CONSTRUCTOR CON PARÁMETROS: El que usamos en código para pasar los datos de la fila
         public frmCambiarEstadoEjemplaresAdmin(string id, string estado)
         {
             InitializeComponent();
@@ -26,76 +25,87 @@ namespace Aplicacion_BIbliodesk.Administrador
             this.estadoActual = estado;
         }
 
-        // Se ejecuta al cargar el formulario
+        // Se ejecuta al cargar el formulario de cambio de estado
         private void frmCambiarEstadoEjemplaresAdmin_Load(object sender, EventArgs e)
         {
-            // Mostrar por defecto los datos actuales en la interfaz
-            txtIdEjemplar.Text = idEjemplar;
-            cmbEstado.Text = estadoActual;
+            // Validamos que los datos no hayan llegado nulos por seguridad
+            if (!string.IsNullOrEmpty(idEjemplar))
+            {
+                txtIdEjemplar.Text = idEjemplar;
+                cmbEstado.Text = estadoActual;
+            }
         }
 
-        // Guarda la actualización en la base de datts mediante el boton de guardar cambios
+        // Evento Click del botón "Guardar Cambios"
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            // se verifica que se haya seleccionado un estado válido
-            if (cmbEstado.SelectedItem == null && string.IsNullOrEmpty(cmbEstado.Text))
+            // 1. Leemos el ID directamente del cuadro de texto de la interfaz gráfica
+            string idTexto = txtIdEjemplar.Text.Trim();
+
+            // Validación extra: Si por algún motivo el cuadro está vacío, detenemos el proceso ordenadamente
+            if (string.IsNullOrEmpty(idTexto))
             {
-                //y sino le aparece ese mensaje de aviso
-                MessageBox.Show("Por favor, seleccione un estado válido.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No hay un ID de ejemplar visible en la pantalla para modificar.", "Error de datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            string nuevoEstado = cmbEstado.Text.Trim();
+            // 2. Validamos que se haya seleccionado un estado válido
+            if (cmbEstado.SelectedItem == null && string.IsNullOrEmpty(cmbEstado.Text))
+            {
+                MessageBox.Show("Por favor, seleccione un estado válido de la lista.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            
-            using (MySqlConnection con = Conexion.ConnectionData.getConection())//conecta a la base
+            // 3. Convertimos el estado seleccionado a MAYÚSCULAS ("ACTIVO" / "INACTIVO")
+            string nuevoEstado = cmbEstado.Text.Trim().ToUpper();
+
+            // 4. Conectamos a la base de datos
+            using (MySqlConnection con = Conexion.ConnectionData.getConection())
             {
                 if (con == null) return;
 
-                // Query para actualizar el estado ya sea activo o inactivo del ejemplar en la base
-                string query = "UPDATE ejemplar SET ESTADO = @nuevoEstado WHERE ID_EJEMPLAR = @id";
+                // Query definitivo usando tus columnas físicas reales: DISPONIBLE e ID_EJEMPLAR
+                string query = "UPDATE ejemplar SET DISPONIBLE = @nuevoEstado WHERE ID_EJEMPLAR = @id";
 
                 try
                 {
                     using (MySqlCommand cmd = new MySqlCommand(query, con))
                     {
-                        // se añaden los parametros
+                        // Asignamos los parámetros de manera segura
                         cmd.Parameters.AddWithValue("@nuevoEstado", nuevoEstado);
-                        cmd.Parameters.AddWithValue("@id", idEjemplar);
 
-                        // Ejecutar la consulta
+                        // CORRECCIÓN CLAVE: Convertimos el texto del cuadro físico en número entero
+                        cmd.Parameters.AddWithValue("@id", Convert.ToInt32(idTexto));
+
+                        // Ejecutamos la consulta en MySQL
                         int filasAfectadas = cmd.ExecuteNonQuery();
 
                         if (filasAfectadas > 0)
                         {
-                            //mensaje de actualizacion correcta
                             MessageBox.Show("El estado del ejemplar se ha actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            // Indicar que la operación fue exitosa para que el formulario de inicio se actualice
                             this.DialogResult = DialogResult.OK;
                             this.Close();
                         }
                         else
                         {
-                            //y sino le muestra un mensaje de aviso
-                            MessageBox.Show("No se realizaron cambios en la base de datos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            // Alerta si intentas guardar el mismo estado que ya tiene en SQLyog
+                            MessageBox.Show("No se realizaron cambios porque el ejemplar ya tiene ese estado asignado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    //aqui el mensaje ya seria debido a un error de la base
                     MessageBox.Show("Error al actualizar el estado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
-        // Si presiona el boton de cancelar entonces  se Cierra la ventana sin guardar cambios
+        // Evento Click del botón "Cancelar"
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
     }
-    
 }

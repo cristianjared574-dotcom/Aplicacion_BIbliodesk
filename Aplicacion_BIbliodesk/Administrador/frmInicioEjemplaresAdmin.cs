@@ -69,27 +69,29 @@ namespace Aplicacion_BIbliodesk.Administrador
         // Evento del botón Cambiar Estado
         private void btnCambiarEstado_Click(object sender, EventArgs e)
         {
-            if (dgvEjemplaresAdmin.SelectedRows.Count > 0)
+            // verificar que el usuario tenga seleccionada una fila en la tabla
+            if (dgvEjemplaresAdmin.CurrentRow != null)
             {
-                // si lo selecciona entonces recupera los datos del ejemplar seleccionado en la fila 
-                string idEjemplar = dgvEjemplaresAdmin.CurrentRow.Cells["ID_EJEMPLAR"].Value.ToString();
-                string estadoActual = dgvEjemplaresAdmin.CurrentRow.Cells["DISPONIBLE"].Value.ToString();
+                // extraer los valores de las celdas de la fila activa
+                string id = dgvEjemplaresAdmin.CurrentRow.Cells["ID_EJEMPLAR"].Value.ToString();
+                string estado = dgvEjemplaresAdmin.CurrentRow.Cells["DISPONIBLE"].Value.ToString();
 
-                // y se abre el formulario de cambio de estado pasándole los datos que ocupa
-                frmCambiarEstadoEjemplaresAdmin frm = new frmCambiarEstadoEjemplaresAdmin(idEjemplar, estadoActual);
+                // Pasaar el ID y el Estado al crear el formulario
+                frmCambiarEstadoEjemplaresAdmin frm = new frmCambiarEstadoEjemplaresAdmin(id, estado);
+
+                // Si el cambio se guarda con éxito se refresca la tabla al cerrar la ventana
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    CargarEjemplares(); // actualiza la tabla al guardar cambios
+                    CargarEjemplares(""); // Recargar tabla para mostrar el cambio al instante
                 }
             }
             else
             {
-                //se debe seleccionar la fila y si no le aparece este mensaje
                 MessageBox.Show("Por favor, seleccione un ejemplar de la tabla.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        
+
         //text changed para que al momento de que se ingrese el texto en la busqueda esta ya este buscando
         private void txtBuscarEjemplar_TextChanged(object sender, EventArgs e)
         {

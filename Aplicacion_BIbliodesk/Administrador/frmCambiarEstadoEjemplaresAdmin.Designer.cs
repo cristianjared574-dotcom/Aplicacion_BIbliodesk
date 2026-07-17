@@ -1,4 +1,4 @@
-﻿namespace Aplicacion_BIbliodesk.Administrador
+﻿namespace Aplicacion_BIbliodesk
 {
     partial class frmCambiarEstadoEjemplaresAdmin
     {
@@ -66,6 +66,7 @@
             this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // panel1
             // 
@@ -85,8 +86,8 @@
             this.cmbEstado.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstado.FormattingEnabled = true;
             this.cmbEstado.Items.AddRange(new object[] {
-            "Activo",
-            "Inactivo"});
+            "ACTIVO",
+            "INACTIVO"});
             this.cmbEstado.Location = new System.Drawing.Point(236, 147);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(240, 29);
@@ -133,6 +134,7 @@
             this.btnGuardar.TabIndex = 5;
             this.btnGuardar.Text = "Guardar Cambios";
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // frmCambiarEstadoEjemplaresAdmin
             // 
