@@ -1,39 +1,51 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace Aplicacion_BIbliodesk
 {
     internal class Conexion
     {
-        internal class ConnectionData
+        // Cadena de conexión
+        private const string CadenaConexion =
+            "Server=localhost; Database=bibliodesk; UserID=root; Password=; Port=3306; SslMode=None;";
+
+        // Método ESTÁTICO: así se llama sin crear instancia
+        public static MySqlConnection ObtenerConexion()
         {
-            private readonly string cadena;
-
-            public ConnectionData()
+            try
             {
-                cadena = "Server=localhost; Database=bibliodesk; UserID=root; Password=; Port=3306; SslMode=None;";
+                MySqlConnection conn = new MySqlConnection(CadenaConexion);
+                conn.Open();
+                return conn;
             }
-            public MySqlConnection getConection()
+            catch (Exception)
             {
-                try
-                {
-                    MySqlConnection conexion = new MySqlConnection(cadena);
-                    conexion.Open();
-                    return conexion;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al conectar a la base de datos: " + ex.Message);
-                    return null;
-                }
-
+                throw;
             }
         }
+
+        // ✅ Cifrado también estático
+        public static string CifrarContrasena(string textoPlano)
+        {
+            using (SHA256 sha = SHA256.Create())
+            {
+                byte[] bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(textoPlano));
+                StringBuilder sb = new StringBuilder();
+                foreach (byte b in bytes)
+                    sb.Append(b.ToString("x2"));
+                return sb.ToString();
+            }
+        }
+    }
+
+    public class Empleado
+    {
+        public int IdEmpleado { get; set; }
+        public string NombreCompleto { get; set; }
+        public string Username { get; set; }
+        public string Rol { get; set; }
+        public string Estado { get; set; }
     }
 }
