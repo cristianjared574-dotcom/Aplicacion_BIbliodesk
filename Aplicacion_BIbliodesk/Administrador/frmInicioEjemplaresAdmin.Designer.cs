@@ -147,8 +147,8 @@
         private System.Windows.Forms.TextBox txtBuscarEjemplar;
         private System.Windows.Forms.Button btnCambiarEstado;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dgvEjemplaresAdmin;
         private System.Windows.Forms.Panel panel2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
+        private System.Windows.Forms.DataGridView dgvEjemplaresAdmin;
     }
 }

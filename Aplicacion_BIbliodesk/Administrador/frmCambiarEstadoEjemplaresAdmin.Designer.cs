@@ -88,7 +88,7 @@
             this.cmbEstado.Items.AddRange(new object[] {
             "ACTIVO",
             "INACTIVO"});
-            this.cmbEstado.Location = new System.Drawing.Point(236, 147);
+            this.cmbEstado.Location = new System.Drawing.Point(255, 145);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(240, 29);
             this.cmbEstado.TabIndex = 4;
@@ -117,7 +117,7 @@
             // 
             this.txtIdEjemplar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtIdEjemplar.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdEjemplar.Location = new System.Drawing.Point(236, 41);
+            this.txtIdEjemplar.Location = new System.Drawing.Point(255, 41);
             this.txtIdEjemplar.Name = "txtIdEjemplar";
             this.txtIdEjemplar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtIdEjemplar.Size = new System.Drawing.Size(322, 28);
@@ -149,6 +149,7 @@
             this.Name = "frmCambiarEstadoEjemplaresAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cambiar Estado";
+            this.Load += new System.EventHandler(this.frmCambiarEstadoEjemplaresAdmin_Load);
             this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -46,6 +46,8 @@ namespace Aplicacion_BIbliodesk.Administrador
                         {
                             DataTable dt = new DataTable();
                             adapter.Fill(dt);
+
+                            // Cargar el resultado en la tabla
                             dgvEjemplaresAdmin.DataSource = dt;
                         }
                     }
