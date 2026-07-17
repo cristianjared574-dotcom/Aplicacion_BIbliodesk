@@ -37,12 +37,12 @@ namespace Aplicacion_BIbliodesk.Administrador.LibroAdmin
         {
             this.grpLibro = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtLibro = new System.Windows.Forms.TextBox();
             this.lblLibro = new System.Windows.Forms.Label();
             this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.cmbLibro = new System.Windows.Forms.ComboBox();
             this.grpLibro.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +64,7 @@ namespace Aplicacion_BIbliodesk.Administrador.LibroAdmin
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.txtLibro);
+            this.panel1.Controls.Add(this.cmbLibro);
             this.panel1.Controls.Add(this.lblLibro);
             this.panel1.Controls.Add(this.cmbEstado);
             this.panel1.Controls.Add(this.label1);
@@ -72,13 +72,6 @@ namespace Aplicacion_BIbliodesk.Administrador.LibroAdmin
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(712, 202);
             this.panel1.TabIndex = 0;
-            // 
-            // txtLibro
-            // 
-            this.txtLibro.Location = new System.Drawing.Point(202, 44);
-            this.txtLibro.Name = "txtLibro";
-            this.txtLibro.Size = new System.Drawing.Size(286, 26);
-            this.txtLibro.TabIndex = 21;
             // 
             // lblLibro
             // 
@@ -94,9 +87,6 @@ namespace Aplicacion_BIbliodesk.Administrador.LibroAdmin
             // 
             this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstado.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbEstado.Items.AddRange(new object[] {
-            "Activo",
-            "Inactivo"});
             this.cmbEstado.Location = new System.Drawing.Point(202, 99);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(156, 25);
@@ -125,6 +115,7 @@ namespace Aplicacion_BIbliodesk.Administrador.LibroAdmin
             this.btnGuardar.TabIndex = 16;
             this.btnGuardar.Text = "Guardar cambios";
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnCancelar
             // 
@@ -139,6 +130,16 @@ namespace Aplicacion_BIbliodesk.Administrador.LibroAdmin
             this.btnCancelar.TabIndex = 17;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // cmbLibro
+            // 
+            this.cmbLibro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLibro.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbLibro.Location = new System.Drawing.Point(202, 45);
+            this.cmbLibro.Name = "cmbLibro";
+            this.cmbLibro.Size = new System.Drawing.Size(156, 25);
+            this.cmbLibro.TabIndex = 21;
             // 
             // frmCambiarEstadoLibro
             // 
@@ -163,7 +164,7 @@ namespace Aplicacion_BIbliodesk.Administrador.LibroAdmin
         private Panel panel1;
         private Label label1;
         private ComboBox cmbEstado;
-        private TextBox txtLibro;
         private Label lblLibro;
+        private ComboBox cmbLibro;
     }
 }
