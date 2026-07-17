@@ -53,6 +53,7 @@
             this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardarEjemplar
             // 
@@ -65,6 +66,7 @@
             this.btnGuardarEjemplar.TabIndex = 6;
             this.btnGuardarEjemplar.Text = "Guardar Ejemplar";
             this.btnGuardarEjemplar.UseVisualStyleBackColor = false;
+            this.btnGuardarEjemplar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // groupBox1
             // 
@@ -161,6 +163,7 @@
             this.Name = "frmEjemplarBiblio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Ejemplar";
+            this.Click += new System.EventHandler(this.frmEjemplarBiblio_Load);
             this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

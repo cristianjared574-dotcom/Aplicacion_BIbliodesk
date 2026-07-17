@@ -311,6 +311,9 @@
     <EmbeddedResource Include="Bibliotecario\frmInicioEjemplaresBiblio.resx">
       <DependentUpon>frmInicioEjemplaresBiblio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Bibliotecario\LibroBibliotecario\frmLibrosBuscar.resx">
+      <DependentUpon>frmLibrosBuscar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Bibliotecario\Prestamo\frmPrestamoBiblio.resx">
       <DependentUpon>frmPrestamoBiblio.cs</DependentUpon>
     </EmbeddedResource>

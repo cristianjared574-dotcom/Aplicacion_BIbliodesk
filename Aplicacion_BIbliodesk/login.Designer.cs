@@ -37,12 +37,11 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pbLgo = new System.Windows.Forms.PictureBox();
             this.panelFormulario = new System.Windows.Forms.Panel();
-            this.iconButton3 = new FontAwesome.Sharp.IconButton();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
-            this.lblRol = new System.Windows.Forms.Label();
-            this.lblContrasena = new System.Windows.Forms.Label();
-            this.lblUsuario = new System.Windows.Forms.Label();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbocon = new System.Windows.Forms.ComboBox();
+            this.cbouser = new System.Windows.Forms.ComboBox();
             this.cboRol = new System.Windows.Forms.ComboBox();
             this.btnIniciarSesion = new System.Windows.Forms.Button();
             this.txtContrasena = new System.Windows.Forms.TextBox();
@@ -151,7 +150,31 @@
             this.panelFormulario.Size = new System.Drawing.Size(557, 533);
             this.panelFormulario.TabIndex = 0;
             // 
-            // iconButton3
+            // iconButton1
+            // 
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.User;
+            this.iconButton1.IconColor = System.Drawing.Color.Black;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.Location = new System.Drawing.Point(22, 40);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Size = new System.Drawing.Size(75, 72);
+            this.iconButton1.TabIndex = 11;
+            this.iconButton1.Text = "iconButton1";
+            this.iconButton1.UseVisualStyleBackColor = true;
+            // 
+            // iconButton2
+            // 
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton2.IconColor = System.Drawing.Color.Black;
+            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton2.Location = new System.Drawing.Point(6, 107);
+            this.iconButton2.Name = "iconButton2";
+            this.iconButton2.Size = new System.Drawing.Size(75, 23);
+            this.iconButton2.TabIndex = 0;
+            this.iconButton2.Text = "iconButton2";
+            this.iconButton2.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
             // 
             this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.Lock;
             this.iconButton3.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
@@ -243,8 +266,10 @@
             this.txtContrasena.Location = new System.Drawing.Point(60, 319);
             this.txtContrasena.Multiline = true;
             this.txtContrasena.Name = "txtContrasena";
+            this.txtContrasena.PasswordChar = '*';
             this.txtContrasena.Size = new System.Drawing.Size(443, 34);
             this.txtContrasena.TabIndex = 2;
+            this.txtContrasena.TextChanged += new System.EventHandler(this.txtContrasena_TextChanged);
             // 
             // txtUsuario
             // 

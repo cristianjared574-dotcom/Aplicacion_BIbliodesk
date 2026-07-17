@@ -132,5 +132,10 @@ namespace Aplicacion_BIbliodesk
             if (this.Font.Size > 8)
                 this.Font = new Font(this.Font.FontFamily, this.Font.Size - 1);
         }
+
+        private void txtContrasena_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
