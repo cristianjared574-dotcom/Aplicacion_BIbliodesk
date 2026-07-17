@@ -23,7 +23,7 @@ namespace Aplicacion_BIbliodesk.Administrador
             InitializeComponent();
 
             this.idEjemplar = id;
-            //this.estadoActual = estado;
+            this.estadoActual = estado;
         }
 
         // Se ejecuta al cargar el formulario
@@ -31,7 +31,7 @@ namespace Aplicacion_BIbliodesk.Administrador
         {
             // Mostrar por defecto los datos actuales en la interfaz
             txtIdEjemplar.Text = idEjemplar;
-            //cmbEstado.Text = estadoActual;
+            cmbEstado.Text = estadoActual;
         }
 
         // Guarda la actualización en la base de datts mediante el boton de guardar cambios
