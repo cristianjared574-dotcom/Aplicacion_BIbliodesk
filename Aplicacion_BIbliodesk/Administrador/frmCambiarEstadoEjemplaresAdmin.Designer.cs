@@ -1,4 +1,4 @@
-﻿namespace Aplicacion_BIbliodesk.Administrador
+﻿namespace Aplicacion_BIbliodesk
 {
     partial class frmCambiarEstadoEjemplaresAdmin
     {
@@ -48,7 +48,7 @@
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.btnGuardar);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(347, 35);
+            this.groupBox1.Location = new System.Drawing.Point(357, 64);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(769, 393);
             this.groupBox1.TabIndex = 0;
@@ -66,6 +66,7 @@
             this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // panel1
             // 
@@ -85,9 +86,9 @@
             this.cmbEstado.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstado.FormattingEnabled = true;
             this.cmbEstado.Items.AddRange(new object[] {
-            "Activo",
-            "Inactivo"});
-            this.cmbEstado.Location = new System.Drawing.Point(236, 147);
+            "ACTIVO",
+            "INACTIVO"});
+            this.cmbEstado.Location = new System.Drawing.Point(255, 145);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(240, 29);
             this.cmbEstado.TabIndex = 4;
@@ -116,7 +117,7 @@
             // 
             this.txtIdEjemplar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtIdEjemplar.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdEjemplar.Location = new System.Drawing.Point(236, 41);
+            this.txtIdEjemplar.Location = new System.Drawing.Point(255, 41);
             this.txtIdEjemplar.Name = "txtIdEjemplar";
             this.txtIdEjemplar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtIdEjemplar.Size = new System.Drawing.Size(322, 28);
@@ -133,6 +134,7 @@
             this.btnGuardar.TabIndex = 5;
             this.btnGuardar.Text = "Guardar Cambios";
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // frmCambiarEstadoEjemplaresAdmin
             // 

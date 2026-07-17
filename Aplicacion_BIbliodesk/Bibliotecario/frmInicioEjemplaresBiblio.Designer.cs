@@ -1,4 +1,4 @@
-﻿namespace Aplicacion_BIbliodesk.Bibliotecario
+﻿namespace Aplicacion_BIbliodesk
 {
     partial class frmInicioEjemplaresBiblio
     {
@@ -31,13 +31,13 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btnAgregarEjemplar = new System.Windows.Forms.Button();
             this.btnEditarEjemplar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvEjemplares = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBuscarEjemplar = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEjemplares)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -54,6 +54,7 @@
             this.btnAgregarEjemplar.TabIndex = 1;
             this.btnAgregarEjemplar.Text = "Agregar Ejemplar";
             this.btnAgregarEjemplar.UseVisualStyleBackColor = false;
+            this.btnAgregarEjemplar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnEditarEjemplar
             // 
@@ -66,16 +67,17 @@
             this.btnEditarEjemplar.TabIndex = 2;
             this.btnEditarEjemplar.Text = "Editar Ejemplar";
             this.btnEditarEjemplar.UseVisualStyleBackColor = false;
+            this.btnEditarEjemplar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
-            // dataGridView1
+            // dgvEjemplares
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(54, 171);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1019, 265);
-            this.dataGridView1.TabIndex = 3;
+            this.dgvEjemplares.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEjemplares.Location = new System.Drawing.Point(54, 171);
+            this.dgvEjemplares.Name = "dgvEjemplares";
+            this.dgvEjemplares.RowHeadersWidth = 51;
+            this.dgvEjemplares.RowTemplate.Height = 24;
+            this.dgvEjemplares.Size = new System.Drawing.Size(1019, 265);
+            this.dgvEjemplares.TabIndex = 3;
             // 
             // label1
             // 
@@ -93,6 +95,7 @@
             this.txtBuscarEjemplar.Name = "txtBuscarEjemplar";
             this.txtBuscarEjemplar.Size = new System.Drawing.Size(487, 22);
             this.txtBuscarEjemplar.TabIndex = 1;
+            this.txtBuscarEjemplar.Click += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // panel1
             // 
@@ -124,7 +127,7 @@
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.panel1);
-            this.panel2.Controls.Add(this.dataGridView1);
+            this.panel2.Controls.Add(this.dgvEjemplares);
             this.panel2.Controls.Add(this.btnAgregarEjemplar);
             this.panel2.Controls.Add(this.btnEditarEjemplar);
             this.panel2.Location = new System.Drawing.Point(191, 12);
@@ -141,7 +144,8 @@
             this.Controls.Add(this.panel2);
             this.Name = "frmInicioEjemplaresBiblio";
             this.Text = "Inicio Ejemplares";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.frmInicioEjemplaresBiblio_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEjemplares)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
@@ -154,7 +158,7 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button btnAgregarEjemplar;
         private System.Windows.Forms.Button btnEditarEjemplar;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvEjemplares;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtBuscarEjemplar;
         private System.Windows.Forms.Panel panel1;

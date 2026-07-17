@@ -40,9 +40,9 @@ namespace Aplicacion_BIbliodesk.Administrador.AutorAdmin
             this.btnGuardar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmbEstado = new System.Windows.Forms.ComboBox();
-            this.txtIdAutor = new System.Windows.Forms.TextBox();
             this.lblEstado = new System.Windows.Forms.Label();
             this.lblAutor = new System.Windows.Forms.Label();
+            this.cmbAutor = new System.Windows.Forms.ComboBox();
             this.grpAgregAutor.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -88,12 +88,13 @@ namespace Aplicacion_BIbliodesk.Administrador.AutorAdmin
             this.btnGuardar.TabIndex = 16;
             this.btnGuardar.Text = "Guardar Cambios";
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.cmbAutor);
             this.panel1.Controls.Add(this.cmbEstado);
-            this.panel1.Controls.Add(this.txtIdAutor);
             this.panel1.Controls.Add(this.lblEstado);
             this.panel1.Controls.Add(this.lblAutor);
             this.panel1.Location = new System.Drawing.Point(28, 58);
@@ -105,24 +106,10 @@ namespace Aplicacion_BIbliodesk.Administrador.AutorAdmin
             // 
             this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstado.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbEstado.Items.AddRange(new object[] {
-            "Activo",
-            "Inactivo"});
             this.cmbEstado.Location = new System.Drawing.Point(244, 104);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(136, 25);
             this.cmbEstado.TabIndex = 20;
-            // 
-            // txtIdAutor
-            // 
-            this.txtIdAutor.BackColor = System.Drawing.Color.White;
-            this.txtIdAutor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtIdAutor.Location = new System.Drawing.Point(244, 39);
-            this.txtIdAutor.Name = "txtIdAutor";
-            this.txtIdAutor.ReadOnly = true;
-            this.txtIdAutor.Size = new System.Drawing.Size(300, 26);
-            this.txtIdAutor.TabIndex = 1;
-            this.txtIdAutor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblEstado
             // 
@@ -144,6 +131,15 @@ namespace Aplicacion_BIbliodesk.Administrador.AutorAdmin
             this.lblAutor.TabIndex = 2;
             this.lblAutor.Text = "Autor:";
             // 
+            // cmbAutor
+            // 
+            this.cmbAutor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAutor.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbAutor.Location = new System.Drawing.Point(244, 40);
+            this.cmbAutor.Name = "cmbAutor";
+            this.cmbAutor.Size = new System.Drawing.Size(136, 25);
+            this.cmbAutor.TabIndex = 21;
+            // 
             // frmCambiarEstadoAutor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -164,10 +160,10 @@ namespace Aplicacion_BIbliodesk.Administrador.AutorAdmin
         }
 
         #endregion
-        private TextBox txtIdAutor;
         private Label lblAutor;
         private Label lblEstado;
         private Panel panel1;
         private ComboBox cmbEstado;
+        private ComboBox cmbAutor;
     }
 }

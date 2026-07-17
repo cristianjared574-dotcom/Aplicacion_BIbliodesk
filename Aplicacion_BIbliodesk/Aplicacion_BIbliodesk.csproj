@@ -85,6 +85,7 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Speech" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
@@ -256,6 +257,7 @@
       <DependentUpon>frmRegistrarPrestamo.cs</DependentUpon>
     </Compile>
     <Compile Include="Conexion.cs" />
+    <Compile Include="Empleado.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -270,6 +272,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Administrador\AutorAdmin\frmAutorInicio.resx">
+      <DependentUpon>frmAutorInicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\AutorAdmin\frmCambiarEstadoAutor.resx">
+      <DependentUpon>frmCambiarEstadoAutor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Administrador\cambiar_estado.resx">
       <DependentUpon>cambiar_estado.cs</DependentUpon>
     </EmbeddedResource>
@@ -287,6 +295,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Administrador\frmInicioReportesAdmin.resx">
       <DependentUpon>frmInicioReportesAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\LibroAdmin\frmCambiarEstadoLibro.resx">
+      <DependentUpon>frmCambiarEstadoLibro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\LibroAdmin\frmLibrosBuscar.resx">
+      <DependentUpon>frmLibrosBuscar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administrador\PrestamoAdmin\frmPrestamoAdmin.resx">
       <DependentUpon>frmPrestamoAdmin.cs</DependentUpon>
@@ -308,6 +322,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Bibliotecario\frmInicioEjemplaresBiblio.resx">
       <DependentUpon>frmInicioEjemplaresBiblio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bibliotecario\LibroBibliotecario\frmLibrosBuscar.resx">
+      <DependentUpon>frmLibrosBuscar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Bibliotecario\Prestamo\frmPrestamoBiblio.resx">
       <DependentUpon>frmPrestamoBiblio.cs</DependentUpon>
@@ -344,6 +361,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Imagenes\BIBLIOTECA %283%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
