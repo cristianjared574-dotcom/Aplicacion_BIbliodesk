@@ -9,13 +9,16 @@ namespace Aplicacion_BIbliodesk
 {
     internal class Conexion
     {
-       
-            public static MySqlConnection getConection()
-            { 
+        internal class ConnectionData
+        {
+            private readonly string cadena;
 
-                string cadena ="Server=localhost; Database=bibliodesk1; UserID=root; Password=; Port=3306; SslMode=None;";
-            
-            
+            public ConnectionData()
+            {
+                cadena = "Server=localhost; Database=bibliodesk; UserID=root; Password=; Port=3306; SslMode=None;";
+            }
+            public MySqlConnection getConection()
+            {
                 try
                 {
                     MySqlConnection conexion = new MySqlConnection(cadena);
@@ -26,8 +29,6 @@ namespace Aplicacion_BIbliodesk
                 {
                     MessageBox.Show("Error al conectar a la base de datos: " + ex.Message);
                     return null;
-                }
-
         // ✅ Cifrado también estático
         public static string CifrarContrasena(string textoPlano)
         {
@@ -40,6 +41,7 @@ namespace Aplicacion_BIbliodesk
                 return sb.ToString();
             }
         
-    }
+            }
+        }
 }
 

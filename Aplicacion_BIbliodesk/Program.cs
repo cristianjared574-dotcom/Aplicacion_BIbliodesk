@@ -7,6 +7,9 @@ using Aplicacion_BIbliodesk.Administrador;
 using Aplicacion_BIbliodesk.Bibliotecario;
 using Aplicacion_BIbliodesk.Bibliotecario.Prestamo;
 using Aplicacion_BIbliodesk.Administrador.PrestamoAdmin;
+using Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario;
+using Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario;
+using Aplicacion_BIbliodesk.Administrador.AutorAdmin;
 
 namespace Aplicacion_BIbliodesk
 {
