@@ -306,6 +306,12 @@
     <EmbeddedResource Include="Administrador\PrestamoAdmin\frmPrestamoHistorial.resx">
       <DependentUpon>frmPrestamoHistorial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Bibliotecario\AutorBibliotecario\frmAgregarAutor.resx">
+      <DependentUpon>frmAgregarAutor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bibliotecario\AutorBibliotecario\frmAutorInicio.resx">
+      <DependentUpon>frmAutorInicio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Bibliotecario\categorias_biblo.resx">
       <DependentUpon>categorias_biblo.cs</DependentUpon>
     </EmbeddedResource>
@@ -320,6 +326,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Bibliotecario\frmInicioEjemplaresBiblio.resx">
       <DependentUpon>frmInicioEjemplaresBiblio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bibliotecario\LibroBibliotecario\frmLibrosAgregar.resx">
+      <DependentUpon>frmLibrosAgregar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bibliotecario\LibroBibliotecario\frmLibrosBuscar.resx">
+      <DependentUpon>frmLibrosBuscar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Bibliotecario\Prestamo\frmPrestamoBiblio.resx">
       <DependentUpon>frmPrestamoBiblio.cs</DependentUpon>

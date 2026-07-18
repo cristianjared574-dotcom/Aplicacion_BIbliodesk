@@ -39,6 +39,8 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtnacionalidad = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtAm = new System.Windows.Forms.TextBox();
             this.lblId = new System.Windows.Forms.Label();
             this.txtAp = new System.Windows.Forms.TextBox();
@@ -47,8 +49,8 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             this.lblAM = new System.Windows.Forms.Label();
             this.lblnombre = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.txtnacionalidad = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.grpAgregAutor.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -74,7 +76,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(365, 332);
+            this.btnCancelar.Location = new System.Drawing.Point(368, 370);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(120, 40);
             this.btnCancelar.TabIndex = 17;
@@ -88,16 +90,19 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(97, 332);
+            this.btnGuardar.Location = new System.Drawing.Point(100, 370);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(150, 40);
             this.btnGuardar.TabIndex = 16;
             this.btnGuardar.Text = "Guardar Autor";
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.cmbEstado);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtnacionalidad);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtAm);
@@ -111,8 +116,24 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             this.panel1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(28, 58);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(518, 252);
+            this.panel1.Size = new System.Drawing.Size(518, 290);
             this.panel1.TabIndex = 17;
+            // 
+            // txtnacionalidad
+            // 
+            this.txtnacionalidad.Location = new System.Drawing.Point(173, 195);
+            this.txtnacionalidad.Name = "txtnacionalidad";
+            this.txtnacionalidad.Size = new System.Drawing.Size(300, 26);
+            this.txtnacionalidad.TabIndex = 11;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 202);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(115, 19);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Nacionalidad:";
             // 
             // txtAm
             // 
@@ -129,6 +150,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             this.lblId.Size = new System.Drawing.Size(76, 19);
             this.lblId.TabIndex = 0;
             this.lblId.Text = "ID Autor:";
+            this.lblId.Visible = false;
             // 
             // txtAp
             // 
@@ -146,6 +168,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             this.txtIdAutor.Size = new System.Drawing.Size(300, 26);
             this.txtIdAutor.TabIndex = 1;
             this.txtIdAutor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtIdAutor.Visible = false;
             // 
             // lblAP
             // 
@@ -181,21 +204,22 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             this.txtNombre.Size = new System.Drawing.Size(300, 26);
             this.txtNombre.TabIndex = 3;
             // 
-            // txtnacionalidad
+            // label2
             // 
-            this.txtnacionalidad.Location = new System.Drawing.Point(173, 195);
-            this.txtnacionalidad.Name = "txtnacionalidad";
-            this.txtnacionalidad.Size = new System.Drawing.Size(300, 26);
-            this.txtnacionalidad.TabIndex = 11;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 246);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 19);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Estado:";
             // 
-            // label1
+            // cmbEstado
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 202);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 19);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Nacionalidad:";
+            this.cmbEstado.FormattingEnabled = true;
+            this.cmbEstado.Location = new System.Drawing.Point(173, 238);
+            this.cmbEstado.Name = "cmbEstado";
+            this.cmbEstado.Size = new System.Drawing.Size(121, 27);
+            this.cmbEstado.TabIndex = 13;
             // 
             // frmAgregarAutor
             // 
@@ -229,5 +253,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
         private TextBox txtAm;
         private TextBox txtnacionalidad;
         private Label label1;
+        private ComboBox cmbEstado;
+        private Label label2;
     }
 }
