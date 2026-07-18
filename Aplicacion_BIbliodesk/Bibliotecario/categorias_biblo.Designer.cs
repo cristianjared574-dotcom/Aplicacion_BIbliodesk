@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -51,6 +51,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1067, 472);
             this.panel1.TabIndex = 1;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Maroon;
+            this.button2.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(582, 161);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(190, 48);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "Agregar categoría ";
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // panel2
             // 
@@ -81,6 +93,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Maroon;
+            this.button1.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(837, 161);
             this.button1.Name = "button1";
@@ -98,17 +111,6 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(990, 184);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Maroon;
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(582, 161);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(190, 48);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Agregar categoría ";
-            this.button2.UseVisualStyleBackColor = false;
             // 
             // categorias_biblo
             // 

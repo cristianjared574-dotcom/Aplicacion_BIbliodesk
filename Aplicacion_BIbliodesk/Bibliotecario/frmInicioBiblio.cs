@@ -31,7 +31,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
             boton.BackColor = Color.FromArgb(123, 30, 30);
         }
 
-        private void AbrirFormularioEnPanel(Form formulario)
+        public void AbrirFormularioEnPanel(Form formulario)
         {
             if (formularioActivo != null)
             {
