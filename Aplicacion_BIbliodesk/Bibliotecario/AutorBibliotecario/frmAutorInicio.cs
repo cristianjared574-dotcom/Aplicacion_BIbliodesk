@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,35 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
         public frmAutorInicio()
         {
             InitializeComponent();
+        }
+        private void frmAutorInicio_Load(object sender, EventArgs e)
+        {
+            CargarDatos("");
+        }
+        private void CargarDatos(string filtro)
+        {
+            Conexion.ConnectionData con = new Conexion.ConnectionData();
+
+            using (MySqlConnection conn = con.getConection())
+            {
+                string query = "SELECT ID_AUTOR, NOMBRE, APELLIDOP, APELLIDOM, NACIONALIDAD, ESTADO FROM autor WHERE NOMBRE LIKE @criterio";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@criterio", "%" + filtro.Trim() + "%");
+
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    dgvLibros.DataSource = dt;
+                }
+            }
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            CargarDatos(txtBuscar.Text);
         }
     }
 }
