@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Aplicacion_BIbliodesk.Bibliotecario
@@ -15,11 +10,129 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
         public categorias_biblo()
         {
             InitializeComponent();
+
+            // AJUSTES DE TU TABLA IGUALES
+            dgvCategorias.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+            dgvCategorias.Margin = new Padding(0);
+            StartPosition = FormStartPosition.CenterScreen;
+
+            //  QUITA LA LÍNEA VACÍA DEL FINAL
+            dgvCategorias.AllowUserToAddRows = false;
+
+            //  CONEXIÓN SEGURA DEL BUSCADOR
+            txtBuscar.TextChanged -= txtBuscar_TextChanged;
+            txtBuscar.TextChanged += txtBuscar_TextChanged;
+
+            //  CARGA INICIAL
+            CargarCategorias("");
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        //  FILTRO QUE MUESTRA SOLO LO QUE BUSCAS
+        private void CargarCategorias(string filtro)
         {
-            //jdkdk
+            try
+            {
+                using (MySqlConnection conn = Conexion.getConection())
+                {
+                    string sql = @"SELECT 
+                                        ID_CATEGORIA AS 'ID Categoría',
+                                        NOMBRE_CATEGORIA AS 'Categoría',
+                                        DESCRIPCION AS 'Descripción',
+                                        ESTADO
+                                   FROM CATEGORIA";
+
+                    if (!string.IsNullOrWhiteSpace(filtro))
+                    {
+                        sql += " WHERE NOMBRE_CATEGORIA LIKE @Filtro OR DESCRIPCION LIKE @Filtro";
+                    }
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+                    {
+                        if (!string.IsNullOrWhiteSpace(filtro))
+                        {
+                            cmd.Parameters.AddWithValue("@Filtro", "%" + filtro + "%");
+                        }
+
+                        using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            da.Fill(dt);
+                            dgvCategorias.DataSource = dt;
+
+                            if (dgvCategorias.Columns.Count > 0)
+                            {
+                                dgvCategorias.Columns["ID Categoría"].Width = 100;
+                                dgvCategorias.Columns["Categoría"].Width = 180;
+                                dgvCategorias.Columns["Descripción"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                                dgvCategorias.Columns["ESTADO"].Width = 110;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Información",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            CargarCategorias(txtBuscar.Text.Trim());
+        }
+
+     
+        private void categorias_biblo_Load(object sender, EventArgs e) { }
+        // EVENTO DEL BOTÓN AGREGAR CATEGORÍA
+   
+        private void btnAgregarCategoria_Click(object sender, EventArgs e)
+        {
+            // Busca el formulario principal (frmInicioBiblio)
+            frmInicioBiblio formularioInicio = this.ParentForm as frmInicioBiblio;
+
+            if (formularioInicio != null)
+            {
+                //Crea una instancia NUEVA y VACÍA del formulario de agregar
+                categoria_biblio formAgregar = new categoria_biblio();
+
+                // Carga el formulario DENTRO DEL PANEL, SIN VENTANA EXTERNA
+                formularioInicio.AbrirFormularioEnPanel(formAgregar);
+            }
+        }
+        private void btnEditarCategoria_Click(object sender, EventArgs e)
+        {
+            // 1. OBLIGA A SELECCIONAR UNA FILA PRIMERO
+            if (dgvCategorias.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Primero selecciona UNA categoría de la tabla (haz clic sobre la fila entera)",
+                                "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // 2. TOMA LOS DATOS DE LA FILA QUE SELECCIONASTE
+                DataGridViewRow filaSeleccionada = dgvCategorias.SelectedRows[0];
+                int idCategoria = Convert.ToInt32(filaSeleccionada.Cells["ID Categoría"].Value);
+                string nombreActual = filaSeleccionada.Cells["Categoría"].Value.ToString();
+                string descripcionActual = filaSeleccionada.Cells["Descripción"].Value?.ToString() ?? "";
+
+                // 3. ABRE LA MISMA PANTALLA PERO CON LOS DATOS CARGADOS
+                frmInicioBiblio pantallaInicio = this.ParentForm as frmInicioBiblio;
+                if (pantallaInicio != null)
+                {
+                    // Usa el constructor que recibe datos para editar
+                    categoria_biblio formularioEditar = new categoria_biblio(idCategoria, nombreActual, descripcionActual);
+                    pantallaInicio.AbrirFormularioEnPanel(formularioEditar);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar edición: " + ex.Message, "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void dgvCategorias_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
     }
 }

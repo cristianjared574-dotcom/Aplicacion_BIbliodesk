@@ -12,6 +12,6 @@ namespace Aplicacion_BIbliodesk
         public string NombreCompleto { get; set; }
         public string Username { get; set; }
         public string Rol { get; set; }
-        public string Estado { get; set; }
+        public string Estado { get; set; } = string.Empty;
     }
 }

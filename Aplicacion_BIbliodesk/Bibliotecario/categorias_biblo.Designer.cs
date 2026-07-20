@@ -37,21 +37,32 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // pnlContenido
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(226, 187);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 384);
-            this.panel1.TabIndex = 1;
+            this.pnlContenido.BackColor = System.Drawing.Color.White;
+            this.pnlContenido.Controls.Add(this.btnAgregarCategoria);
+            this.pnlContenido.Controls.Add(this.panel2);
+            this.pnlContenido.Controls.Add(this.btnEditarCategoria);
+            this.pnlContenido.Controls.Add(this.dgvCategorias);
+            this.pnlContenido.Location = new System.Drawing.Point(185, 41);
+            this.pnlContenido.Name = "pnlContenido";
+            this.pnlContenido.Size = new System.Drawing.Size(1146, 472);
+            this.pnlContenido.TabIndex = 1;
+            // 
+            // btnAgregarCategoria
+            // 
+            this.btnAgregarCategoria.BackColor = System.Drawing.Color.Maroon;
+            this.btnAgregarCategoria.ForeColor = System.Drawing.Color.White;
+            this.btnAgregarCategoria.Location = new System.Drawing.Point(667, 95);
+            this.btnAgregarCategoria.Name = "btnAgregarCategoria";
+            this.btnAgregarCategoria.Size = new System.Drawing.Size(190, 48);
+            this.btnAgregarCategoria.TabIndex = 5;
+            this.btnAgregarCategoria.Text = "Agregar categoría ";
+            this.btnAgregarCategoria.UseVisualStyleBackColor = false;
+            this.btnAgregarCategoria.Click += new System.EventHandler(this.btnAgregarCategoria_Click);
             // 
             // button2
             // 
@@ -69,12 +80,11 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(28, 28);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Controls.Add(this.txtBuscar);
+            this.panel2.Controls.Add(this.lblBuscar);
+            this.panel2.Location = new System.Drawing.Point(60, 24);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(742, 81);
+            this.panel2.Size = new System.Drawing.Size(1028, 65);
             this.panel2.TabIndex = 4;
             // 
             // textBox1
@@ -125,27 +135,26 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(1028, 609);
-            this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ClientSize = new System.Drawing.Size(1511, 552);
+            this.Controls.Add(this.pnlContenido);
             this.Name = "categorias_biblo";
             this.Text = "categorias_biblo";
-            this.panel1.ResumeLayout(false);
+            this.pnlContenido.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel pnlContenido;
+        private System.Windows.Forms.Button btnAgregarCategoria;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.Button btnEditarCategoria;
+        private System.Windows.Forms.DataGridView dgvCategorias;
+        private System.Windows.Forms.Label lblBuscar;
     }
 }
