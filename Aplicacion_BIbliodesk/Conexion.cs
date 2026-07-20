@@ -9,8 +9,6 @@ namespace Aplicacion_BIbliodesk
 {
     internal class Conexion
     {
-        internal class ConnectionData
-        {
             private readonly string cadena;
 
             public ConnectionData()

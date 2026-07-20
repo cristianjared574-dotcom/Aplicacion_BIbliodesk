@@ -57,10 +57,7 @@ namespace Aplicacion_BIbliodesk.Administrador
                 {
                     MessageBox.Show("Error al cargar los datos en la tabla: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-
             }
-        }
       
         // Evento de búsqueda al escribir en la barra de texto el ejemplar que requiere
         private void txtBuscar_TextChanged(object sender, EventArgs e)

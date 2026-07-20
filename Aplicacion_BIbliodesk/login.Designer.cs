@@ -39,9 +39,6 @@
             this.panelFormulario = new System.Windows.Forms.Panel();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.cbocon = new System.Windows.Forms.ComboBox();
-            this.cbouser = new System.Windows.Forms.ComboBox();
             this.cboRol = new System.Windows.Forms.ComboBox();
             this.btnIniciarSesion = new System.Windows.Forms.Button();
             this.txtContrasena = new System.Windows.Forms.TextBox();

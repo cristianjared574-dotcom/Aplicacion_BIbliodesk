@@ -26,8 +26,6 @@ namespace Aplicacion_BIbliodesk.Administrador.LibroAdmin
         {
             Conexion.ConnectionData con = new Conexion.ConnectionData();
 
-            using (MySqlConnection conn = con.getConection())
-            {
                 string query = "SELECT ID_LIBRO, TITULO, ISBN, ESTADO FROM LIBRO WHERE TITULO LIKE @criterio OR ISBN LIKE @criterio";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))

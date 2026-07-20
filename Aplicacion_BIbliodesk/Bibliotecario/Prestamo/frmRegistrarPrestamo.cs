@@ -191,7 +191,6 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
                 MySqlCommand comando = new MySqlCommand(consulta, conexionDB);
 
                 
-                 //Estos tres valores después se obtendrán del usuario,
                  //ejemplar y empleado seleccionados.
                  
                 comando.Parameters.AddWithValue("@idUsuario", idUsuarioSeleccionado);
