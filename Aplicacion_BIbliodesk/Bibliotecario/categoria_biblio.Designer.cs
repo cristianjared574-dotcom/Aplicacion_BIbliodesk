@@ -57,7 +57,6 @@
             this.label2.Size = new System.Drawing.Size(112, 19);
             this.label2.TabIndex = 1;
             this.label2.Text = "Descripción:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -129,13 +128,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(1533, 790);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(1511, 552);
+            this.Controls.Add(this.gbDatos);
             this.Name = "categoria_biblio";
-            this.Text = "categoria_biblio";
-            this.groupBox1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.Text = "Categoría Bibliotecario    ";
+            this.Load += new System.EventHandler(this.categoria_biblio_Load);
+            this.gbDatos.ResumeLayout(false);
+            this.pnlcentral.ResumeLayout(false);
+            this.pnlcentral.PerformLayout();
             this.ResumeLayout(false);
 
         }
