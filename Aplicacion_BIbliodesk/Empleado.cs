@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Aplicacion_BIbliodesk
 {
-    internal class Empleado
+    
+    public class Empleado
     {
         public int IdEmpleado { get; set; }
         public string NombreCompleto { get; set; }
         public string Username { get; set; }
         public string Rol { get; set; }
-        public string Estado { get; set; }
+        public string Estado { get; set; } = string.Empty;
     }
 }

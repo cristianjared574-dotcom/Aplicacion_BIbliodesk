@@ -26,19 +26,6 @@ namespace Aplicacion_BIbliodesk
             }
         }
 
-        // ✅ Cifrado también estático
-        public static string CifrarContrasena(string textoPlano)
-        {
-            using (SHA256 sha = SHA256.Create())
-            {
-                byte[] bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(textoPlano));
-                StringBuilder sb = new StringBuilder();
-                foreach (byte b in bytes)
-                    sb.Append(b.ToString("x2"));
-                return sb.ToString();
-            }
-        }
     }
-
   
 }
