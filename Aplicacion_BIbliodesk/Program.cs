@@ -7,6 +7,9 @@ using Aplicacion_BIbliodesk.Administrador;
 using Aplicacion_BIbliodesk.Bibliotecario;
 using Aplicacion_BIbliodesk.Bibliotecario.Prestamo;
 using Aplicacion_BIbliodesk.Administrador.PrestamoAdmin;
+using Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario;
+using Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario;
+using Aplicacion_BIbliodesk.Administrador.AutorAdmin;
 
 namespace Aplicacion_BIbliodesk
 {
@@ -20,7 +23,7 @@ namespace Aplicacion_BIbliodesk
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmInicioEjemplaresBiblio());
+            Application.Run(new frmInicioBiblio());
         }
     }
 }

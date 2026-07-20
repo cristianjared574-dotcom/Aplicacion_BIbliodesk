@@ -10,7 +10,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Speech.Synthesis; 
+using Aplicacion_BIbliodesk.Bibliotecario.Prestamo;
+using Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario;
+using Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario;
+
 namespace Aplicacion_BIbliodesk.Bibliotecario
 {
     public partial class frmInicioBiblio : Form
@@ -36,7 +39,6 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
             boton.BackColor = Color.FromArgb(123, 30, 30);
         }
 
-        //  para que lo puedan llamar otros formularios
         public void AbrirFormularioEnPanel(Form formulario)
         {
             if (formularioActivo != null)
@@ -66,20 +68,25 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
         private void btnLibros_Click(object sender, EventArgs e)
         {
             seleccionarModulo(btnLibros);
-            voz.SpeakAsync("Módulo de Libros"); // LEE EL TEXTO DEL BOTÓN
+            AbrirFormularioEnPanel(new frmLibrosBuscar());
         }
 
         private void btnAutores_Click(object sender, EventArgs e)
         {
             seleccionarModulo(btnAutores);
-            voz.SpeakAsync("Módulo de Autores"); //  LEE EL TEXTO DEL BOTÓN
+            AbrirFormularioEnPanel(new frmAutorInicio());
         }
 
+        private void btnCategorias_Click(object sender, EventArgs e)
+        {
+            seleccionarModulo(btnCategorias);
+
+        }
 
         private void btnEjemplares_Click(object sender, EventArgs e)
         {
             seleccionarModulo(btnEjemplares);
-            voz.SpeakAsync("Módulo de Ejemplares"); // LEE EL TEXTO DEL BOTÓN
+            AbrirFormularioEnPanel(new frmInicioEjemplaresBiblio());
         }
 
         private void btnPrestamos_Click(object sender, EventArgs e)

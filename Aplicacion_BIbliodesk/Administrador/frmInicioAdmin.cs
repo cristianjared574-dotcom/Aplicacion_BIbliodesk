@@ -8,7 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Speech.Synthesis;
+using Aplicacion_BIbliodesk.Administrador.LibroAdmin;
+using Aplicacion_BIbliodesk.Administrador.AutorAdmin;
+using Aplicacion_BIbliodesk.Administrador.PrestamoAdmin;
 
 namespace Aplicacion_BIbliodesk.Administrador
 {
@@ -34,7 +36,7 @@ namespace Aplicacion_BIbliodesk.Administrador
             boton.BackColor = Color.FromArgb(123, 30, 30);
         }
 
-        private void AbrirFormularioEnPanel(Form formulario)
+        public void AbrirFormularioEnPanelAdmin(Form formulario)
         {
             if (formularioActivo != null)
             {
@@ -54,13 +56,13 @@ namespace Aplicacion_BIbliodesk.Administrador
         private void btnLibros_Click(object sender, EventArgs e)
         {
             seleccionarModulo(btnLibros);
-            voz.SpeakAsync("Módulo de Libros"); // LEE EL TEXTO DEL BOTÓN
+            AbrirFormularioEnPanelAdmin(new frmLibrosBuscar());
         }
 
         private void btnAutores_Click(object sender, EventArgs e)
         {
             seleccionarModulo(btnAutores);
-            voz.SpeakAsync("Módulo de Autores"); // LEE EL TEXTO DEL BOTÓN
+            AbrirFormularioEnPanelAdmin(new frmAutorInicio());
         }
 
         private void btnCategorias_Click(object sender, EventArgs e)
@@ -84,19 +86,19 @@ namespace Aplicacion_BIbliodesk.Administrador
         private void btnEjemplares_Click(object sender, EventArgs e)
         {
             seleccionarModulo(btnEjemplares);
-            voz.SpeakAsync("Módulo de Ejemplares"); //  LEE EL TEXTO DEL BOTÓN
+            AbrirFormularioEnPanelAdmin(new frmInicioEjemplaresAdmin());
         }
 
         private void btnPrestamos_Click(object sender, EventArgs e)
         {
             seleccionarModulo(btnPrestamos);
-            voz.SpeakAsync("Módulo de Préstamos"); //  LEE EL TEXTO DEL BOTÓN
+            AbrirFormularioEnPanelAdmin(new frmPrestamoAdmin());
         }
 
         private void btnReporte_Click(object sender, EventArgs e)
         {
             seleccionarModulo(btnReporte);
-            voz.SpeakAsync("Módulo de Reportes"); //  LEE EL TEXTO DEL BOTÓN
+            AbrirFormularioEnPanelAdmin(new frmInicioReportesAdmin());
         }
 
         private void btnCerrarsesion_Click(object sender, EventArgs e)

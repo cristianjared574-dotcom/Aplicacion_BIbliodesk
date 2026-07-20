@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,52 @@ namespace Aplicacion_BIbliodesk.Administrador.LibroAdmin
 {
     public partial class frmLibrosBuscar : Form
     {
+        private Conexion ConnectionData;
         public frmLibrosBuscar()
         {
             InitializeComponent();
+        }
+
+        private void frmLibrosBuscar_Load(object sender, EventArgs e)
+        {
+            CargarDatos("");
+        }
+        private void CargarDatos(string filtro)
+        {
+            ConnectionData = new Conexion();
+
+            MySqlConnection conn = ConnectionData.getConection();
+
+            string query = "SELECT ID_LIBRO, TITULO, ISBN, ESTADO FROM LIBRO WHERE TITULO LIKE @criterio OR ISBN LIKE @criterio";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+            {
+                // El filtro se aplica a ambos campos
+                cmd.Parameters.AddWithValue("@criterio", "%" + filtro.Trim() + "%");
+
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                dgvLibros.DataSource = dt;
+            }
+
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            CargarDatos(txtBuscar.Text);
+        }
+
+        private void btncambiarEstado_Click(object sender, EventArgs e)
+        {
+            frmInicioAdmin inicioAdmin = Application.OpenForms["frmInicioAdmin"] as frmInicioAdmin;
+
+            if (inicioAdmin != null)
+            {
+                frmCambiarEstadoLibro CambioEstadoLibro = new frmCambiarEstadoLibro();
+                inicioAdmin.AbrirFormularioEnPanelAdmin(CambioEstadoLibro);
+            }
         }
     }
 }

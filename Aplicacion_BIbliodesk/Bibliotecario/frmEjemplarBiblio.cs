@@ -6,37 +6,40 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
 {
     public partial class frmEjemplarBiblio : Form
     {
+        private Conexion ConexionData;
+
         // Variables declaradas
         private bool esModoEdicion = false;
         private string idEjemplarRecibido = "";
         private string idLibroRecibido = "";
         private string localizacionRecibida = "";
 
-       //agregar un ejemplar sin parametros
+        //agregar un ejemplar sin parametros
         public frmEjemplarBiblio()
         {
             InitializeComponent();
             esModoEdicion = false;
         }
 
-        
+
         // constructor para editar 
-        
-        public frmEjemplarBiblio(string idEjemplar, string idLibro, string localizacion)
+
+        public frmEjemplarBiblio(
+    string claveEjemplar,
+    string claveLibro,
+    string localizacion)
         {
             InitializeComponent();
             esModoEdicion = true;
-
-            // Guardar la información que viene de la tabla
-            this.idEjemplarRecibido = idEjemplar;
-            this.idLibroRecibido = idLibro;
-            this.localizacionRecibida = localizacion;
+            idEjemplarRecibido = claveEjemplar;
+            idLibroRecibido = claveLibro;
+            localizacionRecibida = localizacion;
         }
 
 
-        
+
         // Evento para configurar la pantalla al abrirse
-       
+
         private void frmEjemplarBiblio_Load(object sender, EventArgs e)
         {
             if (esModoEdicion)
@@ -54,7 +57,8 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
             {
                 // Deja los campos libres para capturar un registro nuevo
                 txtIdEjemplar.Clear();
-                txtIdEjemplar.ReadOnly = false;
+                txtIdEjemplar.ReadOnly = true;
+                txtIdEjemplar.Text = "Se genera automaticamente";
                 txtIdLibro.Clear();
                 txtLocalizacion.Clear();
 
@@ -66,71 +70,166 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
         //Evento del boton guardar
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            // Validamos que no se dejen campos en blanco
-            if (string.IsNullOrWhiteSpace(txtIdEjemplar.Text) ||
-                string.IsNullOrWhiteSpace(txtIdLibro.Text) ||
+            // Validar los campos que captura el usuario
+            if (string.IsNullOrWhiteSpace(txtIdLibro.Text) ||
                 string.IsNullOrWhiteSpace(txtLocalizacion.Text))
             {
-                MessageBox.Show("Por favor, llene todos los campos obligatorios.", "Campos Vacíos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(
+                    "Por favor, llene todos los campos obligatorios.",
+                    "Campos vacíos",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
                 return;
             }
 
-            //declarar variable del estado fisico para que sea bueno y que este activo
-            string estadoFisicoPorDefecto = "BUENO";
-            string disponiblePorDefecto = "ACTIVO";
+            ConexionData = new Conexion();
+            MySqlConnection con = ConexionData.getConection();
 
-            using (MySqlConnection con = Conexion.ConnectionData.getConection())
+            if (con == null)
             {
-                if (con == null) return;
+                return;
+            }
 
-                string query = "";
-
+            try
+            {
                 if (esModoEdicion)
                 {
-                    query = "UPDATE ejemplar SET ID_LIBRO = @idLibro, LOCALIZACION = @localizacion WHERE ID_EJEMPLAR = @idEjemplar";
+                    // Actualizar el ejemplar existente
+                    string queryActualizar = @"
+                UPDATE EJEMPLAR
+                SET ID_LIBRO =
+                    (SELECT ID_LIBRO
+                     FROM LIBRO
+                     WHERE CLAVE_LIBRO = @claveLibro),
+                    LOCALIZACION = @localizacion
+                WHERE CLAVE_EJEMPLAR = @claveEjemplar;";
+
+                    MySqlCommand cmdActualizar =
+                        new MySqlCommand(queryActualizar, con);
+
+                    cmdActualizar.Parameters.AddWithValue(
+                        "@claveLibro",
+                        txtIdLibro.Text.Trim());
+
+                    cmdActualizar.Parameters.AddWithValue(
+                        "@localizacion",
+                        txtLocalizacion.Text.Trim());
+
+                    cmdActualizar.Parameters.AddWithValue(
+                        "@claveEjemplar",
+                        txtIdEjemplar.Text.Trim());
+
+                    int filasAfectadas =
+                        cmdActualizar.ExecuteNonQuery();
+
+                    if (filasAfectadas > 0)
+                    {
+                        MessageBox.Show(
+                            "Ejemplar actualizado con éxito.",
+                            "Éxito",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show(
+                            "No se realizaron modificaciones.",
+                            "Aviso",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+                    }
                 }
                 else
                 {
-                    query = "INSERT INTO ejemplar (ID_EJEMPLAR, ID_LIBRO, LOCALIZACION, ESTADO_FISICO, DISPONIBLE) " +
-                            "VALUES (@idEjemplar, @idLibro, @localizacion, 'Excelente', 'S')";
-                }
+                    // Insertar sin escribir la clave del ejemplar
+                    string queryInsertar = @"
+                INSERT INTO EJEMPLAR
+                (
+                    ID_LIBRO,
+                    LOCALIZACION,
+                    ESTADO_FISICO,
+                    DISPONIBLE
+                )
+                VALUES
+                (
+                    (SELECT ID_LIBRO
+                     FROM LIBRO
+                     WHERE CLAVE_LIBRO = @claveLibro),
+                    @localizacion,
+                    'BUENO',
+                    'DISPONIBLE'
+                );";
 
-                try
-                {
-                    using (MySqlCommand cmd = new MySqlCommand(query, con))
+                    MySqlCommand cmdInsertar =
+                        new MySqlCommand(queryInsertar, con);
+
+                    cmdInsertar.Parameters.AddWithValue(
+                        "@claveLibro",
+                        txtIdLibro.Text.Trim());
+
+                    cmdInsertar.Parameters.AddWithValue(
+                        "@localizacion",
+                        txtLocalizacion.Text.Trim());
+
+                    int filasAfectadas =
+                        cmdInsertar.ExecuteNonQuery();
+
+                    if (filasAfectadas > 0)
                     {
-                        cmd.Parameters.AddWithValue("@idEjemplar", txtIdEjemplar.Text.Trim());
-                        cmd.Parameters.AddWithValue("@idLibro", txtIdLibro.Text.Trim());
-                        cmd.Parameters.AddWithValue("@localizacion", txtLocalizacion.Text.Trim());
+                        // Obtener el ID automático generado por MySQL
+                        int idEjemplarGenerado =
+                            Convert.ToInt32(cmdInsertar.LastInsertedId);
 
-                        // agregar los valores por defecto asignados arriba
-                        if (!esModoEdicion)
-                        {
-                            cmd.Parameters.AddWithValue("@estadoFisico", estadoFisicoPorDefecto);
-                            cmd.Parameters.AddWithValue("@disponible", disponiblePorDefecto);
-                        }
+                        // Crear la clave: EJE001, EJE002...
+                        string claveEjemplarGenerada =
+                            "EJE" + idEjemplarGenerado.ToString("D3");
 
-                        int filasAfectadas = cmd.ExecuteNonQuery();
+                        // Guardar la clave generada
+                        string queryClave = @"
+                    UPDATE EJEMPLAR
+                    SET CLAVE_EJEMPLAR = @claveEjemplar
+                    WHERE ID_EJEMPLAR = @idEjemplar;";
 
-                        if (filasAfectadas > 0)
-                        {
-                            string mensaje = esModoEdicion ? "Ejemplar actualizado con éxito." : "Ejemplar registrado con éxito.";
-                            MessageBox.Show(mensaje, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MySqlCommand cmdClave =
+                            new MySqlCommand(queryClave, con);
 
-                            this.DialogResult = DialogResult.OK; // Indica éxito al formulario principal
-                            this.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se realizaron modificaciones en la base de datos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
+                        cmdClave.Parameters.AddWithValue(
+                            "@claveEjemplar",
+                            claveEjemplarGenerada);
+
+                        cmdClave.Parameters.AddWithValue(
+                            "@idEjemplar",
+                            idEjemplarGenerado);
+
+                        cmdClave.ExecuteNonQuery();
+
+                        MessageBox.Show(
+                            "Ejemplar registrado con éxito.\n" +
+                            "Clave generada: " + claveEjemplarGenerada,
+                            "Éxito",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+
+                        Close();
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al guardar en la base de datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
+                con.Close();
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error al guardar en la base de datos: " + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                con.Close();
+            }
+
         }
 
         //Evento del boton cancelar

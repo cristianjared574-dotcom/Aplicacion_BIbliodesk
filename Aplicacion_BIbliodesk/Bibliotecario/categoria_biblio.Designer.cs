@@ -28,22 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btncancelar = new System.Windows.Forms.Button();
-            this.btnguardarcategoria = new System.Windows.Forms.Button();
-            this.gbDatos = new System.Windows.Forms.GroupBox();
-            this.pnlcentral = new System.Windows.Forms.Panel();
-            this.txtdescripcion = new System.Windows.Forms.TextBox();
-            this.txtnombre = new System.Windows.Forms.TextBox();
-            this.gbDatos.SuspendLayout();
-            this.pnlcentral.SuspendLayout();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Location = new System.Drawing.Point(263, 49);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(322, 28);
+            this.textBox1.TabIndex = 7;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(64, 135);
+            this.label2.Location = new System.Drawing.Point(95, 164);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(112, 19);
             this.label2.TabIndex = 1;
@@ -58,69 +67,61 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre:";
             // 
-            // btncancelar
+            // button1
             // 
-            this.btncancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
-            this.btncancelar.ForeColor = System.Drawing.Color.White;
-            this.btncancelar.Location = new System.Drawing.Point(424, 329);
-            this.btncancelar.Name = "btncancelar";
-            this.btncancelar.Size = new System.Drawing.Size(190, 48);
-            this.btncancelar.TabIndex = 3;
-            this.btncancelar.Text = "Cancelar";
-            this.btncancelar.UseVisualStyleBackColor = false;
-            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click);
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(431, 359);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(190, 48);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Cancelar";
+            this.button1.UseVisualStyleBackColor = false;
             // 
-            // btnguardarcategoria
+            // button2
             // 
-            this.btnguardarcategoria.BackColor = System.Drawing.Color.Maroon;
-            this.btnguardarcategoria.ForeColor = System.Drawing.Color.White;
-            this.btnguardarcategoria.Location = new System.Drawing.Point(125, 329);
-            this.btnguardarcategoria.Name = "btnguardarcategoria";
-            this.btnguardarcategoria.Size = new System.Drawing.Size(190, 48);
-            this.btnguardarcategoria.TabIndex = 4;
-            this.btnguardarcategoria.Text = "Guardar Categoría";
-            this.btnguardarcategoria.UseVisualStyleBackColor = false;
-            this.btnguardarcategoria.Click += new System.EventHandler(this.btnguardarcategoria_Click);
+            this.button2.BackColor = System.Drawing.Color.Maroon;
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(164, 359);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(190, 48);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Guardar Categoría";
+            this.button2.UseVisualStyleBackColor = false;
             // 
-            // gbDatos
+            // groupBox1
             // 
-            this.gbDatos.BackColor = System.Drawing.Color.White;
-            this.gbDatos.Controls.Add(this.btncancelar);
-            this.gbDatos.Controls.Add(this.btnguardarcategoria);
-            this.gbDatos.Controls.Add(this.pnlcentral);
-            this.gbDatos.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbDatos.Location = new System.Drawing.Point(357, 64);
-            this.gbDatos.Name = "gbDatos";
-            this.gbDatos.Size = new System.Drawing.Size(769, 393);
-            this.gbDatos.TabIndex = 1;
-            this.gbDatos.TabStop = false;
-            this.gbDatos.Text = "Categoría";
+            this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.panel1);
+            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(382, 171);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(769, 449);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Categoría";
             // 
-            // pnlcentral
+            // panel1
             // 
-            this.pnlcentral.Controls.Add(this.txtdescripcion);
-            this.pnlcentral.Controls.Add(this.txtnombre);
-            this.pnlcentral.Controls.Add(this.label2);
-            this.pnlcentral.Controls.Add(this.label1);
-            this.pnlcentral.Location = new System.Drawing.Point(65, 51);
-            this.pnlcentral.Name = "pnlcentral";
-            this.pnlcentral.Size = new System.Drawing.Size(618, 250);
-            this.pnlcentral.TabIndex = 0;
+            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(65, 51);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(633, 253);
+            this.panel1.TabIndex = 0;
             // 
-            // txtdescripcion
+            // textBox2
             // 
-            this.txtdescripcion.Location = new System.Drawing.Point(229, 132);
-            this.txtdescripcion.Multiline = true;
-            this.txtdescripcion.Name = "txtdescripcion";
-            this.txtdescripcion.Size = new System.Drawing.Size(356, 95);
-            this.txtdescripcion.TabIndex = 8;
-            // 
-            // txtnombre
-            // 
-            this.txtnombre.Location = new System.Drawing.Point(193, 52);
-            this.txtnombre.Name = "txtnombre";
-            this.txtnombre.Size = new System.Drawing.Size(392, 28);
-            this.txtnombre.TabIndex = 7;
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox2.Location = new System.Drawing.Point(263, 117);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(356, 95);
+            this.textBox2.TabIndex = 8;
             // 
             // categoria_biblio
             // 
@@ -140,13 +141,13 @@
         }
 
         #endregion
+        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btncancelar;
-        private System.Windows.Forms.Button btnguardarcategoria;
-        private System.Windows.Forms.GroupBox gbDatos;
-        private System.Windows.Forms.Panel pnlcentral;
-        private System.Windows.Forms.TextBox txtdescripcion;
-        private System.Windows.Forms.TextBox txtnombre;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

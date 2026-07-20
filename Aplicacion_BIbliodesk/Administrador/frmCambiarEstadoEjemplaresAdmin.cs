@@ -6,8 +6,9 @@ namespace Aplicacion_BIbliodesk
 {
     public partial class frmCambiarEstadoEjemplaresAdmin : Form
     {
+        private Conexion ConnectionData;
         // Variables globales para almacenar los datos recibidos del primer formulario
-        private string idEjemplar="";
+        private string idEjemplar = "";
         private string estadoActual = "";
 
         // 1. CONSTRUCTOR VACÍO: Requerido obligatoriamente por el Diseñador de Visual Studio
@@ -60,45 +61,46 @@ namespace Aplicacion_BIbliodesk
             string nuevoEstado = cmbEstado.Text.Trim().ToUpper();
 
             // 4. Conectamos a la base de datos
-            using (MySqlConnection con = Conexion.ConnectionData.getConection())
+            ConnectionData = new Conexion();
+            MySqlConnection con = ConnectionData.getConection();
+
+            if (con == null) return;
+
+            // Query definitivo usando tus columnas físicas reales: DISPONIBLE e ID_EJEMPLAR
+            string query = "UPDATE ejemplar SET DISPONIBLE = @nuevoEstado WHERE ID_EJEMPLAR = @id";
+
+            try
             {
-                if (con == null) return;
-
-                // Query definitivo usando tus columnas físicas reales: DISPONIBLE e ID_EJEMPLAR
-                string query = "UPDATE ejemplar SET DISPONIBLE = @nuevoEstado WHERE ID_EJEMPLAR = @id";
-
-                try
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
                 {
-                    using (MySqlCommand cmd = new MySqlCommand(query, con))
+                    // Asignamos los parámetros de manera segura
+                    cmd.Parameters.AddWithValue("@nuevoEstado", nuevoEstado);
+
+                    // CORRECCIÓN CLAVE: Convertimos el texto del cuadro físico en número entero
+                    cmd.Parameters.AddWithValue("@id", Convert.ToInt32(idTexto));
+
+                    // Ejecutamos la consulta en MySQL
+                    int filasAfectadas = cmd.ExecuteNonQuery();
+
+                    if (filasAfectadas > 0)
                     {
-                        // Asignamos los parámetros de manera segura
-                        cmd.Parameters.AddWithValue("@nuevoEstado", nuevoEstado);
+                        MessageBox.Show("El estado del ejemplar se ha actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        // CORRECCIÓN CLAVE: Convertimos el texto del cuadro físico en número entero
-                        cmd.Parameters.AddWithValue("@id", Convert.ToInt32(idTexto));
-
-                        // Ejecutamos la consulta en MySQL
-                        int filasAfectadas = cmd.ExecuteNonQuery();
-
-                        if (filasAfectadas > 0)
-                        {
-                            MessageBox.Show("El estado del ejemplar se ha actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            this.DialogResult = DialogResult.OK;
-                            this.Close();
-                        }
-                        else
-                        {
-                            // Alerta si intentas guardar el mismo estado que ya tiene en SQLyog
-                            MessageBox.Show("No se realizaron cambios porque el ejemplar ya tiene ese estado asignado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                    else
+                    {
+                        // Alerta si intentas guardar el mismo estado que ya tiene en SQLyog
+                        MessageBox.Show("No se realizaron cambios porque el ejemplar ya tiene ese estado asignado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al actualizar el estado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar el estado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         // Evento Click del botón "Cancelar"

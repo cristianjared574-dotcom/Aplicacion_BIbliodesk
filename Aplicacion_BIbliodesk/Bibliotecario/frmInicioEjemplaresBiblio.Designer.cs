@@ -96,6 +96,7 @@
             this.txtBuscarEjemplar.Size = new System.Drawing.Size(487, 22);
             this.txtBuscarEjemplar.TabIndex = 1;
             this.txtBuscarEjemplar.Click += new System.EventHandler(this.txtBuscar_TextChanged);
+            this.txtBuscarEjemplar.TextChanged += new System.EventHandler(this.txtBuscarEjemplar_TextChanged);
             // 
             // panel1
             // 

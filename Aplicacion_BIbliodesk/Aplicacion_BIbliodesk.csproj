@@ -272,6 +272,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Administrador\AutorAdmin\frmAutorInicio.resx">
+      <DependentUpon>frmAutorInicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\AutorAdmin\frmCambiarEstadoAutor.resx">
+      <DependentUpon>frmCambiarEstadoAutor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Administrador\cambiar_estado.resx">
       <DependentUpon>cambiar_estado.cs</DependentUpon>
     </EmbeddedResource>
@@ -290,11 +296,26 @@
     <EmbeddedResource Include="Administrador\frmInicioReportesAdmin.resx">
       <DependentUpon>frmInicioReportesAdmin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\LibroAdmin\frmCambiarEstadoLibro.resx">
+      <DependentUpon>frmCambiarEstadoLibro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrador\LibroAdmin\frmLibrosBuscar.resx">
+      <DependentUpon>frmLibrosBuscar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Administrador\PrestamoAdmin\frmPrestamoAdmin.resx">
       <DependentUpon>frmPrestamoAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administrador\PrestamoAdmin\frmPrestamoHistorial.resx">
       <DependentUpon>frmPrestamoHistorial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bibliotecario\AutorBibliotecario\frmAgregarAutor.resx">
+      <DependentUpon>frmAgregarAutor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bibliotecario\AutorBibliotecario\frmAutorInicio.resx">
+      <DependentUpon>frmAutorInicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bibliotecario\AutorBibliotecario\frmEditarAutor.resx">
+      <DependentUpon>frmEditarAutor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Bibliotecario\categorias_biblo.resx">
       <DependentUpon>categorias_biblo.cs</DependentUpon>
@@ -311,8 +332,14 @@
     <EmbeddedResource Include="Bibliotecario\frmInicioEjemplaresBiblio.resx">
       <DependentUpon>frmInicioEjemplaresBiblio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Bibliotecario\LibroBibliotecario\frmLibrosAgregar.resx">
+      <DependentUpon>frmLibrosAgregar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Bibliotecario\LibroBibliotecario\frmLibrosBuscar.resx">
       <DependentUpon>frmLibrosBuscar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bibliotecario\LibroBibliotecario\frmLibrosEditar.resx">
+      <DependentUpon>frmLibrosEditar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Bibliotecario\Prestamo\frmPrestamoBiblio.resx">
       <DependentUpon>frmPrestamoBiblio.cs</DependentUpon>

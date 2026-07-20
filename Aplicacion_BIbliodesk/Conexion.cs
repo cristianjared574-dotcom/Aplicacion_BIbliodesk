@@ -9,38 +9,28 @@ namespace Aplicacion_BIbliodesk
 {
     internal class Conexion
     {
-        public static class ConnectionData
-        {
-            public static MySqlConnection getConection()
-            { 
+        private readonly string cadena;
 
-            string cadena ="Server=localhost; Database=bibliodesk1; UserID=root; Password=; Port=3306; SslMode=None;";
-            
-            
-                try
-                {
-                    MySqlConnection conexion = new MySqlConnection(cadena);
-                    conexion.Open();
-                    return conexion;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al conectar a la base de datos: " + ex.Message);
-                    return null;
-                }
-
-        // ✅ Cifrado también estático
-        public static string CifrarContrasena(string textoPlano)
+        public Conexion()
         {
-            using (SHA256 sha = SHA256.Create())
+            cadena = "Server=localhost; Database=bibliodesk; UserID=root; Password=; Port=3306; SslMode=None;";
+        }
+        public MySqlConnection getConection()
+        {
+            try
             {
-                byte[] bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(textoPlano));
-                StringBuilder sb = new StringBuilder();
-                foreach (byte b in bytes)
-                    sb.Append(b.ToString("x2"));
-                return sb.ToString();
+                MySqlConnection conexion = new MySqlConnection(cadena);
+                conexion.Open();
+                return conexion;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al conectar a la base de datos: " + ex.Message);
+                return null;
             }
         }
+
     }
+
 }
 

@@ -57,7 +57,8 @@
             this.panelBusqueda.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelBusqueda.Controls.Add(this.lblBuscar);
             this.panelBusqueda.Controls.Add(this.txtBuscar);
-            this.panelBusqueda.Location = new System.Drawing.Point(59, 21);
+            this.panelBusqueda.Location = new System.Drawing.Point(60, 26);
+            this.panelBusqueda.Margin = new System.Windows.Forms.Padding(4);
             this.panelBusqueda.Name = "panelBusqueda";
             this.panelBusqueda.Size = new System.Drawing.Size(1028, 65);
             this.panelBusqueda.TabIndex = 0;
@@ -67,9 +68,10 @@
             this.lblBuscar.AutoSize = true;
             this.lblBuscar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(60)))), ((int)(((byte)(45)))));
-            this.lblBuscar.Location = new System.Drawing.Point(76, 23);
+            this.lblBuscar.Location = new System.Drawing.Point(29, 21);
+            this.lblBuscar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBuscar.Name = "lblBuscar";
-            this.lblBuscar.Size = new System.Drawing.Size(100, 19);
+            this.lblBuscar.Size = new System.Drawing.Size(119, 23);
             this.lblBuscar.TabIndex = 0;
             this.lblBuscar.Text = "Buscar Autor:";
             // 
@@ -77,10 +79,13 @@
             // 
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtBuscar.Location = new System.Drawing.Point(182, 17);
+            this.txtBuscar.Location = new System.Drawing.Point(156, 21);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBuscar.Multiline = true;
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(214, 25);
+            this.txtBuscar.Size = new System.Drawing.Size(487, 28);
             this.txtBuscar.TabIndex = 1;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // dgvLibros
             // 
@@ -113,14 +118,16 @@
             this.dgvLibros.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvLibros.EnableHeadersVisualStyles = false;
             this.dgvLibros.GridColor = System.Drawing.Color.Gainsboro;
-            this.dgvLibros.Location = new System.Drawing.Point(59, 147);
+            this.dgvLibros.Location = new System.Drawing.Point(60, 159);
+            this.dgvLibros.Margin = new System.Windows.Forms.Padding(4);
             this.dgvLibros.MultiSelect = false;
             this.dgvLibros.Name = "dgvLibros";
             this.dgvLibros.ReadOnly = true;
             this.dgvLibros.RowHeadersVisible = false;
+            this.dgvLibros.RowHeadersWidth = 51;
             this.dgvLibros.RowTemplate.Height = 34;
             this.dgvLibros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLibros.Size = new System.Drawing.Size(1028, 292);
+            this.dgvLibros.Size = new System.Drawing.Size(1028, 293);
             this.dgvLibros.TabIndex = 1;
             // 
             // btnAgregarAutor
@@ -130,9 +137,10 @@
             this.btnAgregarAutor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarAutor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnAgregarAutor.ForeColor = System.Drawing.Color.White;
-            this.btnAgregarAutor.Location = new System.Drawing.Point(819, 102);
+            this.btnAgregarAutor.Location = new System.Drawing.Point(656, 99);
+            this.btnAgregarAutor.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregarAutor.Name = "btnAgregarAutor";
-            this.btnAgregarAutor.Size = new System.Drawing.Size(108, 30);
+            this.btnAgregarAutor.Size = new System.Drawing.Size(190, 48);
             this.btnAgregarAutor.TabIndex = 3;
             this.btnAgregarAutor.Text = "Agregar Autor";
             this.btnAgregarAutor.UseVisualStyleBackColor = false;
@@ -144,37 +152,42 @@
             this.btnEditarAutor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditarAutor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnEditarAutor.ForeColor = System.Drawing.Color.White;
-            this.btnEditarAutor.Location = new System.Drawing.Point(979, 102);
+            this.btnEditarAutor.Location = new System.Drawing.Point(889, 99);
+            this.btnEditarAutor.Margin = new System.Windows.Forms.Padding(4);
             this.btnEditarAutor.Name = "btnEditarAutor";
-            this.btnEditarAutor.Size = new System.Drawing.Size(108, 30);
+            this.btnEditarAutor.Size = new System.Drawing.Size(190, 48);
             this.btnEditarAutor.TabIndex = 4;
             this.btnEditarAutor.Text = "Editar Autor";
             this.btnEditarAutor.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.panelBusqueda);
             this.panel1.Controls.Add(this.dgvLibros);
             this.panel1.Controls.Add(this.btnAgregarAutor);
             this.panel1.Controls.Add(this.btnEditarAutor);
-            this.panel1.Location = new System.Drawing.Point(109, 20);
+            this.panel1.Location = new System.Drawing.Point(185, 41);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1146, 472);
             this.panel1.TabIndex = 5;
             // 
             // frmAutorInicio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1370, 504);
+            this.BackColor = System.Drawing.Color.Gray;
+            this.ClientSize = new System.Drawing.Size(1511, 552);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frmAutorInicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Búsqueda Autor";
+            this.Load += new System.EventHandler(this.frmAutorInicio_Load);
             this.panelBusqueda.ResumeLayout(false);
             this.panelBusqueda.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLibros)).EndInit();

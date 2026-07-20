@@ -7,18 +7,15 @@ using System.Security.Cryptography;
 using System.Speech.Synthesis;
 using System.Text;
 using System.Windows.Forms;
+using System.Data;
 
 namespace Aplicacion_BIbliodesk
 {
     public partial class login : Form
     {
-        // ✅ SOLO GUARDAMOS COLORES PARA CONTRASTE
-        private Color colorFondoOriginal;
-        private Color colorTextoOriginal;
-        private Color colorBotonOriginal;
-        private bool modoContrasteRojoActivo = false;
 
-        // ✅ ACCESIBILIDAD DE VOZ
+        private Conexion AcessConnection;
+
         private readonly SpeechSynthesizer voz = new SpeechSynthesizer();
         public static Empleado EmpleadoActual { get; private set; }
 
@@ -50,8 +47,9 @@ namespace Aplicacion_BIbliodesk
             colorBotonOriginal = btnIniciarSesion.BackColor;
         }
 
-        // Cifrado de contraseña
-        public static string CifrarContrasena(string textoPlano)
+
+        // Cifrado también estático
+        public string CifrarContrasena(string textoPlano)
         {
             using (SHA256 sha = SHA256.Create())
             {
@@ -61,16 +59,18 @@ namespace Aplicacion_BIbliodesk
                     sb.Append(b.ToString("x2"));
                 return sb.ToString();
             }
+
         }
 
-        private void btnIniciarSesion_Click(object sender, EventArgs e)
+
+
+        private void login_Load(object sender, EventArgs e) { }
+
+        private void BtnIniciarSesion_Click(object sender, EventArgs e)
         {
-            if (cboRol.SelectedIndex == -1 ||
-                string.IsNullOrWhiteSpace(txtUsuario.Text) ||
-                string.IsNullOrWhiteSpace(txtContrasena.Text))
+            if (cboRol.SelectedIndex == -1 || string.IsNullOrWhiteSpace(txtUsuario.Text) || string.IsNullOrWhiteSpace(txtContrasena.Text))
             {
-                MessageBox.Show("Completa todos los campos", "Aviso");
-                voz.SpeakAsync("Llena todos los campos por favor");
+                MessageBox.Show("Completa todos los campos", "Aviso"); voz.SpeakAsync("Llena todos los campos por favor");
                 return;
             }
 
@@ -83,6 +83,7 @@ namespace Aplicacion_BIbliodesk
                     MessageBox.Show($"¡Bienvenido {EmpleadoActual.NombreCompleto}!", "Acceso concedido");
                     voz.SpeakAsync($"Bienvenido al sistema {EmpleadoActual.NombreCompleto}");
 
+                    //  ABRIR EL FORMULARIO SEGÚN EL ROL
                     if (EmpleadoActual.Rol == "ADMINISTRADOR")
                     {
                         frmInicioAdmin formAdmin = new frmInicioAdmin();
@@ -117,36 +118,38 @@ namespace Aplicacion_BIbliodesk
 
             try
             {
-                using (MySqlConnection conn = Conexion.getConection())
-                {
-                    string sql = @"SELECT ID_EMPLEADO, CONCAT(NOMBRE, ' ', APELLIDOP) AS NOMBRE_COMPLETO,
+                AcessConnection = new Conexion();
+                MySqlConnection conn = AcessConnection.getConection();
+
+
+                string sql = @"SELECT ID_EMPLEADO, CONCAT(NOMBRE, ' ', APELLIDOP) AS NOMBRE_COMPLETO,
                                           USERNAME, ROL, ESTADO
                                    FROM EMPLEADO
                                    WHERE USERNAME = @Usu 
                                      AND PASSWORD = @Hash 
                                      AND ESTADO = 'ACTIVO'";
 
-                    using (MySqlCommand cmd = new MySqlCommand(sql, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@Usu", usuario);
-                        cmd.Parameters.AddWithValue("@Hash", hash);
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
 
-                        using (MySqlDataReader lector = cmd.ExecuteReader())
-                        {
-                            if (lector.Read())
-                            {
-                                empleado = new Empleado
-                                {
-                                    IdEmpleado = lector.GetInt32("ID_EMPLEADO"),
-                                    NombreCompleto = lector.GetString("NOMBRE_COMPLETO"),
-                                    Username = lector.GetString("USERNAME"),
-                                    Rol = lector.GetString("ROL"),
-                                    Estado = lector.GetString("ESTADO")
-                                };
-                            }
-                        }
-                    }
+                cmd.Parameters.AddWithValue("@Usu", usuario);
+                cmd.Parameters.AddWithValue("@Hash", hash);
+
+                MySqlDataReader lector = cmd.ExecuteReader();
+
+                if (lector.Read())
+                {
+                    empleado = new Empleado
+                    {
+                        IdEmpleado = lector.GetInt32("ID_EMPLEADO"),
+                        NombreCompleto = lector.GetString("NOMBRE_COMPLETO"),
+                        Username = lector.GetString("USERNAME"),
+                        Rol = lector.GetString("ROL"),
+                        Estado = lector.GetString("ESTADO")
+                    };
                 }
+
+
+
             }
             catch (Exception ex)
             {

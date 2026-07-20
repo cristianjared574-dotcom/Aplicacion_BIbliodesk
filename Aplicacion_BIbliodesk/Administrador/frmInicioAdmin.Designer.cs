@@ -288,7 +288,6 @@
             this.pnlContenido.Name = "pnlContenido";
             this.pnlContenido.Size = new System.Drawing.Size(1529, 543);
             this.pnlContenido.TabIndex = 2;
-            this.pnlContenido.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContenido_Paint);
             // 
             // frmInicioAdmin
             // 

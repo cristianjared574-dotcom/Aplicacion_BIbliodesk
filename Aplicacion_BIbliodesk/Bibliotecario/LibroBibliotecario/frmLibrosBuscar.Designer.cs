@@ -57,7 +57,8 @@
             this.panelBusqueda.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelBusqueda.Controls.Add(this.lblBuscar);
             this.panelBusqueda.Controls.Add(this.txtBuscar);
-            this.panelBusqueda.Location = new System.Drawing.Point(50, 22);
+            this.panelBusqueda.Location = new System.Drawing.Point(60, 24);
+            this.panelBusqueda.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelBusqueda.Name = "panelBusqueda";
             this.panelBusqueda.Size = new System.Drawing.Size(1028, 65);
             this.panelBusqueda.TabIndex = 0;
@@ -67,9 +68,10 @@
             this.lblBuscar.AutoSize = true;
             this.lblBuscar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(60)))), ((int)(((byte)(45)))));
-            this.lblBuscar.Location = new System.Drawing.Point(26, 23);
+            this.lblBuscar.Location = new System.Drawing.Point(52, 20);
+            this.lblBuscar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBuscar.Name = "lblBuscar";
-            this.lblBuscar.Size = new System.Drawing.Size(93, 19);
+            this.lblBuscar.Size = new System.Drawing.Size(110, 23);
             this.lblBuscar.TabIndex = 0;
             this.lblBuscar.Text = "Buscar libro:";
             // 
@@ -77,10 +79,12 @@
             // 
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtBuscar.Location = new System.Drawing.Point(125, 17);
+            this.txtBuscar.Location = new System.Drawing.Point(181, 20);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(316, 25);
+            this.txtBuscar.Size = new System.Drawing.Size(487, 30);
             this.txtBuscar.TabIndex = 1;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // dgvLibros
             // 
@@ -91,7 +95,7 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.dgvLibros.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvLibros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvLibros.BackgroundColor = System.Drawing.Color.White;
+            this.dgvLibros.BackgroundColor = System.Drawing.Color.DarkGray;
             this.dgvLibros.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(161)))), ((int)(((byte)(75)))));
@@ -113,14 +117,16 @@
             this.dgvLibros.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvLibros.EnableHeadersVisualStyles = false;
             this.dgvLibros.GridColor = System.Drawing.Color.Gainsboro;
-            this.dgvLibros.Location = new System.Drawing.Point(50, 160);
+            this.dgvLibros.Location = new System.Drawing.Point(60, 159);
+            this.dgvLibros.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvLibros.MultiSelect = false;
             this.dgvLibros.Name = "dgvLibros";
             this.dgvLibros.ReadOnly = true;
             this.dgvLibros.RowHeadersVisible = false;
+            this.dgvLibros.RowHeadersWidth = 51;
             this.dgvLibros.RowTemplate.Height = 34;
             this.dgvLibros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLibros.Size = new System.Drawing.Size(1028, 287);
+            this.dgvLibros.Size = new System.Drawing.Size(1028, 293);
             this.dgvLibros.TabIndex = 1;
             // 
             // btnAgregarLibro
@@ -128,25 +134,26 @@
             this.btnAgregarLibro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.btnAgregarLibro.FlatAppearance.BorderSize = 0;
             this.btnAgregarLibro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarLibro.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnAgregarLibro.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarLibro.ForeColor = System.Drawing.Color.White;
-            this.btnAgregarLibro.Location = new System.Drawing.Point(847, 109);
+            this.btnAgregarLibro.Location = new System.Drawing.Point(680, 97);
             this.btnAgregarLibro.Name = "btnAgregarLibro";
-            this.btnAgregarLibro.Size = new System.Drawing.Size(108, 30);
-            this.btnAgregarLibro.TabIndex = 3;
+            this.btnAgregarLibro.Size = new System.Drawing.Size(190, 48);
+            this.btnAgregarLibro.TabIndex = 7;
             this.btnAgregarLibro.Text = "Agregar Libro";
             this.btnAgregarLibro.UseVisualStyleBackColor = false;
+            this.btnAgregarLibro.Click += new System.EventHandler(this.btnAgregarLibro_Click);
             // 
             // btnEditarLibro
             // 
             this.btnEditarLibro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.btnEditarLibro.FlatAppearance.BorderSize = 0;
             this.btnEditarLibro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditarLibro.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnEditarLibro.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditarLibro.ForeColor = System.Drawing.Color.White;
-            this.btnEditarLibro.Location = new System.Drawing.Point(970, 109);
+            this.btnEditarLibro.Location = new System.Drawing.Point(886, 97);
             this.btnEditarLibro.Name = "btnEditarLibro";
-            this.btnEditarLibro.Size = new System.Drawing.Size(108, 30);
+            this.btnEditarLibro.Size = new System.Drawing.Size(190, 48);
             this.btnEditarLibro.TabIndex = 4;
             this.btnEditarLibro.Text = "Editar Libro";
             this.btnEditarLibro.UseVisualStyleBackColor = false;
@@ -156,25 +163,25 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.panelBusqueda);
             this.panel1.Controls.Add(this.dgvLibros);
-            this.panel1.Controls.Add(this.btnAgregarLibro);
             this.panel1.Controls.Add(this.btnEditarLibro);
-            this.panel1.Location = new System.Drawing.Point(126, 20);
+            this.panel1.Controls.Add(this.btnAgregarLibro);
+            this.panel1.Location = new System.Drawing.Point(185, 41);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1146, 472);
-            this.panel1.TabIndex = 5;
+            this.panel1.TabIndex = 8;
             // 
             // frmLibrosBuscar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1370, 504);
+            this.ClientSize = new System.Drawing.Size(1511, 552);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmLibrosBuscar";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Búsqueda de Libros";
+            this.Load += new System.EventHandler(this.frmLibrosBuscar_Load);
             this.panelBusqueda.ResumeLayout(false);
             this.panelBusqueda.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLibros)).EndInit();
