@@ -213,22 +213,9 @@ namespace Aplicacion_BIbliodesk
             }
         }
 
-        // Eventos vacíos que puedes borrar si no los usas
-        private void login_Load(object sender, EventArgs e) { }
-        private void panelFormulario_Paint(object sender, PaintEventArgs e) { }
-        private void login_Load_1(object sender, EventArgs e) { }
-        private void cboRol_SelectedIndexChanged(object sender, EventArgs e) { }
-        private void lblUsuario_Click(object sender, EventArgs e) { }
-        private void iconButton2_Click(object sender, EventArgs e) { }
-        private void txtUsuario_TextChanged(object sender, EventArgs e) { }
-        private void lblContrasena_Click(object sender, EventArgs e) { }
-        private void iconButton3_Click(object sender, EventArgs e) { }
-        private void txtContrasena_TextChanged(object sender, EventArgs e) { }
-        private void lblRol_Click(object sender, EventArgs e) { }
-        private void iconButton1_Click(object sender, EventArgs e) { }
-        private void lblSubtitulo_Click(object sender, EventArgs e) { }
-        private void lblTitulo_Click(object sender, EventArgs e) { }
-        private void pbLgo_Click(object sender, EventArgs e) { }
-        private void panelFondo_Paint(object sender, PaintEventArgs e) { }
+        private void txtContrasena_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
