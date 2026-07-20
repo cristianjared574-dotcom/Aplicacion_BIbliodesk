@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Aplicacion_BIbliodesk
 {
-    internal class Empleado
+    public class Empleado
     {
         public int IdEmpleado { get; set; }
         public string NombreCompleto { get; set; }

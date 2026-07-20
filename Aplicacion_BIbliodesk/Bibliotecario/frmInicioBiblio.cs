@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Aplicacion_BIbliodesk.Bibliotecario.Prestamo;
+using Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario;
+using Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario;
 
 namespace Aplicacion_BIbliodesk.Bibliotecario
 {
@@ -51,21 +53,25 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
         private void btnLibros_Click(object sender, EventArgs e)
         {
             seleccionarModulo(btnLibros);
+            AbrirFormularioEnPanel(new frmLibrosBuscar());
         }
 
         private void btnAutores_Click(object sender, EventArgs e)
         {
             seleccionarModulo(btnAutores);
+            AbrirFormularioEnPanel(new frmAutorInicio());
         }
 
         private void btnCategorias_Click(object sender, EventArgs e)
         {
             seleccionarModulo(btnCategorias);
+
         }
 
         private void btnEjemplares_Click(object sender, EventArgs e)
         {
             seleccionarModulo(btnEjemplares);
+            AbrirFormularioEnPanel(new frmInicioEjemplaresBiblio());
         }
 
         private void btnPrestamos_Click(object sender, EventArgs e)

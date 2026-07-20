@@ -13,6 +13,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
 {
     public partial class frmLibrosAgregar : Form
     {
+        private Conexion ConnectionData;
         public frmLibrosAgregar()
         {
             InitializeComponent();
@@ -24,9 +25,9 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
 
         private void CargarComboBoxes()
         {
-            Conexion.ConnectionData con = new Conexion.ConnectionData();
-            using (MySqlConnection conn = con.getConection())
-            {
+            ConnectionData = new Conexion();
+            MySqlConnection conn = ConnectionData.getConection();
+            
                 // Cargar Editoriales
                 string queryEdit = "SELECT ID_EDITORIAL, NOMBRE_EDITORIAL FROM editorial";
                 MySqlDataAdapter daEdit = new MySqlDataAdapter(queryEdit, conn);
@@ -53,7 +54,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
                 cmbLibro.DisplayMember = "titulo";
                 cmbLibro.ValueMember = "id_libro";
                 cmbLibro.DataSource = dt;
-            }
+            
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -63,9 +64,10 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
                 MessageBox.Show("Rellene los campos obligatorios.");
                 return;
             }
-
-            using (MySqlConnection conn = new Conexion.ConnectionData().getConection())
-            {
+            ConnectionData = new Conexion();
+            MySqlConnection conn = ConnectionData.getConection();
+            
+            
                 
                 string query = "INSERT INTO libro (ID_EDITORIAL, ID_CATEGORIA, ISBN, TITULO, ESTADO) VALUES (@idEd, @idCat, @isbn, @titulo, @estado)";
 
@@ -81,7 +83,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
                     MessageBox.Show("Guardado.");
                     
                 }
-            }
+            
             txtISBN.Clear();
             txtTitulo.Text = "";
             cmbEditorial.SelectedIndex = -1;
@@ -94,8 +96,9 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
         {
             if (cmbLibro.SelectedIndex != -1 && cmbLibro.SelectedValue != null)
             {
-                using (MySqlConnection conn = new Conexion.ConnectionData().getConection())
-                {
+                ConnectionData = new Conexion();
+                MySqlConnection conn = ConnectionData.getConection();
+                
                     // Contamos cuántos registros existen en la tabla 'ejemplar' para ese libro
                     string query = "SELECT COUNT(*) FROM ejemplar WHERE id_libro = @id";
 
@@ -112,10 +115,10 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
                     {
                         MessageBox.Show("Error al contar ejemplares: " + ex.Message);
                     }
-                }
+                
             }
         }
     }
 
-    }
+}
 

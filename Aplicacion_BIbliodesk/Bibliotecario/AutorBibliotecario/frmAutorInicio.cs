@@ -13,6 +13,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
 {
     public partial class frmAutorInicio : Form
     {
+        private Conexion ConnectionData;
         public frmAutorInicio()
         {
             InitializeComponent();
@@ -23,23 +24,23 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
         }
         private void CargarDatos(string filtro)
         {
-            Conexion.ConnectionData con = new Conexion.ConnectionData();
+            ConnectionData = new Conexion();
 
-            using (MySqlConnection conn = con.getConection())
+            MySqlConnection conn = ConnectionData.getConection();
+
+            string query = "SELECT ID_AUTOR, NOMBRE, APELLIDOP, APELLIDOM, NACIONALIDAD, ESTADO FROM autor WHERE NOMBRE LIKE @criterio";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
-                string query = "SELECT ID_AUTOR, NOMBRE, APELLIDOP, APELLIDOM, NACIONALIDAD, ESTADO FROM autor WHERE NOMBRE LIKE @criterio";
+                cmd.Parameters.AddWithValue("@criterio", "%" + filtro.Trim() + "%");
 
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@criterio", "%" + filtro.Trim() + "%");
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
 
-                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-
-                    dgvLibros.DataSource = dt;
-                }
+                dgvLibros.DataSource = dt;
             }
+
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)

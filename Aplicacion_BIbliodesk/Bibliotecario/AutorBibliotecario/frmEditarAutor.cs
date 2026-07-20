@@ -16,5 +16,10 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
         {
             InitializeComponent();
         }
+
+        private void grpEditarAutor_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

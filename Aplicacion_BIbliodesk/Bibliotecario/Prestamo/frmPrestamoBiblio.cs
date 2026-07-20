@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
 {
     public partial class frmPrestamoBiblio : Form
     {
+        private Conexion accesoConexion;
+
         public frmPrestamoBiblio()
         {
             InitializeComponent();
@@ -21,7 +24,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
         {
             frmInicioBiblio inicioBiblio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
 
-            if(inicioBiblio != null)
+            if (inicioBiblio != null)
             {
                 frmRegistrarPrestamo nuevoPrestamo = new frmRegistrarPrestamo();
                 inicioBiblio.AbrirFormularioEnPanel(nuevoPrestamo);
@@ -30,6 +33,92 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
 
             //frmRegistrarPrestamo PantallaRegistar = new frmRegistrarPrestamo();
             menuPrincipalBibliotecario.AbrirFormularioEnPanel(new frmRegistrarPrestamo());*/
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            CargarPrestamos();
+        }
+
+        //metodo para cargar datos al datagridview
+        private void CargarPrestamos()
+        {
+
+            accesoConexion = new Conexion();
+            MySqlConnection conexionDB = accesoConexion.getConection();
+
+            if (conexionDB != null)
+            { 
+                //creamos la consulta
+                string consulta = @"
+                    SELECT
+                        P.FOLIO_PRESTAMO AS FOLIO,
+                        L.ISBN,
+                        L.TITULO AS LIBRO,
+                        CONCAT(U.NOMBRE, ' ', U.APELLIDOP, ' ', U.APELLIDOM) AS USUARIO,
+                        E.CLAVE_EJEMPLAR AS EJEMPLAR,
+                        P.FECHA_INICIO,
+                        P.FECHA_DEVOLUCION,
+                        P.ESTADO
+                    FROM PRESTAMO P
+                    INNER JOIN USUARIO U ON P.ID_USUARIO = U.ID_USUARIO
+                    INNER JOIN EJEMPLAR E ON P.ID_EJEMPLAR = E.ID_EJEMPLAR
+                    INNER JOIN LIBRO L ON E.ID_LIBRO = L.ID_LIBRO
+                    ORDER BY P.ID_PRESTAMO DESC;";
+
+                //creamos un lector
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(consulta, conexionDB);
+
+                //creamos un data table
+                DataTable tablaPrestamos = new DataTable();
+                //se vacia los datos a la tabla
+                adaptador.Fill(tablaPrestamos);
+
+                dgvPrestamos.DataSource = tablaPrestamos;
+            }
+        }
+
+        private void txtBuscarPrestamoBiblio_TextChanged(object sender, EventArgs e)
+        {
+            accesoConexion = new Conexion();
+            MySqlConnection conexionDB = accesoConexion.getConection();
+
+            if (conexionDB != null)
+            {
+                TextBox txt = (TextBox)sender;
+
+                //creamos la consulta
+                string consulta = @"
+                    SELECT
+                        P.FOLIO_PRESTAMO AS FOLIO,
+                        L.ISBN,
+                        L.TITULO AS LIBRO,
+                        CONCAT(U.NOMBRE, ' ', U.APELLIDOP, ' ', U.APELLIDOM) AS USUARIO,
+                        E.CLAVE_EJEMPLAR AS EJEMPLAR,
+                        P.FECHA_INICIO,
+                        P.FECHA_DEVOLUCION,
+                        P.ESTADO
+                    FROM PRESTAMO P
+                    INNER JOIN USUARIO U ON P.ID_USUARIO = U.ID_USUARIO
+                    INNER JOIN EJEMPLAR E ON P.ID_EJEMPLAR = E.ID_EJEMPLAR
+                    INNER JOIN LIBRO L ON E.ID_LIBRO = L.ID_LIBRO
+
+                    WHERE P.FOLIO_PRESTAMO LIKE @buscar OR L.TITULO LIKE @buscar OR E.CLAVE_EJEMPLAR LIKE @buscar 
+                            OR CONCAT(U.NOMBRE, ' ', U.APELLIDOP, ' ', U.APELLIDOM) LIKE @buscar 
+                    ORDER BY P.ID_PRESTAMO DESC;";
+
+                //creamos un lector
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(consulta, conexionDB);
+
+                adaptador.SelectCommand.Parameters.AddWithValue("@buscar", "%" + txt.Text.Trim() + "%");
+
+                //creamos un data table
+                DataTable tablaPrestamos = new DataTable();
+                //se vacia los datos a la tabla
+                adaptador.Fill(tablaPrestamos);
+
+                dgvPrestamos.DataSource = tablaPrestamos;
+            }
         }
     }
 }

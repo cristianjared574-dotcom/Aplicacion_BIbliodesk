@@ -9,6 +9,7 @@ namespace Aplicacion_BIbliodesk
     
     public partial class frmInicioEjemplaresBiblio : Form
     {
+        private Conexion ConexionData;
         public frmInicioEjemplaresBiblio()
         {
             InitializeComponent();
@@ -23,91 +24,133 @@ namespace Aplicacion_BIbliodesk
         //metodo para cargar los ejemplares en el DataGridView
         private void CargarEjemplares(string filtro = "")
         {
-            using (MySqlConnection con = Conexion.getConection())
+            ConexionData = new Conexion();
+            MySqlConnection con = ConexionData.getConection();
+
+            if (con != null)
             {
-                if (con == null) return;
+                string consulta = @"
+                    SELECT
+                        E.ID_EJEMPLAR,
+                        E.CLAVE_EJEMPLAR AS `ID Ejemplar`,
+                        L.CLAVE_LIBRO AS `ID Libro`,
+                        E.LOCALIZACION AS `Localización`,
+                        E.ESTADO_FISICO AS `Estado`,
+                        E.DISPONIBLE AS `Disponible`
+                    FROM EJEMPLAR E
+                    INNER JOIN LIBRO L ON E.ID_LIBRO = L.ID_LIBRO
+                    ORDER BY E.ID_EJEMPLAR DESC;";
 
-                // Consultar y seleccionar las columnas  de la tabla EJEMPLAR
-                string query = "SELECT ID_EJEMPLAR, ID_LIBRO, LOCALIZACION, ESTADO_FISICO, DISPONIBLE FROM ejemplar";
+                MySqlDataAdapter adaptador =
+                    new MySqlDataAdapter(consulta, con);
 
-                // Si hay texto en la barra de búsqueda
-                if (!string.IsNullOrEmpty(filtro))
-                {
-                    query += " WHERE ID_EJEMPLAR LIKE @filtro OR LOCALIZACION LIKE @filtro OR ESTADO_FISICO LIKE @filtro OR DISPONIBLE LIKE @filtro";
-                }
+                DataTable tablaEjemplares =
+                    new DataTable();
 
-                try
-                {
-                    using (MySqlCommand cmd = new MySqlCommand(query, con))
-                    {
-                        if (!string.IsNullOrEmpty(filtro))
-                        {
-                            cmd.Parameters.AddWithValue("@filtro", "%" + filtro + "%");
-                        }
+                adaptador.Fill(tablaEjemplares);
 
-                        using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
-                        {
-                            DataTable dt = new DataTable();
-                            da.Fill(dt);
+                dgvEjemplares.DataSource = tablaEjemplares;
 
-                            // Cargar el resultado en la tabla 
-                            dgvEjemplares.DataSource = dt;
+                // Ocultar el ID interno real
+                dgvEjemplares.Columns["ID_EJEMPLAR"].Visible = false;
 
-                            // Ajustamos las columnas para que llenen la pantalla ordenadamente
-                            dgvEjemplares.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al cargar los ejemplares: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
+
         }
 
         //text changed para que al momento de que se ingrese el texto en la busqueda esta ya este buscando
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            CargarEjemplares(txtBuscarEjemplar.Text.Trim());
+            //CargarEjemplares(txtBuscarEjemplar.Text.Trim());
         }
         
         //evento al dar clic en el boton agregar
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             // Usar el constructor vacío del formulario único para poder agregar
-            frmEjemplarBiblio frm = new frmEjemplarBiblio();
+            frmInicioBiblio inicioBiblio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
 
-            // Si se guardó con éxito en el otro formulario se refrescamos la tabla al instante
-            if (frm.ShowDialog() == DialogResult.OK)
+            if (inicioBiblio != null)
             {
-                CargarEjemplares();
+                frmEjemplarBiblio frmAgregarBiblio= new frmEjemplarBiblio();
+                inicioBiblio.AbrirFormularioEnPanel(frmAgregarBiblio);
             }
+
         }
 
         
         //Evento al dar clic en el boton editar ejemplar
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            //Validar que el usuario tenga seleccionada una fila en la tabla
-            if (dgvEjemplares.CurrentRow != null)
+            if (dgvEjemplares.CurrentRow == null)
             {
-                //Extraer valores de la fila activa
-                string idEjemplar = dgvEjemplares.CurrentRow.Cells["ID_EJEMPLAR"].Value.ToString();
-                string idLibro = dgvEjemplares.CurrentRow.Cells["ID_LIBRO"].Value.ToString();
-                string localizacion = dgvEjemplares.CurrentRow.Cells["LOCALIZACION"].Value.ToString();
-
-                //Abre el formulario pasando los parámetros para poder editar
-                frmEjemplarBiblio frm = new frmEjemplarBiblio(idEjemplar, idLibro, localizacion);
-
-                //Si se edito correctamente, se refresca la tabla al cerrar
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    CargarEjemplares();
-                }
+                MessageBox.Show("Seleccione un ejemplar.");
+                return;
             }
-            else
+
+            string claveEjemplar =
+                dgvEjemplares.CurrentRow.Cells["ID Ejemplar"].Value.ToString();
+
+            string claveLibro =
+                dgvEjemplares.CurrentRow.Cells["ID Libro"].Value.ToString();
+
+            string localizacion =
+                dgvEjemplares.CurrentRow.Cells["Localización"].Value.ToString();
+
+            frmInicioBiblio inicioBiblio =
+                Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
+
+            if (inicioBiblio != null)
             {
-                MessageBox.Show("Por favor, seleccione un ejemplar de la tabla para poder editarlo.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                frmEjemplarBiblio frmEditar =
+                    new frmEjemplarBiblio(
+                        claveEjemplar,
+                        claveLibro,
+                        localizacion);
+
+                inicioBiblio.AbrirFormularioEnPanel(frmEditar);
+            }
+        }
+
+        private void txtBuscarEjemplar_TextChanged(object sender, EventArgs e)
+        {
+            ConexionData = new Conexion();
+            MySqlConnection con = ConexionData.getConection();
+
+            if (con != null)
+            {
+                TextBox txt = (TextBox)sender;
+
+                string consulta = @"
+                    SELECT
+                        E.ID_EJEMPLAR,
+                        E.CLAVE_EJEMPLAR AS `ID Ejemplar`,
+                        L.CLAVE_LIBRO AS `ID Libro`,
+                        E.LOCALIZACION AS `Localización`,
+                        E.ESTADO_FISICO AS `Estado`,
+                        E.DISPONIBLE AS `Disponible`
+                    FROM EJEMPLAR E
+                    INNER JOIN LIBRO L
+                        ON E.ID_LIBRO = L.ID_LIBRO
+                    WHERE E.CLAVE_EJEMPLAR LIKE @busqueda
+                       OR L.CLAVE_LIBRO LIKE @busqueda
+                       OR E.LOCALIZACION LIKE @busqueda
+                       OR E.ESTADO_FISICO LIKE @busqueda
+                       OR E.DISPONIBLE LIKE @busqueda
+                    ORDER BY E.ID_EJEMPLAR DESC;";
+
+                MySqlDataAdapter adaptador =
+                    new MySqlDataAdapter(consulta, con);
+
+                adaptador.SelectCommand.Parameters.AddWithValue("@busqueda","%" + txt.Text.Trim() + "%");
+
+                DataTable tablaEjemplares = new DataTable();
+
+                adaptador.Fill(tablaEjemplares);
+
+                dgvEjemplares.DataSource = tablaEjemplares;
+
+                dgvEjemplares.Columns["ID_EJEMPLAR"].Visible = false;
             }
         }
     }

@@ -8,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Aplicacion_BIbliodesk.Administrador.LibroAdmin;
+using Aplicacion_BIbliodesk.Administrador.AutorAdmin;
+using Aplicacion_BIbliodesk.Administrador.PrestamoAdmin;
 
 namespace Aplicacion_BIbliodesk.Administrador
 {
@@ -31,7 +34,7 @@ namespace Aplicacion_BIbliodesk.Administrador
             boton.BackColor = Color.FromArgb(123, 30, 30);
         }
 
-        private void AbrirFormularioEnPanel(Form formulario)
+        public void AbrirFormularioEnPanelAdmin(Form formulario)
         {
             if (formularioActivo != null)
             {
@@ -51,11 +54,13 @@ namespace Aplicacion_BIbliodesk.Administrador
         private void btnLibros_Click(object sender, EventArgs e)
         {
             seleccionarModulo(btnLibros);
+            AbrirFormularioEnPanelAdmin(new frmLibrosBuscar());
         }
 
         private void btnAutores_Click(object sender, EventArgs e)
         {
             seleccionarModulo(btnAutores);
+            AbrirFormularioEnPanelAdmin(new frmAutorInicio());
         }
 
         private void btnCategorias_Click(object sender, EventArgs e)
@@ -66,16 +71,19 @@ namespace Aplicacion_BIbliodesk.Administrador
         private void btnEjemplares_Click(object sender, EventArgs e)
         {
             seleccionarModulo(btnEjemplares);
+            AbrirFormularioEnPanelAdmin(new frmInicioEjemplaresAdmin());
         }
 
         private void btnPrestamos_Click(object sender, EventArgs e)
         {
             seleccionarModulo(btnPrestamos);
+            AbrirFormularioEnPanelAdmin(new frmPrestamoAdmin());
         }
 
         private void btnReporte_Click(object sender, EventArgs e)
         {
             seleccionarModulo(btnReporte);
+            AbrirFormularioEnPanelAdmin(new frmInicioReportesAdmin());
         }
 
         private void btnCerrarsesion_Click(object sender, EventArgs e)

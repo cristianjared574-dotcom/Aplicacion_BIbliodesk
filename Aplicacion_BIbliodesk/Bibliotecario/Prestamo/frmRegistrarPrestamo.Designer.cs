@@ -33,19 +33,21 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.picBuscarUsuario = new FontAwesome.Sharp.IconPictureBox();
+            this.txtMatriculaUsuario = new System.Windows.Forms.TextBox();
             this.lblTelefonoUsuario = new System.Windows.Forms.Label();
             this.lblCorreoUsuario = new System.Windows.Forms.Label();
             this.lblNombreUsuario = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtIdUsuario = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.picBuscarLibro = new FontAwesome.Sharp.IconPictureBox();
             this.lblAutorLibro = new System.Windows.Forms.Label();
             this.lblNombreLibro = new System.Windows.Forms.Label();
             this.lblClaveEjemplar = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtTituloLibro = new System.Windows.Forms.TextBox();
+            this.txtClaveEjemplar = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -55,19 +57,17 @@
             this.label8 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardarPrestamo = new System.Windows.Forms.Button();
-            this.picBuscarUsuario = new FontAwesome.Sharp.IconPictureBox();
-            this.picBuscarLibro = new FontAwesome.Sharp.IconPictureBox();
             this.ToolTipAyuda = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBuscarUsuario)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBuscarLibro)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picBuscarUsuario)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBuscarLibro)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -111,7 +111,7 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.picBuscarUsuario);
-            this.groupBox5.Controls.Add(this.txtIdUsuario);
+            this.groupBox5.Controls.Add(this.txtMatriculaUsuario);
             this.groupBox5.Controls.Add(this.lblTelefonoUsuario);
             this.groupBox5.Controls.Add(this.lblCorreoUsuario);
             this.groupBox5.Controls.Add(this.lblNombreUsuario);
@@ -122,6 +122,33 @@
             this.groupBox5.Size = new System.Drawing.Size(334, 267);
             this.groupBox5.TabIndex = 12;
             this.groupBox5.TabStop = false;
+            // 
+            // picBuscarUsuario
+            // 
+            this.picBuscarUsuario.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.picBuscarUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picBuscarUsuario.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.picBuscarUsuario.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            this.picBuscarUsuario.IconColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.picBuscarUsuario.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.picBuscarUsuario.IconSize = 24;
+            this.picBuscarUsuario.Location = new System.Drawing.Point(277, 46);
+            this.picBuscarUsuario.Name = "picBuscarUsuario";
+            this.picBuscarUsuario.Size = new System.Drawing.Size(24, 28);
+            this.picBuscarUsuario.TabIndex = 18;
+            this.picBuscarUsuario.TabStop = false;
+            this.picBuscarUsuario.Click += new System.EventHandler(this.picBuscarUsuario_Click);
+            this.picBuscarUsuario.MouseHover += new System.EventHandler(this.picBuscarUsuario_MouseHover);
+            // 
+            // txtMatriculaUsuario
+            // 
+            this.txtMatriculaUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMatriculaUsuario.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMatriculaUsuario.Location = new System.Drawing.Point(25, 46);
+            this.txtMatriculaUsuario.Multiline = true;
+            this.txtMatriculaUsuario.Name = "txtMatriculaUsuario";
+            this.txtMatriculaUsuario.Size = new System.Drawing.Size(259, 28);
+            this.txtMatriculaUsuario.TabIndex = 13;
             // 
             // lblTelefonoUsuario
             // 
@@ -162,24 +189,14 @@
             this.label14.TabIndex = 14;
             this.label14.Text = "Datos encontrados:";
             // 
-            // txtIdUsuario
-            // 
-            this.txtIdUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtIdUsuario.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdUsuario.Location = new System.Drawing.Point(25, 46);
-            this.txtIdUsuario.Multiline = true;
-            this.txtIdUsuario.Name = "txtIdUsuario";
-            this.txtIdUsuario.Size = new System.Drawing.Size(259, 28);
-            this.txtIdUsuario.TabIndex = 13;
-            // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(21, 22);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(90, 19);
+            this.label17.Size = new System.Drawing.Size(179, 19);
             this.label17.TabIndex = 12;
-            this.label17.Text = "ID Usuario";
+            this.label17.Text = "Matricula del usuario";
             // 
             // groupBox2
             // 
@@ -199,13 +216,30 @@
             this.groupBox6.Controls.Add(this.lblNombreLibro);
             this.groupBox6.Controls.Add(this.lblClaveEjemplar);
             this.groupBox6.Controls.Add(this.label5);
-            this.groupBox6.Controls.Add(this.txtTituloLibro);
+            this.groupBox6.Controls.Add(this.txtClaveEjemplar);
             this.groupBox6.Controls.Add(this.label6);
             this.groupBox6.Location = new System.Drawing.Point(6, 31);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(326, 267);
             this.groupBox6.TabIndex = 12;
             this.groupBox6.TabStop = false;
+            // 
+            // picBuscarLibro
+            // 
+            this.picBuscarLibro.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.picBuscarLibro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picBuscarLibro.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.picBuscarLibro.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            this.picBuscarLibro.IconColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.picBuscarLibro.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.picBuscarLibro.IconSize = 24;
+            this.picBuscarLibro.Location = new System.Drawing.Point(270, 46);
+            this.picBuscarLibro.Name = "picBuscarLibro";
+            this.picBuscarLibro.Size = new System.Drawing.Size(24, 28);
+            this.picBuscarLibro.TabIndex = 19;
+            this.picBuscarLibro.TabStop = false;
+            this.picBuscarLibro.Click += new System.EventHandler(this.picBuscarLibro_Click);
+            this.picBuscarLibro.MouseHover += new System.EventHandler(this.picBuscarLibro_MouseHover);
             // 
             // lblAutorLibro
             // 
@@ -247,15 +281,15 @@
             this.label5.TabIndex = 14;
             this.label5.Text = "Datos encontrados:";
             // 
-            // txtTituloLibro
+            // txtClaveEjemplar
             // 
-            this.txtTituloLibro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTituloLibro.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTituloLibro.Location = new System.Drawing.Point(19, 46);
-            this.txtTituloLibro.Multiline = true;
-            this.txtTituloLibro.Name = "txtTituloLibro";
-            this.txtTituloLibro.Size = new System.Drawing.Size(259, 28);
-            this.txtTituloLibro.TabIndex = 13;
+            this.txtClaveEjemplar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtClaveEjemplar.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClaveEjemplar.Location = new System.Drawing.Point(19, 46);
+            this.txtClaveEjemplar.Multiline = true;
+            this.txtClaveEjemplar.Name = "txtClaveEjemplar";
+            this.txtClaveEjemplar.Size = new System.Drawing.Size(259, 28);
+            this.txtClaveEjemplar.TabIndex = 13;
             // 
             // label6
             // 
@@ -263,9 +297,9 @@
             this.label6.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(16, 15);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(116, 19);
+            this.label6.Size = new System.Drawing.Size(167, 19);
             this.label6.TabIndex = 12;
-            this.label6.Text = "Ttulo del libro";
+            this.label6.Text = "Clave del ejemplar";
             // 
             // groupBox3
             // 
@@ -352,40 +386,6 @@
             this.btnGuardarPrestamo.Text = "Guardar préstamo";
             this.btnGuardarPrestamo.UseVisualStyleBackColor = false;
             // 
-            // picBuscarUsuario
-            // 
-            this.picBuscarUsuario.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.picBuscarUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picBuscarUsuario.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.picBuscarUsuario.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            this.picBuscarUsuario.IconColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.picBuscarUsuario.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.picBuscarUsuario.IconSize = 25;
-            this.picBuscarUsuario.Location = new System.Drawing.Point(277, 46);
-            this.picBuscarUsuario.Name = "picBuscarUsuario";
-            this.picBuscarUsuario.Size = new System.Drawing.Size(24, 28);
-            this.picBuscarUsuario.TabIndex = 18;
-            this.picBuscarUsuario.TabStop = false;
-            this.picBuscarUsuario.Click += new System.EventHandler(this.picBuscarUsuario_Click);
-            this.picBuscarUsuario.MouseHover += new System.EventHandler(this.picBuscarUsuario_MouseHover);
-            // 
-            // picBuscarLibro
-            // 
-            this.picBuscarLibro.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.picBuscarLibro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picBuscarLibro.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.picBuscarLibro.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            this.picBuscarLibro.IconColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.picBuscarLibro.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.picBuscarLibro.IconSize = 24;
-            this.picBuscarLibro.Location = new System.Drawing.Point(270, 46);
-            this.picBuscarLibro.Name = "picBuscarLibro";
-            this.picBuscarLibro.Size = new System.Drawing.Size(24, 28);
-            this.picBuscarLibro.TabIndex = 19;
-            this.picBuscarLibro.TabStop = false;
-            this.picBuscarLibro.Click += new System.EventHandler(this.picBuscarLibro_Click);
-            this.picBuscarLibro.MouseHover += new System.EventHandler(this.picBuscarLibro_MouseHover);
-            // 
             // frmRegistrarPrestamo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -403,14 +403,14 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBuscarUsuario)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBuscarLibro)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picBuscarUsuario)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBuscarLibro)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -429,7 +429,7 @@
         private System.Windows.Forms.Label lblCorreoUsuario;
         private System.Windows.Forms.Label lblNombreUsuario;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtIdUsuario;
+        private System.Windows.Forms.TextBox txtMatriculaUsuario;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.GroupBox groupBox6;
@@ -437,7 +437,7 @@
         private System.Windows.Forms.Label lblNombreLibro;
         private System.Windows.Forms.Label lblClaveEjemplar;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtTituloLibro;
+        private System.Windows.Forms.TextBox txtClaveEjemplar;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;

@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.SqlServer.Server;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ namespace Aplicacion_BIbliodesk.Administrador.AutorAdmin
 {
     public partial class frmAutorInicio : Form
     {
+        private Conexion dataAccess;
         public frmAutorInicio()
         {
             InitializeComponent();
@@ -23,9 +25,9 @@ namespace Aplicacion_BIbliodesk.Administrador.AutorAdmin
         }
         private void CargarDatos(string filtro)
         {
-            Conexion.ConnectionData con = new Conexion.ConnectionData();
+            dataAccess = new Conexion();
 
-            using (MySqlConnection conn = con.getConection())
+            MySqlConnection conn = dataAccess.getConection(); 
             {
                 string query = "SELECT ID_AUTOR, NOMBRE, APELLIDOP, APELLIDOM, NACIONALIDAD, ESTADO FROM autor WHERE NOMBRE LIKE @criterio";
 
@@ -45,6 +47,17 @@ namespace Aplicacion_BIbliodesk.Administrador.AutorAdmin
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             CargarDatos(txtBuscar.Text);
+        }
+
+        private void btnCambiarEstado_Click(object sender, EventArgs e)
+        {
+            frmInicioAdmin inicioAdmin = Application.OpenForms["frmInicioAdmin"] as frmInicioAdmin;
+
+            if (inicioAdmin != null)
+            {
+                frmCambiarEstadoAutor CambioEstadoAutor = new frmCambiarEstadoAutor();
+                inicioAdmin.AbrirFormularioEnPanelAdmin(CambioEstadoAutor);
+            }
         }
     }
 }

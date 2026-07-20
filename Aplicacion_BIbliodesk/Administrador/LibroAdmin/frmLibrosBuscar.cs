@@ -13,6 +13,7 @@ namespace Aplicacion_BIbliodesk.Administrador.LibroAdmin
 {
     public partial class frmLibrosBuscar : Form
     {
+        private Conexion ConnectionData;
         public frmLibrosBuscar()
         {
             InitializeComponent();
@@ -24,22 +25,24 @@ namespace Aplicacion_BIbliodesk.Administrador.LibroAdmin
         }
         private void CargarDatos(string filtro)
         {
-            Conexion.ConnectionData con = new Conexion.ConnectionData();
+            ConnectionData = new Conexion();
 
-                string query = "SELECT ID_LIBRO, TITULO, ISBN, ESTADO FROM LIBRO WHERE TITULO LIKE @criterio OR ISBN LIKE @criterio";
+            MySqlConnection conn = ConnectionData.getConection();
 
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                {
-                    // El filtro se aplica a ambos campos
-                    cmd.Parameters.AddWithValue("@criterio", "%" + filtro.Trim() + "%");
+            string query = "SELECT ID_LIBRO, TITULO, ISBN, ESTADO FROM LIBRO WHERE TITULO LIKE @criterio OR ISBN LIKE @criterio";
 
-                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+            {
+                // El filtro se aplica a ambos campos
+                cmd.Parameters.AddWithValue("@criterio", "%" + filtro.Trim() + "%");
 
-                    dgvLibros.DataSource = dt;
-                }
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                dgvLibros.DataSource = dt;
             }
+
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
@@ -49,7 +52,13 @@ namespace Aplicacion_BIbliodesk.Administrador.LibroAdmin
 
         private void btncambiarEstado_Click(object sender, EventArgs e)
         {
-           
+            frmInicioAdmin inicioAdmin = Application.OpenForms["frmInicioAdmin"] as frmInicioAdmin;
+
+            if (inicioAdmin != null)
+            {
+                frmCambiarEstadoLibro CambioEstadoLibro = new frmCambiarEstadoLibro();
+                inicioAdmin.AbrirFormularioEnPanelAdmin(CambioEstadoLibro);
+            }
         }
     }
 }

@@ -13,6 +13,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
 {
     public partial class frmLibrosBuscar : Form
     {
+        private Conexion ConnectionData;
         public frmLibrosBuscar()
         {
             InitializeComponent();
@@ -24,29 +25,34 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
         }
         private void CargarDatos(string filtro)
         {
-            Conexion.ConnectionData con = new Conexion.ConnectionData();
+            ConnectionData = new Conexion();
 
-            using (MySqlConnection conn = con.getConection())
+            MySqlConnection conn = ConnectionData.getConection();
+
+            string query = "SELECT ID_LIBRO, TITULO, ISBN, ESTADO FROM LIBRO WHERE TITULO LIKE @criterio OR ISBN LIKE @criterio";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
-                string query = "SELECT ID_LIBRO, TITULO, ISBN, ESTADO FROM LIBRO WHERE TITULO LIKE @criterio OR ISBN LIKE @criterio";
+                // El filtro se aplica a ambos campos
+                cmd.Parameters.AddWithValue("@criterio", "%" + filtro.Trim() + "%");
 
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                {
-                    // El filtro se aplica a ambos campos
-                    cmd.Parameters.AddWithValue("@criterio", "%" + filtro.Trim() + "%");
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
 
-                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-
-                    dgvLibros.DataSource = dt;
-                }
+                dgvLibros.DataSource = dt;
             }
+
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             CargarDatos(txtBuscar.Text);
+        }
+
+        private void btnAgregarLibro_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

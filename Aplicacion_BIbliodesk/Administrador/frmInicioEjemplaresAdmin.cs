@@ -8,6 +8,7 @@ namespace Aplicacion_BIbliodesk.Administrador
 {
     public partial class frmInicioEjemplaresAdmin : Form
     {
+        private Conexion ConexionData;
         public frmInicioEjemplaresAdmin()
         {
             InitializeComponent();
@@ -21,44 +22,48 @@ namespace Aplicacion_BIbliodesk.Administrador
         // Método para cargar y filtrar datos en el DataGridView
         private void CargarEjemplares(string filtro = "")
         {
-            using (MySqlConnection con = Conexion.getConection())//conecta con la base
+
+
+            //conecta con la base
+            ConexionData = new Conexion();
+            MySqlConnection con = ConexionData.getConection();
+
+            if (con == null) return;
+
+            // Query que selecciona las columnas correspondientes a ejemplares en la bas de datos
+            string query = "SELECT ID_EJEMPLAR, ID_LIBRO, LOCALIZACION, ESTADO_FISICO, DISPONIBLE FROM ejemplar";
+
+            if (!string.IsNullOrEmpty(filtro))
             {
-                if (con == null) return;
-
-                // Query que selecciona las columnas correspondientes a ejemplares en la bas de datos
-                string query = "SELECT ID_EJEMPLAR, ID_LIBRO, LOCALIZACION, ESTADO_FISICO, DISPONIBLE FROM ejemplar";
-
-                if (!string.IsNullOrEmpty(filtro))
+                query += " WHERE ID_EJEMPLAR LIKE @filtro OR LOCALIZACION LIKE @filtro";
+            }
+            try
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
                 {
-                    query += " WHERE ID_EJEMPLAR LIKE @filtro OR LOCALIZACION LIKE @filtro";
-                }
-                try
-                {
-                    using (MySqlCommand cmd = new MySqlCommand(query, con))
+                    if (!string.IsNullOrEmpty(filtro))
                     {
-                        if (!string.IsNullOrEmpty(filtro))
-                        {
-                            cmd.Parameters.AddWithValue("@filtro", "%" + filtro + "%");
-                        }
+                        cmd.Parameters.AddWithValue("@filtro", "%" + filtro + "%");
+                    }
 
-                        //crear una tabla con los datos de la base para filtrarla en el DataGriView
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
-                        {
-                            DataTable dt = new DataTable();
-                            adapter.Fill(dt);
+                    //crear una tabla con los datos de la base para filtrarla en el DataGriView
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
 
-                            // Cargar el resultado en la tabla
-                            dgvEjemplaresAdmin.DataSource = dt;
-                        }
+                        // Cargar el resultado en la tabla
+                        dgvEjemplaresAdmin.DataSource = dt;
                     }
                 }
-                //errores de cargar los datos, puede ser problema de conexion
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al cargar los datos en la tabla: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
-      
+            //errores de cargar los datos, puede ser problema de conexion
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los datos en la tabla: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         // Evento de búsqueda al escribir en la barra de texto el ejemplar que requiere
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
@@ -68,6 +73,15 @@ namespace Aplicacion_BIbliodesk.Administrador
         // Evento del botón Cambiar Estado
         private void btnCambiarEstado_Click(object sender, EventArgs e)
         {
+            //Abre elformulario en el en inicio
+            frmInicioAdmin inicioAdmin = Application.OpenForms["frmInicioAdmin"] as frmInicioAdmin;
+
+            if (inicioAdmin != null)
+            {
+                frmCambiarEstadoEjemplaresAdmin CambioEstadoEjemplares= new frmCambiarEstadoEjemplaresAdmin();
+                inicioAdmin.AbrirFormularioEnPanelAdmin(CambioEstadoEjemplares);
+            }
+
             // verificar que el usuario tenga seleccionada una fila en la tabla
             if (dgvEjemplaresAdmin.CurrentRow != null)
             {

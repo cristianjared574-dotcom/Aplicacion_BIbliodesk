@@ -13,6 +13,7 @@ namespace Aplicacion_BIbliodesk.Administrador.LibroAdmin
 {
     public partial class frmCambiarEstadoLibro : Form
     {
+        private Conexion ConexionData;
         public frmCambiarEstadoLibro()
         {
             InitializeComponent();
@@ -25,28 +26,28 @@ namespace Aplicacion_BIbliodesk.Administrador.LibroAdmin
 
         private void CargarLibros()
         {
-            Conexion.ConnectionData con = new Conexion.ConnectionData();
-            using (MySqlConnection conn = con.getConection())
+            ConexionData = new Conexion();
+            MySqlConnection conn = ConexionData.getConection();
+
+            try
             {
-                try
-                {
-                    if (conn.State == ConnectionState.Closed) conn.Open();
+                if (conn.State == ConnectionState.Closed) conn.Open();
 
-                    string query = "SELECT ID_LIBRO, TITULO FROM libro";
-                    MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
+                string query = "SELECT ID_LIBRO, TITULO FROM libro";
+                MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
 
-                    // Vinculamos el ComboBox a la tabla
-                    cmbLibro.DataSource = dt;
-                    cmbLibro.DisplayMember = "TITULO";
-                    cmbLibro.ValueMember = "ID_LIBRO";
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al cargar libros: " + ex.Message);
-                }
+                // Vinculamos el ComboBox a la tabla
+                cmbLibro.DataSource = dt;
+                cmbLibro.DisplayMember = "TITULO";
+                cmbLibro.ValueMember = "ID_LIBRO";
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar libros: " + ex.Message);
+            }
+
         }
 
         private void ActualizarEstado(int id, string nuevoEstado)
@@ -57,42 +58,42 @@ namespace Aplicacion_BIbliodesk.Administrador.LibroAdmin
                 return;
             }
 
-            Conexion.ConnectionData con = new Conexion.ConnectionData();
-            using (MySqlConnection conn = con.getConection())
+            ConexionData = new Conexion();
+            MySqlConnection conn = ConexionData.getConection();
+
+            try
             {
-                try
+                if (conn.State == ConnectionState.Closed) conn.Open();
+
+                string query = "UPDATE libro SET ESTADO = @estado WHERE ID_LIBRO = @id";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
-                    if (conn.State == ConnectionState.Closed) conn.Open();
+                    cmd.Parameters.AddWithValue("@estado", nuevoEstado);
+                    cmd.Parameters.AddWithValue("@id", id);
 
-                    string query = "UPDATE libro SET ESTADO = @estado WHERE ID_LIBRO = @id";
+                    int filas = cmd.ExecuteNonQuery();
 
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    if (filas > 0)
                     {
-                        cmd.Parameters.AddWithValue("@estado", nuevoEstado);
-                        cmd.Parameters.AddWithValue("@id", id);
-
-                        int filas = cmd.ExecuteNonQuery();
-
-                        if (filas > 0)
+                        MessageBox.Show("Estado actualizado correctamente");
+                        /*if (this.ParentForm is frmInicioAdmin formInicio)
                         {
-                            MessageBox.Show("Estado actualizado correctamente");
-                            /*if (this.ParentForm is frmInicioAdmin formInicio)
-                            {
-                                formInicio.AbrirFormularioEnPanel(new frmLibrosBuscar());
-                            }
-                            */
+                            formInicio.AbrirFormularioEnPanel(new frmLibrosBuscar());
                         }
-                        else
-                        {
-                            MessageBox.Show("No se encontró el libro para actualizar.");
-                        }
+                        */
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontró el libro para actualizar.");
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error técnico: " + ex.Message);
-                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error técnico: " + ex.Message);
+            }
+
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
