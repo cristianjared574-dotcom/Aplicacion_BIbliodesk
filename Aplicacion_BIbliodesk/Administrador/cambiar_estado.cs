@@ -49,7 +49,7 @@ namespace Aplicacion_BIbliodesk
 
             try
             {
-                using (MySqlConnection conn = Conexion.ObtenerConexion())
+                using (MySqlConnection conn = Conexion.getConection())
                 {
                     string sql = "UPDATE CATEGORIA SET ESTADO = @NuevoEstado WHERE NOMBRE_CATEGORIA = @NombreCat";
 

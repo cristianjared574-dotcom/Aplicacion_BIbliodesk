@@ -32,7 +32,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
         {
             try
             {
-                using (MySqlConnection conn = Conexion.ObtenerConexion())
+                using (MySqlConnection conn = Conexion.getConection())
                 {
                     string sql = @"SELECT 
                                         ID_CATEGORIA AS 'ID Categoría',

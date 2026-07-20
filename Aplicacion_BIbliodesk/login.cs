@@ -117,7 +117,7 @@ namespace Aplicacion_BIbliodesk
 
             try
             {
-                using (MySqlConnection conn = Conexion.ObtenerConexion())
+                using (MySqlConnection conn = Conexion.getConection())
                 {
                     string sql = @"SELECT ID_EMPLEADO, CONCAT(NOMBRE, ' ', APELLIDOP) AS NOMBRE_COMPLETO,
                                           USERNAME, ROL, ESTADO
