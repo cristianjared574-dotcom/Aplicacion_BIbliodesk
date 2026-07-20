@@ -67,6 +67,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
         }
         private void btnLibros_Click(object sender, EventArgs e)
         {
+            //isksjjs
             seleccionarModulo(btnLibros);
             AbrirFormularioEnPanel(new frmLibrosBuscar());
         }

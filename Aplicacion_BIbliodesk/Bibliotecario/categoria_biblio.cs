@@ -124,5 +124,10 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //hdmje
+        }
     }
 }

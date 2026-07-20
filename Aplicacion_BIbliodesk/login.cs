@@ -59,7 +59,7 @@ namespace Aplicacion_BIbliodesk
                     sb.Append(b.ToString("x2"));
                 return sb.ToString();
             }
-
+            //hddnn
         }
 
 
