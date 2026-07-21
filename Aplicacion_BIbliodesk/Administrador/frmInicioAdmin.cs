@@ -65,24 +65,6 @@ namespace Aplicacion_BIbliodesk.Administrador
             AbrirFormularioEnPanelAdmin(new frmAutorInicio());
         }
 
-        private void btnCategorias_Click(object sender, EventArgs e)
-        {
-            seleccionarModulo(btnCategorias); //  AGREGAMOS ESTA LÍNEA QUE FALTABA
-            voz.SpeakAsync("Módulo de Categorías"); // LEE EL TEXTO DEL BOTÓN
-            // 1. Busca el formulario de INICIO DE ADMINISTRADOR que YA TIENES ABIERTO
-            frmInicioAdmin inicioAdmin = Application.OpenForms["frmInicioAdmin"] as frmInicioAdmin;
-
-            // 2. Verifica que exista para no dar error
-            if (inicioAdmin != null)
-            {
-                // 3. Crea el formulario de categorías
-                categorias formCategorias = new categorias();
-
-                // 4. Lo abre DENTRO del panel del menú de administrador
-                inicioAdmin.AbrirFormularioEnPanel(formCategorias);
-            }
-        }
-
         private void btnEjemplares_Click(object sender, EventArgs e)
         {
             seleccionarModulo(btnEjemplares);
