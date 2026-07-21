@@ -88,11 +88,21 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
      
         private void categorias_biblo_Load(object sender, EventArgs e) { }
         // EVENTO DEL BOTÓN AGREGAR CATEGORÍA
+
+
    
-        private void btnAgregarCategoria_Click(object sender, EventArgs e)
+       
+
+
+
+
+
+        private void dgvCategorias_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+
+        private void btnAgregarCategoria_Click_1(object sender, EventArgs e)
         {
             // Busca el formulario principal (frmInicioBiblio)
-            frmInicioBiblio formularioInicio = this.ParentForm as frmInicioBiblio;
+            frmInicioBiblio formularioInicio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
 
             if (formularioInicio != null)
             {
@@ -103,7 +113,8 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
                 formularioInicio.AbrirFormularioEnPanel(formAgregar);
             }
         }
-        private void btnEditarCategoria_Click(object sender, EventArgs e)
+
+        private void btnEditarCategoria_Click_1(object sender, EventArgs e)
         {
             // 1. OBLIGA A SELECCIONAR UNA FILA PRIMERO
             if (dgvCategorias.SelectedRows.Count == 0)
@@ -122,7 +133,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
                 string descripcionActual = filaSeleccionada.Cells["Descripción"].Value?.ToString() ?? "";
 
                 // 3. ABRE LA MISMA PANTALLA PERO CON LOS DATOS CARGADOS
-                frmInicioBiblio pantallaInicio = this.ParentForm as frmInicioBiblio;
+                frmInicioBiblio pantallaInicio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
                 if (pantallaInicio != null)
                 {
                     // Usa el constructor que recibe datos para editar
@@ -136,10 +147,5 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void dgvCategorias_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
-
-        
-
-        
     }
 }

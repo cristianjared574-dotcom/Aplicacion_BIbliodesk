@@ -62,12 +62,44 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
 
         private void btnEditarAutor_Click(object sender, EventArgs e)
         {
-            frmInicioBiblio inicioBiblio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
+            if(dgvAutor.SelectedRows.Count > 0)
+{
 
-            if (inicioBiblio != null)
-            {
-                frmEditarAutor EditarAutor = new frmEditarAutor();
-                inicioBiblio.AbrirFormularioEnPanel(EditarAutor);
+                DataGridViewRow fila = dgvAutor.SelectedRows[0];
+
+
+                string id = fila.Cells["id_autor"].Value.ToString();
+
+
+                string nombre = fila.Cells["nombre"].Value.ToString();
+
+
+                string paterno = fila.Cells["apellidop"].Value.ToString();
+
+                string materno = fila.Cells["apellidom"].Value.ToString();
+
+                string nacionalidad = fila.Cells["nacionalidad"].Value.ToString();
+
+
+
+                string estado = fila.Cells["estado"].Value.ToString();
+
+                frmEditarAutor formEdicion = new frmEditarAutor(id, nombre, paterno, materno, nacionalidad, estado);
+
+                frmInicioBiblio inicioBiblio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
+
+                if (inicioBiblio != null)
+                {
+                    inicioBiblio.AbrirFormularioEnPanel(formEdicion);
+                }
+                else
+
+                {
+
+                    MessageBox.Show("Por favor, selecciona una fila");
+
+                }
+
             }
         }
     }
