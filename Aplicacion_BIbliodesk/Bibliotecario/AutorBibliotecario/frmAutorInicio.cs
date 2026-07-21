@@ -1,4 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Aplicacion_BIbliodesk.Administrador;
+using Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,7 +40,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
-                dgvLibros.DataSource = dt;
+                dgvAutor.DataSource = dt;
             }
 
         }
@@ -46,6 +48,50 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             CargarDatos(txtBuscar.Text);
+        }
+
+        private void btnAgregarAutor_Click(object sender, EventArgs e)
+        {
+            frmAgregarAutor formAgregar = new frmAgregarAutor();
+
+            frmInicioBiblio inicioBiblio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
+
+            if (inicioBiblio != null)
+            {
+                inicioBiblio.AbrirFormularioEnPanel(formAgregar);
+            }
+        }
+
+        private void btnEditarAutor_Click(object sender, EventArgs e)
+        {
+            if (dgvAutor.SelectedRows.Count > 0)
+            {
+
+                DataGridViewRow fila = dgvAutor.SelectedRows[0];
+
+                string id = fila.Cells["id_autor"].Value.ToString();
+                string nombre = fila.Cells["nombre"].Value.ToString();
+                string paterno = fila.Cells["apellidop"].Value.ToString();
+                string materno = fila.Cells["apellidom"].Value.ToString();
+                string nacionalidad = fila.Cells["nacionalidad"].Value.ToString();
+                string estado = fila.Cells["estado"].Value.ToString();
+
+                frmEditarAutor formEdicion = new frmEditarAutor(id, nombre, paterno, materno, nacionalidad, estado);
+
+                frmInicioBiblio inicioBiblio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
+
+                if (inicioBiblio != null)
+
+                {
+                    inicioBiblio.AbrirFormularioEnPanel(formEdicion);
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, selecciona una fila");
+                }
+
+
+            }
         }
     }
 }

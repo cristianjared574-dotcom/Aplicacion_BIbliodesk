@@ -59,5 +59,18 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
 
         }
 
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            frmAutorInicio formBusqueda = new frmAutorInicio();
+
+
+            frmInicioBiblio inicioBiblio = System.Windows.Forms.Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
+
+
+            if (inicioBiblio != null)
+            {
+                inicioBiblio.AbrirFormularioEnPanel(formBusqueda);
+            }
+        }
     }
 }
