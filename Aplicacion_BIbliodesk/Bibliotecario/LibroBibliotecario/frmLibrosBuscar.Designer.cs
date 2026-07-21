@@ -58,7 +58,7 @@
             this.panelBusqueda.Controls.Add(this.lblBuscar);
             this.panelBusqueda.Controls.Add(this.txtBuscar);
             this.panelBusqueda.Location = new System.Drawing.Point(60, 24);
-            this.panelBusqueda.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelBusqueda.Margin = new System.Windows.Forms.Padding(4);
             this.panelBusqueda.Name = "panelBusqueda";
             this.panelBusqueda.Size = new System.Drawing.Size(1028, 65);
             this.panelBusqueda.TabIndex = 0;
@@ -80,7 +80,7 @@
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtBuscar.Location = new System.Drawing.Point(181, 20);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(487, 30);
             this.txtBuscar.TabIndex = 1;
@@ -95,7 +95,7 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.dgvLibros.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvLibros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvLibros.BackgroundColor = System.Drawing.Color.DarkGray;
+            this.dgvLibros.BackgroundColor = System.Drawing.Color.White;
             this.dgvLibros.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(161)))), ((int)(((byte)(75)))));
@@ -118,7 +118,7 @@
             this.dgvLibros.EnableHeadersVisualStyles = false;
             this.dgvLibros.GridColor = System.Drawing.Color.Gainsboro;
             this.dgvLibros.Location = new System.Drawing.Point(60, 159);
-            this.dgvLibros.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvLibros.Margin = new System.Windows.Forms.Padding(4);
             this.dgvLibros.MultiSelect = false;
             this.dgvLibros.Name = "dgvLibros";
             this.dgvLibros.ReadOnly = true;
@@ -157,9 +157,11 @@
             this.btnEditarLibro.TabIndex = 4;
             this.btnEditarLibro.Text = "Editar Libro";
             this.btnEditarLibro.UseVisualStyleBackColor = false;
+            this.btnEditarLibro.Click += new System.EventHandler(this.btnEditarLibro_Click);
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.panelBusqueda);
             this.panel1.Controls.Add(this.dgvLibros);
@@ -174,11 +176,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(1511, 552);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmLibrosBuscar";
             this.Text = "Búsqueda de Libros";
             this.Load += new System.EventHandler(this.frmLibrosBuscar_Load);

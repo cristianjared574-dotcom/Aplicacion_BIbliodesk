@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -46,6 +47,28 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             CargarDatos(txtBuscar.Text);
+        }
+
+        private void btnAgregarAutor_Click(object sender, EventArgs e)
+        {
+            frmInicioBiblio inicioBiblio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
+
+            if (inicioBiblio != null)
+            {
+                frmAgregarAutor AgregarAutor = new frmAgregarAutor();
+                inicioBiblio.AbrirFormularioEnPanel(AgregarAutor);
+            }
+        }
+
+        private void btnEditarAutor_Click(object sender, EventArgs e)
+        {
+            frmInicioBiblio inicioBiblio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
+
+            if (inicioBiblio != null)
+            {
+                frmEditarAutor EditarAutor = new frmEditarAutor();
+                inicioBiblio.AbrirFormularioEnPanel(EditarAutor);
+            }
         }
     }
 }

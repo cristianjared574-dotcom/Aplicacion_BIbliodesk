@@ -63,7 +63,7 @@
             this.panelFondo.Name = "panelFondo";
             this.panelFondo.Size = new System.Drawing.Size(879, 751);
             this.panelFondo.TabIndex = 0;
-            this.panelFondo.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFondo_Paint);
+            
             // 
             // lblSubtitulo
             // 
@@ -74,7 +74,7 @@
             this.lblSubtitulo.Size = new System.Drawing.Size(415, 23);
             this.lblSubtitulo.TabIndex = 7;
             this.lblSubtitulo.Text = "Ingrese sus credenciales para acceder al sistema";
-            this.lblSubtitulo.Click += new System.EventHandler(this.lblSubtitulo_Click);
+            
             // 
             // lblTitulo
             // 
@@ -86,7 +86,7 @@
             this.lblTitulo.Size = new System.Drawing.Size(507, 53);
             this.lblTitulo.TabIndex = 6;
             this.lblTitulo.Text = "Bienvenido a Bibliodesk";
-            this.lblTitulo.Click += new System.EventHandler(this.lblTitulo_Click);
+            
             // 
             // pbLgo
             // 
@@ -97,7 +97,6 @@
             this.pbLgo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbLgo.TabIndex = 5;
             this.pbLgo.TabStop = false;
-            this.pbLgo.Click += new System.EventHandler(this.pbLgo_Click);
             // 
             // panelFormulario
             // 
@@ -117,7 +116,7 @@
             this.panelFormulario.Name = "panelFormulario";
             this.panelFormulario.Size = new System.Drawing.Size(557, 533);
             this.panelFormulario.TabIndex = 0;
-            this.panelFormulario.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFormulario_Paint);
+           
             // 
             // iconButton3
             // 
@@ -130,7 +129,7 @@
             this.iconButton3.Size = new System.Drawing.Size(40, 48);
             this.iconButton3.TabIndex = 16;
             this.iconButton3.UseVisualStyleBackColor = true;
-            this.iconButton3.Click += new System.EventHandler(this.iconButton3_Click);
+           
             // 
             // iconButton2
             // 
@@ -143,7 +142,7 @@
             this.iconButton2.Size = new System.Drawing.Size(40, 48);
             this.iconButton2.TabIndex = 15;
             this.iconButton2.UseVisualStyleBackColor = true;
-            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
+            
             // 
             // lblRol
             // 
@@ -154,7 +153,7 @@
             this.lblRol.Size = new System.Drawing.Size(39, 19);
             this.lblRol.TabIndex = 14;
             this.lblRol.Text = "Rol:";
-            this.lblRol.Click += new System.EventHandler(this.lblRol_Click);
+          
             // 
             // lblContrasena
             // 
@@ -165,7 +164,6 @@
             this.lblContrasena.Size = new System.Drawing.Size(108, 19);
             this.lblContrasena.TabIndex = 13;
             this.lblContrasena.Text = "Contraseña:";
-            this.lblContrasena.Click += new System.EventHandler(this.lblContrasena_Click);
             // 
             // lblUsuario
             // 
@@ -176,7 +174,7 @@
             this.lblUsuario.Size = new System.Drawing.Size(73, 19);
             this.lblUsuario.TabIndex = 12;
             this.lblUsuario.Text = "Usuario:";
-            this.lblUsuario.Click += new System.EventHandler(this.lblUsuario_Click);
+            
             // 
             // iconButton1
             // 
@@ -189,7 +187,7 @@
             this.iconButton1.Size = new System.Drawing.Size(40, 48);
             this.iconButton1.TabIndex = 11;
             this.iconButton1.UseVisualStyleBackColor = true;
-            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
+            
             // 
             // cboRol
             // 
@@ -198,7 +196,7 @@
             this.cboRol.Name = "cboRol";
             this.cboRol.Size = new System.Drawing.Size(443, 24);
             this.cboRol.TabIndex = 0;
-            this.cboRol.SelectedIndexChanged += new System.EventHandler(this.cboRol_SelectedIndexChanged);
+            
             // 
             // btnIniciarSesion
             // 
@@ -230,7 +228,7 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(443, 34);
             this.txtUsuario.TabIndex = 1;
-            this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
+            
             // 
             // btnLeerPantalla
             // 
@@ -267,7 +265,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bibliodesk";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.login_Load_1);
+            this.Load += new System.EventHandler(this.login_Load);
             this.panelFondo.ResumeLayout(false);
             this.panelFondo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLgo)).EndInit();

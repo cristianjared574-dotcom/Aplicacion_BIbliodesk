@@ -6,10 +6,12 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
 {
     public partial class categoria_biblio : Form
     {
-        // ✅ 1. AGREGA ESTA VARIABLE: guarda el ID si es edición (0 = nuevo)
+        private Conexion AccessData;
+
+        // 1. AGREGA ESTA VARIABLE: guarda el ID si es edición (0 = nuevo)
         private int _idCategoriaEditar = 0;
 
-        // 📌 CONSTRUCTOR PARA AGREGAR NUEVO (el que ya tenías)
+        // CONSTRUCTOR PARA AGREGAR NUEVO (el que ya tenías)
         public categoria_biblio()
         {
             InitializeComponent();
@@ -27,7 +29,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
             btnguardarcategoria.Text = "Guardar Categoría";
         }
 
-        // ✅ 2. AGREGA ESTE NUEVO CONSTRUCTOR: recibe datos para EDITAR
+        //  2. AGREGA ESTE NUEVO CONSTRUCTOR: recibe datos para EDITAR
         public categoria_biblio(int id, string nombre, string descripcion)
         {
             InitializeComponent();
@@ -58,7 +60,8 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
 
             try
             {
-                using (MySqlConnection conn = Conexion.getConection())
+                AccessData = new Conexion();
+                using (MySqlConnection conn = AccessData.getConection())
                 {
                     string sql;
 
@@ -91,8 +94,8 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
                 }
 
                 string mensaje = _idCategoriaEditar > 0
-                    ? "✅ Categoría actualizada correctamente"
-                    : "✅ Categoría guardada correctamente";
+                    ? "Categoría actualizada correctamente"
+                    : "Categoría guardada correctamente";
 
                 MessageBox.Show(mensaje, "Éxito",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -106,7 +109,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
             }
             catch (Exception ex)
             {
-                MessageBox.Show("❌ Error: " + ex.Message, "Error",
+                MessageBox.Show("Error: " + ex.Message, "Error",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

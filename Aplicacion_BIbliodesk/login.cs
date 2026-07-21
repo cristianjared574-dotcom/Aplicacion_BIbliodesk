@@ -16,6 +16,12 @@ namespace Aplicacion_BIbliodesk
 
         private Conexion AcessConnection;
 
+        private Color colorFondoOriginal;
+        private Color colorTextoOriginal;
+        private Color colorBotonOriginal;
+        private bool modoContrasteRojoActivo = false;
+
+
         private readonly SpeechSynthesizer voz = new SpeechSynthesizer();
         public static Empleado EmpleadoActual { get; private set; }
 
