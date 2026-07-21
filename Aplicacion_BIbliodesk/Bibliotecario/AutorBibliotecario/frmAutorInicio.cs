@@ -39,7 +39,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
-                dgvLibros.DataSource = dt;
+                dgvAutor.DataSource = dt;
             }
 
         }
