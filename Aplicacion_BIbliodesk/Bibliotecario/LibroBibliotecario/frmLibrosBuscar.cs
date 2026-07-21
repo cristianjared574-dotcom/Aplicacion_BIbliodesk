@@ -29,7 +29,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
 
             MySqlConnection conn = ConnectionData.getConection();
 
-            string query = "SELECT ID_LIBRO, TITULO, ISBN, ESTADO FROM LIBRO WHERE TITULO LIKE @criterio OR ISBN LIKE @criterio";
+            string query = "SELECT ID_LIBRO,ID_EDITORIAL,ID_CATEGORIA, TITULO, ISBN, ESTADO FROM LIBRO WHERE TITULO LIKE @criterio OR ISBN LIKE @criterio";
 
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
@@ -63,12 +63,32 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
 
         private void btnEditarLibro_Click(object sender, EventArgs e)
         {
-            frmInicioBiblio inicioBiblio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
-
-            if (inicioBiblio != null)
+            if (dgvLibros.SelectedRows.Count > 0)
             {
-                frmLibrosEditar EditarLibro = new frmLibrosEditar();
-                inicioBiblio.AbrirFormularioEnPanel(EditarLibro);
+                DataGridViewRow fila = dgvLibros.SelectedRows[0];
+
+
+                string id = fila.Cells["ID_LIBRO"].Value.ToString();
+                string idEd = fila.Cells["ID_EDITORIAL"].Value.ToString();
+                string idCat = fila.Cells["ID_CATEGORIA"].Value.ToString();
+                string isbn = fila.Cells["ISBN"].Value.ToString();
+                string titulo = fila.Cells["TITULO"].Value.ToString();
+                string estado = fila.Cells["ESTADO"].Value.ToString();
+
+
+                frmLibrosEditar formEdicion = new frmLibrosEditar(id, idEd, idCat, isbn, titulo, estado);
+
+                frmInicioBiblio inicioBiblio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
+
+                if (inicioBiblio != null)
+                {
+
+                    inicioBiblio.AbrirFormularioEnPanel(formEdicion);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona una fila");
             }
         }
     }
