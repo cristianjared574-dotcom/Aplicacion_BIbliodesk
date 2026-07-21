@@ -10,9 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Aplicacion_BIbliodesk.Bibliotecario.Prestamo;
 using Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario;
 using Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario;
+using System.Speech.Synthesis;
 
 namespace Aplicacion_BIbliodesk.Bibliotecario
 {
@@ -50,24 +50,17 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
 
             //  LLENA TODO EL PANEL para que se vea completo y bien alineado
             formulario.Dock = DockStyle.Fill;
-           
+            formulario.BackColor = Color.FromArgb(243, 233, 210);
 
-            pnlContenido.Controls.Clear();
             pnlContenido.Controls.Add(formulario);
             formulario.Show();
         }
 
         //  Botón que abre categorías DENTRO del panel principal
-        private void btnCategorias_Click(object sender, EventArgs e)
-        {
-            voz.SpeakAsync("Módulo de Categorías"); //LEE EL TEXTO DEL BOTÓN
-            seleccionarModulo(btnCategorias);
-            //  Abre categorias_biblo SIN ventana externa, dentro del panel
-            AbrirFormularioEnPanel(new categorias_biblo());
-        }
+        
         private void btnLibros_Click(object sender, EventArgs e)
         {
-            //isksjjs
+            
             seleccionarModulo(btnLibros);
             AbrirFormularioEnPanel(new frmLibrosBuscar());
         }
@@ -78,11 +71,6 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
             AbrirFormularioEnPanel(new frmAutorInicio());
         }
 
-        private void btnCategorias_Click(object sender, EventArgs e)
-        {
-            seleccionarModulo(btnCategorias);
-
-        }
 
         private void btnEjemplares_Click(object sender, EventArgs e)
         {
@@ -106,6 +94,15 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
         private void pnlContenido_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        
+        private void btnCategoria_Click(object sender, EventArgs e)
+        {
+            voz.SpeakAsync("Módulo de Categorías"); //LEE EL TEXTO DEL BOTÓN
+            seleccionarModulo(btnCategoria);
+            //  Abre categorias_biblo SIN ventana externa, dentro del panel
+            AbrirFormularioEnPanel(new categorias_biblo());
         }
     }
 

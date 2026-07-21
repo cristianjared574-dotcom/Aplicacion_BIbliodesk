@@ -52,7 +52,24 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
 
         private void btnAgregarLibro_Click(object sender, EventArgs e)
         {
+            frmInicioBiblio inicioBiblio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
 
+            if(inicioBiblio != null )
+            {
+                frmLibrosAgregar AgregarLibro = new frmLibrosAgregar();
+                inicioBiblio.AbrirFormularioEnPanel(AgregarLibro);
+            }
+        }
+
+        private void btnEditarLibro_Click(object sender, EventArgs e)
+        {
+            frmInicioBiblio inicioBiblio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
+
+            if (inicioBiblio != null)
+            {
+                frmLibrosEditar EditarLibro = new frmLibrosEditar();
+                inicioBiblio.AbrirFormularioEnPanel(EditarLibro);
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario;
+using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -7,6 +8,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
 {
     public partial class categorias_biblo : Form
     {
+        private Conexion AccesoConnection;
         public categorias_biblo()
         {
             InitializeComponent();
@@ -32,7 +34,8 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
         {
             try
             {
-                using (MySqlConnection conn = Conexion.getConection())
+                AccesoConnection = new Conexion();
+                using (MySqlConnection conn = AccesoConnection.getConection())
                 {
                     string sql = @"SELECT 
                                         ID_CATEGORIA AS 'ID Categoría',
@@ -134,5 +137,9 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
             }
         }
         private void dgvCategorias_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+
+        
+
+        
     }
 }

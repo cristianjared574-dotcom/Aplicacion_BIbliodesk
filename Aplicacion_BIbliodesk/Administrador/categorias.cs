@@ -11,6 +11,7 @@ namespace Aplicacion_BIbliodesk
 {
     public partial class categorias : Form
     {
+        private Conexion AccessData;
         private readonly SpeechSynthesizer voz = new SpeechSynthesizer();
 
         public categorias()
@@ -24,7 +25,8 @@ namespace Aplicacion_BIbliodesk
         {
             try
             {
-                using (MySqlConnection conn = Conexion.getConection())
+                AccessData = new Conexion();
+                using (MySqlConnection conn = AccessData.getConection())
                 {
                     string sql = @"SELECT ID_CATEGORIA AS 'ID Categoría',
                                           NOMBRE_CATEGORIA AS 'Categoría',

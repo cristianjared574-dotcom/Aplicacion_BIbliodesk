@@ -33,7 +33,7 @@
             this.btnCerrarsesion = new FontAwesome.Sharp.IconButton();
             this.btnPrestamos = new FontAwesome.Sharp.IconButton();
             this.btnEjemplares = new FontAwesome.Sharp.IconButton();
-            this.btnCategorias = new FontAwesome.Sharp.IconButton();
+            this.btnCategoria = new FontAwesome.Sharp.IconButton();
             this.btnAutores = new FontAwesome.Sharp.IconButton();
             this.btnLibros = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -55,7 +55,7 @@
             this.panel1.Controls.Add(this.btnCerrarsesion);
             this.panel1.Controls.Add(this.btnPrestamos);
             this.panel1.Controls.Add(this.btnEjemplares);
-            this.panel1.Controls.Add(this.btnCategorias);
+            this.panel1.Controls.Add(this.btnCategoria);
             this.panel1.Controls.Add(this.btnAutores);
             this.panel1.Controls.Add(this.btnLibros);
             this.panel1.Controls.Add(this.panel3);
@@ -128,26 +128,26 @@
             this.btnEjemplares.UseVisualStyleBackColor = true;
             this.btnEjemplares.Click += new System.EventHandler(this.btnEjemplares_Click);
             // 
-            // btnCategorias
+            // btnCategoria
             // 
-            this.btnCategorias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnCategorias.FlatAppearance.BorderSize = 0;
-            this.btnCategorias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCategorias.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCategorias.ForeColor = System.Drawing.Color.White;
-            this.btnCategorias.IconChar = FontAwesome.Sharp.IconChar.Tags;
-            this.btnCategorias.IconColor = System.Drawing.Color.White;
-            this.btnCategorias.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnCategorias.IconSize = 40;
-            this.btnCategorias.Location = new System.Drawing.Point(267, 3);
-            this.btnCategorias.Name = "btnCategorias";
-            this.btnCategorias.Size = new System.Drawing.Size(125, 109);
-            this.btnCategorias.TabIndex = 4;
-            this.btnCategorias.Text = "Categorias";
-            this.btnCategorias.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCategorias.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnCategorias.UseVisualStyleBackColor = true;
-            this.btnCategorias.Click += new System.EventHandler(this.btnCategorias_Click);
+            this.btnCategoria.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnCategoria.FlatAppearance.BorderSize = 0;
+            this.btnCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCategoria.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCategoria.ForeColor = System.Drawing.Color.White;
+            this.btnCategoria.IconChar = FontAwesome.Sharp.IconChar.Tags;
+            this.btnCategoria.IconColor = System.Drawing.Color.White;
+            this.btnCategoria.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnCategoria.IconSize = 40;
+            this.btnCategoria.Location = new System.Drawing.Point(267, 3);
+            this.btnCategoria.Name = "btnCategoria";
+            this.btnCategoria.Size = new System.Drawing.Size(125, 109);
+            this.btnCategoria.TabIndex = 4;
+            this.btnCategoria.Text = "Categorias";
+            this.btnCategoria.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCategoria.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCategoria.UseVisualStyleBackColor = true;
+            this.btnCategoria.Click += new System.EventHandler(this.btnCategoria_Click);
             // 
             // btnAutores
             // 
@@ -301,7 +301,7 @@
         private FontAwesome.Sharp.IconButton btnCerrarsesion;
         private FontAwesome.Sharp.IconButton btnPrestamos;
         private FontAwesome.Sharp.IconButton btnEjemplares;
-        private FontAwesome.Sharp.IconButton btnCategorias;
+        private FontAwesome.Sharp.IconButton btnCategoria;
         private FontAwesome.Sharp.IconButton btnAutores;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private System.Windows.Forms.Label label2;

@@ -9,6 +9,8 @@ namespace Aplicacion_BIbliodesk
 {
     public partial class cambiar_estado : Form
     {
+        private Conexion AccesoDatos;
+
         private readonly SpeechSynthesizer voz = new SpeechSynthesizer();
 
         public cambiar_estado()
@@ -49,7 +51,8 @@ namespace Aplicacion_BIbliodesk
 
             try
             {
-                using (MySqlConnection conn = Conexion.getConection())
+                AccesoDatos = new Conexion();
+                using (MySqlConnection conn = AccesoDatos.getConection())
                 {
                     string sql = "UPDATE CATEGORIA SET ESTADO = @NuevoEstado WHERE NOMBRE_CATEGORIA = @NombreCat";
 
