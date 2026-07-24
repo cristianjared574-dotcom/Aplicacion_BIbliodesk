@@ -23,7 +23,7 @@ namespace Aplicacion_BIbliodesk
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmInicioAdmin());
+            Application.Run(new frmInicioBiblio ());
         }
     }
 }

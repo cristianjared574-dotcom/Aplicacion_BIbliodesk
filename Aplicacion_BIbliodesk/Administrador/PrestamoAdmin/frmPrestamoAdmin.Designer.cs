@@ -28,22 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtBuscarPrestamo = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnHistorialPrestamo = new System.Windows.Forms.Button();
-            this.dgvPrestamoAdmin = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dgvPrestamoAdmin = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPrestamoAdmin)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrestamoAdmin)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.txtBuscarPrestamo);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
@@ -56,6 +60,7 @@
             // 
             // txtBuscarPrestamo
             // 
+            this.txtBuscarPrestamo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscarPrestamo.Location = new System.Drawing.Point(187, 20);
             this.txtBuscarPrestamo.Name = "txtBuscarPrestamo";
             this.txtBuscarPrestamo.Size = new System.Drawing.Size(487, 22);
@@ -99,7 +104,7 @@
             // 
             this.btnHistorialPrestamo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
             this.btnHistorialPrestamo.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHistorialPrestamo.ForeColor = System.Drawing.Color.White;
+            this.btnHistorialPrestamo.ForeColor = System.Drawing.Color.Black;
             this.btnHistorialPrestamo.Location = new System.Drawing.Point(853, 101);
             this.btnHistorialPrestamo.Name = "btnHistorialPrestamo";
             this.btnHistorialPrestamo.Size = new System.Drawing.Size(234, 48);
@@ -108,27 +113,59 @@
             this.btnHistorialPrestamo.UseVisualStyleBackColor = false;
             this.btnHistorialPrestamo.Click += new System.EventHandler(this.btnHistorialPrestamo_Click);
             // 
-            // dgvPrestamoAdmin
-            // 
-            this.dgvPrestamoAdmin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPrestamoAdmin.Location = new System.Drawing.Point(59, 167);
-            this.dgvPrestamoAdmin.Name = "dgvPrestamoAdmin";
-            this.dgvPrestamoAdmin.RowHeadersWidth = 51;
-            this.dgvPrestamoAdmin.RowTemplate.Height = 24;
-            this.dgvPrestamoAdmin.Size = new System.Drawing.Size(1028, 279);
-            this.dgvPrestamoAdmin.TabIndex = 3;
-            this.dgvPrestamoAdmin.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.dgvPrestamoAdmin);
+            this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.btnHistorialPrestamo);
             this.panel2.Location = new System.Drawing.Point(183, 12);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1146, 472);
             this.panel2.TabIndex = 4;
+            // 
+            // dgvPrestamoAdmin
+            // 
+            this.dgvPrestamoAdmin.AllowUserToAddRows = false;
+            this.dgvPrestamoAdmin.AllowUserToDeleteRows = false;
+            this.dgvPrestamoAdmin.AllowUserToResizeColumns = false;
+            this.dgvPrestamoAdmin.AllowUserToResizeRows = false;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.dgvPrestamoAdmin.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvPrestamoAdmin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPrestamoAdmin.BackgroundColor = System.Drawing.Color.White;
+            this.dgvPrestamoAdmin.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(161)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPrestamoAdmin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvPrestamoAdmin.ColumnHeadersHeight = 45;
+            this.dgvPrestamoAdmin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(110)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPrestamoAdmin.DefaultCellStyle = dataGridViewCellStyle9;
+            this.dgvPrestamoAdmin.EnableHeadersVisualStyles = false;
+            this.dgvPrestamoAdmin.GridColor = System.Drawing.Color.Gainsboro;
+            this.dgvPrestamoAdmin.Location = new System.Drawing.Point(59, 156);
+            this.dgvPrestamoAdmin.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvPrestamoAdmin.MultiSelect = false;
+            this.dgvPrestamoAdmin.Name = "dgvPrestamoAdmin";
+            this.dgvPrestamoAdmin.ReadOnly = true;
+            this.dgvPrestamoAdmin.RowHeadersVisible = false;
+            this.dgvPrestamoAdmin.RowHeadersWidth = 51;
+            this.dgvPrestamoAdmin.RowTemplate.Height = 34;
+            this.dgvPrestamoAdmin.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPrestamoAdmin.Size = new System.Drawing.Size(1028, 293);
+            this.dgvPrestamoAdmin.TabIndex = 9;
             // 
             // frmPrestamoAdmin
             // 
@@ -141,8 +178,8 @@
             this.Load += new System.EventHandler(this.frmPrestamoAdmin_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPrestamoAdmin)).EndInit();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrestamoAdmin)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -154,8 +191,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dgvPrestamoAdmin;
         private System.Windows.Forms.Button btnHistorialPrestamo;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DataGridView dgvPrestamoAdmin;
     }
 }
