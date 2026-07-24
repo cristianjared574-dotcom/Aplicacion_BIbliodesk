@@ -55,13 +55,14 @@ namespace Aplicacion_BIbliodesk.Administrador.AutorAdmin
             this.grpAgregAutor.Controls.Add(this.panel1);
             this.grpAgregAutor.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpAgregAutor.Location = new System.Drawing.Point(357, 64);
-            this.grpAgregAutor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpAgregAutor.Margin = new System.Windows.Forms.Padding(4);
             this.grpAgregAutor.Name = "grpAgregAutor";
-            this.grpAgregAutor.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpAgregAutor.Padding = new System.Windows.Forms.Padding(4);
             this.grpAgregAutor.Size = new System.Drawing.Size(769, 393);
             this.grpAgregAutor.TabIndex = 0;
             this.grpAgregAutor.TabStop = false;
             this.grpAgregAutor.Text = "Cambiar Estado";
+            this.grpAgregAutor.Enter += new System.EventHandler(this.grpAgregAutor_Enter);
             // 
             // btnCancelar
             // 
@@ -71,12 +72,13 @@ namespace Aplicacion_BIbliodesk.Administrador.AutorAdmin
             this.btnCancelar.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
             this.btnCancelar.Location = new System.Drawing.Point(454, 321);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(190, 48);
             this.btnCancelar.TabIndex = 17;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -86,7 +88,7 @@ namespace Aplicacion_BIbliodesk.Administrador.AutorAdmin
             this.btnGuardar.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
             this.btnGuardar.Location = new System.Drawing.Point(130, 321);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(190, 48);
             this.btnGuardar.TabIndex = 16;
@@ -102,7 +104,7 @@ namespace Aplicacion_BIbliodesk.Administrador.AutorAdmin
             this.panel1.Controls.Add(this.lblEstado);
             this.panel1.Controls.Add(this.lblAutor);
             this.panel1.Location = new System.Drawing.Point(77, 40);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(618, 250);
             this.panel1.TabIndex = 17;
@@ -112,7 +114,7 @@ namespace Aplicacion_BIbliodesk.Administrador.AutorAdmin
             this.cmbAutor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAutor.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbAutor.Location = new System.Drawing.Point(255, 41);
-            this.cmbAutor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbAutor.Margin = new System.Windows.Forms.Padding(4);
             this.cmbAutor.Name = "cmbAutor";
             this.cmbAutor.Size = new System.Drawing.Size(322, 31);
             this.cmbAutor.TabIndex = 21;
@@ -122,7 +124,7 @@ namespace Aplicacion_BIbliodesk.Administrador.AutorAdmin
             this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstado.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbEstado.Location = new System.Drawing.Point(255, 138);
-            this.cmbEstado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbEstado.Margin = new System.Windows.Forms.Padding(4);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(240, 31);
             this.cmbEstado.TabIndex = 20;
@@ -157,7 +159,7 @@ namespace Aplicacion_BIbliodesk.Administrador.AutorAdmin
             this.ClientSize = new System.Drawing.Size(1511, 496);
             this.Controls.Add(this.grpAgregAutor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frmCambiarEstadoAutor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

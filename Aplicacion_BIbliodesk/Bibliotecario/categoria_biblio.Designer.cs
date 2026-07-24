@@ -80,6 +80,7 @@
             this.btncancelar.TabIndex = 3;
             this.btncancelar.Text = "Cancelar";
             this.btncancelar.UseVisualStyleBackColor = false;
+            this.btncancelar.Click += new System.EventHandler(this.btncancelar_Click_1);
             // 
             // btnguardarcategoria
             // 
@@ -112,6 +113,7 @@
             // 
             // panel1
             // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.txtdescripcion);
             this.panel1.Controls.Add(this.txtnombre);
             this.panel1.Controls.Add(this.label2);

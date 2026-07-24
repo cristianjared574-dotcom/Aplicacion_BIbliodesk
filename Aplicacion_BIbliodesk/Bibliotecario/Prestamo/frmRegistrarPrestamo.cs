@@ -62,12 +62,12 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
                 }
 
                 //creamos la consulta buscando al usuario
-                string consulta = @"SELECT ID_USUARIO, NOMBRE, APELLIDOP, APELLIDOM, CORREO, TELEFONO FROM USUARIO WHERE MATRICULA_USUARIO = @matricula AND ESTADO = 'ACTIVO'";
+                string consulta = @"SELECT ID_USUARIO, NOMBRE, APELLIDOP, APELLIDOM, CORREO, TELEFONO FROM USUARIO WHERE ID_USUARIO = @idUsuario AND ESTADO = 'ACTIVO'";
 
                 //creamos un adaptador para almacenar los resultados de la consulta
                 MySqlCommand comando = new MySqlCommand(consulta, conexionDB);
                 //Valor de Id
-                comando.Parameters.AddWithValue("@matricula", txtMatriculaUsuario.Text.Trim());
+                comando.Parameters.AddWithValue("@idUsuario", txtMatriculaUsuario.Text.Trim());
 
                 //lector de datos
                 MySqlDataReader Adapter = comando.ExecuteReader();
@@ -103,6 +103,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
 
         private void picBuscarLibro_Click(object sender, EventArgs e)
         {
+          
             if (string.IsNullOrWhiteSpace(txtClaveEjemplar.Text))
             {
                 MessageBox.Show("Ingrese la clave del ejemplar.");
@@ -124,7 +125,6 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
                 // Consulta para buscar el libro
                 string consulta = @"SELECT 
                         E.ID_EJEMPLAR,
-                        E.CLAVE_EJEMPLAR,
                         E.DISPONIBLE,
                         L.TITULO,
                         CONCAT(A.NOMBRE, ' ', A.APELLIDOP, ' ', A.APELLIDOM) AS AUTOR
@@ -132,13 +132,13 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
                     INNER JOIN LIBRO L ON E.ID_LIBRO = L.ID_LIBRO
                     INNER JOIN LIBRO_AUTOR LA ON L.ID_LIBRO = LA.ID_LIBRO
                     INNER JOIN AUTOR A ON LA.ID_AUTOR = A.ID_AUTOR
-                    WHERE E.CLAVE_EJEMPLAR = @claveEjemplar AND L.ESTADO = 'ACTIVO';";
+                    WHERE E.ID_EJEMPLAR = @idEjemplar AND L.ESTADO = 'ACTIVO';";
 
                 // Crear el comando
                 MySqlCommand comando = new MySqlCommand(consulta, conexionDB);
 
                 // Enviar el título escrito
-                comando.Parameters.AddWithValue("@claveEjemplar", txtClaveEjemplar.Text.Trim());
+                comando.Parameters.AddWithValue("@idEjemplar", txtClaveEjemplar.Text.Trim());
 
                 // lector de datos
                 MySqlDataReader Adapter = comando.ExecuteReader();
@@ -152,7 +152,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
                         //guardae el ID del ejemplar disponible
                         idEjemplarSeleccionado = Convert.ToInt32(Adapter["ID_EJEMPLAR"]);
 
-                        lblClaveEjemplar.Text = "Clave del ejemplar: " + Adapter["CLAVE_EJEMPLAR"].ToString();
+                        lblClaveEjemplar.Text = "Clave del ejemplar: " + Adapter["ID_EJEMPLAR"].ToString();
                         lblNombreLibro.Text = "Libro: " + Adapter["TITULO"].ToString();
                         lblAutorLibro.Text = "Autor: " + Adapter["AUTOR"].ToString();
                     }
@@ -251,7 +251,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
                     //Obtener el ID generado por MYSQL
                     int idPrestamo = Convert.ToInt32(comando.LastInsertedId);
 
-                    //generar el folio del prestamo (es decir la clave)
+                    /* //generar el folio del prestamo (es decir la clave)
                     string folioPrestamo = "PRE" + idPrestamo.ToString("D3");
 
                     //Guarda el folio
@@ -265,7 +265,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
 
                     comandoFolio.Parameters.AddWithValue("@idPrestamo", idPrestamo);
 
-                    comandoFolio.ExecuteNonQuery();
+                    comandoFolio.ExecuteNonQuery(); */
 
                     //Cambiar el estado del ejemplar
                     string ConsultaEjemplar = @"UPDATE EJEMPLAR 
@@ -278,7 +278,8 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
 
                     comandoEjemplar.ExecuteNonQuery();
 
-                    MessageBox.Show("Préstamo registrado correctamente.\n" + "Folio: " + folioPrestamo, "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Préstamo registrado correctamente.\n" + "Folio: " + folioPrestamo, "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Préstamo registrado correctamente.", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information); 
                     LimpiarFormularioPrestamo();
                 }
                 else

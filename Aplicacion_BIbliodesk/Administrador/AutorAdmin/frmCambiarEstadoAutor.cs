@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Aplicacion_BIbliodesk.Bibliotecario;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -71,6 +72,22 @@ namespace Aplicacion_BIbliodesk.Administrador.AutorAdmin
             }
             catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
 
+        }
+
+        private void grpAgregAutor_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            frmAutorInicio inicioAutorAdmin = new frmAutorInicio();
+            frmInicioAdmin inicioAdmin = Application.OpenForms["frmInicioAdmin"] as frmInicioAdmin;
+
+            if (inicioAdmin != null)
+            {
+                inicioAdmin.AbrirFormularioEnPanelAdmin(inicioAutorAdmin);
+            }
         }
     }
 }

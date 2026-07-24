@@ -116,6 +116,14 @@ namespace Aplicacion_BIbliodesk.Administrador.LibroAdmin
                    formInicio.AbrirFormularioEnPanel(new frmLibrosBuscar());
                   }
             */
+
+            frmLibrosBuscar inicioLibrosAdmin = new frmLibrosBuscar();
+            frmInicioAdmin inicioAdmin = Application.OpenForms["frmInicioAdmin"] as frmInicioAdmin;
+
+            if (inicioAdmin != null)
+            {
+                inicioAdmin.AbrirFormularioEnPanelAdmin(inicioLibrosAdmin);
+            }
         }
     }
 }

@@ -118,6 +118,17 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
                 
             }
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            frmLibrosBuscar formBusqueda = new frmLibrosBuscar();
+            frmInicioBiblio inicioBiblio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
+
+            if (inicioBiblio != null)
+            {
+                inicioBiblio.AbrirFormularioEnPanel(formBusqueda);
+            }
+        }
     }
 
 }

@@ -85,7 +85,7 @@
             // 
             // btnCambiarEstado
             // 
-            this.btnCambiarEstado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            this.btnCambiarEstado.BackColor = System.Drawing.Color.Maroon;
             this.btnCambiarEstado.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold);
             this.btnCambiarEstado.ForeColor = System.Drawing.SystemColors.Control;
             this.btnCambiarEstado.Location = new System.Drawing.Point(865, 100);

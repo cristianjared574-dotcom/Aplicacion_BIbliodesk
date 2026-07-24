@@ -153,17 +153,29 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
                 ventanaInicio.AbrirFormularioEnPanel(new categorias_biblo());
             }*/
 
-            RegresarALista();
+             
         }
 
         private void categoria_biblio_Load(object sender, EventArgs e)
         {
+
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             //hdmje
+        }
+
+        private void btncancelar_Click_1(object sender, EventArgs e)
+        {
+            categorias_biblo inicioCategorias = new categorias_biblo();
+            frmInicioBiblio inicioBiblio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
+
+            if (inicioBiblio != null)
+            {
+                inicioBiblio.AbrirFormularioEnPanel(inicioCategorias);
+            }
         }
     }
 }

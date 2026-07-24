@@ -10,30 +10,54 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
 
         // Variables declaradas
         private bool esModoEdicion = false;
-        private string idEjemplarRecibido = "";
-        private string idLibroRecibido = "";
+        private int idEjemplarRecibido = 0;
+        private int idLibroRecibido = 0;
+
         private string localizacionRecibida = "";
+        private string estadoFisicoRecibido = "";
+        private string disponibleRecibido = "";
+        private int idEjemplarEditar = 0;
 
         //agregar un ejemplar sin parametros
         public frmEjemplarBiblio()
         {
             InitializeComponent();
             esModoEdicion = false;
+            esModoEdicion = false;
+
+            txtIdEjemplar.Text = "Se genera automáticamente";
+            txtIdEjemplar.ReadOnly = true;
+
+            txtIdLibro.Clear();
+            txtLocalizacion.Clear();
+            
+            btnGuardarEjemplar.Text = "Guardar";
         }
 
 
-        // constructor para editar 
+        
 
+        // Constructor para editar
         public frmEjemplarBiblio(
-    string claveEjemplar,
-    string claveLibro,
-    string localizacion)
+            int idEjemplar,
+            int idLibro,
+            string localizacion,
+            string estadoFisico,
+            string disponible)
         {
             InitializeComponent();
+
             esModoEdicion = true;
-            idEjemplarRecibido = claveEjemplar;
-            idLibroRecibido = claveLibro;
-            localizacionRecibida = localizacion;
+            idEjemplarEditar = idEjemplar;
+
+            // Llenar directamente las cajas
+            txtIdEjemplar.Text = idEjemplar.ToString();
+            txtIdLibro.Text = idLibro.ToString();
+            txtLocalizacion.Text = localizacion;
+           
+            txtIdEjemplar.ReadOnly = true;
+
+            btnGuardarEjemplar.Text = "Actualizar";
         }
 
 
@@ -42,11 +66,12 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
 
         private void frmEjemplarBiblio_Load(object sender, EventArgs e)
         {
-            if (esModoEdicion)
+
+            /*if (esModoEdicion)
             {
                 // Muestra los datos seleccionados y bloquea la llave primaria
-                txtIdEjemplar.Text = idEjemplarRecibido;
-                txtIdLibro.Text = idLibroRecibido;
+                txtIdEjemplar.Text = idEjemplarRecibido.ToString();
+                txtIdLibro.Text = idLibroRecibido.ToString();
                 txtLocalizacion.Text = localizacionRecibida;
 
                 txtIdEjemplar.ReadOnly = true;
@@ -64,7 +89,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
 
                 btnGuardarEjemplar.Text = "Guardar";
                 this.Text = "Nuevo Ejemplar";
-            }
+            }*/
         }
 
         //Evento del boton guardar
@@ -101,15 +126,15 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
                 SET ID_LIBRO =
                     (SELECT ID_LIBRO
                      FROM LIBRO
-                     WHERE CLAVE_LIBRO = @claveLibro),
+                     WHERE ID_LIBRO = @idLibro),
                     LOCALIZACION = @localizacion
-                WHERE CLAVE_EJEMPLAR = @claveEjemplar;";
+                WHERE ID_EJEMPLAR = @idEjemplar;";
 
                     MySqlCommand cmdActualizar =
                         new MySqlCommand(queryActualizar, con);
 
                     cmdActualizar.Parameters.AddWithValue(
-                        "@claveLibro",
+                        "@idLibro",
                         txtIdLibro.Text.Trim());
 
                     cmdActualizar.Parameters.AddWithValue(
@@ -117,7 +142,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
                         txtLocalizacion.Text.Trim());
 
                     cmdActualizar.Parameters.AddWithValue(
-                        "@claveEjemplar",
+                        "@idEjemplar",
                         txtIdEjemplar.Text.Trim());
 
                     int filasAfectadas =
@@ -157,7 +182,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
                 (
                     (SELECT ID_LIBRO
                      FROM LIBRO
-                     WHERE CLAVE_LIBRO = @claveLibro),
+                     WHERE ID_LIBRO = @idLibro),
                     @localizacion,
                     'BUENO',
                     'DISPONIBLE'
@@ -167,7 +192,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
                         new MySqlCommand(queryInsertar, con);
 
                     cmdInsertar.Parameters.AddWithValue(
-                        "@claveLibro",
+                        "@idLibro",
                         txtIdLibro.Text.Trim());
 
                     cmdInsertar.Parameters.AddWithValue(
@@ -180,15 +205,15 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
                     if (filasAfectadas > 0)
                     {
                         // Obtener el ID automático generado por MySQL
-                        int idEjemplarGenerado =
-                            Convert.ToInt32(cmdInsertar.LastInsertedId);
+                        //int idEjemplarGenerado =
+                        // Convert.ToInt32(cmdInsertar.LastInsertedId);
 
                         // Crear la clave: EJE001, EJE002...
-                        string claveEjemplarGenerada =
-                            "EJE" + idEjemplarGenerado.ToString("D3");
+                        //string claveEjemplarGenerada =
+                        //"EJE" + idEjemplarGenerado.ToString("D3");
 
                         // Guardar la clave generada
-                        string queryClave = @"
+                        /*string queryClave = @"
                     UPDATE EJEMPLAR
                     SET CLAVE_EJEMPLAR = @claveEjemplar
                     WHERE ID_EJEMPLAR = @idEjemplar;";
@@ -209,6 +234,11 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
                         MessageBox.Show(
                             "Ejemplar registrado con éxito.\n" +
                             "Clave generada: " + claveEjemplarGenerada,
+                            "Éxito",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);*/
+                        MessageBox.Show(
+                            "Ejemplar registrado con éxito.",
                             "Éxito",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
@@ -235,6 +265,13 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
         //Evento del boton cancelar
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            frmInicioBiblio inicioBiblio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
+
+            if(inicioBiblio != null)
+            {
+                frmInicioEjemplaresBiblio inicioEjemplar = new frmInicioEjemplaresBiblio();
+                inicioBiblio.AbrirFormularioEnPanel(inicioEjemplar);
+            }
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }

@@ -9,6 +9,7 @@ namespace Aplicacion_BIbliodesk
     
     public partial class frmInicioEjemplaresBiblio : Form
     {
+
         private Conexion ConexionData;
         public frmInicioEjemplaresBiblio()
         {
@@ -31,9 +32,9 @@ namespace Aplicacion_BIbliodesk
             {
                 string consulta = @"
                     SELECT
+                        
                         E.ID_EJEMPLAR,
-                        E.CLAVE_EJEMPLAR AS `ID Ejemplar`,
-                        L.CLAVE_LIBRO AS `ID Libro`,
+                        L.ID_LIBRO,
                         E.LOCALIZACION AS `Localización`,
                         E.ESTADO_FISICO AS `Estado`,
                         E.DISPONIBLE AS `Disponible`
@@ -52,7 +53,7 @@ namespace Aplicacion_BIbliodesk
                 dgvEjemplares.DataSource = tablaEjemplares;
 
                 // Ocultar el ID interno real
-                dgvEjemplares.Columns["ID_EJEMPLAR"].Visible = false;
+                //dgvEjemplares.Columns["ID_EJEMPLAR"].Visible = false;
 
             }
 
@@ -88,14 +89,21 @@ namespace Aplicacion_BIbliodesk
                 return;
             }
 
-            string claveEjemplar =
-                dgvEjemplares.CurrentRow.Cells["ID Ejemplar"].Value.ToString();
 
-            string claveLibro =
-                dgvEjemplares.CurrentRow.Cells["ID Libro"].Value.ToString();
+            int idEjemplar = Convert.ToInt32(
+        dgvEjemplares.CurrentRow.Cells["ID_EJEMPLAR"].Value);
+
+            int idLibro = Convert.ToInt32(
+                dgvEjemplares.CurrentRow.Cells["ID_LIBRO"].Value);
 
             string localizacion =
                 dgvEjemplares.CurrentRow.Cells["Localización"].Value.ToString();
+
+            string estadoFisico =
+                dgvEjemplares.CurrentRow.Cells["Estado"].Value.ToString();
+
+            string disponible =
+                dgvEjemplares.CurrentRow.Cells["Disponible"].Value.ToString();
 
             frmInicioBiblio inicioBiblio =
                 Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
@@ -104,9 +112,9 @@ namespace Aplicacion_BIbliodesk
             {
                 frmEjemplarBiblio frmEditar =
                     new frmEjemplarBiblio(
-                        claveEjemplar,
-                        claveLibro,
-                        localizacion);
+                        idEjemplar,
+                        idLibro,
+                        localizacion, estadoFisico, disponible);
 
                 inicioBiblio.AbrirFormularioEnPanel(frmEditar);
             }
@@ -123,17 +131,17 @@ namespace Aplicacion_BIbliodesk
 
                 string consulta = @"
                     SELECT
-                        E.ID_EJEMPLAR,
-                        E.CLAVE_EJEMPLAR AS `ID Ejemplar`,
-                        L.CLAVE_LIBRO AS `ID Libro`,
+                        
+                        E.ID_EJEMPLAR AS `ID Ejemplar`,
+                        L.ID_LIBRO AS `ID Libro`,
                         E.LOCALIZACION AS `Localización`,
                         E.ESTADO_FISICO AS `Estado`,
                         E.DISPONIBLE AS `Disponible`
                     FROM EJEMPLAR E
                     INNER JOIN LIBRO L
                         ON E.ID_LIBRO = L.ID_LIBRO
-                    WHERE E.CLAVE_EJEMPLAR LIKE @busqueda
-                       OR L.CLAVE_LIBRO LIKE @busqueda
+                    WHERE E.ID_EJEMPLAR LIKE @busqueda
+                       OR L.ID_LIBRO LIKE @busqueda
                        OR E.LOCALIZACION LIKE @busqueda
                        OR E.ESTADO_FISICO LIKE @busqueda
                        OR E.DISPONIBLE LIKE @busqueda
@@ -150,7 +158,7 @@ namespace Aplicacion_BIbliodesk
 
                 dgvEjemplares.DataSource = tablaEjemplares;
 
-                dgvEjemplares.Columns["ID_EJEMPLAR"].Visible = false;
+                //dgvEjemplares.Columns["ID_EJEMPLAR"].Visible = false;
             }
         }
     }

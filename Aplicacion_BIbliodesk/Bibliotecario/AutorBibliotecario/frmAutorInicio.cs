@@ -93,7 +93,6 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
                     inicioBiblio.AbrirFormularioEnPanel(formEdicion);
                 }
                 else
-
                 {
 
                     MessageBox.Show("Por favor, selecciona una fila");

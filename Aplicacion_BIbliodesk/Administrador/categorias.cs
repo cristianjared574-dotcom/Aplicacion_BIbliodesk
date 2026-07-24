@@ -1,4 +1,8 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Aplicacion_BIbliodesk.Administrador;
+using Aplicacion_BIbliodesk.Administrador.AutorAdmin;
+using Aplicacion_BIbliodesk.Bibliotecario;
+using Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario;
+using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 using System.Drawing;
@@ -64,52 +68,67 @@ namespace Aplicacion_BIbliodesk
 
         private void btnCambiarEstado_Click(object sender, EventArgs e)
         {
+            frmInicioAdmin inicioAdmin = Application.OpenForms["frmInicioAdmin"] as frmInicioAdmin;
+
+            if (inicioAdmin != null)
+            {
+                cambiar_estado CambioEstadoCategoria = new cambiar_estado();
+                inicioAdmin.AbrirFormularioEnPanelAdmin(CambioEstadoCategoria);
+            }
+
+
+
             // Verificar selección
-            if (dgvCategorias.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Selecciona una categoría primero", "Aviso");
-                return;
-            }
+            /* if (dgvCategorias.SelectedRows.Count == 0)
+             {
+                 MessageBox.Show("Selecciona una categoría primero", "Aviso");
+                 return;
+             }
+             else
+             {
 
-            // Buscar menú principal abierto
-            Form ventanaPrincipal = null;
-            foreach (Form form in Application.OpenForms)
-            {
-                if (form.Name == "frmInicioAdmin")
-                {
-                    ventanaPrincipal = form;
-                    break;
-                }
-            }
+             }
 
-            if (ventanaPrincipal == null)
-            {
-                MessageBox.Show("No se encontró el menú principal", "Error");
-                return;
-            }
+             // Buscar menú principal abierto
+             Form ventanaPrincipal = null;
+             foreach (Form form in Application.OpenForms)
+             {
+                 if (form.Name == "frmInicioAdmin")
+                 {
+                     ventanaPrincipal = form;
+                     break;
+                 }
+             }
 
-            // Preparar formulario
-            cambiar_estado formEstado = new cambiar_estado();
-            string nombreCat = dgvCategorias.SelectedRows[0].Cells["Categoría"].Value.ToString();
-            string estadoCat = dgvCategorias.SelectedRows[0].Cells["ESTADO"].Value.ToString();
-            formEstado.CargarDatos(nombreCat, estadoCat);
+             if (ventanaPrincipal == null)
+             {
+                 MessageBox.Show("No se encontró el menú principal", "Error");
+                 return;
+             }
 
-            // USAMOS EL NOMBRE EXACTO QUE ENCONTRAMOS: pnlContenido
-            Panel panel = ventanaPrincipal.Controls.Find("pnlContenido", true).FirstOrDefault() as Panel;
+             // Preparar formulario
+             cambiar_estado formEstado = new cambiar_estado();
+             string nombreCat = dgvCategorias.SelectedRows[0].Cells["Categoría"].Value.ToString();
+             string estadoCat = dgvCategorias.SelectedRows[0].Cells["ESTADO"].Value.ToString();
+             formEstado.CargarDatos(nombreCat, estadoCat);
 
-            if (panel != null)
-            {
-                panel.Controls.Clear();
-                formEstado.TopLevel = false;
-                formEstado.FormBorderStyle = FormBorderStyle.None;
-                formEstado.Dock = DockStyle.Fill;
-                panel.Controls.Add(formEstado);
-                formEstado.Show();
-            }
-            else
-            {
-                MessageBox.Show("No se pudo acceder al panel de contenido", "Error");
-            }
+             // USAMOS EL NOMBRE EXACTO QUE ENCONTRAMOS: pnlContenido
+             Panel panel = ventanaPrincipal.Controls.Find("pnlContenido", true).FirstOrDefault() as Panel;
+
+             if (panel != null)
+             {
+                 panel.Controls.Clear();
+                 formEstado.TopLevel = false;
+                 formEstado.FormBorderStyle = FormBorderStyle.None;
+                 formEstado.Dock = DockStyle.Fill;
+                 panel.Controls.Add(formEstado);
+                 formEstado.Show();
+             }
+             else
+             {
+                 MessageBox.Show("No se pudo acceder al panel de contenido", "Error");
+             }*/
+
         }
 
         private void categorias_Load(object sender, EventArgs e) { }
