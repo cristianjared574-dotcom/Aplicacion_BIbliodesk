@@ -44,8 +44,7 @@
             this.btnIniciarSesion = new System.Windows.Forms.Button();
             this.txtContrasena = new System.Windows.Forms.TextBox();
             this.txtUsuario = new System.Windows.Forms.TextBox();
-            this.btnLeerPantalla = new System.Windows.Forms.Button();
-            this.btnContraste = new System.Windows.Forms.Button();
+            this.iconBtnacces = new FontAwesome.Sharp.IconButton();
             this.panelFondo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLgo)).BeginInit();
             this.panelFormulario.SuspendLayout();
@@ -53,17 +52,17 @@
             // 
             // panelFondo
             // 
+            this.panelFondo.AutoSize = true;
             this.panelFondo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(233)))), ((int)(((byte)(210)))));
-            this.panelFondo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelFondo.Controls.Add(this.lblSubtitulo);
             this.panelFondo.Controls.Add(this.lblTitulo);
             this.panelFondo.Controls.Add(this.pbLgo);
             this.panelFondo.Controls.Add(this.panelFormulario);
             this.panelFondo.Location = new System.Drawing.Point(543, 166);
             this.panelFondo.Name = "panelFondo";
-            this.panelFondo.Size = new System.Drawing.Size(879, 751);
+            this.panelFondo.Size = new System.Drawing.Size(839, 794);
             this.panelFondo.TabIndex = 0;
-            
+            this.panelFondo.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFondo_Paint);
             // 
             // lblSubtitulo
             // 
@@ -74,7 +73,6 @@
             this.lblSubtitulo.Size = new System.Drawing.Size(415, 23);
             this.lblSubtitulo.TabIndex = 7;
             this.lblSubtitulo.Text = "Ingrese sus credenciales para acceder al sistema";
-            
             // 
             // lblTitulo
             // 
@@ -86,7 +84,6 @@
             this.lblTitulo.Size = new System.Drawing.Size(507, 53);
             this.lblTitulo.TabIndex = 6;
             this.lblTitulo.Text = "Bienvenido a Bibliodesk";
-            
             // 
             // pbLgo
             // 
@@ -116,7 +113,6 @@
             this.panelFormulario.Name = "panelFormulario";
             this.panelFormulario.Size = new System.Drawing.Size(557, 533);
             this.panelFormulario.TabIndex = 0;
-           
             // 
             // iconButton3
             // 
@@ -129,7 +125,6 @@
             this.iconButton3.Size = new System.Drawing.Size(40, 48);
             this.iconButton3.TabIndex = 16;
             this.iconButton3.UseVisualStyleBackColor = true;
-           
             // 
             // iconButton2
             // 
@@ -142,7 +137,6 @@
             this.iconButton2.Size = new System.Drawing.Size(40, 48);
             this.iconButton2.TabIndex = 15;
             this.iconButton2.UseVisualStyleBackColor = true;
-            
             // 
             // lblRol
             // 
@@ -153,7 +147,6 @@
             this.lblRol.Size = new System.Drawing.Size(39, 19);
             this.lblRol.TabIndex = 14;
             this.lblRol.Text = "Rol:";
-          
             // 
             // lblContrasena
             // 
@@ -174,7 +167,6 @@
             this.lblUsuario.Size = new System.Drawing.Size(73, 19);
             this.lblUsuario.TabIndex = 12;
             this.lblUsuario.Text = "Usuario:";
-            
             // 
             // iconButton1
             // 
@@ -187,7 +179,6 @@
             this.iconButton1.Size = new System.Drawing.Size(40, 48);
             this.iconButton1.TabIndex = 11;
             this.iconButton1.UseVisualStyleBackColor = true;
-            
             // 
             // cboRol
             // 
@@ -196,7 +187,6 @@
             this.cboRol.Name = "cboRol";
             this.cboRol.Size = new System.Drawing.Size(443, 24);
             this.cboRol.TabIndex = 0;
-            
             // 
             // btnIniciarSesion
             // 
@@ -209,7 +199,7 @@
             this.btnIniciarSesion.TabIndex = 3;
             this.btnIniciarSesion.Text = "Iniciar Sesión";
             this.btnIniciarSesion.UseVisualStyleBackColor = false;
-            this.btnIniciarSesion.Click += new System.EventHandler(this.BtnIniciarSesion_Click);
+            this.btnIniciarSesion.Click += new System.EventHandler(this.btnIniciarSesion_Click);
             // 
             // txtContrasena
             // 
@@ -228,28 +218,26 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(443, 34);
             this.txtUsuario.TabIndex = 1;
-            
             // 
-            // btnLeerPantalla
+            // iconBtnacces
             // 
-            this.btnLeerPantalla.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLeerPantalla.Location = new System.Drawing.Point(1438, 809);
-            this.btnLeerPantalla.Name = "btnLeerPantalla";
-            this.btnLeerPantalla.Size = new System.Drawing.Size(190, 48);
-            this.btnLeerPantalla.TabIndex = 10;
-            this.btnLeerPantalla.Text = "Leer pantalla";
-            this.btnLeerPantalla.UseVisualStyleBackColor = true;
-            this.btnLeerPantalla.Click += new System.EventHandler(this.btnLeerPantalla_Click);
-            // 
-            // btnContraste
-            // 
-            this.btnContraste.Location = new System.Drawing.Point(1438, 166);
-            this.btnContraste.Name = "btnContraste";
-            this.btnContraste.Size = new System.Drawing.Size(190, 48);
-            this.btnContraste.TabIndex = 11;
-            this.btnContraste.Text = "Contraste";
-            this.btnContraste.UseVisualStyleBackColor = true;
-            this.btnContraste.Click += new System.EventHandler(this.btnContraste_Click);
+            this.iconBtnacces.BackColor = System.Drawing.Color.Maroon;
+            this.iconBtnacces.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.iconBtnacces.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.iconBtnacces.ForeColor = System.Drawing.Color.White;
+            this.iconBtnacces.IconChar = FontAwesome.Sharp.IconChar.WheelchairMove;
+            this.iconBtnacces.IconColor = System.Drawing.Color.White;
+            this.iconBtnacces.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconBtnacces.IconSize = 80;
+            this.iconBtnacces.Location = new System.Drawing.Point(1597, 12);
+            this.iconBtnacces.Name = "iconBtnacces";
+            this.iconBtnacces.Size = new System.Drawing.Size(135, 113);
+            this.iconBtnacces.TabIndex = 8;
+            this.iconBtnacces.Text = "Accesibilidad";
+            this.iconBtnacces.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.iconBtnacces.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.iconBtnacces.UseVisualStyleBackColor = false;
+            this.iconBtnacces.Click += new System.EventHandler(this.iconBtnacces_Click);
             // 
             // login
             // 
@@ -257,9 +245,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(1786, 1034);
-            this.Controls.Add(this.btnContraste);
+            this.Controls.Add(this.iconBtnacces);
             this.Controls.Add(this.panelFondo);
-            this.Controls.Add(this.btnLeerPantalla);
             this.ImeMode = System.Windows.Forms.ImeMode.KatakanaHalf;
             this.Name = "login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -272,6 +259,7 @@
             this.panelFormulario.ResumeLayout(false);
             this.panelFormulario.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -285,15 +273,14 @@
         private System.Windows.Forms.PictureBox pbLgo;
         private System.Windows.Forms.ComboBox cboRol;
         private System.Windows.Forms.Label lblTitulo;
-       
+
         private System.Windows.Forms.Label lblSubtitulo;
-        private System.Windows.Forms.Button btnLeerPantalla;
         private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.Label lblRol;
         private System.Windows.Forms.Label lblContrasena;
         private System.Windows.Forms.Label lblUsuario;
         private FontAwesome.Sharp.IconButton iconButton2;
         private FontAwesome.Sharp.IconButton iconButton3;
-        private System.Windows.Forms.Button btnContraste;
+        private FontAwesome.Sharp.IconButton iconBtnacces;
     }
 }

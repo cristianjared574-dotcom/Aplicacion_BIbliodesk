@@ -10,12 +10,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
 
         // Variables declaradas
         private bool esModoEdicion = false;
-        private int idEjemplarRecibido = 0;
-        private int idLibroRecibido = 0;
-
-        private string localizacionRecibida = "";
-        private string estadoFisicoRecibido = "";
-        private string disponibleRecibido = "";
+        
         private int idEjemplarEditar = 0;
 
         //agregar un ejemplar sin parametros

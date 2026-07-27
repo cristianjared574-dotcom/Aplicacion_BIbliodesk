@@ -43,10 +43,12 @@
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlContenido = new System.Windows.Forms.Panel();
+            this.audio = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
+            this.pnlContenido.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -62,7 +64,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 125);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1529, 115);
+            this.panel1.Size = new System.Drawing.Size(1920, 115);
             this.panel1.TabIndex = 1;
             // 
             // btnCerrarsesion
@@ -208,7 +210,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1529, 125);
+            this.panel2.Size = new System.Drawing.Size(1920, 125);
             this.panel2.TabIndex = 0;
             // 
             // pictureBox2
@@ -239,7 +241,7 @@
             this.iconPictureBox1.IconColor = System.Drawing.Color.White;
             this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.iconPictureBox1.IconSize = 77;
-            this.iconPictureBox1.Location = new System.Drawing.Point(1369, 3);
+            this.iconPictureBox1.Location = new System.Drawing.Point(1760, 3);
             this.iconPictureBox1.Name = "iconPictureBox1";
             this.iconPictureBox1.Size = new System.Drawing.Size(78, 77);
             this.iconPictureBox1.TabIndex = 2;
@@ -251,7 +253,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(1342, 83);
+            this.label2.Location = new System.Drawing.Point(1733, 83);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(136, 26);
             this.label2.TabIndex = 1;
@@ -259,12 +261,28 @@
             // 
             // pnlContenido
             // 
+            this.pnlContenido.Controls.Add(this.audio);
             this.pnlContenido.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContenido.Location = new System.Drawing.Point(0, 240);
             this.pnlContenido.Name = "pnlContenido";
-            this.pnlContenido.Size = new System.Drawing.Size(1529, 543);
+            this.pnlContenido.Size = new System.Drawing.Size(1920, 543);
             this.pnlContenido.TabIndex = 2;
             this.pnlContenido.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContenido_Paint);
+            // 
+            // audio
+            // 
+            this.audio.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.audio.IconChar = FontAwesome.Sharp.IconChar.WheelchairMove;
+            this.audio.IconColor = System.Drawing.Color.Black;
+            this.audio.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.audio.Location = new System.Drawing.Point(1730, 0);
+            this.audio.Name = "audio";
+            this.audio.Size = new System.Drawing.Size(190, 93);
+            this.audio.TabIndex = 0;
+            this.audio.Text = "Accesibilidad";
+            this.audio.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.audio.UseVisualStyleBackColor = true;
+            this.audio.Click += new System.EventHandler(this.audio_Click);
             // 
             // frmInicioBiblio
             // 
@@ -272,7 +290,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(233)))), ((int)(((byte)(210)))));
-            this.ClientSize = new System.Drawing.Size(1529, 783);
+            this.ClientSize = new System.Drawing.Size(1920, 783);
             this.Controls.Add(this.pnlContenido);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -289,6 +307,7 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
+            this.pnlContenido.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -308,5 +327,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnlContenido;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private FontAwesome.Sharp.IconButton audio;
     }
 }
