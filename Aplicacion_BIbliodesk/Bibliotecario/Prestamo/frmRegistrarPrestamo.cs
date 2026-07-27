@@ -192,24 +192,62 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
 
         private void btnGuardarPrestamo_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void LimpiarFormularioPrestamo()
+        {
+            txtMatriculaUsuario.Clear();
+            txtClaveEjemplar.Clear();
+
+            idUsuarioSeleccionado = 0;
+            idEjemplarSeleccionado = 0;
+
+            lblNombreUsuario.Text = "Nombre:";
+            lblCorreoUsuario.Text = "Correo:";
+            lblTelefonoUsuario.Text = "Teléfono:";
+
+            lblClaveEjemplar.Text = "Clave del ejemplar:";
+            lblNombreLibro.Text = "Libro:";
+            lblAutorLibro.Text = "Autor:";
+
+            dtpPrestamo.Value = DateTime.Now;
+            dtpDevolucion.Value = DateTime.Now.AddDays(14);
+
+            txtMatriculaUsuario.Focus();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            frmInicioBiblio inicioBiblio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
+
+            if(inicioBiblio != null)
+            {
+                frmPrestamoBiblio inicioPrestamo = new frmPrestamoBiblio();
+                inicioBiblio.AbrirFormularioEnPanel(inicioPrestamo);
+            }
+        }
+
+        private void btnGuardarPrestamo_Click_1(object sender, EventArgs e)
+        {
             // Validar que se haya seleccionado un usuario
             if (idUsuarioSeleccionado == 0)
             {
-                MessageBox.Show("Primero debe buscar y seleccionar un usuario.","Usuario requerido",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("Primero debe buscar y seleccionar un usuario.", "Usuario requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             // Validar que se haya seleccionado un ejemplar
             if (idEjemplarSeleccionado == 0)
             {
-                MessageBox.Show("Primero debe buscar y seleccionar un ejemplar.","Ejemplar requerido",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("Primero debe buscar y seleccionar un ejemplar.", "Ejemplar requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             // Validar que la fecha de devolución sea posterior a la fecha de préstamo
             if (dtpDevolucion.Value.Date <= dtpPrestamo.Value.Date)
             {
-                MessageBox.Show("La fecha de devolución debe ser posterior a la fecha de préstamo.","Fechas incorrectas",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("La fecha de devolución debe ser posterior a la fecha de préstamo.", "Fechas incorrectas", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 dtpDevolucion.Focus();
                 return;
             }
@@ -231,22 +269,22 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
                 // Crear el comando
                 MySqlCommand comando = new MySqlCommand(consulta, conexionDB);
 
-                
-                 //ejemplar y empleado seleccionados.
-                 
+
+                //ejemplar y empleado seleccionados.
+
                 comando.Parameters.AddWithValue("@idUsuario", idUsuarioSeleccionado);
                 comando.Parameters.AddWithValue("@idEjemplar", idEjemplarSeleccionado);
-                
+
 
                 // Guardar las fechas seleccionadas en los DateTimePicker
-                comando.Parameters.AddWithValue("@fechaInicio",dtpPrestamo.Value);
+                comando.Parameters.AddWithValue("@fechaInicio", dtpPrestamo.Value);
 
-                comando.Parameters.AddWithValue("@fechaDevolucion",dtpDevolucion.Value);
+                comando.Parameters.AddWithValue("@fechaDevolucion", dtpDevolucion.Value);
 
                 // Ejecutar el INSERT
                 int filasAfectadas = comando.ExecuteNonQuery();
 
-                if(filasAfectadas > 0)
+                if (filasAfectadas > 0)
                 {
                     //Obtener el ID generado por MYSQL
                     int idPrestamo = Convert.ToInt32(comando.LastInsertedId);
@@ -279,12 +317,12 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
                     comandoEjemplar.ExecuteNonQuery();
 
                     //MessageBox.Show("Préstamo registrado correctamente.\n" + "Folio: " + folioPrestamo, "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    MessageBox.Show("Préstamo registrado correctamente.", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+                    MessageBox.Show("Préstamo registrado correctamente.", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimpiarFormularioPrestamo();
                 }
                 else
                 {
-                    MessageBox.Show("No se pudo registrar el prestamo.","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No se pudo registrar el prestamo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 // Cerrar la conexión
@@ -292,32 +330,9 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al registrar el préstamo: " + ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Error al registrar el préstamo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void LimpiarFormularioPrestamo()
-        {
-            txtMatriculaUsuario.Clear();
-            txtClaveEjemplar.Clear();
-
-            idUsuarioSeleccionado = 0;
-            idEjemplarSeleccionado = 0;
-
-            lblNombreUsuario.Text = "Nombre:";
-            lblCorreoUsuario.Text = "Correo:";
-            lblTelefonoUsuario.Text = "Teléfono:";
-
-            lblClaveEjemplar.Text = "Clave del ejemplar:";
-            lblNombreLibro.Text = "Libro:";
-            lblAutorLibro.Text = "Autor:";
-
-            dtpPrestamo.Value = DateTime.Now;
-            dtpDevolucion.Value = DateTime.Now.AddDays(14);
-
-            txtMatriculaUsuario.Focus();
-        }
-
     }
 
 }
