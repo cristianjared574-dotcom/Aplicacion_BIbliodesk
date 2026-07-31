@@ -18,7 +18,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
 
         // DECLARAMOS TODO AL PRINCIPIO PARA QUE NO HAYA ERRORES
         public readonly SpeechSynthesizer voz = new SpeechSynthesizer();
-        public bool audioActivo = true;
+        public bool audioActivo = false;
         private string ultimoTextoLeido = "";
         private audio ventanaAudio; // IMPORTANTE: DECLARAR ANTES DE USARLO
 
