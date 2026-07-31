@@ -28,18 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtBuscarEjemplar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btnCambiarEstado = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dgvEjemplaresAdmin = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
+            this.dgvEjemplaresAdmin = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEjemplaresAdmin)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEjemplaresAdmin)).BeginInit();
             this.SuspendLayout();
             // 
             // txtBuscarEjemplar
@@ -84,17 +87,6 @@
             this.panel1.Size = new System.Drawing.Size(1146, 472);
             this.panel1.TabIndex = 3;
             // 
-            // dgvEjemplaresAdmin
-            // 
-            this.dgvEjemplaresAdmin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvEjemplaresAdmin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEjemplaresAdmin.Location = new System.Drawing.Point(34, 184);
-            this.dgvEjemplaresAdmin.Name = "dgvEjemplaresAdmin";
-            this.dgvEjemplaresAdmin.RowHeadersWidth = 51;
-            this.dgvEjemplaresAdmin.RowTemplate.Height = 24;
-            this.dgvEjemplaresAdmin.Size = new System.Drawing.Size(1028, 274);
-            this.dgvEjemplaresAdmin.TabIndex = 4;
-            // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -121,6 +113,49 @@
             this.iconPictureBox1.TabIndex = 5;
             this.iconPictureBox1.TabStop = false;
             // 
+            // dgvEjemplaresAdmin
+            // 
+            this.dgvEjemplaresAdmin.AllowUserToAddRows = false;
+            this.dgvEjemplaresAdmin.AllowUserToDeleteRows = false;
+            this.dgvEjemplaresAdmin.AllowUserToResizeColumns = false;
+            this.dgvEjemplaresAdmin.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.dgvEjemplaresAdmin.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvEjemplaresAdmin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvEjemplaresAdmin.BackgroundColor = System.Drawing.Color.White;
+            this.dgvEjemplaresAdmin.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(161)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEjemplaresAdmin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvEjemplaresAdmin.ColumnHeadersHeight = 45;
+            this.dgvEjemplaresAdmin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(110)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEjemplaresAdmin.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvEjemplaresAdmin.EnableHeadersVisualStyles = false;
+            this.dgvEjemplaresAdmin.GridColor = System.Drawing.Color.Gainsboro;
+            this.dgvEjemplaresAdmin.Location = new System.Drawing.Point(34, 168);
+            this.dgvEjemplaresAdmin.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvEjemplaresAdmin.MultiSelect = false;
+            this.dgvEjemplaresAdmin.Name = "dgvEjemplaresAdmin";
+            this.dgvEjemplaresAdmin.ReadOnly = true;
+            this.dgvEjemplaresAdmin.RowHeadersVisible = false;
+            this.dgvEjemplaresAdmin.RowHeadersWidth = 51;
+            this.dgvEjemplaresAdmin.RowTemplate.Height = 34;
+            this.dgvEjemplaresAdmin.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvEjemplaresAdmin.Size = new System.Drawing.Size(1028, 293);
+            this.dgvEjemplaresAdmin.TabIndex = 5;
+            // 
             // frmInicioEjemplaresAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -133,10 +168,10 @@
             this.Load += new System.EventHandler(this.frmInicioEjemplaresAdmin_Load);
             this.Click += new System.EventHandler(this.frmInicioEjemplaresAdmin_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEjemplaresAdmin)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEjemplaresAdmin)).EndInit();
             this.ResumeLayout(false);
 
         }

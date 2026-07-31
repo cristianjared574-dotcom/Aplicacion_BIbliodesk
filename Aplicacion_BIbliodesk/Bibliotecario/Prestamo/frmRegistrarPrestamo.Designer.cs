@@ -373,6 +373,7 @@
             this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardarPrestamo
             // 
@@ -385,6 +386,7 @@
             this.btnGuardarPrestamo.TabIndex = 6;
             this.btnGuardarPrestamo.Text = "Guardar préstamo";
             this.btnGuardarPrestamo.UseVisualStyleBackColor = false;
+            this.btnGuardarPrestamo.Click += new System.EventHandler(this.btnGuardarPrestamo_Click_1);
             // 
             // frmRegistrarPrestamo
             // 

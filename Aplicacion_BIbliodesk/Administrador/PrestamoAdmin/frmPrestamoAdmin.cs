@@ -28,7 +28,7 @@ namespace Aplicacion_BIbliodesk.Administrador.PrestamoAdmin
                 return;
             }
 
-            int idUsuario = Convert.ToInt32(dgvPrestamoAdmin.CurrentRow.Cells["ID_USUARIO"]);
+            int idUsuario = Convert.ToInt32(dgvPrestamoAdmin.CurrentRow.Cells["ID_USUARIO"].Value);
 
             string nombreUsuario = dgvPrestamoAdmin.CurrentRow.Cells["USUARIO"].Value.ToString();
 
@@ -62,11 +62,10 @@ namespace Aplicacion_BIbliodesk.Administrador.PrestamoAdmin
                 string consulta = @"
                     SELECT
                         P.ID_USUARIO,
-                        P.FOLIO_PRESTAMO AS FOLIO,
                         L.ISBN,
                         L.TITULO AS LIBRO,
                         CONCAT(U.NOMBRE, ' ', U.APELLIDOP, ' ', U.APELLIDOM) AS USUARIO,
-                        E.CLAVE_EJEMPLAR AS EJEMPLAR,
+                        E.ID_EJEMPLAR AS EJEMPLAR,
                         P.FECHA_INICIO,
                         P.FECHA_DEVOLUCION,
                         P.ESTADO
@@ -103,11 +102,11 @@ namespace Aplicacion_BIbliodesk.Administrador.PrestamoAdmin
                 string consulta = @"
                     SELECT
                         P.ID_USUARIO,
-                        P.FOLIO_PRESTAMO AS FOLIO,
+                        P.ID_PRESTAMO AS FOLIO,
                         L.ISBN,
                         L.TITULO AS LIBRO,
                         CONCAT(U.NOMBRE, ' ', U.APELLIDOP, ' ', U.APELLIDOM) AS USUARIO,
-                        E.CLAVE_EJEMPLAR AS EJEMPLAR,
+                        E.ID_EJEMPLAR AS EJEMPLAR,
                         P.FECHA_INICIO,
                         P.FECHA_DEVOLUCION,
                         P.ESTADO
@@ -116,7 +115,7 @@ namespace Aplicacion_BIbliodesk.Administrador.PrestamoAdmin
                     INNER JOIN EJEMPLAR E ON P.ID_EJEMPLAR = E.ID_EJEMPLAR
                     INNER JOIN LIBRO L ON E.ID_LIBRO = L.ID_LIBRO
 
-                    WHERE P.FOLIO_PRESTAMO LIKE @buscar OR L.TITULO LIKE @buscar OR E.CLAVE_EJEMPLAR LIKE @buscar 
+                    WHERE P.ID_PRESTAMO LIKE @buscar OR L.TITULO LIKE @buscar OR E.ID_EJEMPLAR LIKE @buscar 
                             OR CONCAT(U.NOMBRE, ' ', U.APELLIDOP, ' ', U.APELLIDOM) LIKE @buscar 
                     ORDER BY P.ID_PRESTAMO DESC;";
 
