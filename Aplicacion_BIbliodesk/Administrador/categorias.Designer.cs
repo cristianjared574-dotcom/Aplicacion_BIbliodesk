@@ -71,7 +71,7 @@
             // 
             // btnCambiarEstado
             // 
-            this.btnCambiarEstado.BackColor = System.Drawing.Color.Maroon;
+            this.btnCambiarEstado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.btnCambiarEstado.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold);
             this.btnCambiarEstado.ForeColor = System.Drawing.SystemColors.Control;
             this.btnCambiarEstado.Location = new System.Drawing.Point(865, 100);
@@ -129,7 +129,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(233)))), ((int)(((byte)(210)))));
             this.ClientSize = new System.Drawing.Size(1511, 552);
             this.Controls.Add(this.panel1);
             this.Name = "categorias";

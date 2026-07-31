@@ -84,7 +84,7 @@
             // 
             // btnguardarcategoria
             // 
-            this.btnguardarcategoria.BackColor = System.Drawing.Color.Maroon;
+            this.btnguardarcategoria.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.btnguardarcategoria.ForeColor = System.Drawing.Color.White;
             this.btnguardarcategoria.Location = new System.Drawing.Point(164, 359);
             this.btnguardarcategoria.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -139,7 +139,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(233)))), ((int)(((byte)(210)))));
             this.ClientSize = new System.Drawing.Size(1924, 679);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(4);

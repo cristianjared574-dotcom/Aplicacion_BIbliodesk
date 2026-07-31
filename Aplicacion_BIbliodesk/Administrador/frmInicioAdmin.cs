@@ -18,7 +18,7 @@ namespace Aplicacion_BIbliodesk.Administrador
 
         // SISTEMA DE ACCESIBILIDAD IGUAL AL BIBLIOTECARIO
         public readonly SpeechSynthesizer voz = new SpeechSynthesizer();
-        public bool audioActivo = true;
+        public bool audioActivo = false;
         private string ultimoTextoLeido = "";
         private audio ventanaAudio;
 
