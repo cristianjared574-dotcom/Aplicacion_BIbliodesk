@@ -57,7 +57,7 @@
             this.panelFondo.Controls.Add(this.panelFormulario);
             this.panelFondo.Location = new System.Drawing.Point(543, 166);
             this.panelFondo.Name = "panelFondo";
-            this.panelFondo.Size = new System.Drawing.Size(839, 794);
+            this.panelFondo.Size = new System.Drawing.Size(879, 794);
             this.panelFondo.TabIndex = 0;
             this.panelFondo.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFondo_Paint);
             // 
@@ -209,7 +209,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(1786, 1034);
+            this.ClientSize = new System.Drawing.Size(1786, 1055);
             this.Controls.Add(this.iconBtnacces);
             this.Controls.Add(this.panelFondo);
             this.ImeMode = System.Windows.Forms.ImeMode.KatakanaHalf;

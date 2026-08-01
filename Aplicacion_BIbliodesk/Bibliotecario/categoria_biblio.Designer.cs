@@ -132,7 +132,7 @@
             this.txtdescripcion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtdescripcion.Multiline = true;
             this.txtdescripcion.Name = "txtdescripcion";
-            this.txtdescripcion.Size = new System.Drawing.Size(357, 96);
+            this.txtdescripcion.Size = new System.Drawing.Size(356, 95);
             this.txtdescripcion.TabIndex = 8;
             // 
             // categoria_biblio
