@@ -1,13 +1,14 @@
 ﻿using Aplicacion_BIbliodesk.Administrador;
+using Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario;
+using Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario;
 using Aplicacion_BIbliodesk.Bibliotecario.Prestamo;
 using FontAwesome.Sharp;
 using System;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Speech.Synthesis;
 using System.Windows.Forms;
-using Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario;
-using Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario;
 
 namespace Aplicacion_BIbliodesk.Bibliotecario
 {
@@ -18,9 +19,9 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
 
         // DECLARAMOS TODO AL PRINCIPIO PARA QUE NO HAYA ERRORES
         public readonly SpeechSynthesizer voz = new SpeechSynthesizer();
-        public bool audioActivo = true;
+        public bool audioActivo = false;
         private string ultimoTextoLeido = "";
-        private audio ventanaAudio; // IMPORTANTE: DECLARAR ANTES DE USARLO
+        private audio ventanaAudio; 
 
         public frmInicioBiblio()
         {
@@ -36,7 +37,6 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
             boton.BackColor = Color.FromArgb(123, 30, 30);
         }
 
-        //  METODO QUE FALTABA O ESTABA MAL UBICADO
         private void AsignarEventoPaseRaton(Control contenedor)
         {
             foreach (Control c in contenedor.Controls)
@@ -123,28 +123,20 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
         // TU EVENTO DEL BOTON DE AUDIO YA SIN ERRORES
         private void audio_Click(object sender, EventArgs e)
         {
-            if (ventanaAudio == null || ventanaAudio.IsDisposed)
-            {
-                ventanaAudio = new audio(this);
-                ventanaAudio.ShowInTaskbar = false;
-                ventanaAudio.TopMost = true;
+            if (Application.OpenForms.OfType<sonido>().Any()) return;
 
-                // AQUI ESTA EL Point, YA CORRECTO
-                Point posBoton = audio.PointToScreen(Point.Empty);
-                ventanaAudio.StartPosition = FormStartPosition.Manual;
-                ventanaAudio.Location = new Point(
-                    posBoton.X - ventanaAudio.Width + audio.Width,
-                    posBoton.Y + audio.Height + 5
-                );
+            sonido menuSonido = new sonido(this);
+            menuSonido.ShowInTaskbar = false;
+            menuSonido.TopMost = true;
 
-                ventanaAudio.FormClosed += (s, args) => ventanaAudio = null;
-                ventanaAudio.Show(this);
-            }
-            else
-            {
-                ventanaAudio.Close();
-                ventanaAudio = null;
-            }
+            Point posBoton = audio.PointToScreen(Point.Empty);
+            menuSonido.StartPosition = FormStartPosition.Manual;
+            menuSonido.Location = new Point(
+                posBoton.X - menuSonido.Width + audio.Width,
+                posBoton.Y + audio.Height + 5
+            );
+
+            menuSonido.Show(this);
         }
 
         // EL RESTO DE TUS BOTONES

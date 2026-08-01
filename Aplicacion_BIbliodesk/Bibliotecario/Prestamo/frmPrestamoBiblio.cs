@@ -52,28 +52,22 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
             {
                 //creamos la consulta
                 string consulta = @"
-    SELECT
-        P.ID_PRESTAMO AS 'ID Préstamo',
-        P.ID_USUARIO AS 'ID Usuario',
-        P.ID_EJEMPLAR AS 'ID Ejemplar',
-        L.ISBN,
-        L.TITULO AS LIBRO,
-        CONCAT(
-            U.NOMBRE, ' ',
-            U.APELLIDOP, ' ',
-            U.APELLIDOM
-        ) AS USUARIO,
-        P.FECHA_INICIO AS 'Fecha inicio',
-        P.FECHA_DEVOLUCION AS 'Fecha devolución',
-        P.ESTADO
-    FROM PRESTAMO P
-    INNER JOIN USUARIO U
-        ON P.ID_USUARIO = U.ID_USUARIO
-    INNER JOIN EJEMPLAR E
-        ON P.ID_EJEMPLAR = E.ID_EJEMPLAR
-    INNER JOIN LIBRO L
-        ON E.ID_LIBRO = L.ID_LIBRO
-    ORDER BY P.ID_PRESTAMO DESC;";
+                                    SELECT
+                                        P.ID_PRESTAMO,
+                                        P.ID_USUARIO,
+                                        P.FOLIO_PRESTAMO AS 'Folio',
+                                        P.ID_EJEMPLAR,
+                                        L.ISBN,
+                                        L.TITULO AS Libro,
+                                        CONCAT(U.NOMBRE, ' ',U.APELLIDOP, ' ',U.APELLIDOM) AS 'Usuario',
+                                        P.FECHA_INICIO AS 'Fecha prestamo',
+                                        P.FECHA_DEVOLUCION AS 'Fecha devolución',
+                                        P.ESTADO AS 'Estado'
+                                    FROM PRESTAMO P
+                                    INNER JOIN USUARIO U ON P.ID_USUARIO = U.ID_USUARIO
+                                    INNER JOIN EJEMPLAR E ON P.ID_EJEMPLAR = E.ID_EJEMPLAR
+                                    INNER JOIN LIBRO L ON E.ID_LIBRO = L.ID_LIBRO
+                                    ORDER BY P.ID_PRESTAMO DESC;";
 
                 //creamos un lector
                 MySqlDataAdapter adaptador = new MySqlDataAdapter(consulta, conexionDB);
@@ -84,6 +78,11 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
                 adaptador.Fill(tablaPrestamos);
 
                 dgvPrestamos.DataSource = tablaPrestamos;
+
+                dgvPrestamos.Columns["ID_PRESTAMO"].Visible = false;
+                dgvPrestamos.Columns["ID_USUARIO"].Visible = false;
+                dgvPrestamos.Columns["ID_EJEMPLAR"].Visible = false;
+
             }
         }
 
@@ -98,38 +97,26 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
 
                 //creamos la consulta
                 string consulta = @"
-    SELECT
-        P.ID_PRESTAMO AS 'ID Préstamo',
-        P.ID_USUARIO AS 'ID Usuario',
-        P.ID_EJEMPLAR AS 'ID Ejemplar',
-        L.ISBN,
-        L.TITULO AS LIBRO,
-        CONCAT(
-            U.NOMBRE, ' ',
-            U.APELLIDOP, ' ',
-            U.APELLIDOM
-        ) AS USUARIO,
-        P.FECHA_INICIO AS 'Fecha inicio',
-        P.FECHA_DEVOLUCION AS 'Fecha devolución',
-        P.ESTADO
-    FROM PRESTAMO P
-    INNER JOIN USUARIO U
-        ON P.ID_USUARIO = U.ID_USUARIO
-    INNER JOIN EJEMPLAR E
-        ON P.ID_EJEMPLAR = E.ID_EJEMPLAR
-    INNER JOIN LIBRO L
-        ON E.ID_LIBRO = L.ID_LIBRO
-    WHERE CAST(P.ID_PRESTAMO AS CHAR) LIKE @buscar
-       OR CAST(P.ID_USUARIO AS CHAR) LIKE @buscar
-       OR CAST(P.ID_EJEMPLAR AS CHAR) LIKE @buscar
-       OR L.ISBN LIKE @buscar
-       OR L.TITULO LIKE @buscar
-       OR CONCAT(
-            U.NOMBRE, ' ',
-            U.APELLIDOP, ' ',
-            U.APELLIDOM
-          ) LIKE @buscar
-    ORDER BY P.ID_PRESTAMO DESC;";
+                                  SELECT
+                                        P.ID_PRESTAMO,
+                                        P.ID_USUARIO,
+                                        P.FOLIO_PRESTAMO AS 'Folio',
+                                        P.ID_EJEMPLAR,
+                                        L.ISBN,
+                                        L.TITULO AS Libro,
+                                        CONCAT(U.NOMBRE, ' ',U.APELLIDOP, ' ',U.APELLIDOM) AS 'Usuario',
+                                        P.FECHA_INICIO AS 'Fecha prestamo',
+                                        P.FECHA_DEVOLUCION AS 'Fecha devolución',
+                                        P.ESTADO AS 'Estado'
+                                    FROM PRESTAMO P
+                                    INNER JOIN USUARIO U ON P.ID_USUARIO = U.ID_USUARIO
+                                    INNER JOIN EJEMPLAR E ON P.ID_EJEMPLAR = E.ID_EJEMPLAR
+                                    INNER JOIN LIBRO L ON E.ID_LIBRO = L.ID_LIBRO
+                                WHERE P.FOLIO_PRESTAMO LIKE @buscar
+                                   OR L.ISBN LIKE @buscar
+                                   OR L.TITULO LIKE @buscar
+                                   OR CONCAT(U.NOMBRE, ' ',U.APELLIDOP, ' ',U.APELLIDOM) LIKE @buscar
+                                ORDER BY P.ID_PRESTAMO DESC;";
 
                 //creamos un lector
                 MySqlDataAdapter adaptador = new MySqlDataAdapter(consulta, conexionDB);

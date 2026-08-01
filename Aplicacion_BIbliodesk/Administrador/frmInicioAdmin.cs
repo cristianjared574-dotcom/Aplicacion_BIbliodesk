@@ -1,12 +1,13 @@
-﻿using FontAwesome.Sharp;
+﻿using Aplicacion_BIbliodesk.Administrador.AutorAdmin;
+using Aplicacion_BIbliodesk.Administrador.LibroAdmin;
+using Aplicacion_BIbliodesk.Administrador.PrestamoAdmin;
+using FontAwesome.Sharp;
 using System;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Speech.Synthesis;
 using System.Windows.Forms;
-using Aplicacion_BIbliodesk.Administrador.LibroAdmin;
-using Aplicacion_BIbliodesk.Administrador.AutorAdmin;
-using Aplicacion_BIbliodesk.Administrador.PrestamoAdmin;
 
 namespace Aplicacion_BIbliodesk.Administrador
 {
@@ -18,7 +19,7 @@ namespace Aplicacion_BIbliodesk.Administrador
 
         // SISTEMA DE ACCESIBILIDAD IGUAL AL BIBLIOTECARIO
         public readonly SpeechSynthesizer voz = new SpeechSynthesizer();
-        public bool audioActivo = true;
+        public bool audioActivo = false;
         private string ultimoTextoLeido = "";
         private audio ventanaAudio;
 
@@ -122,33 +123,26 @@ namespace Aplicacion_BIbliodesk.Administrador
             return string.Empty;
         }
 
-        // BOTÓN DE AUDIO (MISMA VENTANA QUE ANTES)
+        // abre "audio" directamente, abre "sonido"
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            if (ventanaAudio == null || ventanaAudio.IsDisposed)
-            {
-                ventanaAudio = new audio(this);
-                ventanaAudio.ShowInTaskbar = false;
-                ventanaAudio.TopMost = true;
+            if (Application.OpenForms.OfType<sonido>().Any()) return;
 
-                Point posBoton = iconButton1.PointToScreen(Point.Empty);
-                ventanaAudio.StartPosition = FormStartPosition.Manual;
-                ventanaAudio.Location = new Point(
-                    posBoton.X - ventanaAudio.Width + iconButton1.Width,
-                    posBoton.Y + iconButton1.Height + 5
-                );
+            sonido menuSonido = new sonido(this);
+            menuSonido.ShowInTaskbar = false;
+            menuSonido.TopMost = true;
 
-                ventanaAudio.FormClosed += (s, args) => ventanaAudio = null;
-                ventanaAudio.Show(this);
-            }
-            else
-            {
-                ventanaAudio.Close();
-                ventanaAudio = null;
-            }
+            Point posBoton = iconButton1.PointToScreen(Point.Empty);
+            menuSonido.StartPosition = FormStartPosition.Manual;
+            menuSonido.Location = new Point(
+                posBoton.X - menuSonido.Width + iconButton1.Width,
+                posBoton.Y + iconButton1.Height + 5
+            );
+
+            menuSonido.Show(this);
         }
 
-        // BOTONES ORIGINALES SIN CAMBIOS
+        
         private void btnLibros_Click(object sender, EventArgs e)
         {
             seleccionarModulo(btnLibros);
