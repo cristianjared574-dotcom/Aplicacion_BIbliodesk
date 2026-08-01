@@ -18,9 +18,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
         {
             InitializeComponent();
             CargarComboBoxes();
-            var estados = new[] { "ACTIVO", "INACTIVO" };
-            cmbEstado.DataSource = estados;
-            cmbEstado.SelectedIndex = 0;
+            
         }
 
         private void CargarComboBoxes()
@@ -46,15 +44,16 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
                 cmbCategoria.DisplayMember = "NOMBRE_CATEGORIA";
                 cmbCategoria.ValueMember = "ID_CATEGORIA";
 
-                string query = "SELECT id_libro, titulo FROM libro";
-                MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
+                // Cargar Autores
+                string queryAut = "SELECT ID_AUTOR, NOMBRE FROM autor";
+                MySqlDataAdapter daAut = new MySqlDataAdapter(queryAut, conn);
+                DataTable dtAut = new DataTable();
+                daAut.Fill(dtAut);
+                cmbAutor.DataSource = dtAut;
+                cmbAutor.DisplayMember = "NOMBRE";
+                cmbAutor.ValueMember = "ID_AUTOR";
 
-                cmbLibro.DisplayMember = "titulo";
-                cmbLibro.ValueMember = "id_libro";
-                cmbLibro.DataSource = dt;
-            
+
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -64,60 +63,58 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
                 MessageBox.Show("Rellene los campos obligatorios.");
                 return;
             }
+            if (cmbAutor.SelectedValue == null)
+            {
+                MessageBox.Show("Por favor, seleccione un autor.");
+                return;
+            }
+
             ConnectionData = new Conexion();
             MySqlConnection conn = ConnectionData.getConection();
-            
-            
-                
-                string query = "INSERT INTO libro (ID_EDITORIAL, ID_CATEGORIA, ISBN, TITULO, ESTADO) VALUES (@idEd, @idCat, @isbn, @titulo, @estado)";
 
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@idEd", cmbEditorial.SelectedValue);
-                    cmd.Parameters.AddWithValue("@idCat", cmbCategoria.SelectedValue); 
-                    cmd.Parameters.AddWithValue("@isbn", txtISBN.Text.Trim());
-                    cmd.Parameters.AddWithValue("@titulo", txtTitulo.Text.Trim());
-                    cmd.Parameters.AddWithValue("@estado", cmbEstado.Text);
+            // 1. Insertar el libro en la tabla LIBRO
+            string queryLibro = "INSERT INTO libro (ID_EDITORIAL, ID_CATEGORIA, ISBN, TITULO) VALUES (@idEd, @idCat, @isbn, @titulo)";
 
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Guardado.");
-                    
-                }
-            
+            using (MySqlCommand cmdLibro = new MySqlCommand(queryLibro, conn))
+            {
+                cmdLibro.Parameters.AddWithValue("@idEd", cmbEditorial.SelectedValue);
+                cmdLibro.Parameters.AddWithValue("@idCat", cmbCategoria.SelectedValue);
+                cmdLibro.Parameters.AddWithValue("@isbn", txtISBN.Text.Trim());
+                cmdLibro.Parameters.AddWithValue("@titulo", txtTitulo.Text.Trim());
+
+                cmdLibro.ExecuteNonQuery();
+            }
+
+            // 2. Obtener el ID del libro que se acaba de insertar
+            long idLibroNuevo = 0;
+            string queryId = "SELECT LAST_INSERT_ID();";
+            using (MySqlCommand cmdId = new MySqlCommand(queryId, conn))
+            {
+                idLibroNuevo = Convert.ToInt64(cmdId.ExecuteScalar());
+            }
+
+            // 3. Insertar la relación en la tabla intermedia AUTOR_LIBRO
+            string queryAutorLibro = "INSERT INTO libro_autor (ID_AUTOR, ID_LIBRO) VALUES (@idAutor, @idLibro)";
+
+            using (MySqlCommand cmdAutorLibro = new MySqlCommand(queryAutorLibro, conn))
+            {
+                cmdAutorLibro.Parameters.AddWithValue("@idAutor", cmbAutor.SelectedValue);
+                cmdAutorLibro.Parameters.AddWithValue("@idLibro", idLibroNuevo);
+
+                cmdAutorLibro.ExecuteNonQuery();
+            }
+
+            MessageBox.Show("Libro  guardado correctamente.");
+
             txtISBN.Clear();
             txtTitulo.Text = "";
             cmbEditorial.SelectedIndex = -1;
             cmbCategoria.SelectedIndex = -1;
-            cmbEstado.SelectedIndex = 0;
+            cmbAutor.SelectedIndex = -1;
         }
 
 
-        private void cmbLibro_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbLibro.SelectedIndex != -1 && cmbLibro.SelectedValue != null)
-            {
-                ConnectionData = new Conexion();
-                MySqlConnection conn = ConnectionData.getConection();
-                
-                    // Contamos cuántos registros existen en la tabla 'ejemplar' para ese libro
-                    string query = "SELECT COUNT(*) FROM ejemplar WHERE id_libro = @id";
-
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@id", cmbLibro.SelectedValue);
-
-                    try
-                    {
-                        // ExecuteScalar devuelve el resultado del COUNT
-                        object result = cmd.ExecuteScalar();
-                        txtstock.Text = (result != null) ? result.ToString() : "0";
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error al contar ejemplares: " + ex.Message);
-                    }
-                
-            }
-        }
+        
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {

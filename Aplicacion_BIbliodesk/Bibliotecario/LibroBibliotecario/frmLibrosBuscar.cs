@@ -29,7 +29,16 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
 
             MySqlConnection conn = ConnectionData.getConection();
 
-            string query = "SELECT ID_LIBRO,ID_EDITORIAL,ID_CATEGORIA, TITULO, ISBN, ESTADO FROM LIBRO WHERE TITULO LIKE @criterio OR ISBN LIKE @criterio";
+            string query = @"SELECT 
+                        l.ID_LIBRO, 
+                        l.ID_EDITORIAL, 
+                        l.ID_CATEGORIA, 
+                        l.TITULO, 
+                        l.ISBN, 
+                        l.ESTADO,
+                        (SELECT COUNT(*) FROM ejemplar e WHERE e.ID_LIBRO = l.ID_LIBRO AND e.DISPONIBLE = 'ACTIVO') AS EJEMPLARES
+                     FROM LIBRO l 
+                     WHERE l.TITULO LIKE @criterio OR l.ISBN LIKE @criterio";
 
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
@@ -73,10 +82,10 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
                 string idCat = fila.Cells["ID_CATEGORIA"].Value.ToString();
                 string isbn = fila.Cells["ISBN"].Value.ToString();
                 string titulo = fila.Cells["TITULO"].Value.ToString();
-                string estado = fila.Cells["ESTADO"].Value.ToString();
 
 
-                frmLibrosEditar formEdicion = new frmLibrosEditar(id, idEd, idCat, isbn, titulo, estado);
+
+                frmLibrosEditar formEdicion = new frmLibrosEditar(id, idEd, idCat, isbn, titulo);
 
                 frmInicioBiblio inicioBiblio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
 
