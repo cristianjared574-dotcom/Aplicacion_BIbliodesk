@@ -84,7 +84,7 @@
             // 
             // btnguardarcategoria
             // 
-            this.btnguardarcategoria.BackColor = System.Drawing.Color.Maroon;
+            this.btnguardarcategoria.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.btnguardarcategoria.ForeColor = System.Drawing.Color.White;
             this.btnguardarcategoria.Location = new System.Drawing.Point(164, 359);
             this.btnguardarcategoria.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -93,7 +93,7 @@
             this.btnguardarcategoria.TabIndex = 4;
             this.btnguardarcategoria.Text = "Guardar Categoría";
             this.btnguardarcategoria.UseVisualStyleBackColor = false;
-            this.btnguardarcategoria.Click += new System.EventHandler(this.button2_Click);
+            this.btnguardarcategoria.Click += new System.EventHandler(this.btnguardarcategoria_Click);
             // 
             // groupBox1
             // 
@@ -132,15 +132,15 @@
             this.txtdescripcion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtdescripcion.Multiline = true;
             this.txtdescripcion.Name = "txtdescripcion";
-            this.txtdescripcion.Size = new System.Drawing.Size(357, 96);
+            this.txtdescripcion.Size = new System.Drawing.Size(356, 95);
             this.txtdescripcion.TabIndex = 8;
             // 
             // categoria_biblio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(1924, 679);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(233)))), ((int)(((byte)(210)))));
+            this.ClientSize = new System.Drawing.Size(1506, 552);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "categoria_biblio";

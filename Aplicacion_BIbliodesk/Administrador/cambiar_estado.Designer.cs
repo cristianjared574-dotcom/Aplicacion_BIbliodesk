@@ -32,10 +32,10 @@
             this.btnCancelarCambios = new System.Windows.Forms.Button();
             this.BtnGuardarCambios = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.cboEstado = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +68,7 @@
             // 
             // BtnGuardarCambios
             // 
-            this.BtnGuardarCambios.BackColor = System.Drawing.Color.Maroon;
+            this.BtnGuardarCambios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.BtnGuardarCambios.ForeColor = System.Drawing.Color.White;
             this.BtnGuardarCambios.Location = new System.Drawing.Point(164, 330);
             this.BtnGuardarCambios.Name = "BtnGuardarCambios";
@@ -89,13 +89,22 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(633, 253);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // cmbCategoria
+            // 
+            this.cmbCategoria.FormattingEnabled = true;
+            this.cmbCategoria.Location = new System.Drawing.Point(233, 49);
+            this.cmbCategoria.Name = "cmbCategoria";
+            this.cmbCategoria.Size = new System.Drawing.Size(322, 27);
+            this.cmbCategoria.TabIndex = 9;
             // 
             // cboEstado
             // 
             this.cboEstado.FormattingEnabled = true;
             this.cboEstado.Location = new System.Drawing.Point(233, 135);
             this.cboEstado.Name = "cboEstado";
-            this.cboEstado.Size = new System.Drawing.Size(158, 27);
+            this.cboEstado.Size = new System.Drawing.Size(240, 27);
             this.cboEstado.TabIndex = 8;
             // 
             // label2
@@ -116,19 +125,11 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Categoría:";
             // 
-            // cmbCategoria
-            // 
-            this.cmbCategoria.FormattingEnabled = true;
-            this.cmbCategoria.Location = new System.Drawing.Point(233, 49);
-            this.cmbCategoria.Name = "cmbCategoria";
-            this.cmbCategoria.Size = new System.Drawing.Size(322, 27);
-            this.cmbCategoria.TabIndex = 9;
-            // 
             // cambiar_estado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(233)))), ((int)(((byte)(210)))));
             this.ClientSize = new System.Drawing.Size(1511, 552);
             this.Controls.Add(this.groupBox1);
             this.Name = "cambiar_estado";

@@ -45,7 +45,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
 
             if (string.IsNullOrWhiteSpace(txtMatriculaUsuario.Text))
             {
-                MessageBox.Show("Ingrese la matricula del usuario.");
+                MessageBox.Show("Ingrese la matricula del usuario.", "Matricula Requerida",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 txtMatriculaUsuario.Focus();
                 return;
             }
@@ -56,18 +56,18 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
                 AccesoConexion = new Conexion();
                 MySqlConnection conexionDB = AccesoConexion.getConection();
 
-                if(conexionDB == null)
+                if (conexionDB == null)
                 {
                     return;
                 }
 
                 //creamos la consulta buscando al usuario
-                string consulta = @"SELECT ID_USUARIO, NOMBRE, APELLIDOP, APELLIDOM, CORREO, TELEFONO FROM USUARIO WHERE ID_USUARIO = @idUsuario AND ESTADO = 'ACTIVO'";
+                string consulta = @"SELECT ID_USUARIO, MATRICULA_USUARIO, NOMBRE, APELLIDOP, APELLIDOM, CORREO, TELEFONO FROM USUARIO WHERE MATRICULA_USUARIO = @matriculaUsuario AND ESTADO = 'ACTIVO';";
 
                 //creamos un adaptador para almacenar los resultados de la consulta
                 MySqlCommand comando = new MySqlCommand(consulta, conexionDB);
                 //Valor de Id
-                comando.Parameters.AddWithValue("@idUsuario", txtMatriculaUsuario.Text.Trim());
+                comando.Parameters.AddWithValue("@matriculaUsuario", txtMatriculaUsuario.Text.Trim().ToUpper());
 
                 //lector de datos
                 MySqlDataReader Adapter = comando.ExecuteReader();
@@ -83,7 +83,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
                 }
                 else
                 {
-                    MessageBox.Show("No se encontró el usuario.");
+                    MessageBox.Show("No se encontró el usuario.","Usuario no encontrado",MessageBoxButtons.OK,MessageBoxIcon.Information);
                     idUsuarioSeleccionado = 0;
                     lblNombreUsuario.Text = "Nombre:";
                     lblCorreoUsuario.Text = "Correo:";
@@ -103,10 +103,9 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
 
         private void picBuscarLibro_Click(object sender, EventArgs e)
         {
-          
             if (string.IsNullOrWhiteSpace(txtClaveEjemplar.Text))
             {
-                MessageBox.Show("Ingrese la clave del ejemplar.");
+                MessageBox.Show("Ingrese la clave del ejemplar.", "Clave requerida",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 txtClaveEjemplar.Focus();
                 return;
             }
@@ -117,7 +116,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
                 Conexion accesoConexion = new Conexion();
                 MySqlConnection conexionDB = accesoConexion.getConection();
 
-                if( conexionDB == null )
+                if (conexionDB == null)
                 {
                     return;
                 }
@@ -125,6 +124,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
                 // Consulta para buscar el libro
                 string consulta = @"SELECT 
                         E.ID_EJEMPLAR,
+                        E.CLAVE_EJEMPLAR,
                         E.DISPONIBLE,
                         L.TITULO,
                         CONCAT(A.NOMBRE, ' ', A.APELLIDOP, ' ', A.APELLIDOM) AS AUTOR
@@ -132,13 +132,13 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
                     INNER JOIN LIBRO L ON E.ID_LIBRO = L.ID_LIBRO
                     INNER JOIN LIBRO_AUTOR LA ON L.ID_LIBRO = LA.ID_LIBRO
                     INNER JOIN AUTOR A ON LA.ID_AUTOR = A.ID_AUTOR
-                    WHERE E.ID_EJEMPLAR = @idEjemplar AND L.ESTADO = 'ACTIVO';";
+                    WHERE E.CLAVE_EJEMPLAR = @claveEjemplar AND L.ESTADO = 'ACTIVO';";
 
                 // Crear el comando
                 MySqlCommand comando = new MySqlCommand(consulta, conexionDB);
 
                 // Enviar el título escrito
-                comando.Parameters.AddWithValue("@idEjemplar", txtClaveEjemplar.Text.Trim());
+                comando.Parameters.AddWithValue("@claveEjemplar", txtClaveEjemplar.Text.Trim().ToUpper());
 
                 // lector de datos
                 MySqlDataReader Adapter = comando.ExecuteReader();
@@ -152,7 +152,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
                         //guardae el ID del ejemplar disponible
                         idEjemplarSeleccionado = Convert.ToInt32(Adapter["ID_EJEMPLAR"]);
 
-                        lblClaveEjemplar.Text = "Clave del ejemplar: " + Adapter["ID_EJEMPLAR"].ToString();
+                        lblClaveEjemplar.Text = "Clave del ejemplar: " + Adapter["CLAVE_EJEMPLAR"].ToString();
                         lblNombreLibro.Text = "Libro: " + Adapter["TITULO"].ToString();
                         lblAutorLibro.Text = "Autor: " + Adapter["AUTOR"].ToString();
                     }
@@ -164,7 +164,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
                 }
                 else
                 {
-                    MessageBox.Show("No se pudo registrar este ejemplar. Verifique que la clave sea correcta y que aparezca como disponible en el sistema.", "Verificar Ejemplar",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    MessageBox.Show("No se pudo registrar este ejemplar. Verifique que la clave sea correcta y que aparezca como disponible en el sistema.", "Verificar Ejemplar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimpiarDatosEjemplar();
                 }
 
@@ -188,6 +188,29 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
             lblAutorLibro.Text = "Autor:";
 
             txtClaveEjemplar.Focus();
+        }
+
+        // METODO PARA GENERAR EL FOLIO
+        private string GenerarFolioPrestamo(MySqlConnection conexionDB, MySqlTransaction transaccion)
+        {
+            // genera el PRE26
+            string prefijo = "PRE" + DateTime.Now.ToString("yy");
+
+            string consultaFolio = @"
+                                     SELECT IFNULL(MAX(CAST(RIGHT(FOLIO_PRESTAMO, 4)AS UNSIGNED)),0) + 1
+                                            FROM PRESTAMO
+                                            WHERE FOLIO_PRESTAMO LIKE @prefijo;";
+
+            MySqlCommand ComandoFolio = new MySqlCommand(consultaFolio, conexionDB, transaccion);
+
+            ComandoFolio.Parameters.AddWithValue("@prefijo", prefijo + "%");
+
+            int consecutivo = Convert.ToInt32(ComandoFolio.ExecuteScalar());
+
+            //genera el PRE + 26 + 0001
+            string folioPrestamo = prefijo + consecutivo.ToString("D4");
+
+            return folioPrestamo;
         }
 
         private void btnGuardarPrestamo_Click(object sender, EventArgs e)
@@ -215,17 +238,6 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
             dtpDevolucion.Value = DateTime.Now.AddDays(14);
 
             txtMatriculaUsuario.Focus();
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            frmInicioBiblio inicioBiblio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
-
-            if(inicioBiblio != null)
-            {
-                frmPrestamoBiblio inicioPrestamo = new frmPrestamoBiblio();
-                inicioBiblio.AbrirFormularioEnPanel(inicioPrestamo);
-            }
         }
 
         private void btnGuardarPrestamo_Click_1(object sender, EventArgs e)
@@ -263,12 +275,18 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
                     return;
                 }
 
+                MySqlTransaction transaccion = conexionDB.BeginTransaction();
+
+                //generar el folio automaticamente 
+                string folioPrestamo = GenerarFolioPrestamo(conexionDB, transaccion);
+
                 // Consulta para registrar el préstamo
-                string consulta = @"INSERT INTO PRESTAMO (ID_USUARIO,ID_EJEMPLAR,FECHA_INICIO,FECHA_DEVOLUCION,ESTADO) VALUES(@idUsuario,@idEjemplar,@fechaInicio,@fechaDevolucion,'ACTIVO');";
+                string consulta = @"INSERT INTO PRESTAMO (FOLIO_PRESTAMO,ID_USUARIO,ID_EJEMPLAR,FECHA_INICIO,FECHA_DEVOLUCION,ESTADO) VALUES(@folio,@idUsuario,@idEjemplar,@fechaInicio,@fechaDevolucion,'ACTIVO');";
 
                 // Crear el comando
-                MySqlCommand comando = new MySqlCommand(consulta, conexionDB);
+                MySqlCommand comando = new MySqlCommand(consulta, conexionDB, transaccion);
 
+                comando.Parameters.AddWithValue("@folio", folioPrestamo);
 
                 //ejemplar y empleado seleccionados.
 
@@ -284,46 +302,39 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
                 // Ejecutar el INSERT
                 int filasAfectadas = comando.ExecuteNonQuery();
 
-                if (filasAfectadas > 0)
+                if (filasAfectadas == 0)
                 {
-                    //Obtener el ID generado por MYSQL
-                    int idPrestamo = Convert.ToInt32(comando.LastInsertedId);
+                    transaccion.Rollback();
 
-                    /* //generar el folio del prestamo (es decir la clave)
-                    string folioPrestamo = "PRE" + idPrestamo.ToString("D3");
-
-                    //Guarda el folio
-                    string ConsultaFolio = @"UPDATE PRESTAMO
-                            SET FOLIO_PRESTAMO = @folio
-                            WHERE ID_PRESTAMO = @idPrestamo;";
-
-                    MySqlCommand comandoFolio = new MySqlCommand(ConsultaFolio, conexionDB);
-
-                    comandoFolio.Parameters.AddWithValue("@folio", folioPrestamo);
-
-                    comandoFolio.Parameters.AddWithValue("@idPrestamo", idPrestamo);
-
-                    comandoFolio.ExecuteNonQuery(); */
-
-                    //Cambiar el estado del ejemplar
-                    string ConsultaEjemplar = @"UPDATE EJEMPLAR 
-                            SET DISPONIBLE = 'PRESTADO'
-                            WHERE ID_EJEMPLAR = @idEjemplar;";
-
-                    MySqlCommand comandoEjemplar = new MySqlCommand(ConsultaEjemplar, conexionDB);
-
-                    comandoEjemplar.Parameters.AddWithValue("@idEjemplar", idEjemplarSeleccionado);
-
-                    comandoEjemplar.ExecuteNonQuery();
-
-                    //MessageBox.Show("Préstamo registrado correctamente.\n" + "Folio: " + folioPrestamo, "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    MessageBox.Show("Préstamo registrado correctamente.", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimpiarFormularioPrestamo();
-                }
-                else
-                {
                     MessageBox.Show("No se pudo registrar el prestamo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return;
+
                 }
+
+                //Cambiar el estado del ejemplar
+                string ConsultaEjemplar = @"UPDATE EJEMPLAR 
+                            SET DISPONIBLE = 'PRESTADO'
+                            WHERE ID_EJEMPLAR = @idEjemplar AND DISPONIBLE = 'DISPONIBLE';";
+
+                MySqlCommand comandoEjemplar = new MySqlCommand(ConsultaEjemplar, conexionDB, transaccion);
+
+                comandoEjemplar.Parameters.AddWithValue("@idEjemplar", idEjemplarSeleccionado);
+
+                int ejemplarAxctualizado = comandoEjemplar.ExecuteNonQuery();
+
+                if (ejemplarAxctualizado == 0)
+                {
+                    transaccion.Rollback();
+
+                    MessageBox.Show("No se pudo cambiar la disponibilidad del ejemplar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return;
+                }
+
+                transaccion.Commit();
+                MessageBox.Show("Préstamo registrado correctamente.\n" + "Folio: " + folioPrestamo, "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LimpiarFormularioPrestamo();
 
                 // Cerrar la conexión
                 conexionDB.Close();
@@ -331,6 +342,17 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
             catch (Exception ex)
             {
                 MessageBox.Show("Error al registrar el préstamo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            frmInicioBiblio inicioBiblio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
+
+            if(inicioBiblio != null)
+            {
+                frmPrestamoBiblio prestamoBiblio = new frmPrestamoBiblio();
+                inicioBiblio.AbrirFormularioEnPanel(prestamoBiblio);
             }
         }
     }

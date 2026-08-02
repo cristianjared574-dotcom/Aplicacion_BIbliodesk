@@ -98,13 +98,14 @@
             this.dgvCategorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCategorias.Size = new System.Drawing.Size(1028, 293);
             this.dgvCategorias.TabIndex = 6;
+            this.dgvCategorias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategorias_CellContentClick_1);
             // 
             // btnAgregarCategoria
             // 
-            this.btnAgregarCategoria.BackColor = System.Drawing.Color.Maroon;
+            this.btnAgregarCategoria.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.btnAgregarCategoria.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarCategoria.ForeColor = System.Drawing.Color.White;
-            this.btnAgregarCategoria.Location = new System.Drawing.Point(642, 105);
+            this.btnAgregarCategoria.Location = new System.Drawing.Point(693, 102);
             this.btnAgregarCategoria.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAgregarCategoria.Name = "btnAgregarCategoria";
             this.btnAgregarCategoria.Size = new System.Drawing.Size(189, 48);
@@ -146,10 +147,10 @@
             // 
             // btnEditarCategoria
             // 
-            this.btnEditarCategoria.BackColor = System.Drawing.Color.Maroon;
+            this.btnEditarCategoria.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.btnEditarCategoria.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditarCategoria.ForeColor = System.Drawing.Color.White;
-            this.btnEditarCategoria.Location = new System.Drawing.Point(848, 105);
+            this.btnEditarCategoria.Location = new System.Drawing.Point(899, 102);
             this.btnEditarCategoria.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEditarCategoria.Name = "btnEditarCategoria";
             this.btnEditarCategoria.Size = new System.Drawing.Size(189, 48);
@@ -162,12 +163,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(233)))), ((int)(((byte)(210)))));
             this.ClientSize = new System.Drawing.Size(1511, 552);
             this.Controls.Add(this.pnlContenido);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "categorias_biblo";
             this.Text = "categorias_biblo";
+            this.Load += new System.EventHandler(this.categorias_biblo_Load_1);
             this.pnlContenido.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias)).EndInit();
             this.panel2.ResumeLayout(false);

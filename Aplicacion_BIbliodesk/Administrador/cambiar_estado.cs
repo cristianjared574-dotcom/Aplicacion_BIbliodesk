@@ -14,63 +14,57 @@ namespace Aplicacion_BIbliodesk
     public partial class cambiar_estado : Form
     {
         private Conexion AccesoDatos;
-
+        private int idCategoriaSeleccionada;
         private readonly SpeechSynthesizer voz = new SpeechSynthesizer();
 
         public cambiar_estado()
         {
             InitializeComponent();
-            //StartPosition = FormStartPosition.CenterScreen;
+            cboEstado.Items.Add("ACTIVO");
+            cboEstado.Items.Add("INACTIVO");
+            CargarCategorias(); 
+        }
 
+        //  Constructor que RECIBE la categoría que seleccionaste
+        public cambiar_estado(int idRecibido, string nombreRecibido, string estadoRecibido)
+        {
+            InitializeComponent();
+            idCategoriaSeleccionada = idRecibido;
+
+            // Carga los estados
             cboEstado.Items.Add("ACTIVO");
             cboEstado.Items.Add("INACTIVO");
 
-            // Carga las categorías en el ComboBox
+            // Carga la lista completa y preselecciona la tuya
             CargarCategorias();
-
+            cmbCategoria.SelectedValue = idRecibido; // Marca automáticamente la que elegiste
+            cboEstado.Text = estadoRecibido; // Muestra el estado que ya tenía
         }
+      
 
-        // Recibe datos desde categorías
-        
 
         // Guardar cambios
         private void BtnGuardarCambios_Click(object sender, EventArgs e)
         {
             if (cmbCategoria.SelectedValue == null)
             {
-                MessageBox.Show(
-                    "Seleccione una categoría.",
-                    "Aviso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
+                MessageBox.Show("Seleccione una categoría.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (cboEstado.SelectedIndex == -1)
             {
-                MessageBox.Show(
-                    "Seleccione el nuevo estado.",
-                    "Aviso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
+                MessageBox.Show("Seleccione el nuevo estado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            int idCategoria = Convert.ToInt32(
-                cmbCategoria.SelectedValue);
+            int idCategoria = Convert.ToInt32(cmbCategoria.SelectedValue);
+            string nuevoEstado = cboEstado.SelectedItem.ToString();
 
-            string nuevoEstado =
-                cboEstado.SelectedItem.ToString();
-
-            ActualizarEstado(
-                idCategoria,
-                nuevoEstado);
-            
+            ActualizarEstado(idCategoria, nuevoEstado);
         }
 
-        
+
         private void btnCancelarCambios_Click(object sender, EventArgs e)
         {
             voz.SpeakAsync("Cancelando, volviendo a categorías");
@@ -244,6 +238,10 @@ namespace Aplicacion_BIbliodesk
                         formularioCategorias);
                 }
             }
-        
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

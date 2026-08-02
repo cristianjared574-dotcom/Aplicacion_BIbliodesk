@@ -26,10 +26,22 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
         private void CargarDatos(string filtro)
         {
             ConnectionData = new Conexion();
-
             MySqlConnection conn = ConnectionData.getConection();
 
-            string query = "SELECT ID_AUTOR, NOMBRE, APELLIDOP, APELLIDOM, NACIONALIDAD, ESTADO FROM autor WHERE NOMBRE LIKE @criterio";
+
+            string query = @"SELECT  
+                                ID_AUTOR, 
+                                CLAVE_AUTOR AS 'CLAVE AUTOR', 
+                                NOMBRE, 
+                                APELLIDOP, 
+                                APELLIDOM, 
+                                NACIONALIDAD, 
+                                ESTADO 
+                             FROM autor 
+                             WHERE NOMBRE LIKE @criterio 
+                                OR APELLIDOP LIKE @criterio 
+                                OR APELLIDOM LIKE @criterio 
+                                OR CLAVE_AUTOR LIKE @criterio";
 
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
@@ -40,6 +52,10 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
                 da.Fill(dt);
 
                 dgvAutor.DataSource = dt;
+
+
+                if (dgvAutor.Columns["ID_AUTOR"] != null)
+                    dgvAutor.Columns["ID_AUTOR"].Visible = false;
             }
 
         }
@@ -62,44 +78,33 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
 
         private void btnEditarAutor_Click(object sender, EventArgs e)
         {
-            if(dgvAutor.SelectedRows.Count > 0)
-{
+            DataGridViewRow fila = dgvAutor.SelectedRows[0];
 
-                DataGridViewRow fila = dgvAutor.SelectedRows[0];
+            
+            string id = fila.Cells["ID_AUTOR"].Value.ToString();
 
+          
+            string nombre = fila.Cells["NOMBRE"].Value.ToString();
+            string paterno = fila.Cells["APELLIDOP"].Value.ToString();
+            string materno = fila.Cells["APELLIDOM"].Value.ToString();
+            string nacionalidad = fila.Cells["NACIONALIDAD"].Value.ToString();
+            string estado = fila.Cells["ESTADO"].Value.ToString();
 
-                string id = fila.Cells["id_autor"].Value.ToString();
+            
+            frmEditarAutor formEdicion = new frmEditarAutor(id, nombre, paterno, materno, nacionalidad, estado);
 
+            frmInicioBiblio inicioBiblio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
 
-                string nombre = fila.Cells["nombre"].Value.ToString();
-
-
-                string paterno = fila.Cells["apellidop"].Value.ToString();
-
-                string materno = fila.Cells["apellidom"].Value.ToString();
-
-                string nacionalidad = fila.Cells["nacionalidad"].Value.ToString();
-
-
-
-                string estado = fila.Cells["estado"].Value.ToString();
-
-                frmEditarAutor formEdicion = new frmEditarAutor(id, nombre, paterno, materno, nacionalidad, estado);
-
-                frmInicioBiblio inicioBiblio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
-
-                if (inicioBiblio != null)
-                {
-                    inicioBiblio.AbrirFormularioEnPanel(formEdicion);
-                }
-                else
-                {
-
-                    MessageBox.Show("Por favor, selecciona una fila");
-
-                }
-
+            if (inicioBiblio != null)
+            {
+                inicioBiblio.AbrirFormularioEnPanel(formEdicion);
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona una fila");
             }
         }
+
     }
 }
+

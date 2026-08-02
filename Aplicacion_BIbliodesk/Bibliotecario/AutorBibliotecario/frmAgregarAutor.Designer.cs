@@ -39,14 +39,10 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cmbEstado = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtnacionalidad = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtAm = new System.Windows.Forms.TextBox();
-            this.lblId = new System.Windows.Forms.Label();
             this.txtAp = new System.Windows.Forms.TextBox();
-            this.txtIdAutor = new System.Windows.Forms.TextBox();
             this.lblAP = new System.Windows.Forms.Label();
             this.lblAM = new System.Windows.Forms.Label();
             this.lblnombre = new System.Windows.Forms.Label();
@@ -102,14 +98,10 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.cmbEstado);
-            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtnacionalidad);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtAm);
-            this.panel1.Controls.Add(this.lblId);
             this.panel1.Controls.Add(this.txtAp);
-            this.panel1.Controls.Add(this.txtIdAutor);
             this.panel1.Controls.Add(this.lblAP);
             this.panel1.Controls.Add(this.lblAM);
             this.panel1.Controls.Add(this.lblnombre);
@@ -120,28 +112,9 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             this.panel1.Size = new System.Drawing.Size(518, 290);
             this.panel1.TabIndex = 17;
             // 
-            // cmbEstado
-            // 
-            this.cmbEstado.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Location = new System.Drawing.Point(173, 238);
-            this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(121, 25);
-            this.cmbEstado.TabIndex = 13;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(3, 246);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 18);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Estado:";
-            // 
             // txtnacionalidad
             // 
-            this.txtnacionalidad.Location = new System.Drawing.Point(173, 195);
+            this.txtnacionalidad.Location = new System.Drawing.Point(173, 202);
             this.txtnacionalidad.Name = "txtnacionalidad";
             this.txtnacionalidad.Size = new System.Drawing.Size(300, 26);
             this.txtnacionalidad.TabIndex = 11;
@@ -150,7 +123,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(3, 202);
+            this.label1.Location = new System.Drawing.Point(3, 210);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 18);
             this.label1.TabIndex = 10;
@@ -158,45 +131,23 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             // 
             // txtAm
             // 
-            this.txtAm.Location = new System.Drawing.Point(173, 143);
+            this.txtAm.Location = new System.Drawing.Point(173, 141);
             this.txtAm.Name = "txtAm";
             this.txtAm.Size = new System.Drawing.Size(300, 26);
             this.txtAm.TabIndex = 7;
             // 
-            // lblId
-            // 
-            this.lblId.AutoSize = true;
-            this.lblId.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblId.Location = new System.Drawing.Point(3, 14);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(70, 18);
-            this.lblId.TabIndex = 0;
-            this.lblId.Text = "ID Autor:";
-            this.lblId.Visible = false;
-            // 
             // txtAp
             // 
-            this.txtAp.Location = new System.Drawing.Point(173, 99);
+            this.txtAp.Location = new System.Drawing.Point(173, 85);
             this.txtAp.Name = "txtAp";
             this.txtAp.Size = new System.Drawing.Size(300, 26);
             this.txtAp.TabIndex = 5;
-            // 
-            // txtIdAutor
-            // 
-            this.txtIdAutor.BackColor = System.Drawing.Color.White;
-            this.txtIdAutor.Location = new System.Drawing.Point(173, 9);
-            this.txtIdAutor.Name = "txtIdAutor";
-            this.txtIdAutor.ReadOnly = true;
-            this.txtIdAutor.Size = new System.Drawing.Size(300, 26);
-            this.txtIdAutor.TabIndex = 1;
-            this.txtIdAutor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtIdAutor.Visible = false;
             // 
             // lblAP
             // 
             this.lblAP.AutoSize = true;
             this.lblAP.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold);
-            this.lblAP.Location = new System.Drawing.Point(3, 104);
+            this.lblAP.Location = new System.Drawing.Point(3, 93);
             this.lblAP.Name = "lblAP";
             this.lblAP.Size = new System.Drawing.Size(135, 18);
             this.lblAP.TabIndex = 4;
@@ -216,7 +167,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             // 
             this.lblnombre.AutoSize = true;
             this.lblnombre.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold);
-            this.lblnombre.Location = new System.Drawing.Point(3, 59);
+            this.lblnombre.Location = new System.Drawing.Point(3, 40);
             this.lblnombre.Name = "lblnombre";
             this.lblnombre.Size = new System.Drawing.Size(72, 18);
             this.lblnombre.TabIndex = 2;
@@ -224,7 +175,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(173, 54);
+            this.txtNombre.Location = new System.Drawing.Point(173, 32);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(300, 26);
             this.txtNombre.TabIndex = 3;
@@ -249,9 +200,6 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
         }
 
         #endregion
-
-        private Label lblId;
-        private TextBox txtIdAutor;
         private Label lblnombre;
         private TextBox txtNombre;
         private Label lblAP;
@@ -261,7 +209,5 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
         private TextBox txtAm;
         private TextBox txtnacionalidad;
         private Label label1;
-        private ComboBox cmbEstado;
-        private Label label2;
     }
 }

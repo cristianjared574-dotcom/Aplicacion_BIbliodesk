@@ -66,7 +66,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 125);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1920, 115);
+            this.panel1.Size = new System.Drawing.Size(1507, 115);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -234,7 +234,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1920, 125);
+            this.panel2.Size = new System.Drawing.Size(1507, 125);
             this.panel2.TabIndex = 0;
             // 
             // pictureBox2
@@ -264,10 +264,10 @@
             this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.UserCircle;
             this.iconPictureBox1.IconColor = System.Drawing.Color.White;
             this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconPictureBox1.IconSize = 77;
-            this.iconPictureBox1.Location = new System.Drawing.Point(1760, 3);
+            this.iconPictureBox1.IconSize = 85;
+            this.iconPictureBox1.Location = new System.Drawing.Point(1347, 3);
             this.iconPictureBox1.Name = "iconPictureBox1";
-            this.iconPictureBox1.Size = new System.Drawing.Size(78, 77);
+            this.iconPictureBox1.Size = new System.Drawing.Size(85, 85);
             this.iconPictureBox1.TabIndex = 2;
             this.iconPictureBox1.TabStop = false;
             // 
@@ -277,7 +277,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(1731, 83);
+            this.label2.Location = new System.Drawing.Point(1318, 83);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(151, 26);
             this.label2.TabIndex = 1;
@@ -289,19 +289,21 @@
             this.pnlContenido.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContenido.Location = new System.Drawing.Point(0, 240);
             this.pnlContenido.Name = "pnlContenido";
-            this.pnlContenido.Size = new System.Drawing.Size(1920, 543);
+            this.pnlContenido.Size = new System.Drawing.Size(1507, 492);
             this.pnlContenido.TabIndex = 2;
             this.pnlContenido.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContenido_Paint_1);
             // 
             // iconButton1
             // 
+            this.iconButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iconButton1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.WheelchairMove;
             this.iconButton1.IconColor = System.Drawing.Color.Black;
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.Location = new System.Drawing.Point(1730, 0);
+            this.iconButton1.Location = new System.Drawing.Point(1364, 0);
             this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(190, 93);
+            this.iconButton1.Size = new System.Drawing.Size(143, 93);
             this.iconButton1.TabIndex = 2;
             this.iconButton1.Text = "Accesibilidad";
             this.iconButton1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -314,7 +316,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(233)))), ((int)(((byte)(210)))));
-            this.ClientSize = new System.Drawing.Size(1920, 783);
+            this.ClientSize = new System.Drawing.Size(1507, 732);
             this.Controls.Add(this.pnlContenido);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);

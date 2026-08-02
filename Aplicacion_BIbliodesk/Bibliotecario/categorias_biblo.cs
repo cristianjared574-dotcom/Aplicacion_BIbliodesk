@@ -38,17 +38,19 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
                 using (MySqlConnection conn = AccesoConnection.getConection())
                 {
                     string sql = @"SELECT 
-                                        ID_CATEGORIA AS 'ID Categoría',
-                                        NOMBRE_CATEGORIA AS 'Categoría',
-                                        DESCRIPCION AS 'Descripción',
-                                        ESTADO
-                                   FROM CATEGORIA";
+                                ID_CATEGORIA AS 'ID',
+                                CLAVE_CATEGORIA AS 'Clave Categoría',
+                                NOMBRE_CATEGORIA AS 'Categoría',
+                                DESCRIPCION AS 'Descripción',
+                                ESTADO AS 'Estado'
+                                FROM CATEGORIA";
 
                     if (!string.IsNullOrWhiteSpace(filtro))
                     {
-                        sql += " WHERE NOMBRE_CATEGORIA LIKE @Filtro OR DESCRIPCION LIKE @Filtro";
+                        sql += " WHERE CLAVE_CATEGORIA LIKE @Filtro " +
+                               "OR NOMBRE_CATEGORIA LIKE @Filtro " +
+                               "OR DESCRIPCION LIKE @Filtro";
                     }
-
                     using (MySqlCommand cmd = new MySqlCommand(sql, conn))
                     {
                         if (!string.IsNullOrWhiteSpace(filtro))
@@ -64,10 +66,35 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
 
                             if (dgvCategorias.Columns.Count > 0)
                             {
-                                dgvCategorias.Columns["ID Categoría"].Width = 100;
-                                dgvCategorias.Columns["Categoría"].Width = 180;
+                                // OCULTA EL ID (NO SE VE EN PANTALLA)
+                                dgvCategorias.Columns["ID"].Visible = false;
+
+
+                                // ALINEA TODO AL CENTRO EN COLUMNAS Y FILAS
+                                dgvCategorias.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                                dgvCategorias.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                                //  ENCABEZADO MÁS ALTO
+                                dgvCategorias.ColumnHeadersHeight = 60; //  más espacio hacia abajo
+                                dgvCategorias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+
+                                //  TAMAÑOS 
+                                dgvCategorias.Columns["Clave Categoría"].Width = 100;
+                                dgvCategorias.Columns["Categoría"].Width = 160;
                                 dgvCategorias.Columns["Descripción"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                                dgvCategorias.Columns["ESTADO"].Width = 110;
+                                dgvCategorias.Columns["Estado"].Width = 150;
+
+                                //  ALTURA DE FILAS 
+                                dgvCategorias.RowTemplate.Height = 32;
+                                dgvCategorias.AllowUserToResizeRows = false;
+
+
+
+                                //  TAMAÑO DE LAS COLUMNAS
+                                dgvCategorias.Columns["Clave Categoría"].Width = 120;  //  más ancho
+                                dgvCategorias.Columns["Categoría"].Width = 230;        // más ancho
+                                dgvCategorias.Columns["Descripción"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                                dgvCategorias.Columns["Estado"].Width = 150;          //  más ancho
                             }
                         }
                     }
@@ -87,7 +114,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
 
      
         private void categorias_biblo_Load(object sender, EventArgs e) { }
-        // EVENTO DEL BOTÓN AGREGAR CATEGORÍA
+       
 
 
    
@@ -116,29 +143,30 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
 
         private void btnEditarCategoria_Click_1(object sender, EventArgs e)
         {
-            // 1. OBLIGA A SELECCIONAR UNA FILA PRIMERO
+            // 1. Verificar selección
             if (dgvCategorias.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Primero selecciona UNA categoría de la tabla (haz clic sobre la fila entera)",
-                                "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Primero selecciona UNA categoría de la tabla", "Aviso",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             try
             {
-                // 2. TOMA LOS DATOS DE LA FILA QUE SELECCIONASTE
-                DataGridViewRow filaSeleccionada = dgvCategorias.SelectedRows[0];
-                int idCategoria = Convert.ToInt32(filaSeleccionada.Cells["ID Categoría"].Value);
-                string nombreActual = filaSeleccionada.Cells["Categoría"].Value.ToString();
-                string descripcionActual = filaSeleccionada.Cells["Descripción"].Value?.ToString() ?? "";
+               
+                DataGridViewRow fila = dgvCategorias.SelectedRows[0];
+                int idCategoria = Convert.ToInt32(fila.Cells["ID"].Value);
+                string nombre = fila.Cells["Categoría"].Value?.ToString() ?? "";
+                string descripcion = fila.Cells["Descripción"].Value?.ToString() ?? ""; 
+              
 
-                // 3. ABRE LA MISMA PANTALLA PERO CON LOS DATOS CARGADOS
-                frmInicioBiblio pantallaInicio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
-                if (pantallaInicio != null)
+                // 3. Abrir formulario de edición
+                frmInicioBiblio inicio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
+                if (inicio != null)
                 {
-                    // Usa el constructor que recibe datos para editar
-                    categoria_biblio formularioEditar = new categoria_biblio(idCategoria, nombreActual, descripcionActual);
-                    pantallaInicio.AbrirFormularioEnPanel(formularioEditar);
+                   
+                    categoria_biblio formEditar = new categoria_biblio(idCategoria, nombre, descripcion);
+                    inicio.AbrirFormularioEnPanel(formEditar);
                 }
             }
             catch (Exception ex)
@@ -146,6 +174,15 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
                 MessageBox.Show("Error al cargar edición: " + ex.Message, "Error",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void categorias_biblo_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvCategorias_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
