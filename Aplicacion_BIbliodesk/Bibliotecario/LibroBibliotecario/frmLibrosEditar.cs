@@ -14,35 +14,30 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
     public partial class frmLibrosEditar : Form
     {
         private Conexion ConnectionData;
-        public frmLibrosEditar(string id, string idEd, string idCat, string isbn, string titulo, string estado)
+        private string idLibroActual;
+        public frmLibrosEditar(string id, string idEd, string idCat, string isbn, string titulo)
         {
             InitializeComponent();
 
+            idLibroActual = id;
             CargarCombos();
 
-
-            txtIdLibro.Text = id;
-            txtIdLibro.ReadOnly = true;
             txtISBN.Text = isbn;
             txtTitulo.Text = titulo;
 
-
             cmbEditorial.SelectedValue = idEd;
             cmbCategoria.SelectedValue = idCat;
-            cmbEstado.Text = estado;
 
 
-            cmbEstado.Items.Add("ACTIVO");
-            cmbEstado.Items.Add("INACTIVO");
-            cmbEstado.SelectedIndex = 0;
-            txtIdLibro.ReadOnly = true;
+            // Cargamos el autor actual asociado a este libro
+            CargarAutorActual();
         }
         private void CargarCombos()
         {
             ConnectionData = new Conexion();
             MySqlConnection conn = ConnectionData.getConection();
 
-
+            // Cargar Editoriales
             MySqlDataAdapter daEdit = new MySqlDataAdapter("SELECT ID_EDITORIAL, NOMBRE_EDITORIAL FROM editorial", conn);
             DataTable dtEdit = new DataTable();
             daEdit.Fill(dtEdit);
@@ -50,7 +45,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
             cmbEditorial.DisplayMember = "NOMBRE_EDITORIAL";
             cmbEditorial.ValueMember = "ID_EDITORIAL";
 
-
+            // Cargar Categorías
             MySqlDataAdapter daCat = new MySqlDataAdapter("SELECT ID_CATEGORIA, NOMBRE_CATEGORIA FROM categoria", conn);
             DataTable dtCat = new DataTable();
             daCat.Fill(dtCat);
@@ -58,16 +53,44 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
             cmbCategoria.DisplayMember = "NOMBRE_CATEGORIA";
             cmbCategoria.ValueMember = "ID_CATEGORIA";
 
-            string query = "SELECT id_libro, titulo FROM libro";
-            MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
+            // Cargar Autores (Asumiendo que la tabla se llama 'autor' con 'ID_AUTOR' y 'NOMBRE_AUTOR' o similar)
+            MySqlDataAdapter daAutor = new MySqlDataAdapter("SELECT ID_AUTOR, NOMBRE FROM autor", conn);
+            DataTable dtAutor = new DataTable();
+            daAutor.Fill(dtAutor);
+            cmbAutor.DataSource = dtAutor;
+            cmbAutor.DisplayMember = "NOMBRE";
+            cmbAutor.ValueMember = "ID_AUTOR";
+        }
 
-            cmbLibro.DisplayMember = "titulo";
-            cmbLibro.ValueMember = "id_libro";
-            cmbLibro.DataSource = dt;
+        private void CargarAutorActual()
+        {
+            ConnectionData = new Conexion();
+            MySqlConnection conn = ConnectionData.getConection();
 
+            try
+            {
+                if (conn.State == ConnectionState.Closed) conn.Open();
 
+                string query = "SELECT ID_AUTOR FROM libro_autor WHERE ID_LIBRO = @idLibro LIMIT 1";
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@idLibro", idLibroActual);
+                    object resultado = cmd.ExecuteScalar();
+
+                    if (resultado != null && resultado != DBNull.Value)
+                    {
+                        cmbAutor.SelectedValue = resultado.ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el autor del libro: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -85,24 +108,52 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
             {
                 if (conn.State == ConnectionState.Closed) conn.Open();
 
+                // 1. Actualizar los datos principales del libro
+                string queryLibro = "UPDATE libro SET ID_EDITORIAL = @idEd, ID_CATEGORIA = @idCat, " +
+                                    "ISBN = @isbn, TITULO = @titulo " +
+                                    "WHERE ID_LIBRO = @idLibro";
 
-                string query = "UPDATE libro SET ID_EDITORIAL = @idEd, ID_CATEGORIA = @idCat, " +
-                               "ISBN = @isbn, TITULO = @titulo, ESTADO = @estado " +
-                               "WHERE ID_LIBRO = @idLibro";
-
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                using (MySqlCommand cmdLibro = new MySqlCommand(queryLibro, conn))
                 {
+                    cmdLibro.Parameters.AddWithValue("@idLibro", idLibroActual);
+                    cmdLibro.Parameters.AddWithValue("@idEd", cmbEditorial.SelectedValue);
+                    cmdLibro.Parameters.AddWithValue("@idCat", cmbCategoria.SelectedValue);
+                    cmdLibro.Parameters.AddWithValue("@isbn", txtISBN.Text.Trim());
+                    cmdLibro.Parameters.AddWithValue("@titulo", txtTitulo.Text.Trim());
 
-                    cmd.Parameters.AddWithValue("@idLibro", txtIdLibro.Text.Trim());
-                    cmd.Parameters.AddWithValue("@idEd", cmbLibro.SelectedValue);
-                    cmd.Parameters.AddWithValue("@idCat", cmbEstado.SelectedValue);
-                    cmd.Parameters.AddWithValue("@isbn", txtISBN.Text.Trim());
-                    cmd.Parameters.AddWithValue("@titulo", txtTitulo.Text.Trim());
-                    cmd.Parameters.AddWithValue("@estado", cmbEstado.Text);
 
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Libro actualizado correctamente.");
+                    cmdLibro.ExecuteNonQuery();
                 }
+
+                // 2. Actualizar el autor en la tabla intermedia 'libro_autor'
+                // Primero verificamos si ya existe la relación; si existe se actualiza, si no, se inserta.
+                string queryVerificar = "SELECT COUNT(*) FROM libro_autor WHERE ID_LIBRO = @idLibro";
+                int existeRelacion = 0;
+
+                using (MySqlCommand cmdVerif = new MySqlCommand(queryVerificar, conn))
+                {
+                    cmdVerif.Parameters.AddWithValue("@idLibro", idLibroActual);
+                    existeRelacion = Convert.ToInt32(cmdVerif.ExecuteScalar());
+                }
+
+                string queryAutor = "";
+                if (existeRelacion > 0)
+                {
+                    queryAutor = "UPDATE libro_autor SET ID_AUTOR = @idAutor WHERE ID_LIBRO = @idLibro";
+                }
+                else
+                {
+                    queryAutor = "INSERT INTO libro_autor (ID_LIBRO, ID_AUTOR) VALUES (@idLibro, @idAutor)";
+                }
+
+                using (MySqlCommand cmdAutor = new MySqlCommand(queryAutor, conn))
+                {
+                    cmdAutor.Parameters.AddWithValue("@idLibro", idLibroActual);
+                    cmdAutor.Parameters.AddWithValue("@idAutor", cmbAutor.SelectedValue);
+                    cmdAutor.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Libro actualizado correctamente.");
             }
             catch (Exception ex)
             {
@@ -125,31 +176,6 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
             }
         }
 
-        private void cmbLibro_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbLibro.SelectedIndex != -1 && cmbLibro.SelectedValue != null)
-            {
-                ConnectionData = new Conexion();
-                MySqlConnection conn = ConnectionData.getConection();
-
-                // Contamos cuántos registros existen en la tabla 'ejemplar' para ese libro
-                string query = "SELECT COUNT(*) FROM ejemplar WHERE id_libro = @id";
-
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@id", cmbLibro.SelectedValue);
-
-                try
-                {
-                    // ExecuteScalar devuelve el resultado del COUNT
-                    object result = cmd.ExecuteScalar();
-                    txtStock.Text = (result != null) ? result.ToString() : "0";
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al contar ejemplares: " + ex.Message);
-                }
-
-            }
-        }
+        
     }
 }

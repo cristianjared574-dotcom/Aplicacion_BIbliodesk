@@ -18,9 +18,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
         {
             InitializeComponent();
             CargarComboBoxes();
-            var estados = new[] { "ACTIVO", "INACTIVO" };
-            cmbEstado.DataSource = estados;
-            cmbEstado.SelectedIndex = 0;
+            
         }
 
         private void CargarComboBoxes()
@@ -46,15 +44,46 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
                 cmbCategoria.DisplayMember = "NOMBRE_CATEGORIA";
                 cmbCategoria.ValueMember = "ID_CATEGORIA";
 
-                string query = "SELECT id_libro, titulo FROM libro";
-                MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
+                // Cargar Autores
+                string queryAut = "SELECT ID_AUTOR, NOMBRE FROM autor";
+                MySqlDataAdapter daAut = new MySqlDataAdapter(queryAut, conn);
+                DataTable dtAut = new DataTable();
+                daAut.Fill(dtAut);
+                cmbAutor.DataSource = dtAut;
+                cmbAutor.DisplayMember = "NOMBRE";
+                cmbAutor.ValueMember = "ID_AUTOR";
 
-                cmbLibro.DisplayMember = "titulo";
-                cmbLibro.ValueMember = "id_libro";
-                cmbLibro.DataSource = dt;
-            
+
+        }
+        private string GenerarMatriculaUnica(MySqlConnection conn)
+        {
+            string anioActual = DateTime.Now.ToString("yy"); 
+            string prefijo = "LIB" + anioActual;
+            string nuevaMatricula = prefijo + "0001";
+
+            string query = "SELECT CLAVE_LIBRO FROM libro WHERE CLAVE_LIBRO LIKE @prefijo ORDER BY ID_LIBRO DESC LIMIT 1";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@prefijo", prefijo + "%");
+                object resultado = cmd.ExecuteScalar();
+
+                if (resultado != null && resultado != DBNull.Value)
+                {
+                    string ultimaMatricula = resultado.ToString();
+                    
+                    string parteNumerica = ultimaMatricula.Substring(5);
+
+                    if (int.TryParse(parteNumerica, out int numero))
+                    {
+                        numero++;
+                       
+                        nuevaMatricula = prefijo + numero.ToString("D4");
+                    }
+                }
+            }
+
+            return nuevaMatricula;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -64,60 +93,75 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
                 MessageBox.Show("Rellene los campos obligatorios.");
                 return;
             }
+            if (cmbAutor.SelectedValue == null)
+            {
+                MessageBox.Show("Por favor, seleccione un autor.");
+                return;
+            }
+
             ConnectionData = new Conexion();
             MySqlConnection conn = ConnectionData.getConection();
-            
-            
-                
-                string query = "INSERT INTO libro (ID_EDITORIAL, ID_CATEGORIA, ISBN, TITULO, ESTADO) VALUES (@idEd, @idCat, @isbn, @titulo, @estado)";
 
-                using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@idEd", cmbEditorial.SelectedValue);
-                    cmd.Parameters.AddWithValue("@idCat", cmbCategoria.SelectedValue); 
-                    cmd.Parameters.AddWithValue("@isbn", txtISBN.Text.Trim());
-                    cmd.Parameters.AddWithValue("@titulo", txtTitulo.Text.Trim());
-                    cmd.Parameters.AddWithValue("@estado", cmbEstado.Text);
-
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Guardado.");
-                    
-                }
-            
-            txtISBN.Clear();
-            txtTitulo.Text = "";
-            cmbEditorial.SelectedIndex = -1;
-            cmbCategoria.SelectedIndex = -1;
-            cmbEstado.SelectedIndex = 0;
-        }
-
-
-        private void cmbLibro_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbLibro.SelectedIndex != -1 && cmbLibro.SelectedValue != null)
+            try
             {
-                ConnectionData = new Conexion();
-                MySqlConnection conn = ConnectionData.getConection();
-                
-                    // Contamos cuántos registros existen en la tabla 'ejemplar' para ese libro
-                    string query = "SELECT COUNT(*) FROM ejemplar WHERE id_libro = @id";
+                if (conn.State == ConnectionState.Closed) conn.Open();
 
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@id", cmbLibro.SelectedValue);
+               
+                string claveLibroUnica = GenerarMatriculaUnica(conn);
 
-                    try
-                    {
-                        // ExecuteScalar devuelve el resultado del COUNT
-                        object result = cmd.ExecuteScalar();
-                        txtstock.Text = (result != null) ? result.ToString() : "0";
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error al contar ejemplares: " + ex.Message);
-                    }
+              
+                string queryLibro = "INSERT INTO libro (CLAVE_LIBRO, ID_EDITORIAL, ID_CATEGORIA, ISBN, TITULO) VALUES (@clave, @idEd, @idCat, @isbn, @titulo)";
+
+                using (MySqlCommand cmdLibro = new MySqlCommand(queryLibro, conn))
+                {
+                    cmdLibro.Parameters.AddWithValue("@clave", claveLibroUnica);
+                    cmdLibro.Parameters.AddWithValue("@idEd", cmbEditorial.SelectedValue);
+                    cmdLibro.Parameters.AddWithValue("@idCat", cmbCategoria.SelectedValue);
+                    cmdLibro.Parameters.AddWithValue("@isbn", txtISBN.Text.Trim());
+                    cmdLibro.Parameters.AddWithValue("@titulo", txtTitulo.Text.Trim());
+
+                    cmdLibro.ExecuteNonQuery();
+                }
+
+               
+                long idLibroNuevo = 0;
+                string queryId = "SELECT LAST_INSERT_ID();";
+                using (MySqlCommand cmdId = new MySqlCommand(queryId, conn))
+                {
+                    idLibroNuevo = Convert.ToInt64(cmdId.ExecuteScalar());
+                }
+
                 
+                string queryAutorLibro = "INSERT INTO libro_autor (ID_AUTOR, ID_LIBRO) VALUES (@idAutor, @idLibro)";
+
+                using (MySqlCommand cmdAutorLibro = new MySqlCommand(queryAutorLibro, conn))
+                {
+                    cmdAutorLibro.Parameters.AddWithValue("@idAutor", cmbAutor.SelectedValue);
+                    cmdAutorLibro.Parameters.AddWithValue("@idLibro", idLibroNuevo);
+
+                    cmdAutorLibro.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Libro guardado correctamente con matrícula: " + claveLibroUnica);
+
+                txtISBN.Clear();
+                txtTitulo.Text = "";
+                cmbEditorial.SelectedIndex = -1;
+                cmbCategoria.SelectedIndex = -1;
+                cmbAutor.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al guardar el libro: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
             }
         }
+
+
+        
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
