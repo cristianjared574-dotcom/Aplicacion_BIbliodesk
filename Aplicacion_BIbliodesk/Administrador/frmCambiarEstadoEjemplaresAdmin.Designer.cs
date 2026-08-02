@@ -86,8 +86,10 @@
             this.cmbEstado.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstado.FormattingEnabled = true;
             this.cmbEstado.Items.AddRange(new object[] {
-            "ACTIVO",
-            "INACTIVO"});
+            "DISPONIBLE",
+            "PRESTADO",
+            "MANTENIMIENTO",
+            "BAJA"});
             this.cmbEstado.Location = new System.Drawing.Point(255, 145);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(240, 29);
@@ -97,11 +99,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(49, 50);
+            this.label1.Location = new System.Drawing.Point(49, 44);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(145, 19);
+            this.label1.Size = new System.Drawing.Size(189, 19);
             this.label1.TabIndex = 1;
-            this.label1.Text = "ID del ejemplar: ";
+            this.label1.Text = "Código del ejemplar: ";
             // 
             // label2
             // 

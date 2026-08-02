@@ -40,6 +40,13 @@
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvEjemplares = new System.Windows.Forms.DataGridView();
+            this.CLAVE_EJEMPLAR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TITULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LOCALIZACION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ESTADO_FISICO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DISPONIBLE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_EJEMPLAR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_LIBRO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -88,7 +95,6 @@
             this.txtBuscarEjemplar.Name = "txtBuscarEjemplar";
             this.txtBuscarEjemplar.Size = new System.Drawing.Size(487, 22);
             this.txtBuscarEjemplar.TabIndex = 1;
-            this.txtBuscarEjemplar.Click += new System.EventHandler(this.txtBuscar_TextChanged);
             this.txtBuscarEjemplar.TextChanged += new System.EventHandler(this.txtBuscarEjemplar_TextChanged);
             // 
             // panel1
@@ -151,6 +157,14 @@
             this.dgvEjemplares.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvEjemplares.ColumnHeadersHeight = 45;
             this.dgvEjemplares.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvEjemplares.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CLAVE_EJEMPLAR,
+            this.TITULO,
+            this.LOCALIZACION,
+            this.ESTADO_FISICO,
+            this.DISPONIBLE,
+            this.ID_EJEMPLAR,
+            this.ID_LIBRO});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10F);
@@ -172,6 +186,64 @@
             this.dgvEjemplares.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEjemplares.Size = new System.Drawing.Size(1028, 293);
             this.dgvEjemplares.TabIndex = 5;
+            // 
+            // CLAVE_EJEMPLAR
+            // 
+            this.CLAVE_EJEMPLAR.DataPropertyName = "CLAVE_EJEMPLAR";
+            this.CLAVE_EJEMPLAR.HeaderText = "Código Ejemplar";
+            this.CLAVE_EJEMPLAR.MinimumWidth = 6;
+            this.CLAVE_EJEMPLAR.Name = "CLAVE_EJEMPLAR";
+            this.CLAVE_EJEMPLAR.ReadOnly = true;
+            // 
+            // TITULO
+            // 
+            this.TITULO.DataPropertyName = "TITULO";
+            this.TITULO.HeaderText = "Libro";
+            this.TITULO.MinimumWidth = 6;
+            this.TITULO.Name = "TITULO";
+            this.TITULO.ReadOnly = true;
+            // 
+            // LOCALIZACION
+            // 
+            this.LOCALIZACION.DataPropertyName = "LOCALIZACION";
+            this.LOCALIZACION.HeaderText = "Localización";
+            this.LOCALIZACION.MinimumWidth = 6;
+            this.LOCALIZACION.Name = "LOCALIZACION";
+            this.LOCALIZACION.ReadOnly = true;
+            // 
+            // ESTADO_FISICO
+            // 
+            this.ESTADO_FISICO.DataPropertyName = "ESTADO_FISICO";
+            this.ESTADO_FISICO.HeaderText = "Estado físico";
+            this.ESTADO_FISICO.MinimumWidth = 6;
+            this.ESTADO_FISICO.Name = "ESTADO_FISICO";
+            this.ESTADO_FISICO.ReadOnly = true;
+            // 
+            // DISPONIBLE
+            // 
+            this.DISPONIBLE.DataPropertyName = "DISPONIBLE";
+            this.DISPONIBLE.HeaderText = "Disponible";
+            this.DISPONIBLE.MinimumWidth = 6;
+            this.DISPONIBLE.Name = "DISPONIBLE";
+            this.DISPONIBLE.ReadOnly = true;
+            // 
+            // ID_EJEMPLAR
+            // 
+            this.ID_EJEMPLAR.DataPropertyName = "ID_EJEMPLAR";
+            this.ID_EJEMPLAR.HeaderText = "ID Ejemplar";
+            this.ID_EJEMPLAR.MinimumWidth = 6;
+            this.ID_EJEMPLAR.Name = "ID_EJEMPLAR";
+            this.ID_EJEMPLAR.ReadOnly = true;
+            this.ID_EJEMPLAR.Visible = false;
+            // 
+            // ID_LIBRO
+            // 
+            this.ID_LIBRO.DataPropertyName = "ID_LIBRO";
+            this.ID_LIBRO.HeaderText = "ID Libro";
+            this.ID_LIBRO.MinimumWidth = 6;
+            this.ID_LIBRO.Name = "ID_LIBRO";
+            this.ID_LIBRO.ReadOnly = true;
+            this.ID_LIBRO.Visible = false;
             // 
             // frmInicioEjemplaresBiblio
             // 
@@ -202,5 +274,12 @@
         private System.Windows.Forms.Panel panel2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private System.Windows.Forms.DataGridView dgvEjemplares;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CLAVE_EJEMPLAR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TITULO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LOCALIZACION;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO_FISICO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DISPONIBLE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_EJEMPLAR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_LIBRO;
     }
 }
