@@ -55,6 +55,36 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
 
 
         }
+        private string GenerarMatriculaUnica(MySqlConnection conn)
+        {
+            string anioActual = DateTime.Now.ToString("yy"); 
+            string prefijo = "LIB" + anioActual;
+            string nuevaMatricula = prefijo + "0001";
+
+            string query = "SELECT CLAVE_LIBRO FROM libro WHERE CLAVE_LIBRO LIKE @prefijo ORDER BY ID_LIBRO DESC LIMIT 1";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@prefijo", prefijo + "%");
+                object resultado = cmd.ExecuteScalar();
+
+                if (resultado != null && resultado != DBNull.Value)
+                {
+                    string ultimaMatricula = resultado.ToString();
+                    
+                    string parteNumerica = ultimaMatricula.Substring(5);
+
+                    if (int.TryParse(parteNumerica, out int numero))
+                    {
+                        numero++;
+                       
+                        nuevaMatricula = prefijo + numero.ToString("D4");
+                    }
+                }
+            }
+
+            return nuevaMatricula;
+        }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -72,45 +102,62 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
             ConnectionData = new Conexion();
             MySqlConnection conn = ConnectionData.getConection();
 
-            // 1. Insertar el libro en la tabla LIBRO
-            string queryLibro = "INSERT INTO libro (ID_EDITORIAL, ID_CATEGORIA, ISBN, TITULO) VALUES (@idEd, @idCat, @isbn, @titulo)";
-
-            using (MySqlCommand cmdLibro = new MySqlCommand(queryLibro, conn))
+            try
             {
-                cmdLibro.Parameters.AddWithValue("@idEd", cmbEditorial.SelectedValue);
-                cmdLibro.Parameters.AddWithValue("@idCat", cmbCategoria.SelectedValue);
-                cmdLibro.Parameters.AddWithValue("@isbn", txtISBN.Text.Trim());
-                cmdLibro.Parameters.AddWithValue("@titulo", txtTitulo.Text.Trim());
+                if (conn.State == ConnectionState.Closed) conn.Open();
 
-                cmdLibro.ExecuteNonQuery();
+               
+                string claveLibroUnica = GenerarMatriculaUnica(conn);
+
+              
+                string queryLibro = "INSERT INTO libro (CLAVE_LIBRO, ID_EDITORIAL, ID_CATEGORIA, ISBN, TITULO) VALUES (@clave, @idEd, @idCat, @isbn, @titulo)";
+
+                using (MySqlCommand cmdLibro = new MySqlCommand(queryLibro, conn))
+                {
+                    cmdLibro.Parameters.AddWithValue("@clave", claveLibroUnica);
+                    cmdLibro.Parameters.AddWithValue("@idEd", cmbEditorial.SelectedValue);
+                    cmdLibro.Parameters.AddWithValue("@idCat", cmbCategoria.SelectedValue);
+                    cmdLibro.Parameters.AddWithValue("@isbn", txtISBN.Text.Trim());
+                    cmdLibro.Parameters.AddWithValue("@titulo", txtTitulo.Text.Trim());
+
+                    cmdLibro.ExecuteNonQuery();
+                }
+
+               
+                long idLibroNuevo = 0;
+                string queryId = "SELECT LAST_INSERT_ID();";
+                using (MySqlCommand cmdId = new MySqlCommand(queryId, conn))
+                {
+                    idLibroNuevo = Convert.ToInt64(cmdId.ExecuteScalar());
+                }
+
+                
+                string queryAutorLibro = "INSERT INTO libro_autor (ID_AUTOR, ID_LIBRO) VALUES (@idAutor, @idLibro)";
+
+                using (MySqlCommand cmdAutorLibro = new MySqlCommand(queryAutorLibro, conn))
+                {
+                    cmdAutorLibro.Parameters.AddWithValue("@idAutor", cmbAutor.SelectedValue);
+                    cmdAutorLibro.Parameters.AddWithValue("@idLibro", idLibroNuevo);
+
+                    cmdAutorLibro.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Libro guardado correctamente con matrícula: " + claveLibroUnica);
+
+                txtISBN.Clear();
+                txtTitulo.Text = "";
+                cmbEditorial.SelectedIndex = -1;
+                cmbCategoria.SelectedIndex = -1;
+                cmbAutor.SelectedIndex = -1;
             }
-
-            // 2. Obtener el ID del libro que se acaba de insertar
-            long idLibroNuevo = 0;
-            string queryId = "SELECT LAST_INSERT_ID();";
-            using (MySqlCommand cmdId = new MySqlCommand(queryId, conn))
+            catch (Exception ex)
             {
-                idLibroNuevo = Convert.ToInt64(cmdId.ExecuteScalar());
+                MessageBox.Show("Error al guardar el libro: " + ex.Message);
             }
-
-            // 3. Insertar la relación en la tabla intermedia AUTOR_LIBRO
-            string queryAutorLibro = "INSERT INTO libro_autor (ID_AUTOR, ID_LIBRO) VALUES (@idAutor, @idLibro)";
-
-            using (MySqlCommand cmdAutorLibro = new MySqlCommand(queryAutorLibro, conn))
+            finally
             {
-                cmdAutorLibro.Parameters.AddWithValue("@idAutor", cmbAutor.SelectedValue);
-                cmdAutorLibro.Parameters.AddWithValue("@idLibro", idLibroNuevo);
-
-                cmdAutorLibro.ExecuteNonQuery();
+                conn.Close();
             }
-
-            MessageBox.Show("Libro  guardado correctamente.");
-
-            txtISBN.Clear();
-            txtTitulo.Text = "";
-            cmbEditorial.SelectedIndex = -1;
-            cmbCategoria.SelectedIndex = -1;
-            cmbAutor.SelectedIndex = -1;
         }
 
 
