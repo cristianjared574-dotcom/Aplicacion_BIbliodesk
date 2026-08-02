@@ -173,6 +173,16 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
                 inicioBiblio.AbrirFormularioEnPanel(formBusqueda);
             }
         }
+
+        private void txtTitulo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbAutor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

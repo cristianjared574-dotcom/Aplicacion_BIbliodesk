@@ -132,7 +132,7 @@
             this.dtpHasta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpHasta.Location = new System.Drawing.Point(95, 259);
             this.dtpHasta.Name = "dtpHasta";
-            this.dtpHasta.Size = new System.Drawing.Size(240, 24);
+            this.dtpHasta.Size = new System.Drawing.Size(240, 28);
             this.dtpHasta.TabIndex = 5;
             this.dtpHasta.Value = new System.DateTime(2026, 7, 23, 22, 38, 34, 0);
             // 
@@ -143,7 +143,7 @@
             this.dtpDesde.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDesde.Location = new System.Drawing.Point(95, 192);
             this.dtpDesde.Name = "dtpDesde";
-            this.dtpDesde.Size = new System.Drawing.Size(240, 24);
+            this.dtpDesde.Size = new System.Drawing.Size(240, 28);
             this.dtpDesde.TabIndex = 4;
             this.dtpDesde.Value = new System.DateTime(2026, 7, 23, 22, 38, 43, 0);
             // 
@@ -154,7 +154,7 @@
             this.label3.Location = new System.Drawing.Point(26, 203);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 17);
+            this.label3.Size = new System.Drawing.Size(62, 19);
             this.label3.TabIndex = 3;
             this.label3.Text = "Desde";
             // 
@@ -165,7 +165,7 @@
             this.label2.Location = new System.Drawing.Point(29, 266);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 17);
+            this.label2.Size = new System.Drawing.Size(55, 19);
             this.label2.TabIndex = 1;
             this.label2.Text = "Hasta";
             // 
@@ -176,7 +176,7 @@
             this.rbAutores.Location = new System.Drawing.Point(33, 88);
             this.rbAutores.Margin = new System.Windows.Forms.Padding(4);
             this.rbAutores.Name = "rbAutores";
-            this.rbAutores.Size = new System.Drawing.Size(156, 21);
+            this.rbAutores.Size = new System.Drawing.Size(187, 23);
             this.rbAutores.TabIndex = 2;
             this.rbAutores.TabStop = true;
             this.rbAutores.Text = "Historial de Autores";
@@ -189,9 +189,10 @@
             this.label1.Location = new System.Drawing.Point(26, 154);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 17);
+            this.label1.Size = new System.Drawing.Size(155, 19);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Rango de fechas";
+            this.label1.Text = "Rango de fechas:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // rbPrestamos
             // 
@@ -200,7 +201,7 @@
             this.rbPrestamos.Location = new System.Drawing.Point(33, 8);
             this.rbPrestamos.Margin = new System.Windows.Forms.Padding(4);
             this.rbPrestamos.Name = "rbPrestamos";
-            this.rbPrestamos.Size = new System.Drawing.Size(176, 21);
+            this.rbPrestamos.Size = new System.Drawing.Size(210, 23);
             this.rbPrestamos.TabIndex = 0;
             this.rbPrestamos.TabStop = true;
             this.rbPrestamos.Text = "Historial de préstamos";
@@ -213,7 +214,7 @@
             this.rbCategorias.Location = new System.Drawing.Point(33, 48);
             this.rbCategorias.Margin = new System.Windows.Forms.Padding(4);
             this.rbCategorias.Name = "rbCategorias";
-            this.rbCategorias.Size = new System.Drawing.Size(177, 21);
+            this.rbCategorias.Size = new System.Drawing.Size(212, 23);
             this.rbCategorias.TabIndex = 1;
             this.rbCategorias.TabStop = true;
             this.rbCategorias.Text = "Historial de categorías";
@@ -235,7 +236,7 @@
             // 
             // frmInicioReportesAdmin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 496);
             this.Controls.Add(this.groupBox1);

@@ -115,5 +115,10 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
                 inicioBiblio.AbrirFormularioEnPanel(formBusqueda);
             }
         }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

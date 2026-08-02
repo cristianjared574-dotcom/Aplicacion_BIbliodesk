@@ -127,7 +127,7 @@
             this.btnPrestamos.Name = "btnPrestamos";
             this.btnPrestamos.Size = new System.Drawing.Size(123, 109);
             this.btnPrestamos.TabIndex = 5;
-            this.btnPrestamos.Text = "Prestamos";
+            this.btnPrestamos.Text = "Préstamos";
             this.btnPrestamos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnPrestamos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnPrestamos.UseVisualStyleBackColor = true;
@@ -169,7 +169,7 @@
             this.btnCategorias.Name = "btnCategorias";
             this.btnCategorias.Size = new System.Drawing.Size(125, 109);
             this.btnCategorias.TabIndex = 4;
-            this.btnCategorias.Text = "Categorias";
+            this.btnCategorias.Text = "Categorías";
             this.btnCategorias.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCategorias.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCategorias.UseVisualStyleBackColor = true;
@@ -253,9 +253,9 @@
             this.label1.Font = new System.Drawing.Font("Times New Roman", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(140, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(642, 53);
+            this.label1.Size = new System.Drawing.Size(643, 53);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Sistema de prestamos de libros";
+            this.label1.Text = "Sistema de préstamos de libros";
             // 
             // iconPictureBox1
             // 
@@ -265,7 +265,7 @@
             this.iconPictureBox1.IconColor = System.Drawing.Color.White;
             this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.iconPictureBox1.IconSize = 85;
-            this.iconPictureBox1.Location = new System.Drawing.Point(1347, 3);
+            this.iconPictureBox1.Location = new System.Drawing.Point(1354, 3);
             this.iconPictureBox1.Name = "iconPictureBox1";
             this.iconPictureBox1.Size = new System.Drawing.Size(85, 85);
             this.iconPictureBox1.TabIndex = 2;

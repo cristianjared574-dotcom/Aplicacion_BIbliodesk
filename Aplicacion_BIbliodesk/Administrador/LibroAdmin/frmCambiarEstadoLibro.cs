@@ -125,5 +125,10 @@ namespace Aplicacion_BIbliodesk.Administrador.LibroAdmin
                 inicioAdmin.AbrirFormularioEnPanelAdmin(inicioLibrosAdmin);
             }
         }
+
+        private void cmbEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
