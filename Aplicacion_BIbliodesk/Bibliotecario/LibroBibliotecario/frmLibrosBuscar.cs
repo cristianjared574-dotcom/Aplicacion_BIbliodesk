@@ -122,5 +122,10 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
                 MessageBox.Show("Por favor, selecciona una fila");
             }
         }
+
+        private void lblBuscar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

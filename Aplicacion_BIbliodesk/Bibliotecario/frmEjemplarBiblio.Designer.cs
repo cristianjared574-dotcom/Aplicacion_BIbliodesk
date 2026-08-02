@@ -38,8 +38,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtLibro = new System.Windows.Forms.TextBox();
             this.txtCodigoEjemplar = new System.Windows.Forms.TextBox();
+            this.cmbLibro = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -87,13 +87,13 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.cmbLibro);
             this.panel1.Controls.Add(this.cmbEstadoFisico);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtLocalizacion);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.txtLibro);
             this.panel1.Controls.Add(this.txtCodigoEjemplar);
             this.panel1.Location = new System.Drawing.Point(119, 39);
             this.panel1.Name = "panel1";
@@ -162,14 +162,6 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Localización: ";
             // 
-            // txtLibro
-            // 
-            this.txtLibro.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLibro.Location = new System.Drawing.Point(256, 77);
-            this.txtLibro.Name = "txtLibro";
-            this.txtLibro.Size = new System.Drawing.Size(390, 28);
-            this.txtLibro.TabIndex = 3;
-            // 
             // txtCodigoEjemplar
             // 
             this.txtCodigoEjemplar.BackColor = System.Drawing.Color.White;
@@ -180,6 +172,20 @@
             this.txtCodigoEjemplar.Size = new System.Drawing.Size(390, 28);
             this.txtCodigoEjemplar.TabIndex = 1;
             this.txtCodigoEjemplar.TabStop = false;
+            // 
+            // cmbLibro
+            // 
+            this.cmbLibro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLibro.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbLibro.FormattingEnabled = true;
+            this.cmbLibro.Items.AddRange(new object[] {
+            "BUENO",
+            "REGULAR",
+            "DAÑADO"});
+            this.cmbLibro.Location = new System.Drawing.Point(256, 73);
+            this.cmbLibro.Name = "cmbLibro";
+            this.cmbLibro.Size = new System.Drawing.Size(240, 29);
+            this.cmbLibro.TabIndex = 8;
             // 
             // frmEjemplarBiblio
             // 
@@ -213,9 +219,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtLibro;
         private System.Windows.Forms.TextBox txtCodigoEjemplar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbEstadoFisico;
+        private System.Windows.Forms.ComboBox cmbLibro;
     }
 }

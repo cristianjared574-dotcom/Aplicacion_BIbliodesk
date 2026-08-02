@@ -103,7 +103,7 @@
             this.btnPrestamos.Name = "btnPrestamos";
             this.btnPrestamos.Size = new System.Drawing.Size(123, 109);
             this.btnPrestamos.TabIndex = 5;
-            this.btnPrestamos.Text = "Prestamos";
+            this.btnPrestamos.Text = "Préstamos";
             this.btnPrestamos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnPrestamos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnPrestamos.UseVisualStyleBackColor = true;
@@ -145,7 +145,7 @@
             this.btnCategoria.Name = "btnCategoria";
             this.btnCategoria.Size = new System.Drawing.Size(125, 109);
             this.btnCategoria.TabIndex = 4;
-            this.btnCategoria.Text = "Categorias";
+            this.btnCategoria.Text = "Categorías";
             this.btnCategoria.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCategoria.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCategoria.UseVisualStyleBackColor = true;
@@ -230,9 +230,9 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(140, 38);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(642, 53);
+            this.label1.Size = new System.Drawing.Size(643, 53);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Sistema de prestamos de libros";
+            this.label1.Text = "Sistema de préstamos de libros";
             // 
             // iconPictureBox1
             // 

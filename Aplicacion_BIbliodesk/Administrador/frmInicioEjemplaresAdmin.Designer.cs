@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtBuscarEjemplar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btnCambiarEstado = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvEjemplaresAdmin = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.CLAVE_EJEMPLAR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TÍTULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LOCALIZACION = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ESTADO_FISICO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DISPONIBLE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID_EJEMPLAR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEjemplaresAdmin)).BeginInit();
             this.panel2.SuspendLayout();
@@ -101,19 +101,19 @@
             this.dgvEjemplaresAdmin.AllowUserToDeleteRows = false;
             this.dgvEjemplaresAdmin.AllowUserToResizeColumns = false;
             this.dgvEjemplaresAdmin.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
-            this.dgvEjemplaresAdmin.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.dgvEjemplaresAdmin.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvEjemplaresAdmin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvEjemplaresAdmin.BackgroundColor = System.Drawing.Color.White;
             this.dgvEjemplaresAdmin.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(161)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEjemplaresAdmin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(161)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEjemplaresAdmin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvEjemplaresAdmin.ColumnHeadersHeight = 45;
             this.dgvEjemplaresAdmin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvEjemplaresAdmin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -123,14 +123,14 @@
             this.ESTADO_FISICO,
             this.DISPONIBLE,
             this.ID_EJEMPLAR});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(110)))), ((int)(((byte)(70)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEjemplaresAdmin.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(110)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEjemplaresAdmin.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvEjemplaresAdmin.EnableHeadersVisualStyles = false;
             this.dgvEjemplaresAdmin.GridColor = System.Drawing.Color.Gainsboro;
             this.dgvEjemplaresAdmin.Location = new System.Drawing.Point(60, 168);
@@ -145,33 +145,6 @@
             this.dgvEjemplaresAdmin.Size = new System.Drawing.Size(1028, 293);
             this.dgvEjemplaresAdmin.TabIndex = 5;
             this.dgvEjemplaresAdmin.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEjemplaresAdmin_CellContentClick);
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.iconPictureBox1);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.txtBuscarEjemplar);
-            this.panel2.Location = new System.Drawing.Point(60, 23);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1028, 65);
-            this.panel2.TabIndex = 2;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // iconPictureBox1
-            // 
-            this.iconPictureBox1.BackColor = System.Drawing.Color.White;
-            this.iconPictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.iconPictureBox1.ForeColor = System.Drawing.Color.Black;
-            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            this.iconPictureBox1.IconColor = System.Drawing.Color.Black;
-            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox1.IconSize = 20;
-            this.iconPictureBox1.Location = new System.Drawing.Point(696, 19);
-            this.iconPictureBox1.Name = "iconPictureBox1";
-            this.iconPictureBox1.Size = new System.Drawing.Size(20, 22);
-            this.iconPictureBox1.TabIndex = 5;
-            this.iconPictureBox1.TabStop = false;
             // 
             // CLAVE_EJEMPLAR
             // 
@@ -221,6 +194,33 @@
             this.ID_EJEMPLAR.Name = "ID_EJEMPLAR";
             this.ID_EJEMPLAR.ReadOnly = true;
             this.ID_EJEMPLAR.Visible = false;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.iconPictureBox1);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.txtBuscarEjemplar);
+            this.panel2.Location = new System.Drawing.Point(60, 23);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1028, 65);
+            this.panel2.TabIndex = 2;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // iconPictureBox1
+            // 
+            this.iconPictureBox1.BackColor = System.Drawing.Color.White;
+            this.iconPictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.iconPictureBox1.ForeColor = System.Drawing.Color.Black;
+            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            this.iconPictureBox1.IconColor = System.Drawing.Color.Black;
+            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox1.IconSize = 20;
+            this.iconPictureBox1.Location = new System.Drawing.Point(696, 19);
+            this.iconPictureBox1.Name = "iconPictureBox1";
+            this.iconPictureBox1.Size = new System.Drawing.Size(20, 22);
+            this.iconPictureBox1.TabIndex = 5;
+            this.iconPictureBox1.TabStop = false;
             // 
             // frmInicioEjemplaresAdmin
             // 

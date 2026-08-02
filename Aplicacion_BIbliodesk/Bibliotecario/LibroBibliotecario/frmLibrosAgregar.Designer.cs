@@ -60,9 +60,11 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
             this.grpLibro.Controls.Add(this.panel1);
             this.grpLibro.Controls.Add(this.btnGuardar);
             this.grpLibro.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpLibro.Location = new System.Drawing.Point(148, 32);
+            this.grpLibro.Location = new System.Drawing.Point(197, 39);
+            this.grpLibro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpLibro.Name = "grpLibro";
-            this.grpLibro.Size = new System.Drawing.Size(706, 384);
+            this.grpLibro.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpLibro.Size = new System.Drawing.Size(941, 473);
             this.grpLibro.TabIndex = 0;
             this.grpLibro.TabStop = false;
             this.grpLibro.Text = "Agregar Libro";
@@ -70,13 +72,12 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(176)))), ((int)(((byte)(65)))));
-            this.btnCancelar.FlatAppearance.BorderSize = 0;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(373, 329);
+            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
+            this.btnCancelar.Location = new System.Drawing.Point(497, 405);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(142, 39);
+            this.btnCancelar.Size = new System.Drawing.Size(189, 48);
             this.btnCancelar.TabIndex = 17;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
@@ -96,78 +97,89 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
             this.panel1.Controls.Add(this.lblCategoria);
             this.panel1.Controls.Add(this.lblISBN);
             this.panel1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(133, 25);
+            this.panel1.Location = new System.Drawing.Point(177, 31);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(432, 287);
+            this.panel1.Size = new System.Drawing.Size(575, 353);
             this.panel1.TabIndex = 17;
             // 
             // cmbAutor
             // 
             this.cmbAutor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAutor.Location = new System.Drawing.Point(104, 63);
+            this.cmbAutor.Location = new System.Drawing.Point(139, 80);
+            this.cmbAutor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbAutor.Name = "cmbAutor";
-            this.cmbAutor.Size = new System.Drawing.Size(300, 27);
+            this.cmbAutor.Size = new System.Drawing.Size(390, 29);
             this.cmbAutor.TabIndex = 21;
+            this.cmbAutor.SelectedIndexChanged += new System.EventHandler(this.cmbAutor_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 73);
+            this.label1.Location = new System.Drawing.Point(22, 90);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 17);
+            this.label1.Size = new System.Drawing.Size(57, 19);
             this.label1.TabIndex = 20;
             this.label1.Text = "Autor:";
             // 
             // cmbEditorial
             // 
             this.cmbEditorial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEditorial.Location = new System.Drawing.Point(104, 216);
+            this.cmbEditorial.Location = new System.Drawing.Point(139, 266);
+            this.cmbEditorial.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbEditorial.Name = "cmbEditorial";
-            this.cmbEditorial.Size = new System.Drawing.Size(300, 27);
+            this.cmbEditorial.Size = new System.Drawing.Size(390, 29);
             this.cmbEditorial.TabIndex = 19;
             // 
             // cmbCategoria
             // 
             this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCategoria.Location = new System.Drawing.Point(104, 169);
+            this.cmbCategoria.Location = new System.Drawing.Point(139, 208);
+            this.cmbCategoria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbCategoria.Name = "cmbCategoria";
-            this.cmbCategoria.Size = new System.Drawing.Size(300, 27);
+            this.cmbCategoria.Size = new System.Drawing.Size(390, 29);
             this.cmbCategoria.TabIndex = 18;
             // 
             // txtTitulo
             // 
             this.txtTitulo.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtTitulo.Location = new System.Drawing.Point(104, 11);
+            this.txtTitulo.Location = new System.Drawing.Point(139, 23);
+            this.txtTitulo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTitulo.Name = "txtTitulo";
-            this.txtTitulo.Size = new System.Drawing.Size(300, 25);
+            this.txtTitulo.Size = new System.Drawing.Size(390, 30);
             this.txtTitulo.TabIndex = 17;
+            this.txtTitulo.TextChanged += new System.EventHandler(this.txtTitulo_TextChanged);
             // 
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(3, 19);
+            this.lblTitulo.Location = new System.Drawing.Point(22, 28);
+            this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(46, 17);
+            this.lblTitulo.Size = new System.Drawing.Size(54, 19);
             this.lblTitulo.TabIndex = 4;
             this.lblTitulo.Text = "Título:";
             // 
             // txtISBN
             // 
             this.txtISBN.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtISBN.Location = new System.Drawing.Point(104, 117);
+            this.txtISBN.Location = new System.Drawing.Point(139, 144);
+            this.txtISBN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtISBN.Name = "txtISBN";
-            this.txtISBN.Size = new System.Drawing.Size(300, 25);
+            this.txtISBN.Size = new System.Drawing.Size(390, 30);
             this.txtISBN.TabIndex = 11;
             // 
             // lblEditorial
             // 
             this.lblEditorial.AutoSize = true;
             this.lblEditorial.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEditorial.Location = new System.Drawing.Point(3, 226);
+            this.lblEditorial.Location = new System.Drawing.Point(22, 270);
+            this.lblEditorial.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEditorial.Name = "lblEditorial";
-            this.lblEditorial.Size = new System.Drawing.Size(66, 17);
+            this.lblEditorial.Size = new System.Drawing.Size(77, 19);
             this.lblEditorial.TabIndex = 6;
             this.lblEditorial.Text = "Editorial:";
             // 
@@ -175,9 +187,10 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
             // 
             this.lblCategoria.AutoSize = true;
             this.lblCategoria.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategoria.Location = new System.Drawing.Point(3, 179);
+            this.lblCategoria.Location = new System.Drawing.Point(22, 212);
+            this.lblCategoria.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCategoria.Name = "lblCategoria";
-            this.lblCategoria.Size = new System.Drawing.Size(79, 17);
+            this.lblCategoria.Size = new System.Drawing.Size(95, 19);
             this.lblCategoria.TabIndex = 8;
             this.lblCategoria.Text = "Categoría:";
             // 
@@ -185,22 +198,22 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
             // 
             this.lblISBN.AutoSize = true;
             this.lblISBN.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblISBN.Location = new System.Drawing.Point(3, 125);
+            this.lblISBN.Location = new System.Drawing.Point(22, 149);
+            this.lblISBN.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblISBN.Name = "lblISBN";
-            this.lblISBN.Size = new System.Drawing.Size(41, 17);
+            this.lblISBN.Size = new System.Drawing.Size(51, 19);
             this.lblISBN.TabIndex = 2;
             this.lblISBN.Text = "ISBN:";
             // 
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnGuardar.FlatAppearance.BorderSize = 0;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(160, 329);
+            this.btnGuardar.Location = new System.Drawing.Point(213, 405);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(142, 39);
+            this.btnGuardar.Size = new System.Drawing.Size(189, 48);
             this.btnGuardar.TabIndex = 16;
             this.btnGuardar.Text = "Guardar Libro";
             this.btnGuardar.UseVisualStyleBackColor = false;
@@ -208,12 +221,13 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
             // 
             // frmLibrosAgregar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(244)))), ((int)(((byte)(235)))));
-            this.ClientSize = new System.Drawing.Size(1028, 448);
+            this.ClientSize = new System.Drawing.Size(1371, 551);
             this.Controls.Add(this.grpLibro);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmLibrosAgregar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

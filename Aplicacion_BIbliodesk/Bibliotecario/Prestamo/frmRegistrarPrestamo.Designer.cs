@@ -95,7 +95,7 @@
             this.groupBox4.Size = new System.Drawing.Size(1098, 379);
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Registrar prestamo";
+            this.groupBox4.Text = "Registrar préstamo";
             // 
             // groupBox1
             // 
@@ -156,9 +156,9 @@
             this.lblTelefonoUsuario.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTelefonoUsuario.Location = new System.Drawing.Point(11, 224);
             this.lblTelefonoUsuario.Name = "lblTelefonoUsuario";
-            this.lblTelefonoUsuario.Size = new System.Drawing.Size(80, 21);
+            this.lblTelefonoUsuario.Size = new System.Drawing.Size(85, 21);
             this.lblTelefonoUsuario.TabIndex = 17;
-            this.lblTelefonoUsuario.Text = "Telefono";
+            this.lblTelefonoUsuario.Text = "Teléfono:";
             // 
             // lblCorreoUsuario
             // 
@@ -183,7 +183,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(21, 100);
+            this.label14.Location = new System.Drawing.Point(11, 93);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(168, 19);
             this.label14.TabIndex = 14;
@@ -295,7 +295,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(16, 15);
+            this.label6.Location = new System.Drawing.Point(15, 24);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(167, 19);
             this.label6.TabIndex = 12;
@@ -310,7 +310,7 @@
             this.groupBox3.Size = new System.Drawing.Size(305, 326);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Fechas de prestamos";
+            this.groupBox3.Text = "Fechas de préstamos";
             // 
             // groupBox7
             // 
@@ -356,18 +356,18 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 24);
+            this.label8.Location = new System.Drawing.Point(6, 22);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(169, 19);
             this.label8.TabIndex = 4;
-            this.label8.Text = "Fecha de prestamo";
+            this.label8.Text = "Fecha de préstamo";
             // 
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
             this.btnCancelar.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(540, 413);
+            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
+            this.btnCancelar.Location = new System.Drawing.Point(622, 413);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(190, 48);
             this.btnCancelar.TabIndex = 7;

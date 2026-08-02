@@ -165,5 +165,10 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
                 inicioBiblio.AbrirFormularioEnPanel(inicioCategorias);
             }
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

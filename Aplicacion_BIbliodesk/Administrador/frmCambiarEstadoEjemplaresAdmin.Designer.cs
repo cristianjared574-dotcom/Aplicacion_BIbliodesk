@@ -59,7 +59,7 @@
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
             this.btnCancelar.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnCancelar.Location = new System.Drawing.Point(454, 321);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(190, 48);
@@ -90,7 +90,7 @@
             "PRESTADO",
             "MANTENIMIENTO",
             "BAJA"});
-            this.cmbEstado.Location = new System.Drawing.Point(255, 145);
+            this.cmbEstado.Location = new System.Drawing.Point(213, 126);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(240, 29);
             this.cmbEstado.TabIndex = 4;
@@ -99,7 +99,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(49, 44);
+            this.label1.Location = new System.Drawing.Point(18, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(189, 19);
             this.label1.TabIndex = 1;
@@ -109,7 +109,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(49, 155);
+            this.label2.Location = new System.Drawing.Point(18, 136);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 19);
             this.label2.TabIndex = 3;
@@ -119,10 +119,10 @@
             // 
             this.txtIdEjemplar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtIdEjemplar.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdEjemplar.Location = new System.Drawing.Point(255, 41);
+            this.txtIdEjemplar.Location = new System.Drawing.Point(213, 41);
             this.txtIdEjemplar.Name = "txtIdEjemplar";
             this.txtIdEjemplar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtIdEjemplar.Size = new System.Drawing.Size(322, 28);
+            this.txtIdEjemplar.Size = new System.Drawing.Size(390, 28);
             this.txtIdEjemplar.TabIndex = 2;
             // 
             // btnGuardar

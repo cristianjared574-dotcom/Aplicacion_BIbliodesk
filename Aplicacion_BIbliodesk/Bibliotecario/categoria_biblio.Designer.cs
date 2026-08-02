@@ -44,26 +44,29 @@
             // 
             this.txtnombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtnombre.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnombre.Location = new System.Drawing.Point(263, 49);
+            this.txtnombre.Location = new System.Drawing.Point(194, 49);
             this.txtnombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtnombre.Multiline = true;
             this.txtnombre.Name = "txtnombre";
-            this.txtnombre.Size = new System.Drawing.Size(322, 28);
+            this.txtnombre.Size = new System.Drawing.Size(390, 28);
             this.txtnombre.TabIndex = 7;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(95, 164);
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(52, 147);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(112, 19);
             this.label2.TabIndex = 1;
             this.label2.Text = "Descripción:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(95, 52);
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(52, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 19);
             this.label1.TabIndex = 0;
@@ -72,7 +75,8 @@
             // btncancelar
             // 
             this.btncancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
-            this.btncancelar.ForeColor = System.Drawing.Color.White;
+            this.btncancelar.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncancelar.ForeColor = System.Drawing.Color.Black;
             this.btncancelar.Location = new System.Drawing.Point(431, 359);
             this.btncancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btncancelar.Name = "btncancelar";
@@ -85,6 +89,7 @@
             // btnguardarcategoria
             // 
             this.btnguardarcategoria.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.btnguardarcategoria.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnguardarcategoria.ForeColor = System.Drawing.Color.White;
             this.btnguardarcategoria.Location = new System.Drawing.Point(164, 359);
             this.btnguardarcategoria.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -101,7 +106,7 @@
             this.groupBox1.Controls.Add(this.btncancelar);
             this.groupBox1.Controls.Add(this.btnguardarcategoria);
             this.groupBox1.Controls.Add(this.panel1);
-            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(399, 30);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
@@ -128,7 +133,7 @@
             // 
             this.txtdescripcion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtdescripcion.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtdescripcion.Location = new System.Drawing.Point(263, 117);
+            this.txtdescripcion.Location = new System.Drawing.Point(194, 117);
             this.txtdescripcion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtdescripcion.Multiline = true;
             this.txtdescripcion.Name = "txtdescripcion";
@@ -139,7 +144,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(233)))), ((int)(((byte)(210)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1506, 552);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(4);

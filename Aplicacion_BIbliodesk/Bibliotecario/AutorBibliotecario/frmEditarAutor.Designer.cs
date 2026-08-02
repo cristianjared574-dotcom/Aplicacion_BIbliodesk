@@ -58,9 +58,11 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             this.grpEditarAutor.Controls.Add(this.btnGuardar);
             this.grpEditarAutor.Controls.Add(this.panel1);
             this.grpEditarAutor.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpEditarAutor.Location = new System.Drawing.Point(317, 23);
+            this.grpEditarAutor.Location = new System.Drawing.Point(423, 28);
+            this.grpEditarAutor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpEditarAutor.Name = "grpEditarAutor";
-            this.grpEditarAutor.Size = new System.Drawing.Size(577, 415);
+            this.grpEditarAutor.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpEditarAutor.Size = new System.Drawing.Size(769, 511);
             this.grpEditarAutor.TabIndex = 0;
             this.grpEditarAutor.TabStop = false;
             this.grpEditarAutor.Text = "Editar Autor";
@@ -69,13 +71,12 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(176)))), ((int)(((byte)(65)))));
-            this.btnCancelar.FlatAppearance.BorderSize = 0;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(351, 353);
+            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
+            this.btnCancelar.Location = new System.Drawing.Point(468, 434);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(142, 39);
+            this.btnCancelar.Size = new System.Drawing.Size(189, 48);
             this.btnCancelar.TabIndex = 17;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
@@ -84,13 +85,12 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnGuardar.FlatAppearance.BorderSize = 0;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(116, 353);
+            this.btnGuardar.Location = new System.Drawing.Point(155, 434);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(142, 39);
+            this.btnGuardar.Size = new System.Drawing.Size(189, 48);
             this.btnGuardar.TabIndex = 16;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
@@ -108,49 +108,55 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             this.panel1.Controls.Add(this.lblnombre);
             this.panel1.Controls.Add(this.txtNombre);
             this.panel1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(32, 44);
+            this.panel1.Location = new System.Drawing.Point(43, 54);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(518, 290);
+            this.panel1.Size = new System.Drawing.Size(690, 356);
             this.panel1.TabIndex = 17;
             // 
             // txtnacionalidad
             // 
-            this.txtnacionalidad.Location = new System.Drawing.Point(173, 204);
+            this.txtnacionalidad.Location = new System.Drawing.Point(231, 251);
+            this.txtnacionalidad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtnacionalidad.Name = "txtnacionalidad";
-            this.txtnacionalidad.Size = new System.Drawing.Size(300, 26);
+            this.txtnacionalidad.Size = new System.Drawing.Size(390, 30);
             this.txtnacionalidad.TabIndex = 9;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(8, 213);
+            this.label1.Location = new System.Drawing.Point(29, 262);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 17);
+            this.label1.Size = new System.Drawing.Size(126, 19);
             this.label1.TabIndex = 8;
             this.label1.Text = "Nacionalidad:";
             // 
             // txtAm
             // 
-            this.txtAm.Location = new System.Drawing.Point(173, 148);
+            this.txtAm.Location = new System.Drawing.Point(231, 182);
+            this.txtAm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtAm.Name = "txtAm";
-            this.txtAm.Size = new System.Drawing.Size(300, 26);
+            this.txtAm.Size = new System.Drawing.Size(390, 30);
             this.txtAm.TabIndex = 7;
             // 
             // txtAp
             // 
-            this.txtAp.Location = new System.Drawing.Point(173, 89);
+            this.txtAp.Location = new System.Drawing.Point(231, 104);
+            this.txtAp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtAp.Name = "txtAp";
-            this.txtAp.Size = new System.Drawing.Size(300, 26);
+            this.txtAp.Size = new System.Drawing.Size(390, 30);
             this.txtAp.TabIndex = 5;
             // 
             // lblAP
             // 
             this.lblAP.AutoSize = true;
             this.lblAP.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold);
-            this.lblAP.Location = new System.Drawing.Point(8, 98);
+            this.lblAP.Location = new System.Drawing.Point(29, 104);
+            this.lblAP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAP.Name = "lblAP";
-            this.lblAP.Size = new System.Drawing.Size(125, 17);
+            this.lblAP.Size = new System.Drawing.Size(150, 19);
             this.lblAP.TabIndex = 4;
             this.lblAP.Text = "Apellido Paterno:";
             // 
@@ -158,9 +164,10 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             // 
             this.lblAM.AutoSize = true;
             this.lblAM.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold);
-            this.lblAM.Location = new System.Drawing.Point(8, 157);
+            this.lblAM.Location = new System.Drawing.Point(29, 193);
+            this.lblAM.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAM.Name = "lblAM";
-            this.lblAM.Size = new System.Drawing.Size(130, 17);
+            this.lblAM.Size = new System.Drawing.Size(155, 19);
             this.lblAM.TabIndex = 6;
             this.lblAM.Text = "Apellido Materno:";
             // 
@@ -168,27 +175,30 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             // 
             this.lblnombre.AutoSize = true;
             this.lblnombre.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold);
-            this.lblnombre.Location = new System.Drawing.Point(8, 26);
+            this.lblnombre.Location = new System.Drawing.Point(29, 43);
+            this.lblnombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblnombre.Name = "lblnombre";
-            this.lblnombre.Size = new System.Drawing.Size(67, 17);
+            this.lblnombre.Size = new System.Drawing.Size(81, 19);
             this.lblnombre.TabIndex = 2;
             this.lblnombre.Text = "Nombre:";
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(173, 26);
+            this.txtNombre.Location = new System.Drawing.Point(231, 32);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(300, 26);
+            this.txtNombre.Size = new System.Drawing.Size(390, 30);
             this.txtNombre.TabIndex = 3;
             // 
             // frmEditarAutor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(244)))), ((int)(((byte)(235)))));
-            this.ClientSize = new System.Drawing.Size(1028, 448);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1371, 551);
             this.Controls.Add(this.grpEditarAutor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmEditarAutor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

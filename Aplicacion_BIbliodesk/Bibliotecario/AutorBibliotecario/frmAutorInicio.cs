@@ -105,6 +105,10 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             }
         }
 
+        private void panelBusqueda_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
 

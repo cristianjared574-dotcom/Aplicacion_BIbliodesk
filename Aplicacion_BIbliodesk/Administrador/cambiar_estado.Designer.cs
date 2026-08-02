@@ -57,7 +57,8 @@
             // btnCancelarCambios
             // 
             this.btnCancelarCambios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
-            this.btnCancelarCambios.ForeColor = System.Drawing.Color.White;
+            this.btnCancelarCambios.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarCambios.ForeColor = System.Drawing.Color.Black;
             this.btnCancelarCambios.Location = new System.Drawing.Point(418, 330);
             this.btnCancelarCambios.Name = "btnCancelarCambios";
             this.btnCancelarCambios.Size = new System.Drawing.Size(190, 48);
@@ -69,6 +70,7 @@
             // BtnGuardarCambios
             // 
             this.BtnGuardarCambios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.BtnGuardarCambios.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnGuardarCambios.ForeColor = System.Drawing.Color.White;
             this.BtnGuardarCambios.Location = new System.Drawing.Point(164, 330);
             this.BtnGuardarCambios.Name = "BtnGuardarCambios";
@@ -94,15 +96,15 @@
             // cmbCategoria
             // 
             this.cmbCategoria.FormattingEnabled = true;
-            this.cmbCategoria.Location = new System.Drawing.Point(233, 49);
+            this.cmbCategoria.Location = new System.Drawing.Point(186, 49);
             this.cmbCategoria.Name = "cmbCategoria";
-            this.cmbCategoria.Size = new System.Drawing.Size(322, 27);
+            this.cmbCategoria.Size = new System.Drawing.Size(390, 27);
             this.cmbCategoria.TabIndex = 9;
             // 
             // cboEstado
             // 
             this.cboEstado.FormattingEnabled = true;
-            this.cboEstado.Location = new System.Drawing.Point(233, 135);
+            this.cboEstado.Location = new System.Drawing.Point(186, 127);
             this.cboEstado.Name = "cboEstado";
             this.cboEstado.Size = new System.Drawing.Size(240, 27);
             this.cboEstado.TabIndex = 8;
@@ -110,16 +112,17 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(112, 138);
+            this.label2.Location = new System.Drawing.Point(67, 135);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 19);
             this.label2.TabIndex = 1;
             this.label2.Text = "Estado:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(95, 52);
+            this.label1.Location = new System.Drawing.Point(67, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(95, 19);
             this.label1.TabIndex = 0;
@@ -129,7 +132,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(233)))), ((int)(((byte)(210)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1511, 552);
             this.Controls.Add(this.groupBox1);
             this.Name = "cambiar_estado";

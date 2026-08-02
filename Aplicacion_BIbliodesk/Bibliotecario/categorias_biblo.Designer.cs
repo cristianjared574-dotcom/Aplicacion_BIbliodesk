@@ -38,9 +38,11 @@
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.lblBuscar = new System.Windows.Forms.Label();
             this.btnEditarCategoria = new System.Windows.Forms.Button();
+            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.pnlContenido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlContenido
@@ -117,6 +119,7 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.iconPictureBox1);
             this.panel2.Controls.Add(this.txtBuscar);
             this.panel2.Controls.Add(this.lblBuscar);
             this.panel2.Location = new System.Drawing.Point(60, 24);
@@ -128,7 +131,7 @@
             // txtBuscar
             // 
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBuscar.Location = new System.Drawing.Point(185, 16);
+            this.txtBuscar.Location = new System.Drawing.Point(211, 16);
             this.txtBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBuscar.Multiline = true;
             this.txtBuscar.Name = "txtBuscar";
@@ -139,11 +142,11 @@
             // 
             this.lblBuscar.AutoSize = true;
             this.lblBuscar.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuscar.Location = new System.Drawing.Point(24, 25);
+            this.lblBuscar.Location = new System.Drawing.Point(24, 16);
             this.lblBuscar.Name = "lblBuscar";
             this.lblBuscar.Size = new System.Drawing.Size(155, 19);
             this.lblBuscar.TabIndex = 5;
-            this.lblBuscar.Text = "Buscar Categoria:";
+            this.lblBuscar.Text = "Buscar Categoría:";
             // 
             // btnEditarCategoria
             // 
@@ -159,11 +162,26 @@
             this.btnEditarCategoria.UseVisualStyleBackColor = false;
             this.btnEditarCategoria.Click += new System.EventHandler(this.btnEditarCategoria_Click_1);
             // 
+            // iconPictureBox1
+            // 
+            this.iconPictureBox1.BackColor = System.Drawing.Color.White;
+            this.iconPictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.iconPictureBox1.ForeColor = System.Drawing.Color.Black;
+            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            this.iconPictureBox1.IconColor = System.Drawing.Color.Black;
+            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox1.IconSize = 27;
+            this.iconPictureBox1.Location = new System.Drawing.Point(671, 16);
+            this.iconPictureBox1.Name = "iconPictureBox1";
+            this.iconPictureBox1.Size = new System.Drawing.Size(27, 28);
+            this.iconPictureBox1.TabIndex = 7;
+            this.iconPictureBox1.TabStop = false;
+            // 
             // categorias_biblo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(233)))), ((int)(((byte)(210)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1511, 552);
             this.Controls.Add(this.pnlContenido);
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -174,6 +192,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -187,5 +206,6 @@
         private System.Windows.Forms.Button btnEditarCategoria;
         private System.Windows.Forms.Label lblBuscar;
         private System.Windows.Forms.DataGridView dgvCategorias;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
     }
 }
