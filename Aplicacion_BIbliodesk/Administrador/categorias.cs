@@ -68,12 +68,30 @@ namespace Aplicacion_BIbliodesk
 
         private void btnCambiarEstado_Click(object sender, EventArgs e)
         {
+            // 1. Primero verifica que tengas una fila seleccionada
+            if (dgvCategorias.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Primero selecciona una categoría de la tabla", "Aviso");
+                return;
+            }
+
+            // 2. Obtiene los datos de la fila que elegiste
+            int idCat = Convert.ToInt32(dgvCategorias.SelectedRows[0].Cells["ID Categoría"].Value);
+            string nombreCat = dgvCategorias.SelectedRows[0].Cells["Categoría"].Value.ToString();
+            string estadoCat = dgvCategorias.SelectedRows[0].Cells["ESTADO"].Value.ToString();
+
+            // 3. Abre el formulario y le pasa los datos
             frmInicioAdmin inicioAdmin = Application.OpenForms["frmInicioAdmin"] as frmInicioAdmin;
 
             if (inicioAdmin != null)
             {
-                cambiar_estado CambioEstadoCategoria = new cambiar_estado();
+                // Enviamos los datos al crear el formulario
+                cambiar_estado CambioEstadoCategoria = new cambiar_estado(idCat, nombreCat, estadoCat);
                 inicioAdmin.AbrirFormularioEnPanelAdmin(CambioEstadoCategoria);
+            }
+            else
+            {
+                MessageBox.Show("No se encontró el menú principal", "Error");
             }
 
 

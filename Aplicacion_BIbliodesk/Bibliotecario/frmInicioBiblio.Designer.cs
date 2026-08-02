@@ -277,9 +277,9 @@
             this.audio.IconChar = FontAwesome.Sharp.IconChar.WheelchairMove;
             this.audio.IconColor = System.Drawing.Color.Black;
             this.audio.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.audio.Location = new System.Drawing.Point(1320, 0);
+            this.audio.Location = new System.Drawing.Point(1367, 0);
             this.audio.Name = "audio";
-            this.audio.Size = new System.Drawing.Size(190, 93);
+            this.audio.Size = new System.Drawing.Size(143, 93);
             this.audio.TabIndex = 0;
             this.audio.Text = "Accesibilidad";
             this.audio.TextAlign = System.Drawing.ContentAlignment.BottomCenter;

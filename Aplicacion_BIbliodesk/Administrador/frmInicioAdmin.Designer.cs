@@ -301,9 +301,9 @@
             this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.WheelchairMove;
             this.iconButton1.IconColor = System.Drawing.Color.Black;
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.Location = new System.Drawing.Point(1317, 0);
+            this.iconButton1.Location = new System.Drawing.Point(1364, 0);
             this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(190, 93);
+            this.iconButton1.Size = new System.Drawing.Size(143, 93);
             this.iconButton1.TabIndex = 2;
             this.iconButton1.Text = "Accesibilidad";
             this.iconButton1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;

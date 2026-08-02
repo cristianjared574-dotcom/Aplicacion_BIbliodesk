@@ -168,6 +168,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "categorias_biblo";
             this.Text = "categorias_biblo";
+            this.Load += new System.EventHandler(this.categorias_biblo_Load_1);
             this.pnlContenido.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias)).EndInit();
             this.panel2.ResumeLayout(false);
