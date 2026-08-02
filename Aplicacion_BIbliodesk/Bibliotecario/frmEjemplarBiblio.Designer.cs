@@ -32,12 +32,14 @@
             this.btnGuardarEjemplar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbEstadoFisico = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.txtLocalizacion = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtIdLibro = new System.Windows.Forms.TextBox();
-            this.txtIdEjemplar = new System.Windows.Forms.TextBox();
+            this.txtLibro = new System.Windows.Forms.TextBox();
+            this.txtCodigoEjemplar = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -85,21 +87,47 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.cmbEstadoFisico);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtLocalizacion);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.txtIdLibro);
-            this.panel1.Controls.Add(this.txtIdEjemplar);
+            this.panel1.Controls.Add(this.txtLibro);
+            this.panel1.Controls.Add(this.txtCodigoEjemplar);
             this.panel1.Location = new System.Drawing.Point(119, 39);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(694, 267);
             this.panel1.TabIndex = 8;
             // 
+            // cmbEstadoFisico
+            // 
+            this.cmbEstadoFisico.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEstadoFisico.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEstadoFisico.FormattingEnabled = true;
+            this.cmbEstadoFisico.Items.AddRange(new object[] {
+            "BUENO",
+            "REGULAR",
+            "DAÑADO"});
+            this.cmbEstadoFisico.Location = new System.Drawing.Point(256, 135);
+            this.cmbEstadoFisico.Name = "cmbEstadoFisico";
+            this.cmbEstadoFisico.Size = new System.Drawing.Size(240, 29);
+            this.cmbEstadoFisico.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(43, 135);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(121, 19);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Estado físico: ";
+            // 
             // txtLocalizacion
             // 
             this.txtLocalizacion.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLocalizacion.Location = new System.Drawing.Point(256, 193);
+            this.txtLocalizacion.Location = new System.Drawing.Point(256, 198);
             this.txtLocalizacion.Name = "txtLocalizacion";
             this.txtLocalizacion.Size = new System.Drawing.Size(390, 28);
             this.txtLocalizacion.TabIndex = 5;
@@ -108,21 +136,21 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(43, 45);
+            this.label1.Location = new System.Drawing.Point(43, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 19);
+            this.label1.Size = new System.Drawing.Size(156, 19);
             this.label1.TabIndex = 0;
-            this.label1.Text = "ID Ejemplar: ";
+            this.label1.Text = "Código Ejemplar: ";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(43, 119);
+            this.label2.Location = new System.Drawing.Point(43, 77);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 19);
+            this.label2.Size = new System.Drawing.Size(57, 19);
             this.label2.TabIndex = 2;
-            this.label2.Text = "ID Libro: ";
+            this.label2.Text = "Libro: ";
             // 
             // label3
             // 
@@ -134,21 +162,24 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Localización: ";
             // 
-            // txtIdLibro
+            // txtLibro
             // 
-            this.txtIdLibro.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdLibro.Location = new System.Drawing.Point(256, 119);
-            this.txtIdLibro.Name = "txtIdLibro";
-            this.txtIdLibro.Size = new System.Drawing.Size(390, 28);
-            this.txtIdLibro.TabIndex = 3;
+            this.txtLibro.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLibro.Location = new System.Drawing.Point(256, 77);
+            this.txtLibro.Name = "txtLibro";
+            this.txtLibro.Size = new System.Drawing.Size(390, 28);
+            this.txtLibro.TabIndex = 3;
             // 
-            // txtIdEjemplar
+            // txtCodigoEjemplar
             // 
-            this.txtIdEjemplar.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdEjemplar.Location = new System.Drawing.Point(256, 36);
-            this.txtIdEjemplar.Name = "txtIdEjemplar";
-            this.txtIdEjemplar.Size = new System.Drawing.Size(390, 28);
-            this.txtIdEjemplar.TabIndex = 1;
+            this.txtCodigoEjemplar.BackColor = System.Drawing.Color.White;
+            this.txtCodigoEjemplar.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigoEjemplar.Location = new System.Drawing.Point(256, 17);
+            this.txtCodigoEjemplar.Name = "txtCodigoEjemplar";
+            this.txtCodigoEjemplar.ReadOnly = true;
+            this.txtCodigoEjemplar.Size = new System.Drawing.Size(390, 28);
+            this.txtCodigoEjemplar.TabIndex = 1;
+            this.txtCodigoEjemplar.TabStop = false;
             // 
             // frmEjemplarBiblio
             // 
@@ -163,6 +194,7 @@
             this.Name = "frmEjemplarBiblio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Ejemplar";
+            this.Load += new System.EventHandler(this.frmEjemplarBiblio_Load);
             this.Click += new System.EventHandler(this.frmEjemplarBiblio_Load);
             this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -181,7 +213,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtIdLibro;
-        private System.Windows.Forms.TextBox txtIdEjemplar;
+        private System.Windows.Forms.TextBox txtLibro;
+        private System.Windows.Forms.TextBox txtCodigoEjemplar;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cmbEstadoFisico;
     }
 }

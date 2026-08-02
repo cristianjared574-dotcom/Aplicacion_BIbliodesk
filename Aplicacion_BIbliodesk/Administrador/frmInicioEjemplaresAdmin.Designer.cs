@@ -36,17 +36,24 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btnCambiarEstado = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dgvEjemplaresAdmin = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
-            this.dgvEjemplaresAdmin = new System.Windows.Forms.DataGridView();
+            this.CLAVE_EJEMPLAR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TÍTULO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LOCALIZACION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ESTADO_FISICO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DISPONIBLE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_EJEMPLAR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEjemplaresAdmin)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEjemplaresAdmin)).BeginInit();
             this.SuspendLayout();
             // 
             // txtBuscarEjemplar
             // 
+            this.txtBuscarEjemplar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscarEjemplar.Location = new System.Drawing.Point(229, 19);
             this.txtBuscarEjemplar.Name = "txtBuscarEjemplar";
             this.txtBuscarEjemplar.Size = new System.Drawing.Size(487, 22);
@@ -65,10 +72,10 @@
             // 
             // btnCambiarEstado
             // 
-            this.btnCambiarEstado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(175)))), ((int)(((byte)(55)))));
+            this.btnCambiarEstado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(16)))), ((int)(((byte)(16)))));
             this.btnCambiarEstado.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCambiarEstado.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCambiarEstado.Location = new System.Drawing.Point(872, 113);
+            this.btnCambiarEstado.Location = new System.Drawing.Point(898, 104);
             this.btnCambiarEstado.Name = "btnCambiarEstado";
             this.btnCambiarEstado.Size = new System.Drawing.Size(190, 48);
             this.btnCambiarEstado.TabIndex = 1;
@@ -78,6 +85,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.dgvEjemplaresAdmin);
             this.panel1.Controls.Add(this.panel2);
@@ -86,32 +94,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1146, 472);
             this.panel1.TabIndex = 3;
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.iconPictureBox1);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.txtBuscarEjemplar);
-            this.panel2.Location = new System.Drawing.Point(34, 23);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1028, 65);
-            this.panel2.TabIndex = 2;
-            // 
-            // iconPictureBox1
-            // 
-            this.iconPictureBox1.BackColor = System.Drawing.Color.White;
-            this.iconPictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.iconPictureBox1.ForeColor = System.Drawing.Color.Black;
-            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            this.iconPictureBox1.IconColor = System.Drawing.Color.Black;
-            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox1.IconSize = 20;
-            this.iconPictureBox1.Location = new System.Drawing.Point(696, 19);
-            this.iconPictureBox1.Name = "iconPictureBox1";
-            this.iconPictureBox1.Size = new System.Drawing.Size(20, 22);
-            this.iconPictureBox1.TabIndex = 5;
-            this.iconPictureBox1.TabStop = false;
             // 
             // dgvEjemplaresAdmin
             // 
@@ -134,6 +116,13 @@
             this.dgvEjemplaresAdmin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvEjemplaresAdmin.ColumnHeadersHeight = 45;
             this.dgvEjemplaresAdmin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvEjemplaresAdmin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CLAVE_EJEMPLAR,
+            this.TÍTULO,
+            this.LOCALIZACION,
+            this.ESTADO_FISICO,
+            this.DISPONIBLE,
+            this.ID_EJEMPLAR});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10F);
@@ -144,7 +133,7 @@
             this.dgvEjemplaresAdmin.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvEjemplaresAdmin.EnableHeadersVisualStyles = false;
             this.dgvEjemplaresAdmin.GridColor = System.Drawing.Color.Gainsboro;
-            this.dgvEjemplaresAdmin.Location = new System.Drawing.Point(34, 168);
+            this.dgvEjemplaresAdmin.Location = new System.Drawing.Point(60, 168);
             this.dgvEjemplaresAdmin.Margin = new System.Windows.Forms.Padding(4);
             this.dgvEjemplaresAdmin.MultiSelect = false;
             this.dgvEjemplaresAdmin.Name = "dgvEjemplaresAdmin";
@@ -155,6 +144,83 @@
             this.dgvEjemplaresAdmin.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEjemplaresAdmin.Size = new System.Drawing.Size(1028, 293);
             this.dgvEjemplaresAdmin.TabIndex = 5;
+            this.dgvEjemplaresAdmin.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEjemplaresAdmin_CellContentClick);
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.iconPictureBox1);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.txtBuscarEjemplar);
+            this.panel2.Location = new System.Drawing.Point(60, 23);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1028, 65);
+            this.panel2.TabIndex = 2;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // iconPictureBox1
+            // 
+            this.iconPictureBox1.BackColor = System.Drawing.Color.White;
+            this.iconPictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.iconPictureBox1.ForeColor = System.Drawing.Color.Black;
+            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            this.iconPictureBox1.IconColor = System.Drawing.Color.Black;
+            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox1.IconSize = 20;
+            this.iconPictureBox1.Location = new System.Drawing.Point(696, 19);
+            this.iconPictureBox1.Name = "iconPictureBox1";
+            this.iconPictureBox1.Size = new System.Drawing.Size(20, 22);
+            this.iconPictureBox1.TabIndex = 5;
+            this.iconPictureBox1.TabStop = false;
+            // 
+            // CLAVE_EJEMPLAR
+            // 
+            this.CLAVE_EJEMPLAR.DataPropertyName = "CLAVE_EJEMPLAR";
+            this.CLAVE_EJEMPLAR.HeaderText = "Código Ejemplar";
+            this.CLAVE_EJEMPLAR.MinimumWidth = 6;
+            this.CLAVE_EJEMPLAR.Name = "CLAVE_EJEMPLAR";
+            this.CLAVE_EJEMPLAR.ReadOnly = true;
+            // 
+            // TÍTULO
+            // 
+            this.TÍTULO.DataPropertyName = "TITULO";
+            this.TÍTULO.HeaderText = "Libro";
+            this.TÍTULO.MinimumWidth = 6;
+            this.TÍTULO.Name = "TÍTULO";
+            this.TÍTULO.ReadOnly = true;
+            // 
+            // LOCALIZACION
+            // 
+            this.LOCALIZACION.DataPropertyName = "LOCALIZACION";
+            this.LOCALIZACION.HeaderText = "Localización";
+            this.LOCALIZACION.MinimumWidth = 6;
+            this.LOCALIZACION.Name = "LOCALIZACION";
+            this.LOCALIZACION.ReadOnly = true;
+            // 
+            // ESTADO_FISICO
+            // 
+            this.ESTADO_FISICO.DataPropertyName = "ESTADO_FISICO";
+            this.ESTADO_FISICO.HeaderText = "Estado físico";
+            this.ESTADO_FISICO.MinimumWidth = 6;
+            this.ESTADO_FISICO.Name = "ESTADO_FISICO";
+            this.ESTADO_FISICO.ReadOnly = true;
+            // 
+            // DISPONIBLE
+            // 
+            this.DISPONIBLE.DataPropertyName = "DISPONIBLE";
+            this.DISPONIBLE.HeaderText = "Disponible";
+            this.DISPONIBLE.MinimumWidth = 6;
+            this.DISPONIBLE.Name = "DISPONIBLE";
+            this.DISPONIBLE.ReadOnly = true;
+            // 
+            // ID_EJEMPLAR
+            // 
+            this.ID_EJEMPLAR.DataPropertyName = "ID_EJEMPLAR";
+            this.ID_EJEMPLAR.HeaderText = "Column1";
+            this.ID_EJEMPLAR.MinimumWidth = 6;
+            this.ID_EJEMPLAR.Name = "ID_EJEMPLAR";
+            this.ID_EJEMPLAR.ReadOnly = true;
+            this.ID_EJEMPLAR.Visible = false;
             // 
             // frmInicioEjemplaresAdmin
             // 
@@ -168,10 +234,10 @@
             this.Load += new System.EventHandler(this.frmInicioEjemplaresAdmin_Load);
             this.Click += new System.EventHandler(this.frmInicioEjemplaresAdmin_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEjemplaresAdmin)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEjemplaresAdmin)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -185,5 +251,11 @@
         private System.Windows.Forms.Panel panel2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private System.Windows.Forms.DataGridView dgvEjemplaresAdmin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CLAVE_EJEMPLAR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TÍTULO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LOCALIZACION;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO_FISICO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DISPONIBLE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_EJEMPLAR;
     }
 }

@@ -12,6 +12,8 @@ namespace Aplicacion_BIbliodesk.Administrador
         public frmInicioEjemplaresAdmin()
         {
             InitializeComponent();
+
+            dgvEjemplaresAdmin.AutoGenerateColumns = false;  //para qur no genere mas columnas
         }
 
         private void frmInicioEjemplaresAdmin_Load(object sender, EventArgs e)
@@ -22,49 +24,66 @@ namespace Aplicacion_BIbliodesk.Administrador
         // Método para cargar y filtrar datos en el DataGridView
         private void CargarEjemplares(string filtro = "")
         {
-
-
-            //conecta con la base
             ConexionData = new Conexion();
             MySqlConnection con = ConexionData.getConection();
 
-            if (con == null) return;
+            if (con == null)
+                return;
 
-            // Query que selecciona las columnas correspondientes a ejemplares en la bas de datos
-            string query = "SELECT ID_EJEMPLAR, ID_LIBRO, LOCALIZACION, ESTADO_FISICO, DISPONIBLE FROM ejemplar";
+            string query = @"
+        SELECT
+            E.ID_EJEMPLAR,
+            E.ID_LIBRO,
+            E.CLAVE_EJEMPLAR,
+            L.TITULO,
+            E.LOCALIZACION,
+            E.ESTADO_FISICO,
+            E.DISPONIBLE
+        FROM EJEMPLAR E
+        INNER JOIN LIBRO L
+            ON E.ID_LIBRO = L.ID_LIBRO";
 
-            if (!string.IsNullOrEmpty(filtro))
+            if (!string.IsNullOrWhiteSpace(filtro))
             {
-                query += " WHERE ID_EJEMPLAR LIKE @filtro OR LOCALIZACION LIKE @filtro";
+                query += @"
+            WHERE E.CLAVE_EJEMPLAR LIKE @filtro
+               OR L.TITULO LIKE @filtro
+               OR E.LOCALIZACION LIKE @filtro";
             }
+
             try
             {
                 using (MySqlCommand cmd = new MySqlCommand(query, con))
                 {
-                    if (!string.IsNullOrEmpty(filtro))
+                    if (!string.IsNullOrWhiteSpace(filtro))
                     {
-                        cmd.Parameters.AddWithValue("@filtro", "%" + filtro + "%");
+                        cmd.Parameters.AddWithValue(
+                            "@filtro",
+                            "%" + filtro.Trim() + "%"
+                        );
                     }
 
-                    //crear una tabla con los datos de la base para filtrarla en el DataGriView
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
                     {
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
 
-                        // Cargar el resultado en la tabla
                         dgvEjemplaresAdmin.DataSource = dt;
                     }
                 }
             }
-            //errores de cargar los datos, puede ser problema de conexion
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar los datos en la tabla: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "Error al cargar los datos en la tabla: " + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
             }
         }
 
-        // Evento de búsqueda al escribir en la barra de texto el ejemplar que requiere
+        // Evento de búsqueda 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             CargarEjemplares(txtBuscarEjemplar.Text.Trim());
@@ -73,34 +92,53 @@ namespace Aplicacion_BIbliodesk.Administrador
         // Evento del botón Cambiar Estado
         private void btnCambiarEstado_Click(object sender, EventArgs e)
         {
-            //Abre elformulario en el en inicio
-            frmInicioAdmin inicioAdmin = Application.OpenForms["frmInicioAdmin"] as frmInicioAdmin;
+            // Verificar que exista una fila seleccionada
+            if (dgvEjemplaresAdmin.CurrentRow == null)
+            {
+                MessageBox.Show(
+                    "Por favor, seleccione un ejemplar de la tabla.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+
+                return;
+            }
+
+            // Obtener el ID y el estado de la fila seleccionada
+            string id = dgvEjemplaresAdmin.CurrentRow
+                .Cells["ID_EJEMPLAR"]
+                .Value
+                .ToString();
+
+            string codigo = dgvEjemplaresAdmin.CurrentRow
+            .Cells["CLAVE_EJEMPLAR"]
+            .Value
+            .ToString();
+
+            string estado = dgvEjemplaresAdmin.CurrentRow
+                .Cells["DISPONIBLE"]
+                .Value
+                .ToString();
+
+            // Buscar el formulario principal del administrador
+            frmInicioAdmin inicioAdmin =
+                Application.OpenForms["frmInicioAdmin"] as frmInicioAdmin;
 
             if (inicioAdmin != null)
             {
-                frmCambiarEstadoEjemplaresAdmin CambioEstadoEjemplares= new frmCambiarEstadoEjemplaresAdmin();
-                inicioAdmin.AbrirFormularioEnPanelAdmin(CambioEstadoEjemplares);
-            }
+                // Crear un solo formulario y enviarle los datos
+                frmCambiarEstadoEjemplaresAdmin formulario =
+                    new frmCambiarEstadoEjemplaresAdmin(id, codigo, estado);
 
-            // verificar que el usuario tenga seleccionada una fila en la tabla
-            if (dgvEjemplaresAdmin.CurrentRow != null)
-            {
-                // extraer los valores de las celdas de la fila activa
-                string id = dgvEjemplaresAdmin.CurrentRow.Cells["ID_EJEMPLAR"].Value.ToString();
-                string estado = dgvEjemplaresAdmin.CurrentRow.Cells["DISPONIBLE"].Value.ToString();
-
-                // Pasaar el ID y el Estado al crear el formulario
-                frmCambiarEstadoEjemplaresAdmin frm = new frmCambiarEstadoEjemplaresAdmin(id, estado);
-
-                // Si el cambio se guarda con éxito se refresca la tabla al cerrar la ventana
-                if (frm.ShowDialog() == DialogResult.OK)
+                // Actualizar la tabla cuando se cierre el formulario
+                formulario.FormClosed += (s, args) =>
                 {
-                    CargarEjemplares(""); // Recargar tabla para mostrar el cambio al instante
-                }
-            }
-            else
-            {
-                MessageBox.Show("Por favor, seleccione un ejemplar de la tabla.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    CargarEjemplares("");
+                };
+
+                // Abrir el formulario dentro del panel
+                inicioAdmin.AbrirFormularioEnPanelAdmin(formulario);
             }
         }
 
@@ -109,6 +147,16 @@ namespace Aplicacion_BIbliodesk.Administrador
         private void txtBuscarEjemplar_TextChanged(object sender, EventArgs e)
         {
             CargarEjemplares(txtBuscarEjemplar.Text.Trim());
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dgvEjemplaresAdmin_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
