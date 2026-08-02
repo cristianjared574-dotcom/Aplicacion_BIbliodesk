@@ -13,7 +13,7 @@ namespace Aplicacion_BIbliodesk.Administrador
 {
     public partial class frmInicioAdmin : Form
     {
-        
+
         private IconButton botonSeleccionado = null;
         private Form formularioActivo = null;
 
@@ -142,7 +142,7 @@ namespace Aplicacion_BIbliodesk.Administrador
             menuSonido.Show(this);
         }
 
-        
+
         private void btnLibros_Click(object sender, EventArgs e)
         {
             seleccionarModulo(btnLibros);
@@ -176,6 +176,20 @@ namespace Aplicacion_BIbliodesk.Administrador
         private void btnCerrarsesion_Click(object sender, EventArgs e)
         {
             seleccionarModulo(btnCerrarsesion);
+            DialogResult resultado = MessageBox.Show("¿Deseas cerrar sesión?","Cerrar Sesión",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
+                
+                login loginForm = new login();
+                loginForm.Show();
+
+                frmInicioAdmin inicioAdmin = Application.OpenForms["frmInicioAdmin"] as frmInicioAdmin;
+                if (inicioAdmin != null)
+                {
+                    inicioAdmin.Close();
+                }
+            }
+
         }
 
         private void btnCategorias_Click(object sender, EventArgs e)

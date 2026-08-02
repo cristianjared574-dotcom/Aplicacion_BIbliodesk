@@ -165,6 +165,19 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
         private void btnCerrarsesion_Click(object sender, EventArgs e)
         {
             seleccionarModulo(btnCerrarsesion);
+            DialogResult resultado = MessageBox.Show("¿Deseas cerrar sesión?", "Cerrar Sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
+
+                login loginForm = new login();
+                loginForm.Show();
+
+                frmInicioBiblio inicioBiblio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
+                if (inicioBiblio != null)
+                {
+                    inicioBiblio.Close();
+                }
+            }
         }
 
         private void btnCategoria_Click(object sender, EventArgs e)
