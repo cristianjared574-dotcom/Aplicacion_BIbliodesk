@@ -67,7 +67,7 @@ namespace Aplicacion_BIbliodesk
 
         private void btnCancelarCambios_Click(object sender, EventArgs e)
         {
-            voz.SpeakAsync("Cancelando, volviendo a categorías");
+           
             VolverACategorias();
 
         }
