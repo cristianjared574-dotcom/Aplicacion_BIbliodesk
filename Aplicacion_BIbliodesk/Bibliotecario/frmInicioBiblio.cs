@@ -17,7 +17,6 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
         private IconButton botonSeleccionado = null;
         private Form formularioActivo = null;
 
-        // DECLARAMOS TODO AL PRINCIPIO PARA QUE NO HAYA ERRORES
         public readonly SpeechSynthesizer voz = new SpeechSynthesizer();
         public bool audioActivo = false;
         private string ultimoTextoLeido = "";
@@ -101,7 +100,6 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
             return string.Empty;
         }
 
-        // TU METODO ABRIR FORMULARIO YA CORREGIDO
         public void AbrirFormularioEnPanel(Form formulario)
         {
             if (formularioActivo != null)
@@ -120,7 +118,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
             formulario.Show();
         }
 
-        // TU EVENTO DEL BOTON DE AUDIO YA SIN ERRORES
+        //  BOTON DE AUDIO 
         private void audio_Click(object sender, EventArgs e)
         {
             if (Application.OpenForms.OfType<sonido>().Any()) return;

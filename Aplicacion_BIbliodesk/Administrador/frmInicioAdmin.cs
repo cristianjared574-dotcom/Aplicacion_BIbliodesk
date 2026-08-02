@@ -26,7 +26,7 @@ namespace Aplicacion_BIbliodesk.Administrador
         public frmInicioAdmin()
         {
             InitializeComponent();
-            AsignarEventoPaseRaton(this); // ACTIVA LECTURA AL INICIAR
+            AsignarEventoPaseRaton(this);
         }
 
         private void seleccionarModulo(IconButton boton)

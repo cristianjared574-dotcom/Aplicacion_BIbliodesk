@@ -185,7 +185,7 @@ namespace Aplicacion_BIbliodesk
             ActualizarPosicionVentana(null, null);
         }
 
-        // ✅ FUNCIÓN CORREGIDA: genera el MISMO código que la base de datos
+        
         public string CifrarContrasena(string textoPlano)
         {
             using (SHA256 sha = SHA256.Create())

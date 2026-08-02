@@ -22,7 +22,7 @@ namespace Aplicacion_BIbliodesk
             InitializeComponent();
             cboEstado.Items.Add("ACTIVO");
             cboEstado.Items.Add("INACTIVO");
-            CargarCategorias(); // Carga la lista completa por si se abre sin selección
+            CargarCategorias(); 
         }
 
         //  Constructor que RECIBE la categoría que seleccionaste

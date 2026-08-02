@@ -32,15 +32,16 @@ namespace Aplicacion_BIbliodesk
                 AccessData = new Conexion();
                 using (MySqlConnection conn = AccessData.getConection())
                 {
-                    string sql = @"SELECT ID_CATEGORIA AS 'ID Categoría',
-                                          NOMBRE_CATEGORIA AS 'Categoría',
-                                          DESCRIPCION AS 'Descripción',
-                                          ESTADO
+                    string sql = @"SELECT 
+                                        ID_CATEGORIA,
+                                        CLAVE_CATEGORIA AS 'Clave Categoría',
+                                        NOMBRE_CATEGORIA AS 'Categoría',
+                                        DESCRIPCION AS 'Descripción',
+                                        ESTADO AS 'Estado'
                                    FROM CATEGORIA";
 
                     if (!string.IsNullOrWhiteSpace(filtro))
-                        sql += " WHERE NOMBRE_CATEGORIA LIKE @Filtro OR DESCRIPCION LIKE @Filtro";
-
+                        sql += " WHERE CLAVE_CATEGORIA LIKE @Filtro OR NOMBRE_CATEGORIA LIKE @Filtro OR DESCRIPCION LIKE @Filtro";
                     using (MySqlCommand cmd = new MySqlCommand(sql, conn))
                     {
                         if (!string.IsNullOrWhiteSpace(filtro))
@@ -51,13 +52,44 @@ namespace Aplicacion_BIbliodesk
                             DataTable dt = new DataTable();
                             da.Fill(dt);
                             dgvCategorias.DataSource = dt;
+
+
+                            if (dgvCategorias.Columns.Count > 0)
+                            {
+                                // OCULTA EL ID (NO SE VE EN PANTALLA)
+                                dgvCategorias.Columns["ID_CATEGORIA"].Visible = false;
+                                //  ALINEA TODO AL CENTRO EN COLUMNAS Y FILAS
+                                dgvCategorias.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                                dgvCategorias.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                                //  ENCABEZADO MÁS ALTO
+                                dgvCategorias.ColumnHeadersHeight = 60; //  más espacio hacia abajo
+                                dgvCategorias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+
+                                //  TAMAÑOS 
+                                dgvCategorias.Columns["Clave Categoría"].Width = 100;
+                                dgvCategorias.Columns["Categoría"].Width = 160;
+                                dgvCategorias.Columns["Descripción"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                                dgvCategorias.Columns["Estado"].Width = 150;
+
+                                //  ALTURA DE FILAS 
+                                dgvCategorias.RowTemplate.Height = 32;
+                                dgvCategorias.AllowUserToResizeRows = false;
+
+                                //  TAMAÑO DE LAS  COLUMNAS
+                                dgvCategorias.Columns["Clave Categoría"].Width = 120;  //  más ancho
+                                dgvCategorias.Columns["Categoría"].Width = 230;        //  más ancho
+                                dgvCategorias.Columns["Descripción"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                                dgvCategorias.Columns["Estado"].Width = 150;          // más ancho
+                            }
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar: " + ex.Message, "Error");
+                MessageBox.Show("Error: " + ex.Message, "Información",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -76,10 +108,9 @@ namespace Aplicacion_BIbliodesk
             }
 
             // 2. Obtiene los datos de la fila que elegiste
-            int idCat = Convert.ToInt32(dgvCategorias.SelectedRows[0].Cells["ID Categoría"].Value);
+            int idCat = Convert.ToInt32(dgvCategorias.SelectedRows[0].Cells["ID_CATEGORIA"].Value);
             string nombreCat = dgvCategorias.SelectedRows[0].Cells["Categoría"].Value.ToString();
-            string estadoCat = dgvCategorias.SelectedRows[0].Cells["ESTADO"].Value.ToString();
-
+            string estadoCat = dgvCategorias.SelectedRows[0].Cells["Estado"].Value.ToString();
             // 3. Abre el formulario y le pasa los datos
             frmInicioAdmin inicioAdmin = Application.OpenForms["frmInicioAdmin"] as frmInicioAdmin;
 
@@ -153,6 +184,11 @@ namespace Aplicacion_BIbliodesk
         private void dgvCategorias_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dgvCategorias_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
         }

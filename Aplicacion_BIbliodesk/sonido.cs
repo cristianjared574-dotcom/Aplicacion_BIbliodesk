@@ -24,8 +24,8 @@ namespace Aplicacion_BIbliodesk
             // Guardamos posición antes de abrir
             Point posMenu = this.PointToScreen(Point.Empty);
 
-            //  el botón Audio se queda visible
-            // this.Close(); ELIMINADO
+            
+           
 
             // opciones al lado izquierdo
             audio ventanaOpciones = new audio(formPadre);
