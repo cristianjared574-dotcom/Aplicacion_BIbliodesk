@@ -27,9 +27,22 @@ namespace Aplicacion_BIbliodesk.Administrador.AutorAdmin
         {
             dataAccess = new Conexion();
 
-            MySqlConnection conn = dataAccess.getConection(); 
+            using (MySqlConnection conn = dataAccess.getConection())
             {
-                string query = "SELECT ID_AUTOR, NOMBRE, APELLIDOP, APELLIDOM, NACIONALIDAD, ESTADO FROM autor WHERE NOMBRE LIKE @criterio";
+                
+                string query = @"SELECT  
+                                    ID_AUTOR, 
+                                    CLAVE_AUTOR AS 'CLAVE AUTOR', 
+                                    NOMBRE, 
+                                    APELLIDOP, 
+                                    APELLIDOM, 
+                                    NACIONALIDAD, 
+                                    ESTADO 
+                                 FROM autor 
+                                 WHERE NOMBRE LIKE @criterio 
+                                    OR APELLIDOP LIKE @criterio 
+                                    OR APELLIDOM LIKE @criterio 
+                                    OR CLAVE_AUTOR LIKE @criterio";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
@@ -40,6 +53,12 @@ namespace Aplicacion_BIbliodesk.Administrador.AutorAdmin
                     da.Fill(dt);
 
                     dgvAutores.DataSource = dt;
+
+                    
+                    if (dgvAutores.Columns["ID_AUTOR"] != null)
+                    {
+                        dgvAutores.Columns["ID_AUTOR"].Visible = false;
+                    }
                 }
             }
         }

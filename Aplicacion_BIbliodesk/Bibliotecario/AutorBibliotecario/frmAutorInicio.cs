@@ -29,9 +29,9 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             MySqlConnection conn = ConnectionData.getConection();
 
 
-            string query = @"SELECT 
+            string query = @"SELECT  
                                 ID_AUTOR, 
-                                CLAVE_AUTOR AS MATRICULA, 
+                                CLAVE_AUTOR AS 'CLAVE AUTOR', 
                                 NOMBRE, 
                                 APELLIDOP, 
                                 APELLIDOM, 
