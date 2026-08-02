@@ -93,7 +93,7 @@
             this.btnguardarcategoria.TabIndex = 4;
             this.btnguardarcategoria.Text = "Guardar Categoría";
             this.btnguardarcategoria.UseVisualStyleBackColor = false;
-            this.btnguardarcategoria.Click += new System.EventHandler(this.button2_Click);
+            this.btnguardarcategoria.Click += new System.EventHandler(this.btnguardarcategoria_Click);
             // 
             // groupBox1
             // 
@@ -140,7 +140,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(233)))), ((int)(((byte)(210)))));
-            this.ClientSize = new System.Drawing.Size(1924, 679);
+            this.ClientSize = new System.Drawing.Size(1506, 552);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "categoria_biblio";

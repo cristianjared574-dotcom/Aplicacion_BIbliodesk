@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
-using System.Data;
 using System.Collections.Generic;
 
 namespace Aplicacion_BIbliodesk
@@ -16,7 +15,7 @@ namespace Aplicacion_BIbliodesk
         private Conexion AcessConnection;
         public static Empleado EmpleadoActual { get; private set; }
 
-        // Variables para accesibilidad
+        // Variables para accesibilidad (se mantienen igual)
         private Color colorFondoOriginal;
         private Color colorTextoOriginal;
         private Color colorBotonOriginal;
@@ -26,7 +25,6 @@ namespace Aplicacion_BIbliodesk
         private Color colorTextoAccesibilidadOriginal;
         private Color colorFondoIconoOriginal;
 
-        // Colores para la ventana de accesibilidad
         private readonly Color fondoVentanaNormal = Color.FromArgb(153, 0, 0);
         private readonly Color textoVentanaNormal = Color.White;
         private readonly Color botonVentanaNormal = Color.FromArgb(128, 0, 0);
@@ -56,20 +54,19 @@ namespace Aplicacion_BIbliodesk
 
             txtContrasena.PasswordChar = '*';
 
-            // ESTADO INICIAL
+            // Colores originales
             this.BackColor = Color.FromArgb(128, 32, 32);
             lblTitulo.ForeColor = Color.FromArgb(153, 0, 0);
             lblSubtitulo.ForeColor = Color.Black;
             lblUsuario.ForeColor = Color.Black;
             lblContrasena.ForeColor = Color.Black;
-           
+
             btnIniciarSesion.BackColor = Color.FromArgb(128, 0, 0);
             btnIniciarSesion.ForeColor = Color.White;
 
             panelFondo.BackColor = Color.FromArgb(255, 228, 196);
             iconBtnacces.IconColor = Color.White;
 
-            // Guardamos todos los colores originales
             colorFondoOriginal = this.BackColor;
             colorTextoOriginal = lblTitulo.ForeColor;
             colorBotonOriginal = btnIniciarSesion.BackColor;
@@ -119,7 +116,7 @@ namespace Aplicacion_BIbliodesk
                 lblSubtitulo.ForeColor = Color.FromArgb(40, 40, 40);
                 lblUsuario.ForeColor = Color.Black;
                 lblContrasena.ForeColor = Color.Black;
-            
+
                 btnIniciarSesion.BackColor = Color.FromArgb(25, 90, 160);
                 btnIniciarSesion.ForeColor = Color.White;
                 panelFondo.BackColor = Color.White;
@@ -140,7 +137,7 @@ namespace Aplicacion_BIbliodesk
                 lblSubtitulo.ForeColor = colorTextoNormalOriginal;
                 lblUsuario.ForeColor = colorTextoNormalOriginal;
                 lblContrasena.ForeColor = colorTextoNormalOriginal;
-               
+
                 btnIniciarSesion.BackColor = colorBotonOriginal;
                 btnIniciarSesion.ForeColor = Color.White;
                 panelFondo.BackColor = colorPanelOriginal;
@@ -188,6 +185,7 @@ namespace Aplicacion_BIbliodesk
             ActualizarPosicionVentana(null, null);
         }
 
+        // ✅ FUNCIÓN CORREGIDA: genera el MISMO código que la base de datos
         public string CifrarContrasena(string textoPlano)
         {
             using (SHA256 sha = SHA256.Create())
@@ -201,10 +199,8 @@ namespace Aplicacion_BIbliodesk
 
         private void login_Load(object sender, EventArgs e) { }
 
-
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            // YA NO SE PIDE NI SE VALIDA EL ROL
             if (string.IsNullOrWhiteSpace(txtUsuario.Text) || string.IsNullOrWhiteSpace(txtContrasena.Text))
             {
                 MessageBox.Show("Completa usuario y contraseña", "Aviso");
@@ -217,7 +213,6 @@ namespace Aplicacion_BIbliodesk
             {
                 MessageBox.Show($"Bienvenido al sistema {EmpleadoActual.NombreCompleto}", "Bibliodesk");
 
-                // ABRE AUTOMÁTICO SEGÚN LO QUE TRAIGA LA BASE
                 if (EmpleadoActual.Rol == "ADMINISTRADOR")
                 {
                     new frmInicioAdmin().Show();
@@ -234,23 +229,28 @@ namespace Aplicacion_BIbliodesk
                 txtContrasena.Clear();
             }
         }
+
         private Empleado ValidarCredenciales(string usuario, string contrasena)
         {
             Empleado empleado = null;
-            string hash = CifrarContrasena(contrasena);
+            string hashGenerado = CifrarContrasena(contrasena);
 
-           
-           
             try
             {
                 AcessConnection = new Conexion();
                 MySqlConnection conn = AcessConnection.getConection();
+
                 string sql = @"SELECT ID_EMPLEADO, CONCAT(NOMBRE, ' ', APELLIDOP) AS NOMBRE_COMPLETO,
-                                  USERNAME, ROL, ESTADO FROM EMPLEADO
-                           WHERE USERNAME = @Usu AND PASSWORD = @Hash AND ESTADO = 'ACTIVO'";
+                                      MATRICULA_EMPLEADO, ROL, ESTADO 
+                                      FROM EMPLEADO
+                                      WHERE MATRICULA_EMPLEADO = @Usu 
+                                      AND PASSWORD = @Hash 
+                                      AND ESTADO = 'ACTIVO'";
+
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@Usu", usuario);
-                cmd.Parameters.AddWithValue("@Hash", hash);
+                cmd.Parameters.AddWithValue("@Hash", hashGenerado);
+
                 MySqlDataReader lector = cmd.ExecuteReader();
                 if (lector.Read())
                 {
@@ -258,7 +258,7 @@ namespace Aplicacion_BIbliodesk
                     {
                         IdEmpleado = lector.GetInt32("ID_EMPLEADO"),
                         NombreCompleto = lector.GetString("NOMBRE_COMPLETO"),
-                        Username = lector.GetString("USERNAME"),
+                        Username = lector.GetString("MATRICULA_EMPLEADO"),
                         Rol = lector.GetString("ROL"),
                         Estado = lector.GetString("ESTADO")
                     };

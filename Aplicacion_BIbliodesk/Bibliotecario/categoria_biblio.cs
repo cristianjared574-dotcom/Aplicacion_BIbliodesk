@@ -1,6 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Linq;
 using System.Windows.Forms;
+
 
 namespace Aplicacion_BIbliodesk.Bibliotecario
 {
@@ -35,117 +37,79 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
         {
             if (string.IsNullOrWhiteSpace(txtnombre.Text))
             {
-                MessageBox.Show(
-                    "Escribe el nombre de la categoría.",
-                    "Aviso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
+                MessageBox.Show("Escribe el nombre de la categoría.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtnombre.Focus();
                 return;
             }
 
             try
             {
-                AccessData = new Conexion();
-                MySqlConnection conn = AccessData.getConection();
-
-                if (conn == null)
+                using (MySqlConnection conn = new Conexion().getConection())
                 {
-                    return;
+                    if (conn == null)
+                    {
+                        MessageBox.Show("No se pudo conectar a la base", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    string sql;
+                    if (_idCategoriaEditar > 0)
+                    {
+                        sql = @"UPDATE CATEGORIA
+                        SET NOMBRE_CATEGORIA = @Nombre, DESCRIPCION = @Descripcion
+                        WHERE ID_CATEGORIA = @Id;";
+                    }
+                    else
+                    {
+                        sql = @"INSERT INTO CATEGORIA (NOMBRE_CATEGORIA, DESCRIPCION, ESTADO)
+                        VALUES (@Nombre, @Descripcion, 'ACTIVO');";
+                    }
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Nombre", txtnombre.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Descripcion", txtdescripcion.Text.Trim());
+
+                        if (_idCategoriaEditar > 0)
+                            cmd.Parameters.AddWithValue("@Id", _idCategoriaEditar);
+
+                        // ❌ YA NO PONGAS conn.Open(); → LA CLASE YA LO HIZO
+                        int filasAfectadas = cmd.ExecuteNonQuery();
+
+                        if (filasAfectadas > 0)
+                        {
+                            string mensaje = _idCategoriaEditar > 0
+                                ? "Categoría actualizada correctamente."
+                                : "Categoría agregada correctamente.";
+
+                            MessageBox.Show(mensaje, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            conn.Close(); // ✅ Cierra al terminar
+                            RegresarALista();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se hicieron cambios.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            conn.Close();
+                        }
+                    }
                 }
-
-                string sql;
-
-                if (_idCategoriaEditar > 0)
-                {
-                    sql = @"UPDATE CATEGORIA
-                    SET NOMBRE_CATEGORIA = @Nombre,
-                        DESCRIPCION = @Descripcion
-                    WHERE ID_CATEGORIA = @Id;";
-                }
-                else
-                {
-                    sql = @"INSERT INTO CATEGORIA
-                    (NOMBRE_CATEGORIA, DESCRIPCION)
-                    VALUES
-                    (@Nombre, @Descripcion);";
-                }
-
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-
-                cmd.Parameters.AddWithValue(
-                    "@Nombre",
-                    txtnombre.Text.Trim());
-
-                cmd.Parameters.AddWithValue(
-                    "@Descripcion",
-                    txtdescripcion.Text.Trim());
-
-                if (_idCategoriaEditar > 0)
-                {
-                    cmd.Parameters.AddWithValue(
-                        "@Id",
-                        _idCategoriaEditar);
-                }
-
-                // Esta línea te faltaba
-                int filasAfectadas = cmd.ExecuteNonQuery();
-
-                if (filasAfectadas > 0)
-                {
-                    string mensaje = _idCategoriaEditar > 0
-                        ? "Categoría actualizada correctamente."
-                        : "Categoría guardada correctamente.";
-
-                    MessageBox.Show(
-                        mensaje,
-                        "Éxito",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-
-                    RegresarALista();
-                }
-                else
-                {
-                    MessageBox.Show(
-                        "No se realizaron cambios.",
-                        "Aviso",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-                }
-
-                conn.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Error: " + ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void RegresarALista()
         {
-            frmInicioBiblio inicio =
-                Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
-
+            frmInicioBiblio inicio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
             if (inicio != null)
             {
-                inicio.AbrirFormularioEnPanel(
-                    new categorias_biblo());
-            }
-            else
-            {
-                MessageBox.Show(
-                    "No se encontró el formulario principal.");
+                categorias_biblo listaNueva = new categorias_biblo();
+                inicio.AbrirFormularioEnPanel(listaNueva);
             }
         }
-
-        private void btncancelar_Click(object sender, EventArgs e)
-        {
+      //  private void btncancelar_Click(object sender, EventArgs e)
+      //  {
             // Limpia y regresa a la lista sin cambios
             /*frmInicioBiblio ventanaInicio = this.ParentForm as frmInicioBiblio;
             if (ventanaInicio != null)
@@ -154,7 +118,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
             }*/
 
              
-        }
+     //   }
 
         private void categoria_biblio_Load(object sender, EventArgs e)
         {
@@ -162,10 +126,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            //hdmje
-        }
+      
 
         private void btncancelar_Click_1(object sender, EventArgs e)
         {

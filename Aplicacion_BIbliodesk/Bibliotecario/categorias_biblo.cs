@@ -147,5 +147,10 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void categorias_biblo_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
