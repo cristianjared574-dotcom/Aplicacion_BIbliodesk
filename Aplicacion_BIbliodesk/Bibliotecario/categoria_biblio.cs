@@ -10,7 +10,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
     {
         private Conexion AccessData;
 
-        // 1. AGREGA ESTA VARIABLE: guarda el ID si es edición (0 = nuevo)
+
         private int _idCategoriaEditar = 0;
 
         // Constructor para agregar
@@ -33,6 +33,24 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
 
             btnguardarcategoria.Text = "Actualizar cambios";
         }
+
+        private string GenerarClaveCategoria()
+        {
+            string ultimaClave = "CO00";
+            using (MySqlConnection conn = new Conexion().getConection())
+            {
+                string sql = "SELECT IFNULL(MAX(CLAVE_CATEGORIA), 'CO00') FROM CATEGORIA";
+                using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+                {
+                    var res = cmd.ExecuteScalar();
+                    if (res != null && res != DBNull.Value)
+                        ultimaClave = res.ToString();
+                }
+            }
+            int num = int.Parse(ultimaClave.Replace("CO", "")) + 1;
+            return $"CO{num:D2}";
+        }
+
         private void btnguardarcategoria_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtnombre.Text))
@@ -53,6 +71,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
                     }
 
                     string sql;
+                    string claveNueva = "";
                     if (_idCategoriaEditar > 0)
                     {
                         sql = @"UPDATE CATEGORIA
@@ -61,35 +80,43 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
                     }
                     else
                     {
-                        sql = @"INSERT INTO CATEGORIA (NOMBRE_CATEGORIA, DESCRIPCION, ESTADO)
-                        VALUES (@Nombre, @Descripcion, 'ACTIVO');";
+                        claveNueva = GenerarClaveCategoria();
+                        sql = @"INSERT INTO CATEGORIA (CLAVE_CATEGORIA, NOMBRE_CATEGORIA, DESCRIPCION, ESTADO)
+                                VALUES (@Clave, @Nombre, @Descripcion, 'ACTIVO');";
                     }
 
                     using (MySqlCommand cmd = new MySqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@Nombre", txtnombre.Text.Trim());
                         cmd.Parameters.AddWithValue("@Descripcion", txtdescripcion.Text.Trim());
-
                         if (_idCategoriaEditar > 0)
+                        {
                             cmd.Parameters.AddWithValue("@Id", _idCategoriaEditar);
+                        }
+                        else
+                        {
+                            
+                            cmd.Parameters.AddWithValue("@Clave", claveNueva);
+                        }
 
-                        // ❌ YA NO PONGAS conn.Open(); → LA CLASE YA LO HIZO
                         int filasAfectadas = cmd.ExecuteNonQuery();
 
                         if (filasAfectadas > 0)
                         {
+
                             string mensaje = _idCategoriaEditar > 0
                                 ? "Categoría actualizada correctamente."
-                                : "Categoría agregada correctamente.";
+                                : $"Categoría agregada.\nClave generada: {claveNueva}";
 
                             MessageBox.Show(mensaje, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            conn.Close(); // ✅ Cierra al terminar
-                            RegresarALista();
+
+                           
+
+                            RegresarALista(); 
                         }
                         else
                         {
                             MessageBox.Show("No se hicieron cambios.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            conn.Close();
                         }
                     }
                 }
