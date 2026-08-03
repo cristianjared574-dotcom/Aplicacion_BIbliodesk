@@ -31,13 +31,13 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
 
             string query = @"SELECT  
                             l.ID_LIBRO, 
-                            l.CLAVE_LIBRO AS MATRICULA,
+                            l.CLAVE_LIBRO AS 'Clave libro',
                             l.ISBN,
-                            l.TITULO,
-                            CONCAT(a.NOMBRE, ' ', a.APELLIDOP) AS AUTOR,
-                            c.NOMBRE_CATEGORIA AS CATEGORIA, 
-                            l.ESTADO,
-                            (SELECT COUNT(*) FROM ejemplar e WHERE e.ID_LIBRO = l.ID_LIBRO AND e.DISPONIBLE = 'DISPONIBLE') AS EJEMPLARES,
+                            l.TITULO AS 'Titulo',
+                            CONCAT(a.NOMBRE, ' ', a.APELLIDOP) AS 'Autor',
+                            c.NOMBRE_CATEGORIA AS 'Categoría', 
+                            l.ESTADO AS 'Estado',
+                            (SELECT COUNT(*) FROM ejemplar e WHERE e.ID_LIBRO = l.ID_LIBRO AND e.DISPONIBLE = 'DISPONIBLE') AS 'Ejemplares',
                             l.ID_EDITORIAL,  
                             l.ID_CATEGORIA
                          FROM LIBRO l 

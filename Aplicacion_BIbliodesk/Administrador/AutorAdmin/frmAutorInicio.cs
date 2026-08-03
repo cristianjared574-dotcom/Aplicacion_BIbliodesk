@@ -32,12 +32,12 @@ namespace Aplicacion_BIbliodesk.Administrador.AutorAdmin
                 
                 string query = @"SELECT  
                                     ID_AUTOR, 
-                                    CLAVE_AUTOR AS 'CLAVE AUTOR', 
-                                    NOMBRE, 
-                                    APELLIDOP, 
-                                    APELLIDOM, 
-                                    NACIONALIDAD, 
-                                    ESTADO 
+                                    CLAVE_AUTOR AS 'Clave autor', 
+                                    NOMBRE AS 'Nombre', 
+                                    APELLIDOP AS 'Apellido paterno', 
+                                    APELLIDOM AS 'Apellido materno', 
+                                    NACIONALIDAD AS 'Nacionalidad', 
+                                    ESTADO AS 'Estado' 
                                  FROM autor 
                                  WHERE NOMBRE LIKE @criterio 
                                     OR APELLIDOP LIKE @criterio 

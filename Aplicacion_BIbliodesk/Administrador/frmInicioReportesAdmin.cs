@@ -36,12 +36,11 @@ namespace Aplicacion_BIbliodesk.Administrador
             {
                 // Muestra qué usuario se llevó qué libro (ejemplar), en qué fechas y el estado actual del préstamo.
                 query = @"SELECT 
-                            p.ID_PRESTAMO,
+                            p.FOLIO_PRESTAMO AS 'Folio prestamo',
                             CONCAT(u.NOMBRE, ' ', u.APELLIDOP, ' ', u.APELLIDOM) AS USUARIO,
                             l.TITULO AS LIBRO,
-                            e.ID_EJEMPLAR,
-                            p.FECHA_INICIO,
-                            p.FECHA_DEVOLUCION,
+                            p.FECHA_INICIO AS 'Fecha préstamo',
+                            p.FECHA_DEVOLUCION AS 'Fecha devolución',
                             p.ESTADO
                           FROM PRESTAMO p
                           INNER JOIN USUARIO u ON p.ID_USUARIO = u.ID_USUARIO

@@ -31,12 +31,12 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
 
             string query = @"SELECT  
                                 ID_AUTOR, 
-                                CLAVE_AUTOR AS 'CLAVE AUTOR', 
-                                NOMBRE, 
-                                APELLIDOP, 
-                                APELLIDOM, 
-                                NACIONALIDAD, 
-                                ESTADO 
+                                CLAVE_AUTOR AS 'Clave autor', 
+                                NOMBRE AS 'Nombre', 
+                                APELLIDOP AS 'Apellido Paterno', 
+                                APELLIDOM AS 'Apellido Materno', 
+                                NACIONALIDAD AS 'Nacionalidad', 
+                                ESTADO As 'Estado' 
                              FROM autor 
                              WHERE NOMBRE LIKE @criterio 
                                 OR APELLIDOP LIKE @criterio 
