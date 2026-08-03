@@ -118,11 +118,11 @@
             // txtIdEjemplar
             // 
             this.txtIdEjemplar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtIdEjemplar.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdEjemplar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIdEjemplar.Location = new System.Drawing.Point(213, 41);
             this.txtIdEjemplar.Name = "txtIdEjemplar";
             this.txtIdEjemplar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtIdEjemplar.Size = new System.Drawing.Size(390, 28);
+            this.txtIdEjemplar.Size = new System.Drawing.Size(390, 32);
             this.txtIdEjemplar.TabIndex = 2;
             // 
             // btnGuardar

@@ -59,9 +59,9 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             this.grpAgregAutor.Controls.Add(this.panel1);
             this.grpAgregAutor.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpAgregAutor.Location = new System.Drawing.Point(423, 28);
-            this.grpAgregAutor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpAgregAutor.Margin = new System.Windows.Forms.Padding(4);
             this.grpAgregAutor.Name = "grpAgregAutor";
-            this.grpAgregAutor.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpAgregAutor.Padding = new System.Windows.Forms.Padding(4);
             this.grpAgregAutor.Size = new System.Drawing.Size(769, 511);
             this.grpAgregAutor.TabIndex = 0;
             this.grpAgregAutor.TabStop = false;
@@ -73,7 +73,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             this.btnCancelar.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.Black;
             this.btnCancelar.Location = new System.Drawing.Point(468, 434);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(189, 48);
             this.btnCancelar.TabIndex = 17;
@@ -87,7 +87,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             this.btnGuardar.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
             this.btnGuardar.Location = new System.Drawing.Point(155, 434);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(189, 48);
             this.btnGuardar.TabIndex = 16;
@@ -108,17 +108,18 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             this.panel1.Controls.Add(this.txtNombre);
             this.panel1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(43, 54);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(690, 356);
             this.panel1.TabIndex = 17;
             // 
             // txtnacionalidad
             // 
+            this.txtnacionalidad.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtnacionalidad.Location = new System.Drawing.Point(231, 249);
-            this.txtnacionalidad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtnacionalidad.Margin = new System.Windows.Forms.Padding(4);
             this.txtnacionalidad.Name = "txtnacionalidad";
-            this.txtnacionalidad.Size = new System.Drawing.Size(390, 30);
+            this.txtnacionalidad.Size = new System.Drawing.Size(390, 32);
             this.txtnacionalidad.TabIndex = 11;
             // 
             // label1
@@ -134,18 +135,20 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             // 
             // txtAm
             // 
+            this.txtAm.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAm.Location = new System.Drawing.Point(231, 174);
-            this.txtAm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAm.Margin = new System.Windows.Forms.Padding(4);
             this.txtAm.Name = "txtAm";
-            this.txtAm.Size = new System.Drawing.Size(390, 30);
+            this.txtAm.Size = new System.Drawing.Size(390, 32);
             this.txtAm.TabIndex = 7;
             // 
             // txtAp
             // 
+            this.txtAp.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAp.Location = new System.Drawing.Point(231, 105);
-            this.txtAp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAp.Margin = new System.Windows.Forms.Padding(4);
             this.txtAp.Name = "txtAp";
-            this.txtAp.Size = new System.Drawing.Size(390, 30);
+            this.txtAp.Size = new System.Drawing.Size(390, 32);
             this.txtAp.TabIndex = 5;
             // 
             // lblAP
@@ -183,10 +186,11 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             // 
             // txtNombre
             // 
+            this.txtNombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.Location = new System.Drawing.Point(231, 39);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(390, 30);
+            this.txtNombre.Size = new System.Drawing.Size(390, 32);
             this.txtNombre.TabIndex = 3;
             this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
@@ -198,7 +202,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             this.ClientSize = new System.Drawing.Size(1371, 551);
             this.Controls.Add(this.grpAgregAutor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frmAgregarAutor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -514,5 +514,10 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
         {
             RegresarAListaEjemplares();
         }
+
+        private void txtCodigoEjemplar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

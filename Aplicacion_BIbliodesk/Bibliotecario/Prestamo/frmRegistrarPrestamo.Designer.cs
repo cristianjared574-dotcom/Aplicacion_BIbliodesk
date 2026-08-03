@@ -143,7 +143,7 @@
             // txtMatriculaUsuario
             // 
             this.txtMatriculaUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMatriculaUsuario.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMatriculaUsuario.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMatriculaUsuario.Location = new System.Drawing.Point(25, 46);
             this.txtMatriculaUsuario.Multiline = true;
             this.txtMatriculaUsuario.Name = "txtMatriculaUsuario";
@@ -284,7 +284,7 @@
             // txtClaveEjemplar
             // 
             this.txtClaveEjemplar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtClaveEjemplar.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClaveEjemplar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtClaveEjemplar.Location = new System.Drawing.Point(19, 46);
             this.txtClaveEjemplar.Multiline = true;
             this.txtClaveEjemplar.Name = "txtClaveEjemplar";
