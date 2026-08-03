@@ -17,20 +17,20 @@
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.lblBuscar = new System.Windows.Forms.Label();
             this.dgvCategorias = new System.Windows.Forms.DataGridView();
             this.btnCambiarEstado = new System.Windows.Forms.Button();
-            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -39,7 +39,7 @@
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.dgvCategorias);
             this.panel1.Controls.Add(this.btnCambiarEstado);
-            this.panel1.Location = new System.Drawing.Point(247, 50);
+            this.panel1.Location = new System.Drawing.Point(205, 32);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1146, 472);
             this.panel1.TabIndex = 0;
@@ -56,11 +56,27 @@
             this.panel3.Size = new System.Drawing.Size(1028, 65);
             this.panel3.TabIndex = 9;
             // 
+            // iconPictureBox1
+            // 
+            this.iconPictureBox1.BackColor = System.Drawing.Color.White;
+            this.iconPictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.iconPictureBox1.ForeColor = System.Drawing.Color.Black;
+            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            this.iconPictureBox1.IconColor = System.Drawing.Color.Black;
+            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox1.IconSize = 22;
+            this.iconPictureBox1.Location = new System.Drawing.Point(645, 16);
+            this.iconPictureBox1.Name = "iconPictureBox1";
+            this.iconPictureBox1.Size = new System.Drawing.Size(27, 22);
+            this.iconPictureBox1.TabIndex = 10;
+            this.iconPictureBox1.TabStop = false;
+            // 
             // txtBuscar
             // 
+            this.txtBuscar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscar.Location = new System.Drawing.Point(185, 16);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(487, 22);
+            this.txtBuscar.Size = new System.Drawing.Size(487, 32);
             this.txtBuscar.TabIndex = 6;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
@@ -80,29 +96,29 @@
             this.dgvCategorias.AllowUserToDeleteRows = false;
             this.dgvCategorias.AllowUserToResizeColumns = false;
             this.dgvCategorias.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
-            this.dgvCategorias.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.dgvCategorias.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvCategorias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCategorias.BackgroundColor = System.Drawing.Color.White;
             this.dgvCategorias.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(161)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCategorias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(161)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCategorias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvCategorias.ColumnHeadersHeight = 45;
             this.dgvCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(110)))), ((int)(((byte)(70)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCategorias.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(110)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCategorias.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvCategorias.EnableHeadersVisualStyles = false;
             this.dgvCategorias.GridColor = System.Drawing.Color.Gainsboro;
             this.dgvCategorias.Location = new System.Drawing.Point(60, 157);
@@ -131,21 +147,6 @@
             this.btnCambiarEstado.UseVisualStyleBackColor = false;
             this.btnCambiarEstado.Click += new System.EventHandler(this.btnCambiarEstado_Click);
             // 
-            // iconPictureBox1
-            // 
-            this.iconPictureBox1.BackColor = System.Drawing.Color.White;
-            this.iconPictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.iconPictureBox1.ForeColor = System.Drawing.Color.Black;
-            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            this.iconPictureBox1.IconColor = System.Drawing.Color.Black;
-            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox1.IconSize = 22;
-            this.iconPictureBox1.Location = new System.Drawing.Point(645, 16);
-            this.iconPictureBox1.Name = "iconPictureBox1";
-            this.iconPictureBox1.Size = new System.Drawing.Size(27, 22);
-            this.iconPictureBox1.TabIndex = 10;
-            this.iconPictureBox1.TabStop = false;
-            // 
             // categorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -159,8 +160,8 @@
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias)).EndInit();
             this.ResumeLayout(false);
 
         }

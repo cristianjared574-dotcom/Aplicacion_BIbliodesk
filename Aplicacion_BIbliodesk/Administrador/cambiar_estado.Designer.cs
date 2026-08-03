@@ -95,18 +95,20 @@
             // 
             // cmbCategoria
             // 
+            this.cmbCategoria.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategoria.FormattingEnabled = true;
             this.cmbCategoria.Location = new System.Drawing.Point(186, 49);
             this.cmbCategoria.Name = "cmbCategoria";
-            this.cmbCategoria.Size = new System.Drawing.Size(390, 27);
+            this.cmbCategoria.Size = new System.Drawing.Size(390, 31);
             this.cmbCategoria.TabIndex = 9;
             // 
             // cboEstado
             // 
+            this.cboEstado.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboEstado.FormattingEnabled = true;
             this.cboEstado.Location = new System.Drawing.Point(186, 127);
             this.cboEstado.Name = "cboEstado";
-            this.cboEstado.Size = new System.Drawing.Size(240, 27);
+            this.cboEstado.Size = new System.Drawing.Size(240, 31);
             this.cboEstado.TabIndex = 8;
             // 
             // label2

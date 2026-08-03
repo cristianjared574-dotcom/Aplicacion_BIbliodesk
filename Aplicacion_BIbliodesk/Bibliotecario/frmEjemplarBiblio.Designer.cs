@@ -32,6 +32,7 @@
             this.btnGuardarEjemplar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbLibro = new System.Windows.Forms.ComboBox();
             this.cmbEstadoFisico = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtLocalizacion = new System.Windows.Forms.TextBox();
@@ -39,7 +40,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtCodigoEjemplar = new System.Windows.Forms.TextBox();
-            this.cmbLibro = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -100,10 +100,24 @@
             this.panel1.Size = new System.Drawing.Size(694, 267);
             this.panel1.TabIndex = 8;
             // 
+            // cmbLibro
+            // 
+            this.cmbLibro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLibro.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbLibro.FormattingEnabled = true;
+            this.cmbLibro.Items.AddRange(new object[] {
+            "BUENO",
+            "REGULAR",
+            "DAÑADO"});
+            this.cmbLibro.Location = new System.Drawing.Point(256, 73);
+            this.cmbLibro.Name = "cmbLibro";
+            this.cmbLibro.Size = new System.Drawing.Size(240, 35);
+            this.cmbLibro.TabIndex = 8;
+            // 
             // cmbEstadoFisico
             // 
             this.cmbEstadoFisico.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEstadoFisico.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEstadoFisico.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstadoFisico.FormattingEnabled = true;
             this.cmbEstadoFisico.Items.AddRange(new object[] {
             "BUENO",
@@ -111,7 +125,7 @@
             "DAÑADO"});
             this.cmbEstadoFisico.Location = new System.Drawing.Point(256, 135);
             this.cmbEstadoFisico.Name = "cmbEstadoFisico";
-            this.cmbEstadoFisico.Size = new System.Drawing.Size(240, 29);
+            this.cmbEstadoFisico.Size = new System.Drawing.Size(240, 35);
             this.cmbEstadoFisico.TabIndex = 7;
             // 
             // label4
@@ -126,10 +140,10 @@
             // 
             // txtLocalizacion
             // 
-            this.txtLocalizacion.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLocalizacion.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLocalizacion.Location = new System.Drawing.Point(256, 198);
             this.txtLocalizacion.Name = "txtLocalizacion";
-            this.txtLocalizacion.Size = new System.Drawing.Size(390, 28);
+            this.txtLocalizacion.Size = new System.Drawing.Size(390, 36);
             this.txtLocalizacion.TabIndex = 5;
             // 
             // label1
@@ -165,27 +179,14 @@
             // txtCodigoEjemplar
             // 
             this.txtCodigoEjemplar.BackColor = System.Drawing.Color.White;
-            this.txtCodigoEjemplar.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigoEjemplar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigoEjemplar.Location = new System.Drawing.Point(256, 17);
             this.txtCodigoEjemplar.Name = "txtCodigoEjemplar";
             this.txtCodigoEjemplar.ReadOnly = true;
-            this.txtCodigoEjemplar.Size = new System.Drawing.Size(390, 28);
+            this.txtCodigoEjemplar.Size = new System.Drawing.Size(390, 32);
             this.txtCodigoEjemplar.TabIndex = 1;
             this.txtCodigoEjemplar.TabStop = false;
-            // 
-            // cmbLibro
-            // 
-            this.cmbLibro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbLibro.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbLibro.FormattingEnabled = true;
-            this.cmbLibro.Items.AddRange(new object[] {
-            "BUENO",
-            "REGULAR",
-            "DAÑADO"});
-            this.cmbLibro.Location = new System.Drawing.Point(256, 73);
-            this.cmbLibro.Name = "cmbLibro";
-            this.cmbLibro.Size = new System.Drawing.Size(240, 29);
-            this.cmbLibro.TabIndex = 8;
+            this.txtCodigoEjemplar.TextChanged += new System.EventHandler(this.txtCodigoEjemplar_TextChanged);
             // 
             // frmEjemplarBiblio
             // 

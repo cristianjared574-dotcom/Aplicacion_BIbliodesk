@@ -79,7 +79,7 @@ namespace Aplicacion_BIbliodesk.Administrador.LibroAdmin
             // cmbLibro
             // 
             this.cmbLibro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbLibro.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbLibro.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbLibro.Location = new System.Drawing.Point(123, 41);
             this.cmbLibro.Margin = new System.Windows.Forms.Padding(4);
             this.cmbLibro.Name = "cmbLibro";
@@ -100,7 +100,7 @@ namespace Aplicacion_BIbliodesk.Administrador.LibroAdmin
             // cmbEstado
             // 
             this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEstado.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbEstado.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstado.Location = new System.Drawing.Point(123, 122);
             this.cmbEstado.Margin = new System.Windows.Forms.Padding(4);
             this.cmbEstado.Name = "cmbEstado";
@@ -151,7 +151,7 @@ namespace Aplicacion_BIbliodesk.Administrador.LibroAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(244)))), ((int)(((byte)(235)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1511, 496);
             this.Controls.Add(this.grpLibro);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

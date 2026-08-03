@@ -43,8 +43,8 @@
             // txtnombre
             // 
             this.txtnombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtnombre.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnombre.Location = new System.Drawing.Point(194, 49);
+            this.txtnombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtnombre.Location = new System.Drawing.Point(194, 52);
             this.txtnombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtnombre.Multiline = true;
             this.txtnombre.Name = "txtnombre";
@@ -132,7 +132,7 @@
             // txtdescripcion
             // 
             this.txtdescripcion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtdescripcion.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtdescripcion.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtdescripcion.Location = new System.Drawing.Point(194, 117);
             this.txtdescripcion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtdescripcion.Multiline = true;
