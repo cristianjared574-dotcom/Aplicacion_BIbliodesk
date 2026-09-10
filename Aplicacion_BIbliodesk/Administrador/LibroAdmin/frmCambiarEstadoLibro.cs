@@ -77,11 +77,7 @@ namespace Aplicacion_BIbliodesk.Administrador.LibroAdmin
                     if (filas > 0)
                     {
                         MessageBox.Show("Estado actualizado correctamente");
-                        /*if (this.ParentForm is frmInicioAdmin formInicio)
-                        {
-                            formInicio.AbrirFormularioEnPanel(new frmLibrosBuscar());
-                        }
-                        */
+                       
                     }
                     else
                     {
@@ -111,12 +107,6 @@ namespace Aplicacion_BIbliodesk.Administrador.LibroAdmin
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            /*if (this.ParentForm is frmInicioAdmin formInicio)
-                  {
-                   formInicio.AbrirFormularioEnPanel(new frmLibrosBuscar());
-                  }
-            */
-
             frmLibrosBuscar inicioLibrosAdmin = new frmLibrosBuscar();
             frmInicioAdmin inicioAdmin = Application.OpenForms["frmInicioAdmin"] as frmInicioAdmin;
 

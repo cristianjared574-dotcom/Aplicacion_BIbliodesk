@@ -84,11 +84,11 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             string id = fila.Cells["ID_AUTOR"].Value.ToString();
 
           
-            string nombre = fila.Cells["NOMBRE"].Value.ToString();
-            string paterno = fila.Cells["APELLIDOP"].Value.ToString();
-            string materno = fila.Cells["APELLIDOM"].Value.ToString();
-            string nacionalidad = fila.Cells["NACIONALIDAD"].Value.ToString();
-            string estado = fila.Cells["ESTADO"].Value.ToString();
+            string nombre = fila.Cells["Nombre"].Value.ToString();
+            string paterno = fila.Cells["Apellido Paterno"].Value.ToString();
+            string materno = fila.Cells["Apellido Materno"].Value.ToString();
+            string nacionalidad = fila.Cells["Nacionalidad"].Value.ToString();
+            string estado = fila.Cells["Estado"].Value.ToString();
 
             
             frmEditarAutor formEdicion = new frmEditarAutor(id, nombre, paterno, materno, nacionalidad, estado);

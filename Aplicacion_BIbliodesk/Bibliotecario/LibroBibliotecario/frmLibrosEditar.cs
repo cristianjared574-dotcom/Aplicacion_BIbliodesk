@@ -108,7 +108,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
             {
                 if (conn.State == ConnectionState.Closed) conn.Open();
 
-                // 1. Actualizar los datos principales del libro
+                //Actualizar los datos principales del libro
                 string queryLibro = "UPDATE libro SET ID_EDITORIAL = @idEd, ID_CATEGORIA = @idCat, " +
                                     "ISBN = @isbn, TITULO = @titulo " +
                                     "WHERE ID_LIBRO = @idLibro";
@@ -125,7 +125,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.LibroBibliotecario
                     cmdLibro.ExecuteNonQuery();
                 }
 
-                // 2. Actualizar el autor en la tabla intermedia 'libro_autor'
+                //Actualizar el autor en la tabla intermedia 'libro_autor'
                 // Primero verificamos si ya existe la relación; si existe se actualiza, si no, se inserta.
                 string queryVerificar = "SELECT COUNT(*) FROM libro_autor WHERE ID_LIBRO = @idLibro";
                 int existeRelacion = 0;

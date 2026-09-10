@@ -56,7 +56,7 @@ namespace Aplicacion_BIbliodesk
 
                             if (dgvCategorias.Columns.Count > 0)
                             {
-                                // OCULTA EL ID (NO SE VE EN PANTALLA)
+                                // OCULTA EL ID 
                                 dgvCategorias.Columns["ID_CATEGORIA"].Visible = false;
                                 //  ALINEA TODO AL CENTRO EN COLUMNAS Y FILAS
                                 dgvCategorias.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -88,8 +88,7 @@ namespace Aplicacion_BIbliodesk
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Información",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Error: " + ex.Message, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -100,23 +99,23 @@ namespace Aplicacion_BIbliodesk
 
         private void btnCambiarEstado_Click(object sender, EventArgs e)
         {
-            // 1. Primero verifica que tengas una fila seleccionada
+            // se verifica que tengas una fila seleccionada
             if (dgvCategorias.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Primero selecciona una categoría de la tabla", "Aviso");
                 return;
             }
 
-            // 2. Obtiene los datos de la fila que elegiste
+            // Obtiene los datos de la fila
             int idCat = Convert.ToInt32(dgvCategorias.SelectedRows[0].Cells["ID_CATEGORIA"].Value);
             string nombreCat = dgvCategorias.SelectedRows[0].Cells["Categoría"].Value.ToString();
             string estadoCat = dgvCategorias.SelectedRows[0].Cells["Estado"].Value.ToString();
-            // 3. Abre el formulario y le pasa los datos
+            // Abre el formulario y le pasa los datos
             frmInicioAdmin inicioAdmin = Application.OpenForms["frmInicioAdmin"] as frmInicioAdmin;
 
             if (inicioAdmin != null)
             {
-                // Enviamos los datos al crear el formulario
+                // Envia los datos al abrir el formulario
                 cambiar_estado CambioEstadoCategoria = new cambiar_estado(idCat, nombreCat, estadoCat);
                 inicioAdmin.AbrirFormularioEnPanelAdmin(CambioEstadoCategoria);
             }
@@ -124,59 +123,6 @@ namespace Aplicacion_BIbliodesk
             {
                 MessageBox.Show("No se encontró el menú principal", "Error");
             }
-
-
-
-            // Verificar selección
-            /* if (dgvCategorias.SelectedRows.Count == 0)
-             {
-                 MessageBox.Show("Selecciona una categoría primero", "Aviso");
-                 return;
-             }
-             else
-             {
-
-             }
-
-             // Buscar menú principal abierto
-             Form ventanaPrincipal = null;
-             foreach (Form form in Application.OpenForms)
-             {
-                 if (form.Name == "frmInicioAdmin")
-                 {
-                     ventanaPrincipal = form;
-                     break;
-                 }
-             }
-
-             if (ventanaPrincipal == null)
-             {
-                 MessageBox.Show("No se encontró el menú principal", "Error");
-                 return;
-             }
-
-             // Preparar formulario
-             cambiar_estado formEstado = new cambiar_estado();
-             string nombreCat = dgvCategorias.SelectedRows[0].Cells["Categoría"].Value.ToString();
-             string estadoCat = dgvCategorias.SelectedRows[0].Cells["ESTADO"].Value.ToString();
-             formEstado.CargarDatos(nombreCat, estadoCat);
-
-             // USAMOS EL NOMBRE EXACTO QUE ENCONTRAMOS: pnlContenido
-             Panel panel = ventanaPrincipal.Controls.Find("pnlContenido", true).FirstOrDefault() as Panel;
-
-             if (panel != null)
-             {
-                 panel.Controls.Clear();
-                 formEstado.TopLevel = false;
-                 formEstado.FormBorderStyle = FormBorderStyle.None;
-                 formEstado.Dock = DockStyle.Fill;
-                 panel.Controls.Add(formEstado);
-                 formEstado.Show();
-             }
-             else
-             {
-                 MessageBox.Show("No se pudo acceder al panel de contenido", "Error");
-             }*/
 
         }
 

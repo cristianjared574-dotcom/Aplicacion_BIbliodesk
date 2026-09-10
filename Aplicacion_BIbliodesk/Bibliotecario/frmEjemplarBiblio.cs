@@ -29,12 +29,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
         }
 
         // Constructor para editar un ejemplar.
-        public frmEjemplarBiblio(
-            int idEjemplar,
-            string claveEjemplar,
-            int idLibro,
-            string localizacion,
-            string estadoFisico)
+        public frmEjemplarBiblio(int idEjemplar, string claveEjemplar, int idLibro, string localizacion, string estadoFisico)
         {
             InitializeComponent();
 
@@ -116,14 +111,11 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
 
             try
             {
-                using (MySqlCommand cmd =
-                       new MySqlCommand(consulta, con))
+                using (MySqlCommand cmd = new MySqlCommand(consulta, con))
                 {
-                    using (MySqlDataAdapter adaptador =
-                           new MySqlDataAdapter(cmd))
+                    using (MySqlDataAdapter adaptador = new MySqlDataAdapter(cmd))
                     {
-                        DataTable tablaLibros =
-                            new DataTable();
+                        DataTable tablaLibros = new DataTable();
 
                         adaptador.Fill(tablaLibros);
 
@@ -139,12 +131,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Error al cargar los libros: " + ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
+                MessageBox.Show( "Error al cargar los libros: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -180,29 +167,18 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
 
             try
             {
-                using (MySqlCommand cmd =
-                       new MySqlCommand(consulta, con))
+                using (MySqlCommand cmd = new MySqlCommand(consulta, con))
                 {
-                    object resultado =
-                        cmd.ExecuteScalar();
+                    object resultado = cmd.ExecuteScalar();
 
-                    int siguienteNumero =
-                        Convert.ToInt32(resultado);
+                    int siguienteNumero = Convert.ToInt32(resultado);
 
-                    return "EJE26" +
-                           siguienteNumero.ToString("D4");
+                    return "EJE26" + siguienteNumero.ToString("D4");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Error al generar el código del ejemplar: " +
-                    ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-
+                MessageBox.Show("Error al generar el código del ejemplar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return "";
             }
             finally
@@ -215,16 +191,9 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             // Validar que exista un código generado.
-            if (string.IsNullOrWhiteSpace(
-                    txtCodigoEjemplar.Text))
+            if (string.IsNullOrWhiteSpace(txtCodigoEjemplar.Text))
             {
-                MessageBox.Show(
-                    "No se pudo generar el código del ejemplar.",
-                    "Código requerido",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
-
+                MessageBox.Show("No se pudo generar el código del ejemplar.", "Código requerido",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 return;
             }
 
@@ -232,13 +201,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
             if (cmbLibro.SelectedValue == null ||
                 cmbLibro.SelectedIndex == -1)
             {
-                MessageBox.Show(
-                    "Seleccione un libro.",
-                    "Campo obligatorio",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
-
+                MessageBox.Show("Seleccione un libro.","Campo obligatorio",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 cmbLibro.Focus();
                 return;
             }
@@ -246,13 +209,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
             // Validar estado físico.
             if (cmbEstadoFisico.SelectedItem == null)
             {
-                MessageBox.Show(
-                    "Seleccione el estado físico del ejemplar.",
-                    "Campo obligatorio",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
-
+                MessageBox.Show("Seleccione el estado físico del ejemplar.","Campo obligatorio",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 cmbEstadoFisico.Focus();
                 return;
             }
@@ -261,49 +218,28 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
             if (string.IsNullOrWhiteSpace(
                     txtLocalizacion.Text))
             {
-                MessageBox.Show(
-                    "Ingrese la localización del ejemplar.",
-                    "Campo obligatorio",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
-
+                MessageBox.Show("Ingrese la localización del ejemplar.","Campo obligatorio",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 txtLocalizacion.Focus();
                 return;
             }
 
             // Obtener el ID del libro seleccionado.
-            int idLibro =
-                Convert.ToInt32(cmbLibro.SelectedValue);
+            int idLibro = Convert.ToInt32(cmbLibro.SelectedValue);
 
-            string estadoFisico =
-                cmbEstadoFisico.SelectedItem
-                    .ToString()
-                    .Trim()
-                    .ToUpper();
+            string estadoFisico = cmbEstadoFisico.SelectedItem.ToString().Trim().ToUpper();
 
-            string localizacion =
-                txtLocalizacion.Text.Trim();
+            string localizacion = txtLocalizacion.Text.Trim();
 
             // Validar el estado físico.
-            if (estadoFisico != "BUENO" &&
-                estadoFisico != "REGULAR" &&
-                estadoFisico != "DAÑADO")
+            if (estadoFisico != "BUENO" && estadoFisico != "REGULAR" && estadoFisico != "DAÑADO")
             {
-                MessageBox.Show(
-                    "El estado físico seleccionado no es válido.",
-                    "Estado inválido",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
-
+                MessageBox.Show("El estado físico seleccionado no es válido.", "Estado inválido",MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             ConexionData = new Conexion();
 
-            MySqlConnection con =
-                ConexionData.getConection();
+            MySqlConnection con = ConexionData.getConection();
 
             if (con == null)
             {
@@ -314,32 +250,16 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
             {
                 if (esModoEdicion)
                 {
-                    ActualizarEjemplar(
-                        con,
-                        idLibro,
-                        localizacion,
-                        estadoFisico
-                    );
+                    ActualizarEjemplar(con,idLibro,localizacion,estadoFisico);
                 }
                 else
                 {
-                    RegistrarEjemplar(
-                        con,
-                        idLibro,
-                        localizacion,
-                        estadoFisico
-                    );
+                    RegistrarEjemplar(con,idLibro,localizacion,estadoFisico);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Error al guardar el ejemplar: " +
-                    ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
+                MessageBox.Show("Error al guardar el ejemplar: " + ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
             finally
             {
@@ -348,14 +268,9 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
         }
 
         // Registra un ejemplar nuevo.
-        private void RegistrarEjemplar(
-            MySqlConnection con,
-            int idLibro,
-            string localizacion,
-            string estadoFisico)
+        private void RegistrarEjemplar(MySqlConnection con, int idLibro,string localizacion,string estadoFisico)
         {
-            string claveEjemplar =
-                txtCodigoEjemplar.Text.Trim();
+            string claveEjemplar = txtCodigoEjemplar.Text.Trim();
 
             string consulta = @"
                 INSERT INTO EJEMPLAR
@@ -375,52 +290,27 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
                     'DISPONIBLE'
                 );";
 
-            using (MySqlCommand cmd =
-                   new MySqlCommand(consulta, con))
+            using (MySqlCommand cmd = new MySqlCommand(consulta, con))
             {
-                cmd.Parameters.Add(
-                    "@claveEjemplar",
-                    MySqlDbType.VarChar
-                ).Value = claveEjemplar;
+                cmd.Parameters.Add("@claveEjemplar",MySqlDbType.VarChar).Value = claveEjemplar;
 
-                cmd.Parameters.Add(
-                    "@idLibro",
-                    MySqlDbType.Int32
-                ).Value = idLibro;
+                cmd.Parameters.Add("@idLibro",MySqlDbType.Int32).Value = idLibro;
 
-                cmd.Parameters.Add(
-                    "@localizacion",
-                    MySqlDbType.VarChar
-                ).Value = localizacion;
+                cmd.Parameters.Add("@localizacion",MySqlDbType.VarChar).Value = localizacion;
 
-                cmd.Parameters.Add(
-                    "@estadoFisico",
-                    MySqlDbType.VarChar
-                ).Value = estadoFisico;
+                cmd.Parameters.Add("@estadoFisico",MySqlDbType.VarChar).Value = estadoFisico;
 
-                int filasAfectadas =
-                    cmd.ExecuteNonQuery();
+                int filasAfectadas = cmd.ExecuteNonQuery();
 
                 if (filasAfectadas > 0)
                 {
-                    MessageBox.Show(
-                        "El ejemplar se registró correctamente.\n" +
-                        "Código generado: " + claveEjemplar,
-                        "Éxito",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information
-                    );
+                    MessageBox.Show("El ejemplar se registró correctamente.\n" + "Código generado: " + claveEjemplar, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     RegresarAListaEjemplares();
                 }
                 else
                 {
-                    MessageBox.Show(
-                        "No se pudo registrar el ejemplar.",
-                        "Aviso",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning
-                    );
+                    MessageBox.Show( "No se pudo registrar el ejemplar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -443,48 +333,25 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
             using (MySqlCommand cmd =
                    new MySqlCommand(consulta, con))
             {
-                cmd.Parameters.Add(
-                    "@idLibro",
-                    MySqlDbType.Int32
-                ).Value = idLibro;
+                cmd.Parameters.Add( "@idLibro",MySqlDbType.Int32).Value = idLibro;
 
-                cmd.Parameters.Add(
-                    "@localizacion",
-                    MySqlDbType.VarChar
-                ).Value = localizacion;
+                cmd.Parameters.Add( "@localizacion",MySqlDbType.VarChar).Value = localizacion;
 
-                cmd.Parameters.Add(
-                    "@estadoFisico",
-                    MySqlDbType.VarChar
-                ).Value = estadoFisico;
+                cmd.Parameters.Add( "@estadoFisico",MySqlDbType.VarChar).Value = estadoFisico;
 
-                cmd.Parameters.Add(
-                    "@idEjemplar",
-                    MySqlDbType.Int32
-                ).Value = idEjemplarEditar;
+                cmd.Parameters.Add( "@idEjemplar",MySqlDbType.Int32).Value = idEjemplarEditar;
+                    
 
-                int filasAfectadas =
-                    cmd.ExecuteNonQuery();
+                int filasAfectadas = cmd.ExecuteNonQuery();
 
                 if (filasAfectadas > 0)
                 {
-                    MessageBox.Show(
-                        "El ejemplar se actualizó correctamente.",
-                        "Éxito",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information
-                    );
-
+                    MessageBox.Show("El ejemplar se actualizó correctamente.","Éxito",MessageBoxButtons.OK,MessageBoxIcon.Information);
                     RegresarAListaEjemplares();
                 }
                 else
                 {
-                    MessageBox.Show(
-                        "No se realizaron modificaciones.",
-                        "Aviso",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning
-                    );
+                    MessageBox.Show("No se realizaron modificaciones.","Aviso",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 }
             }
         }
@@ -492,18 +359,13 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
         // Regresa a la tabla de ejemplares.
         private void RegresarAListaEjemplares()
         {
-            frmInicioBiblio inicioBiblio =
-                Application.OpenForms["frmInicioBiblio"]
-                as frmInicioBiblio;
+            frmInicioBiblio inicioBiblio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
 
             if (inicioBiblio != null)
             {
-                frmInicioEjemplaresBiblio formulario =
-                    new frmInicioEjemplaresBiblio();
+                frmInicioEjemplaresBiblio formulario = new frmInicioEjemplaresBiblio();
 
-                inicioBiblio.AbrirFormularioEnPanel(
-                    formulario
-                );
+                inicioBiblio.AbrirFormularioEnPanel(formulario);
             }
 
             Close();

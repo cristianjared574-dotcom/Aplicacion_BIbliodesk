@@ -13,7 +13,7 @@ namespace Aplicacion_BIbliodesk.Administrador
         {
             InitializeComponent();
 
-            dgvEjemplaresAdmin.AutoGenerateColumns = false;  //para qur no genere mas columnas
+            dgvEjemplaresAdmin.AutoGenerateColumns = false;  //no genera mas columnas
         }
 
         private void frmInicioEjemplaresAdmin_Load(object sender, EventArgs e)
@@ -30,18 +30,18 @@ namespace Aplicacion_BIbliodesk.Administrador
             if (con == null)
                 return;
 
-            string query = @"
-        SELECT
-            E.ID_EJEMPLAR,
-            E.ID_LIBRO,
-            E.CLAVE_EJEMPLAR,
-            L.TITULO,
-            E.LOCALIZACION,
-            E.ESTADO_FISICO,
-            E.DISPONIBLE
-        FROM EJEMPLAR E
-        INNER JOIN LIBRO L
-            ON E.ID_LIBRO = L.ID_LIBRO";
+                string query = @"
+                        SELECT
+                            E.ID_EJEMPLAR,
+                            E.ID_LIBRO,
+                            E.CLAVE_EJEMPLAR,
+                            L.TITULO,
+                            E.LOCALIZACION,
+                            E.ESTADO_FISICO,
+                            E.DISPONIBLE
+                        FROM EJEMPLAR E
+                        INNER JOIN LIBRO L
+                            ON E.ID_LIBRO = L.ID_LIBRO";
 
             if (!string.IsNullOrWhiteSpace(filtro))
             {
@@ -75,11 +75,7 @@ namespace Aplicacion_BIbliodesk.Administrador
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    "Error al cargar los datos en la tabla: " + ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
+                    "Error al cargar los datos en la tabla: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -95,31 +91,16 @@ namespace Aplicacion_BIbliodesk.Administrador
             // Verificar que exista una fila seleccionada
             if (dgvEjemplaresAdmin.CurrentRow == null)
             {
-                MessageBox.Show(
-                    "Por favor, seleccione un ejemplar de la tabla.",
-                    "Aviso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
-
+                MessageBox.Show("Por favor, seleccione un ejemplar de la tabla.","Aviso",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 return;
             }
 
             // Obtener el ID y el estado de la fila seleccionada
-            string id = dgvEjemplaresAdmin.CurrentRow
-                .Cells["ID_EJEMPLAR"]
-                .Value
-                .ToString();
+            string id = dgvEjemplaresAdmin.CurrentRow.Cells["ID_EJEMPLAR"].Value.ToString();
 
-            string codigo = dgvEjemplaresAdmin.CurrentRow
-            .Cells["CLAVE_EJEMPLAR"]
-            .Value
-            .ToString();
+            string codigo = dgvEjemplaresAdmin.CurrentRow.Cells["CLAVE_EJEMPLAR"].Value.ToString();
 
-            string estado = dgvEjemplaresAdmin.CurrentRow
-                .Cells["DISPONIBLE"]
-                .Value
-                .ToString();
+            string estado = dgvEjemplaresAdmin.CurrentRow.Cells["DISPONIBLE"].Value.ToString();
 
             // Buscar el formulario principal del administrador
             frmInicioAdmin inicioAdmin =

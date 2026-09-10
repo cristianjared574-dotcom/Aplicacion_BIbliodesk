@@ -65,7 +65,7 @@ namespace Aplicacion_BIbliodesk.Administrador.LibroAdmin
                     dgvLibros.DataSource = dt;
 
                     // Ocultamos las columnas de ID para que no se muestren en la interfaz, 
-                    // conservando el orden limpio para el administrador.
+                   
                     if (dgvLibros.Columns["ID_LIBRO"] != null)
                         dgvLibros.Columns["ID_LIBRO"].Visible = false;
 

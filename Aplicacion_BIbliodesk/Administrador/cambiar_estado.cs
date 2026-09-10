@@ -22,10 +22,10 @@ namespace Aplicacion_BIbliodesk
             InitializeComponent();
             cboEstado.Items.Add("ACTIVO");
             cboEstado.Items.Add("INACTIVO");
-            CargarCategorias(); 
+            CargarCategorias();
         }
 
-        //  Constructor que RECIBE la categoría que seleccionaste
+        //  Constructor
         public cambiar_estado(int idRecibido, string nombreRecibido, string estadoRecibido)
         {
             InitializeComponent();
@@ -35,12 +35,12 @@ namespace Aplicacion_BIbliodesk
             cboEstado.Items.Add("ACTIVO");
             cboEstado.Items.Add("INACTIVO");
 
-            // Carga la lista completa y preselecciona la tuya
+            // Carga la lista completa 
             CargarCategorias();
-            cmbCategoria.SelectedValue = idRecibido; // Marca automáticamente la que elegiste
+            cmbCategoria.SelectedValue = idRecibido; // Marca automáticamente que se eligio
             cboEstado.Text = estadoRecibido; // Muestra el estado que ya tenía
         }
-      
+
 
 
         // Guardar cambios
@@ -67,11 +67,11 @@ namespace Aplicacion_BIbliodesk
 
         private void btnCancelarCambios_Click(object sender, EventArgs e)
         {
-           
+
             VolverACategorias();
 
         }
-        
+
 
         // Ajuste de letra
         private void btnMasLetra_Click(object sender, EventArgs e)
@@ -94,150 +94,107 @@ namespace Aplicacion_BIbliodesk
         }
 
         private void cambiar_estado_Load(object sender, EventArgs e) { }
-       
 
 
+        private void CargarCategorias()
+        {
+            AccesoDatos = new Conexion();
+            MySqlConnection conn = AccesoDatos.getConection();
 
-
-            private void CargarCategorias()
+            if (conn == null)
             {
-                AccesoDatos = new Conexion();
-                MySqlConnection conn =
-                    AccesoDatos.getConection();
+                return;
+            }
 
-                if (conn == null)
-                {
-                    return;
-                }
-
-                try
-                {
-                    string consulta = @"
+            try
+            {
+                string consulta = @"
                     SELECT
                         ID_CATEGORIA,
                         NOMBRE_CATEGORIA
                     FROM CATEGORIA
                     ORDER BY NOMBRE_CATEGORIA;";
 
-                    MySqlDataAdapter adaptador =
-                        new MySqlDataAdapter(consulta, conn);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(consulta, conn);
 
-                    DataTable tablaCategorias =
-                        new DataTable();
+                DataTable tablaCategorias = new DataTable();
 
-                    adaptador.Fill(tablaCategorias);
+                adaptador.Fill(tablaCategorias);
 
-                    cmbCategoria.DataSource =
-                        tablaCategorias;
+                cmbCategoria.DataSource = tablaCategorias;
 
-                    cmbCategoria.DisplayMember =
-                        "NOMBRE_CATEGORIA";
+                cmbCategoria.DisplayMember = "NOMBRE_CATEGORIA";
 
-                    cmbCategoria.ValueMember =
-                        "ID_CATEGORIA";
+                cmbCategoria.ValueMember = "ID_CATEGORIA";
 
-                    cmbCategoria.SelectedIndex = -1;
+                cmbCategoria.SelectedIndex = -1;
 
-                    conn.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(
-                        "Error al cargar categorías: " +
-                        ex.Message,
-                        "Error",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar categorías: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ActualizarEstado(int idCategoria, string nuevoEstado)
+        {
+            AccesoDatos = new Conexion();
+            MySqlConnection conn = AccesoDatos.getConection();
+
+            if (conn == null)
+            {
+                return;
             }
 
-            private void ActualizarEstado(
-                int idCategoria,
-                string nuevoEstado)
+            try
             {
-                AccesoDatos = new Conexion();
-                MySqlConnection conn =
-                    AccesoDatos.getConection();
-
-                if (conn == null)
-                {
-                    return;
-                }
-
-                try
-                {
-                    string consulta = @"
+                string consulta = @"
                     UPDATE CATEGORIA
                     SET ESTADO = @nuevoEstado
                     WHERE ID_CATEGORIA = @idCategoria;";
 
-                    MySqlCommand comando =
-                        new MySqlCommand(consulta, conn);
+                MySqlCommand comando =
+                    new MySqlCommand(consulta, conn);
 
-                    comando.Parameters.AddWithValue(
-                        "@nuevoEstado",
-                        nuevoEstado);
+                comando.Parameters.AddWithValue("@nuevoEstado", nuevoEstado);
 
-                    comando.Parameters.AddWithValue(
-                        "@idCategoria",
-                        idCategoria);
+                comando.Parameters.AddWithValue("@idCategoria", idCategoria);
 
-                    int filasAfectadas =
-                        comando.ExecuteNonQuery();
+                int filasAfectadas = comando.ExecuteNonQuery();
 
-                    if (filasAfectadas > 0)
-                    {
-                        MessageBox.Show(
-                            "Estado actualizado correctamente.",
-                            "Éxito",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
-
-                        voz.SpeakAsync(
-                            "El estado se cambió correctamente");
-
-                        VolverACategorias();
-                    }
-                    else
-                    {
-                        MessageBox.Show(
-                            "No se encontró la categoría.",
-                            "Aviso",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Warning);
-                    }
-
-                    conn.Close();
-                }
-                catch (Exception ex)
+                if (filasAfectadas > 0)
                 {
-                    MessageBox.Show(
-                        "Error al actualizar: " + ex.Message,
-                        "Error",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                    MessageBox.Show("Estado actualizado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    voz.SpeakAsync("El estado se cambió correctamente");
+
+                    VolverACategorias();
                 }
+                else
+                {
+                    MessageBox.Show("No se encontró la categoría.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+                conn.Close();
             }
-
-            
-
-            
-
-            private void VolverACategorias()
+            catch (Exception ex)
             {
-                frmInicioAdmin inicioAdmin =
-                    Application.OpenForms["frmInicioAdmin"]
-                    as frmInicioAdmin;
-
-                if (inicioAdmin != null)
-                {
-                    categorias formularioCategorias =
-                        new categorias();
-
-                    inicioAdmin.AbrirFormularioEnPanelAdmin(
-                        formularioCategorias);
-                }
+                MessageBox.Show("Error al actualizar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void VolverACategorias()
+        {
+            frmInicioAdmin inicioAdmin = Application.OpenForms["frmInicioAdmin"] as frmInicioAdmin;
+
+            if (inicioAdmin != null)
+            {
+                categorias formularioCategorias = new categorias();
+
+                inicioAdmin.AbrirFormularioEnPanelAdmin(formularioCategorias);
+            }
+        }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {

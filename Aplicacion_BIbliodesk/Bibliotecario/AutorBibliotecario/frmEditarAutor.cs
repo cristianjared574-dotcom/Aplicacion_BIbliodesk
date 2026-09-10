@@ -22,7 +22,6 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
             
             idAutor = id;
 
-            // 2. Llenamos los TextBox con los datos correspondientes
             txtNombre.Text = nombre;
             txtAp.Text = paterno;
             txtAm.Text = materno;
@@ -37,10 +36,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.AutorBibliotecario
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             // Validamos que no queden campos vacíos
-            if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
-               string.IsNullOrWhiteSpace(txtAp.Text) ||
-               string.IsNullOrWhiteSpace(txtAm.Text) ||
-               string.IsNullOrWhiteSpace(txtnacionalidad.Text))
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtAp.Text) || string.IsNullOrWhiteSpace(txtAm.Text) || string.IsNullOrWhiteSpace(txtnacionalidad.Text))
             {
                 MessageBox.Show("Por favor rellene todos los campos");
                 return;

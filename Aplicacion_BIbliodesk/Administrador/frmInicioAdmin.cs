@@ -17,7 +17,7 @@ namespace Aplicacion_BIbliodesk.Administrador
         private IconButton botonSeleccionado = null;
         private Form formularioActivo = null;
 
-        // SISTEMA DE ACCESIBILIDAD IGUAL AL BIBLIOTECARIO
+        
         public readonly SpeechSynthesizer voz = new SpeechSynthesizer();
         public bool audioActivo = false;
         private string ultimoTextoLeido = "";

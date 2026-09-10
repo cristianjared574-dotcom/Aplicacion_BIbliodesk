@@ -102,8 +102,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Información",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Error: " + ex.Message, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -114,15 +113,6 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
 
      
         private void categorias_biblo_Load(object sender, EventArgs e) { }
-       
-
-
-   
-       
-
-
-
-
 
         private void dgvCategorias_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
 
@@ -143,7 +133,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
 
         private void btnEditarCategoria_Click_1(object sender, EventArgs e)
         {
-            // 1. Verificar selección
+            // Verificar selección
             if (dgvCategorias.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Primero selecciona UNA categoría de la tabla", "Aviso",
@@ -160,19 +150,17 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
                 string descripcion = fila.Cells["Descripción"].Value?.ToString() ?? ""; 
               
 
-                // 3. Abrir formulario de edición
+                // Abrir formulario de edición
                 frmInicioBiblio inicio = Application.OpenForms["frmInicioBiblio"] as frmInicioBiblio;
                 if (inicio != null)
                 {
-                   
                     categoria_biblio formEditar = new categoria_biblio(idCategoria, nombre, descripcion);
                     inicio.AbrirFormularioEnPanel(formEditar);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar edición: " + ex.Message, "Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al cargar edición: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void categorias_biblo_Load_1(object sender, EventArgs e)

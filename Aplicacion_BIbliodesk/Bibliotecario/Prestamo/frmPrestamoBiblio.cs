@@ -30,10 +30,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario.Prestamo
                 frmRegistrarPrestamo nuevoPrestamo = new frmRegistrarPrestamo();
                 inicioBiblio.AbrirFormularioEnPanel(nuevoPrestamo);
             }
-            /*frmInicioBiblio menuPrincipalBibliotecario = new frmInicioBiblio();
-
-            //frmRegistrarPrestamo PantallaRegistar = new frmRegistrarPrestamo();
-            menuPrincipalBibliotecario.AbrirFormularioEnPanel(new frmRegistrarPrestamo());*/
+           
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

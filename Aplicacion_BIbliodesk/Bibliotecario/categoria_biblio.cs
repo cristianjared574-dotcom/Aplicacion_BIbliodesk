@@ -135,18 +135,7 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
                 inicio.AbrirFormularioEnPanel(listaNueva);
             }
         }
-      //  private void btncancelar_Click(object sender, EventArgs e)
-      //  {
-            // Limpia y regresa a la lista sin cambios
-            /*frmInicioBiblio ventanaInicio = this.ParentForm as frmInicioBiblio;
-            if (ventanaInicio != null)
-            {
-                ventanaInicio.AbrirFormularioEnPanel(new categorias_biblo());
-            }*/
-
-             
-     //   }
-
+      
         private void categoria_biblio_Load(object sender, EventArgs e)
         {
 
@@ -154,7 +143,6 @@ namespace Aplicacion_BIbliodesk.Bibliotecario
         }
 
       
-
         private void btncancelar_Click_1(object sender, EventArgs e)
         {
             categorias_biblo inicioCategorias = new categorias_biblo();

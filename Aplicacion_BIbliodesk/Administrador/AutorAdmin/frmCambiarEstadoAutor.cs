@@ -31,7 +31,7 @@ namespace Aplicacion_BIbliodesk.Administrador.AutorAdmin
             try
             {
                 if (conn.State == ConnectionState.Closed) conn.Open();
-                // Asegúrate de que los nombres de las columnas sean ID_AUTOR y NOMBRE
+                
                 string query = "SELECT ID_AUTOR, NOMBRE FROM autor";
                 MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
                 DataTable dt = new DataTable();
@@ -66,7 +66,7 @@ namespace Aplicacion_BIbliodesk.Administrador.AutorAdmin
                     if (cmd.ExecuteNonQuery() > 0)
                     {
                         MessageBox.Show("Estado del autor actualizado");
-                        //if (this.ParentForm is frmInicioAdmin f) f.AbrirFormularioEnPanel(new frmAutorInicio());
+                        
                     }
                 }
             }
